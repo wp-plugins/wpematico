@@ -471,12 +471,6 @@ if ( !defined('ABSPATH') )
 			$message.=__('- PHP 5.2.0 or higher needed!','wpematico') . '<br />';
 			$checks=false;
 		}
-		if (!is_dir($cfg['dirimgs'])) { // check logs folder
-			$message.=__('- Images Folder not exists:','wpematico') . ' '.$cfg['dirimgs'].'<br />';
-		}
-		if (!is_writable($cfg['dirimgs'])) { // check logs folder
-			$message.=__('- Images Folder not writeable:','wpematico') . ' '.$cfg['dirimgs'].'<br />';
-		}
 
 		$jobs=(array)get_option('wpematico_jobs'); 
 		foreach ($jobs as $jobid => $jobvalue) { //check for old cheduling

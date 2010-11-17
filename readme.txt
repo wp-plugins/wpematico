@@ -4,7 +4,7 @@ Donate link: http://www.netmdp.com/tag/wpematico/
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 0.1Beta
+Stable tag: 0.2Beta
 
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 
@@ -13,8 +13,8 @@ WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom fe
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 For RSS fetching it's using the simplepie library included in Wordpress.
 Also for image processing it's using the core functions of wordpress.
-.po .mo english files included for multilanguage translations. 
-I take code from many many other plugins, but for this plugin I read a lot of code of the old WP-o-Matic and BackWPUp. Thanks ;)
+Translations ready. .pot english file included for localized. 
+I take code from many many other plugins, but for this plugin I read a lot of code of the old WP-o-Matic and BackWPUp. Thanks to the developers;)
 
 Supported features:
 
@@ -27,7 +27,7 @@ Supported features:
 * Images caching are integrated with Wordpress Media Library and posts attach. upload remote images or link to source. Fully configurable.
 * Words Rewriting. Regular expressions supported.
 * Words Relinking. Define custom links for words you specify.
-* Multilanguage Ready
+* Multilanguage.
 
 Upcoming features:
 
@@ -41,7 +41,8 @@ PHP5 is required!
 Copyright 2010.
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version. 
 
-[Traducción al español de Argentina de la Licencia GNU](http://www.spanish-translator-services.com/espanol/t/gnu/gpl-ar.html)
+[If you want support or more detail in spanish you can search WPeMatico here:](http://www.netmdp.com). 
+Traducción al español de Argentina de la Licencia GNU: http://www.spanish-translator-services.com/espanol/t/gnu/gpl-ar.html
 
 == Installation ==
 
@@ -61,6 +62,11 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. The table list of campaigns and some info of everyone.
 
 == Changelog ==
+
+= 0.2Beta =
+* Fixed version number.
+* Fix wrong message when activating.
+* Deleted .mo & .po files, replacing with new wordpress generated .pot
 
 = 0.1Beta =
 * initial release

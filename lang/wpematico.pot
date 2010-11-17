@@ -1,0 +1,883 @@
+# Translation of the WordPress plugin WPeMatico 1.0.0 by Esteban Truelsegaard.
+# Copyright (C) 2010 Esteban Truelsegaard
+# This file is distributed under the same license as the WPeMatico package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#: app/options-edit-job.php:250
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WPeMatico 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wpematico\n"
+"POT-Creation-Date: 2010-11-17 20:43+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: app/compatibility/list-table.php:173
+msgid "No items found."
+msgstr ""
+
+#: app/compatibility/list-table.php:210
+msgid "Bulk Actions"
+msgstr ""
+
+#: app/compatibility/list-table.php:215
+msgid "Apply"
+msgstr ""
+
+#: app/compatibility/list-table.php:242
+msgid "Show all dates"
+msgstr ""
+
+#: app/compatibility/list-table.php:270
+msgid "List View"
+msgstr ""
+
+#: app/compatibility/list-table.php:271
+msgid "Excerpt View"
+msgstr ""
+
+#: app/compatibility/list-table.php:297
+#, php-format
+msgid "%s pending"
+msgstr ""
+
+#. translators: comment count link
+#: app/compatibility/list-table.php:305
+msgctxt "comment count"
+msgid "0"
+msgstr ""
+
+#. translators: comment count link
+#: app/compatibility/list-table.php:306
+msgctxt "comment count"
+msgid "1"
+msgstr ""
+
+#. translators: comment count link: % will be substituted by comment count
+#: app/compatibility/list-table.php:307
+msgctxt "comment count"
+msgid "%"
+msgstr ""
+
+#: app/compatibility/list-table.php:348 app/compatibility/list-table.php:648
+#, php-format
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/compatibility/list-table.php:358
+msgid "Go to the first page"
+msgstr ""
+
+#: app/compatibility/list-table.php:365
+msgid "Go to the previous page"
+msgstr ""
+
+#: app/compatibility/list-table.php:371
+msgid "Current page"
+msgstr ""
+
+#: app/compatibility/list-table.php:377
+#, php-format
+msgctxt "paging"
+msgid "%s of %s"
+msgstr ""
+
+#: app/compatibility/list-table.php:381
+msgid "Go to the next page"
+msgstr ""
+
+#: app/compatibility/list-table.php:388
+msgid "Go to the last page"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (WPeMatico 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: app/functions.php:9 app/functions.php:34 app/functions.php:48
+#: app/functions.php:188
+msgid "WPeMatico"
+msgstr ""
+
+#: app/functions.php:10 app/functions.php:129
+msgid "Campaigns"
+msgstr ""
+
+#: app/functions.php:11
+msgid "Add New Campaign"
+msgstr ""
+
+#: app/functions.php:11 app/functions.php:34 app/functions.php:48
+msgid "Add New"
+msgstr ""
+
+#: app/functions.php:12 app/functions.php:130 app/functions.php:171
+msgid "Settings"
+msgstr ""
+
+#: app/functions.php:72 app/functions.php:180
+msgid "Support"
+msgstr ""
+
+#: app/functions.php:73 app/functions.php:179
+msgid "FAQ"
+msgstr ""
+
+#: app/functions.php:74
+msgid "Plugin Homepage"
+msgstr ""
+
+#: app/functions.php:75
+msgid "Plugin Home on WordPress.org"
+msgstr ""
+
+#: app/functions.php:76 app/functions.php:181
+msgid "Donate"
+msgstr ""
+
+#: app/functions.php:79
+msgid "Version:"
+msgstr ""
+
+#: app/functions.php:80 app/options-edit-job.php:244
+msgid "Author:"
+msgstr ""
+
+#: app/functions.php:171
+msgid "Go to Settings Page"
+msgstr ""
+
+#: app/functions.php:274
+msgid "Processed Campaigns:"
+msgstr ""
+
+#: app/functions.php:282 app/functions.php:306
+msgid "Edit Campaign"
+msgstr ""
+
+#: app/functions.php:287 app/functions.php:289 app/wpematico_dojob.php:472
+#, php-format
+msgid "Processed Posts: %1s"
+msgstr ""
+
+#: app/functions.php:292 app/functions.php:294 app/wpematico_dojob.php:449
+#: app/wpematico_dojob.php:472
+#, php-format
+msgid "Job done in %1s sec."
+msgstr ""
+
+#: app/functions.php:303
+msgid "Scheduled Campaigns:"
+msgstr ""
+
+#: app/functions.php:309 app/list-tables.php:138
+msgid "Running since:"
+msgstr ""
+
+#: app/functions.php:309 app/list-tables.php:138 app/list-tables.php:154
+msgid "sec."
+msgstr ""
+
+#: app/functions.php:318 app/list-tables.php:156
+msgid "None"
+msgstr ""
+
+#: app/functions.php:467
+msgid "- WordPress 2.8 or heiger needed!"
+msgstr ""
+
+#: app/functions.php:471
+msgid "- PHP 5.2.0 or higher needed!"
+msgstr ""
+
+#: app/functions.php:475
+msgid "- Images Folder not exists:"
+msgstr ""
+
+#: app/functions.php:478
+msgid "- Images Folder not writeable:"
+msgstr ""
+
+#: app/functions.php:484
+msgid "- Please Check Scheduling time for Campaign:"
+msgstr ""
+
+#: app/functions.php:487
+msgid "- WP-Cron don't working please check it!"
+msgstr ""
+
+#: app/functions.php:624
+#, php-format
+msgid "The feed %s has been parsed successfully."
+msgstr ""
+
+#: app/functions.php:625
+#, php-format
+msgid "The feed %s cannot be parsed. Simplepie said: %s"
+msgstr ""
+
+#: app/functions5.php:34
+msgid "New"
+msgstr ""
+
+#: app/list-tables.php:22
+msgid "No rights"
+msgstr ""
+
+#: app/list-tables.php:41
+msgid "No Campaigns."
+msgstr ""
+
+#: app/list-tables.php:46 app/list-tables.php:107 app/options-edit-job.php:44
+msgid "Delete"
+msgstr ""
+
+#: app/list-tables.php:47 app/list-tables.php:108
+msgid "Reset"
+msgstr ""
+
+#: app/list-tables.php:55
+msgid "ID"
+msgstr ""
+
+#: app/list-tables.php:56
+msgid "Campaign Name"
+msgstr ""
+
+#: app/list-tables.php:57
+msgid "Post type"
+msgstr ""
+
+#: app/list-tables.php:58
+msgid "Posts"
+msgstr ""
+
+#: app/list-tables.php:59
+msgid "Next Run"
+msgstr ""
+
+#: app/list-tables.php:60
+msgid "Last Run"
+msgstr ""
+
+#: app/list-tables.php:102
+msgid "Edit:"
+msgstr ""
+
+#: app/list-tables.php:105
+msgid "Edit"
+msgstr ""
+
+#: app/list-tables.php:106
+msgid "Copy"
+msgstr ""
+
+#: app/list-tables.php:107 app/options-edit-job.php:44
+msgid ""
+"You are about to delete this Campaign. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+
+#: app/list-tables.php:108
+msgid ""
+"You are about to reset the posts count of this Campaign. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+
+#: app/list-tables.php:109
+msgid "Run Now"
+msgstr ""
+
+#: app/list-tables.php:111
+msgid "Clear"
+msgstr ""
+
+#: app/list-tables.php:142
+msgid "Inactive"
+msgstr ""
+
+#: app/list-tables.php:145
+msgid "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
+msgstr ""
+
+#: app/list-tables.php:154
+msgid "Runtime:"
+msgstr ""
+
+#: app/options-edit-job.php:12
+msgid "WPeMatico Campaign Settings"
+msgstr ""
+
+#: app/options-edit-job.php:31
+msgid "Type of post to create"
+msgstr ""
+
+#: app/options-edit-job.php:33
+msgid "Publish post as"
+msgstr ""
+
+#: app/options-edit-job.php:35
+msgid "Published"
+msgstr ""
+
+#: app/options-edit-job.php:36
+msgid "Private"
+msgstr ""
+
+#: app/options-edit-job.php:37
+msgid "Draft"
+msgstr ""
+
+#: app/options-edit-job.php:47 app/options-settings.php:22
+#: app/options-settings.php:81
+msgid "Save Changes"
+msgstr ""
+
+#: app/options-edit-job.php:54
+msgid "Campaign Schedule"
+msgstr ""
+
+#: app/options-edit-job.php:56
+msgid "Activate scheduling"
+msgstr ""
+
+#: app/options-edit-job.php:59
+msgid "Minutes: "
+msgstr ""
+
+#: app/options-edit-job.php:67 app/options-edit-job.php:84
+#: app/options-edit-job.php:101 app/options-edit-job.php:119
+#: app/options-edit-job.php:143
+msgid "Any (*)"
+msgstr ""
+
+#: app/options-edit-job.php:76
+msgid "Hours:"
+msgstr ""
+
+#: app/options-edit-job.php:93
+msgid "Days:"
+msgstr ""
+
+#: app/options-edit-job.php:111
+msgid "Months:"
+msgstr ""
+
+#: app/options-edit-job.php:120
+msgid "January"
+msgstr ""
+
+#: app/options-edit-job.php:121
+msgid "February"
+msgstr ""
+
+#: app/options-edit-job.php:122
+msgid "March"
+msgstr ""
+
+#: app/options-edit-job.php:123
+msgid "April"
+msgstr ""
+
+#: app/options-edit-job.php:124
+msgid "May"
+msgstr ""
+
+#: app/options-edit-job.php:125
+msgid "June"
+msgstr ""
+
+#: app/options-edit-job.php:126
+msgid "July"
+msgstr ""
+
+#: app/options-edit-job.php:127
+msgid "Augest"
+msgstr ""
+
+#: app/options-edit-job.php:128
+msgid "September"
+msgstr ""
+
+#: app/options-edit-job.php:129
+msgid "October"
+msgstr ""
+
+#: app/options-edit-job.php:130
+msgid "November"
+msgstr ""
+
+#: app/options-edit-job.php:131
+msgid "December"
+msgstr ""
+
+#: app/options-edit-job.php:135
+msgid "Weekday:"
+msgstr ""
+
+#: app/options-edit-job.php:144
+msgid "Sunday"
+msgstr ""
+
+#: app/options-edit-job.php:145
+msgid "Monday"
+msgstr ""
+
+#: app/options-edit-job.php:146
+msgid "Tuesday"
+msgstr ""
+
+#: app/options-edit-job.php:147
+msgid "Wednesday"
+msgstr ""
+
+#: app/options-edit-job.php:148
+msgid "Thursday"
+msgstr ""
+
+#: app/options-edit-job.php:149
+msgid "Friday"
+msgstr ""
+
+#: app/options-edit-job.php:150
+msgid "Saturday"
+msgstr ""
+
+#: app/options-edit-job.php:155
+msgid ""
+"Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank"
+"\">Cron</a> job schedule:"
+msgstr ""
+
+#: app/options-edit-job.php:156
+msgid "Next runtime:"
+msgstr ""
+
+#: app/options-edit-job.php:162
+msgid "Campaign Categories"
+msgstr ""
+
+#: app/options-edit-job.php:169
+msgid "Quick add"
+msgstr ""
+
+#: app/options-edit-job.php:175
+msgid "Send log"
+msgstr ""
+
+#: app/options-edit-job.php:177
+msgid "E-Mail-Adress:"
+msgstr ""
+
+#: app/options-edit-job.php:179
+msgid "Send only E-Mail on errors."
+msgstr ""
+
+#: app/options-edit-job.php:191
+msgid "Enter Campaign name here"
+msgstr ""
+
+#: app/options-edit-job.php:199
+msgid "Feeds"
+msgstr ""
+
+#: app/options-edit-job.php:201
+msgid ""
+"Please fill in at least one feed. If you're not sure about the exact feed "
+"url, just type in the domain name, and the feed will be autodetected."
+msgstr ""
+
+#: app/options-edit-job.php:206 app/options-edit-job.php:212
+msgid "Feed URL:"
+msgstr ""
+
+#: app/options-edit-job.php:207
+msgid "Delete ?"
+msgstr ""
+
+#: app/options-edit-job.php:218 app/options-edit-job.php:320
+msgid "Add more"
+msgstr ""
+
+#: app/options-edit-job.php:219
+msgid "Check all feeds"
+msgstr ""
+
+#: app/options-edit-job.php:230
+msgid "Campaign Options"
+msgstr ""
+
+#: app/options-edit-job.php:233
+msgid "Max items to create on each fetch:"
+msgstr ""
+
+#: app/options-edit-job.php:235
+msgid ""
+"Set it to 0 for unlimited. If set to a X value, only the last X items will "
+"be selected, ignoring the older ones."
+msgstr ""
+
+#: app/options-edit-job.php:237
+msgid "Cache Images for this campaign?"
+msgstr ""
+
+#: app/options-edit-job.php:239 app/options-edit-job.php:272
+msgid "Help"
+msgstr ""
+
+#: app/options-edit-job.php:240 app/options-settings.php:60
+msgid "Image Caching"
+msgstr ""
+
+#: app/options-edit-job.php:240
+msgid ""
+"When image caching is on, a copy of every image found (only in &lt;img&gt; "
+"tags) is downloaded to the specified directory, by default in Wordpress "
+"UPLOADS Dir (Highly recommended)."
+msgstr ""
+
+#: app/options-edit-job.php:241 app/options-settings.php:61
+msgid ""
+"If not enabled all images will linked to the image owner's server, but also "
+"make your website faster for your visitors."
+msgstr ""
+
+#: app/options-edit-job.php:242
+msgid "Note"
+msgstr ""
+
+#: app/options-edit-job.php:242
+msgid ""
+"If this featured is disabled the general Settings options for images caching "
+"is taken. Enabling this feature here will be overridden only for this "
+"campaign the general Settings options for images caching."
+msgstr ""
+
+#: app/options-edit-job.php:246
+msgid "The created posts will be assigned to this author."
+msgstr ""
+
+#: app/options-edit-job.php:248
+msgid "Post title links to source?"
+msgstr ""
+
+#: app/options-edit-job.php:252
+msgid "Discussion options:"
+msgstr ""
+
+#: app/options-edit-job.php:259
+msgid "Allow pings?"
+msgstr ""
+
+#: app/options-edit-job.php:269
+msgid "Rewrite option"
+msgstr ""
+
+#: app/options-edit-job.php:271
+msgid ""
+"Want to transform a word into another? Or link a specific word to some "
+"website?"
+msgstr ""
+
+#: app/options-edit-job.php:285 app/options-edit-job.php:302
+#: app/options-edit-job.php:320
+msgid "Origin:"
+msgstr ""
+
+#: app/options-edit-job.php:288 app/options-edit-job.php:305
+#: app/options-edit-job.php:320
+msgid "RegEx"
+msgstr ""
+
+#: app/options-edit-job.php:290 app/options-edit-job.php:307
+#: app/options-edit-job.php:320
+msgid "Rewrite to:"
+msgstr ""
+
+#: app/options-edit-job.php:294 app/options-edit-job.php:311
+#: app/options-edit-job.php:320
+msgid "ReLink to:"
+msgstr ""
+
+#: app/options-save.php:37
+msgid "Copy of"
+msgstr ""
+
+#: app/options-save.php:72
+msgid "Settings saved"
+msgstr ""
+
+#: app/options-save.php:75
+msgid "Settings NOT saved:  Something wrong happened."
+msgstr ""
+
+#: app/options-save.php:168
+msgid "Campaign '%1' NOT saved: At least one feed URL must be filled."
+msgstr ""
+
+#: app/options-save.php:175
+#, php-format
+msgid "Feed <strong>%s</strong> could not be parsed.<br />(SimplePie said: %s)"
+msgstr ""
+
+#: app/options-save.php:204
+#, php-format
+msgid "There's an error with the supplied RegEx expression in origin: %s"
+msgstr ""
+
+#: app/options-save.php:235
+msgid "Campaign '%1' changes saved."
+msgstr ""
+
+#: app/options-save.php:235
+msgid "Campaigns overview."
+msgstr ""
+
+#: app/options-settings.php:10
+msgid "WPeMatico Settings"
+msgstr ""
+
+#: app/options-settings.php:29
+msgid "Send Mail"
+msgstr ""
+
+#: app/options-settings.php:31
+msgid "Sender Email:"
+msgstr ""
+
+#: app/options-settings.php:32
+msgid "Sender Name:"
+msgstr ""
+
+#: app/options-settings.php:33
+msgid "Send mail method:"
+msgstr ""
+
+#: app/options-settings.php:36
+msgid "PHP: mail()"
+msgstr ""
+
+#: app/options-settings.php:37
+msgid "Sendmail"
+msgstr ""
+
+#: app/options-settings.php:38
+msgid "SMTP"
+msgstr ""
+
+#: app/options-settings.php:41
+msgid "Sendmail Path:"
+msgstr ""
+
+#: app/options-settings.php:43
+msgid "SMTP Hostname:"
+msgstr ""
+
+#: app/options-settings.php:44
+msgid "SMTP Secure Connection:"
+msgstr ""
+
+#: app/options-settings.php:46
+msgid "none"
+msgstr ""
+
+#: app/options-settings.php:50
+msgid "SMTP Username:"
+msgstr ""
+
+#: app/options-settings.php:51
+msgid "SMTP Password:"
+msgstr ""
+
+#: app/options-settings.php:57
+msgid "Images"
+msgstr ""
+
+#: app/options-settings.php:59
+msgid "Cache Images."
+msgstr ""
+
+#: app/options-settings.php:60
+msgid ""
+"When image caching is on, a copy of every image found in content of every "
+"feed (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir."
+msgstr ""
+
+#: app/options-settings.php:62
+msgid "Caching all images"
+msgstr ""
+
+#: app/options-settings.php:62
+msgid ""
+"This featured in the general Settings section, will be overridden for the "
+"campaign-specific options."
+msgstr ""
+
+#: app/options-settings.php:64
+msgid "Attach Images to posts."
+msgstr ""
+
+#: app/options-settings.php:65
+msgid "Image Attaching"
+msgstr ""
+
+#: app/options-settings.php:65
+msgid ""
+"By default when image caching is on (and everything is working fine), a copy "
+"of every image found is added to Wordpress Media."
+msgstr ""
+
+#: app/options-settings.php:66
+msgid ""
+"If enabled Image Attaching all images will be attached to the owner post in "
+"WP media library; but if you see that the job process is too slowly you can "
+"deactivate this here."
+msgstr ""
+
+#: app/options-settings.php:72
+msgid "Disable WP-Cron"
+msgstr ""
+
+#: app/options-settings.php:74
+msgid "Use Cron job of Hoster and disable WP_Cron"
+msgstr ""
+
+#: app/options-settings.php:75
+msgid "You must set up a cron job that calls:"
+msgstr ""
+
+#: app/options-settings.php:77
+msgid "or URL:"
+msgstr ""
+
+#: app/wpematico_dojob.php:26
+msgid "[WARNING]"
+msgstr ""
+
+#: app/wpematico_dojob.php:31
+msgid "[ERROR]"
+msgstr ""
+
+#: app/wpematico_dojob.php:35
+msgid "[DEPRECATED]"
+msgstr ""
+
+#: app/wpematico_dojob.php:38
+msgid "[STRICT NOTICE]"
+msgstr ""
+
+#: app/wpematico_dojob.php:41
+msgid "[RECOVERABLE ERROR]"
+msgstr ""
+
+#: app/wpematico_dojob.php:102
+#, php-format
+msgid "PHP Safe Mode is on!!! Max exec time is %1$d sec."
+msgstr ""
+
+#: app/wpematico_dojob.php:106
+#, php-format
+msgid ""
+"Memory limit set to %1$s ,because can not use PHP: memory_get_usage() "
+"function to dynamically increase the Memory!"
+msgstr ""
+
+#: app/wpematico_dojob.php:131
+#, php-format
+msgid "Processing feed %1s."
+msgstr ""
+
+#: app/wpematico_dojob.php:147
+msgid "Filtering duplicated posts."
+msgstr ""
+
+#: app/wpematico_dojob.php:155
+#, php-format
+msgid "Campaign fetch limit reached at %1s."
+msgstr ""
+
+#: app/wpematico_dojob.php:168
+#, php-format
+msgid "%s posts added"
+msgstr ""
+
+#: app/wpematico_dojob.php:185
+#, php-format
+msgid "Checking if duplicated title '%1s'"
+msgstr ""
+
+#: app/wpematico_dojob.php:185
+msgid "Yes"
+msgstr ""
+
+#: app/wpematico_dojob.php:185
+msgid "No"
+msgstr ""
+
+#: app/wpematico_dojob.php:199
+#, php-format
+msgid "Processing item %1s"
+msgstr ""
+
+#: app/wpematico_dojob.php:229
+msgid "Attaching images."
+msgstr ""
+
+#: app/wpematico_dojob.php:238
+msgid "Processing item pingbacks"
+msgstr ""
+
+#: app/wpematico_dojob.php:258
+msgid "Attaching file:"
+msgstr ""
+
+#: app/wpematico_dojob.php:260
+msgid "Sorry, your attach could not be inserted. Something wrong happened."
+msgstr ""
+
+#: app/wpematico_dojob.php:321
+msgid "Uploading images."
+msgstr ""
+
+#: app/wpematico_dojob.php:462
+msgid "Campaign Name:"
+msgstr ""
+
+#: app/wpematico_dojob.php:464
+msgid "Errors:"
+msgstr ""
+
+#: app/wpematico_dojob.php:466
+msgid "Warnings:"
+msgstr ""
+
+#: app/wpematico_dojob.php:469
+msgid "WPeMatico Log from"
+msgstr ""
+
+#: app/wpematico_dojob.php:473
+msgid "Show detailed Log"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.netmdp.com/wordpres/wpematico"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Enables administrators to create posts automatically from RSS/Atom feeds."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Esteban Truelsegaard"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.netmdp.com"
+msgstr ""
