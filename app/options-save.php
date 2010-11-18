@@ -73,7 +73,7 @@ function wpematico_save_settings() {
 		$wpematico_message.='<div id="message" class="updated fade"><p><strong>'.$success_message.'</strong></p></div>';
 	}else{
 		$err_message = str_replace(__('Settings NOT saved:  Something wrong happened.', 'wpematico')).' ';
-		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'</div>';
+		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 	}
 	return $wpematico_message;
 }
@@ -166,14 +166,14 @@ function wpematico_save_job() { //Save Campaign settings
 
 	if(!isset($campaign_feeds)) {
 		$err_message = str_replace('%1',$jobs[$jobid]['name'],__('Campaign \'%1\' NOT saved: At least one feed URL must be filled.', 'wpematico')).' ';
-		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'</div>';
+		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 		return $wpematico_message;
 	} else {  
       foreach($campaign_feeds as $feed) {
 			$simplepie = fetchFeed($feed, true);
 			if($simplepie->error()) {
 				$err_message = sprintf(__('Feed <strong>%s</strong> could not be parsed.<br />(SimplePie said: %s)', 'wpematico'), $feed, $simplepie->error()).' ';
-				$wpematico_message.='<div id="message" class="error fade">'.$err_message.'</div>';
+				$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 				return $wpematico_message;
 			}          
       }
@@ -202,7 +202,7 @@ function wpematico_save_job() { //Save Campaign settings
 				if($regex) 
 					if(false === @preg_match($origin, '')) {
 						$err_message = sprintf(__('There\'s an error with the supplied RegEx expression in origin: %s', 'wpematico'),'<br />'.$origin).' ';
-						$wpematico_message.='<div id="message" class="error fade">'.$err_message.'</div>';
+						$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 						return $wpematico_message;				
 					}
 				if(!isset($campaign_rewrites)) 
@@ -218,9 +218,6 @@ function wpematico_save_job() { //Save Campaign settings
 
 	$jobs[$jobid]['campaign_rewrites']=(array)$campaign_rewrites ;
 
-//	print_r($jobs[$jobid]);
-//	die("=====================================");
-	
 	//unset old vars
 	unset($jobs[$jobid]['scheduletime']);
 	unset($jobs[$jobid]['scheduleintervaltype']);

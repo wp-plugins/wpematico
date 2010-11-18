@@ -6,7 +6,7 @@ if ( !defined('ABSPATH') )
 
 //function for PHP error handling
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
-	global $wpematico_dojob_message;
+	global $wpematico_dojob_message, $jobwarnings, $joberrors;
     
 	//genrate timestamp
 	if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
@@ -22,12 +22,12 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
         break;
     case E_WARNING:
     case E_USER_WARNING:
-		$this->warnings += 1;
+		$jobwarnings += 1;
 		$massage=$timestamp."<span style=\"background-color:yellow;\">".__('[WARNING]','wpematico')." ".$errstr."</span>";
         break;
 	case E_ERROR: 
     case E_USER_ERROR:
-		$this->errors += 1;
+		$joberrors += 1;
 		$massage=$timestamp."<span style=\"background-color:red;\">".__('[ERROR]','wpematico')." ".$errstr."</span>";
         break;
 	case E_DEPRECATED:
@@ -72,11 +72,11 @@ class wpematico_dojob {
 	private $job=array();
 	private $feeds=array();
 	private $posts=0;
-	private $warnings=0;
-	private $errors=0;
 
 	public function __construct($jobid) {
-		global $wpdb,$wpematico_dojob_message;
+		global $wpdb,$wpematico_dojob_message, $jobwarnings, $joberrors;
+		$jobwarnings=0;
+		$joberrors=0;
 		@ini_get('safe_mode','Off'); //disable safe mode
 		@ini_set('ignore_user_abort','Off'); //Set PHP ini setting
 		ignore_user_abort(true);			//user can't abort script (close windows or so.)
@@ -453,17 +453,17 @@ class wpematico_dojob {
 	global $wpematico_dojob_message;
 	//Send mail with log
 		$sendmail=false;
-		if ($this->errors>0 and $this->job['mailerroronly'] and !empty($this->job['mailaddresslog']))
+		if ($joberrors>0 and $this->job['mailerroronly'] and !empty($this->job['mailaddresslog']))
 			$sendmail=true;
 		if (!$this->job['mailerroronly'] and !empty($this->job['mailaddresslog']))
 			$sendmail=true;
 		if ($sendmail) {
 			$mailbody = "WPeMatico Log"."\n";
 			$mailbody .= __("Campaign Name:","wpematico")." ".$this->job['name']."\n";
-			if (!empty($this->errors))
-				$mailbody.=__("Errors:","wpematico")." ".$this->errors."\n";
-			if (!empty($this->warnings))
-				$mailbody.=__("Warnings:","wpematico")." ".$this->warnings."\n";
+			if (!empty($joberrors))
+				$mailbody.=__("Errors:","wpematico")." ".$joberrors."\n";
+			if (!empty($jobwarnings))
+				$mailbody.=__("Warnings:","wpematico")." ".$jobwarnings."\n";
 
 			$mailbody.="\n".$wpematico_dojob_message;
 			wp_mail($this->job['mailaddresslog'],__('WPeMatico Log from','wpematico').' '.date_i18n('Y-m-d H:i').': '.$this->job['name'] ,$mailbody,'','');  //array($this->logdir.$this->logfile  

@@ -210,7 +210,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 					<?php else: ?>
 						<?php echo '<li class="jobtype-select">
 					<label for="feed_new">' . __('Feed URL:','wpematico') . '</label>
-					<input class="large-text" type="text" value="" id="feed_new" name="campaign_feeds[]"></li>'; ?>
+					<input class="large-text feedinput" type="text" value="" id="feed_new" name="campaign_feeds[]"></li>'; ?>
 
 					<?php endif ?>
 				  </ul>
