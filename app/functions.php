@@ -71,7 +71,7 @@ if ( !defined('ABSPATH') )
 			'<div class="metabox-prefs">'.
 			'<!-- a href="http://wordpress.org/tags/wpematico" target="_blank">'.__('Support').'</a>'.
 			' | <a href="http://wordpress.org/extend/plugins/wpematico/faq/" target="_blank">' . __('FAQ') . '</a>'.
-			' | <a href="http://http://www.netmdp.com/wordpres/wpematico" target="_blank">' . __('Plugin Homepage', 'wpematico') . '</a>'.
+			' | <a href="http://http://www.netmdp.com/tag/wpematico" target="_blank">' . __('Plugin Homepage', 'wpematico') . '</a>'.
 			' | <a href="http://wordpress.org/extend/plugins/wpematico" target="_blank">' . __('Plugin Home on WordPress.org', 'wpematico') . '</a>'.
 			' | <a href="" target="_blank">' . __('Donate') . '</a>'.
 			'</div -->'.
