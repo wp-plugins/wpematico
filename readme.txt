@@ -4,7 +4,7 @@ Donate link: http://www.netmdp.com/tag/wpematico/
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.0
 Tested up to: 3.0.2
-Stable tag: 0.3Beta
+Stable tag: 0.4Beta
 
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 
