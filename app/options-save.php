@@ -82,6 +82,7 @@ function wpematico_save_settings() {
 function wpematico_save_job() { //Save Campaign settings
 	$jobid = (int) $_POST['jobid'];
 	check_admin_referer('edit-job');
+	$cfg=get_option('wpematico'); //Load Settings
 	$jobs=get_option('wpematico_jobs'); //Load Settings
 
 	if (empty($jobid)) { //generate a new id for new job
@@ -189,6 +190,13 @@ function wpematico_save_job() { //Save Campaign settings
 
 // *** Campaign Images
 	$jobs[$jobid]['campaign_imgcache']		= $_POST['campaign_imgcache']==1 ? true : false;
+	$jobs[$jobid]['campaign_cancel_imgcache']		= $_POST['campaign_cancel_imgcache']==1 ? true : false;
+	if ($cfg['imgcache']) {
+		if ($jobs[$jobid]['campaign_cancel_imgcache']) $jobs[$jobid]['campaign_imgcache'] = false;
+	}else{
+		if ($jobs[$jobid]['campaign_imgcache']) $jobs[$jobid]['campaign_cancel_imgcache'] = false;
+	}
+	$jobs[$jobid]['campaign_nolinkimg']		= $_POST['campaign_nolinkimg']==1 ? true : false;
 	
 // *** Campaign Rewrites	
 	// Proceso los rewrites sacando los que estan en blanco

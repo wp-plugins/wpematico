@@ -17,6 +17,8 @@ $jobvalue['campaign_linktosource']
 $jobvalue['campaign_commentstatus']
 $jobvalue['campaign_allowpings']
 $jobvalue['campaign_imgcache']
+$jobvalue['campaign_cancel_imgcache']
+$jobvalue['campaign_nolinkimg']
 $jobvalue['campaign_rewrites']
 $jobvalue['campaign_rewrites']['origin']['search']
 $jobvalue['campaign_rewrites']['origin']['regex']
@@ -57,7 +59,9 @@ $jobvalue['campaign_rewrites']['relink']
 		if (!isset($jobsettings['lastpostscount']) or !is_int($jobsettings['lastpostscount']))
 			$jobsettings['lastpostscount']= 0;
 	// *** Campaign Images
-		$jobsettings['campaign_imgcache'] = (!isset($jobsettings['campaign_imgcache']) or !is_bool($jobsettings['campaign_imgcache'])) ? false : true ;
+		$jobsettings['campaign_imgcache'] = (!isset($jobsettings['campaign_imgcache']) or !is_bool($jobsettings['campaign_imgcache']) or (!$jobsettings['campaign_imgcache'])==1) ? false : true ;
+		$jobsettings['campaign_cancel_imgcache'] = (!isset($jobsettings['campaign_cancel_imgcache']) or !is_bool($jobsettings['campaign_cancel_imgcache']) or (!$jobsettings['campaign_cancel_imgcache'])==1) ? false : true ;
+		$jobsettings['campaign_nolinkimg'] = (!isset($jobsettings['campaign_nolinkimg']) or !is_bool($jobsettings['campaign_nolinkimg']) or (!$jobsettings['campaign_nolinkimg'])==1) ? false : true ;
 		
 		//upgrade old schedule
 		if (!isset($jobsettings['cron']) and isset($jobsettings['scheduletime']) and isset($jobsettings['scheduleintervaltype']) and isset($jobsettings['scheduleintervalteimes'])) {  //Upgrade to cron string

@@ -279,7 +279,7 @@ if ( !defined('ABSPATH') )
 		if (is_array($jobs2)) {
 			$count=0;
 			foreach ($jobs2 as $jobid => $jobvalue) {
-				echo '<a href="'.wp_nonce_url('admin.php?page=WPeMatico&action=edit&jobid='.$jobvalue['jobid'], 'edit-job').'" title="'.__('Edit Campaign','wpematico').'">';
+				echo '<a href="'.wp_nonce_url('admin.php?page=WPeMatico&subpage=edit&jobid='.$jobvalue['jobid'], 'edit-job').'" title="'.__('Edit Campaign','wpematico').'">';
 					if ($jobvalue['lastrun']) {
 						echo "ID: " .$jobvalue['jobid']. ", <i>".$jobvalue['name']."</i> :: ";
 						echo  date_i18n(get_option('date_format'),$jobvalue['lastrun']).'-'. date_i18n(get_option('time_format'),$jobvalue['lastrun']).'h, <i>'; 
@@ -303,7 +303,7 @@ if ( !defined('ABSPATH') )
 		echo '<strong>'.__('Scheduled Campaigns:','wpematico').'</strong><br />';
 		foreach ($jobs as $jobid => $jobvalue) {
 			if ($jobvalue['activated']) {
-				echo '<a href="'.wp_nonce_url('admin.php?page=WPeMatico&action=edit&jobid='.$jobid, 'edit-job').'" title="'.__('Edit Campaign','wpematico').'">';
+				echo '<a href="'.wp_nonce_url('admin.php?page=WPeMatico&subpage=edit&jobid='.$jobid, 'edit-job').'" title="'.__('Edit Campaign','wpematico').'">';
 				if ($jobvalue['starttime']>0 and empty($jobvalue['stoptime'])) {
 					$runtime=current_time('timestamp')-$jobvalue['starttime'];
 					echo __('Running since:','wpematico').' '.$runtime.' '.__('sec.','wpematico');

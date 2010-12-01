@@ -5,21 +5,14 @@ jQuery(document).ready( function($) {
 	});
 	 //css('background-color', 'red');
 
-	$('#campaign_imgcache').change(function() {
-		if ( true == $('#campaign_imgcache').attr('checked')) {
-			$('#images-cche-pop').show();
+	$('#__campaign_imgcache').change(function() {
+		if ( true == $('#__campaign_imgcache').attr('checked')) {
+			$('#nolinkimg').show();
 		} else {
-			$('#images-cche-pop').hide();
+			$('#nolinkimg').hide();
 		}
 	});
-	$('#imgcache').change(function() {
-		if ( true == $('#imgcache').attr('checked')) {
-			$('#images-cche-pop').show();
-		} else {
-			$('#images-cche-pop').hide();
-		}
-	});
-	
+
 
 	$('#checkfeeds').click(function() {
 		$('.feedinput').each(function (el,item) {

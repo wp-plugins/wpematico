@@ -218,20 +218,22 @@ class wpematico_dojob {
 		);  
 		 
 		 // Create post
-		$postid = $this->insertPost($wpdb->escape($item->get_title()), $wpdb->escape($content), $date, $categories, $campaign['campaign_posttype'], $campaign['campaign_author'], $campaign['campaign_allowpings'], $campaign['campaign_commentstatus'], $meta);
-		
+		$postid = $this->insertPost($wpdb->escape($item->get_title()), $wpdb->escape($content), $date, $categories, $campaign['campaign_posttype'], $campaign['campaign_author'], 
+					$campaign['campaign_allowpings'], $campaign['campaign_commentstatus'], $meta);
 		
 		// Attaching images uploaded to created post in media library 
-		if(($this->cfg['imgcache'] || $this->job['campaign_imgcache']) && ($this->cfg['imgattach'])) {
-			$images = $this->parseImages($content);
-			$urls = $images[2];  
-			if(sizeof($urls)) { // Si hay alguna imagen en el content
-				trigger_error(__('Attaching images.','wpematico'),E_USER_NOTICE);
-				foreach($urls as $imagen_src) {
-					$this->insertfileasattach($imagen_src,$postid);
+		
+		if(!$this->job['campaign_cancel_imgcache']) 
+			if(($this->cfg['imgcache'] || $this->job['campaign_imgcache']) && ($this->cfg['imgattach'])) {
+				$images = $this->parseImages($content);
+				$urls = $images[2];  
+				if(sizeof($urls)) { // Si hay alguna imagen en el content
+					trigger_error(__('Attaching images.','wpematico'),E_USER_NOTICE);
+					foreach($urls as $imagen_src) {
+						$this->insertfileasattach($imagen_src,$postid);
+					}
 				}
 			}
-		}
 				
 		 // If pingback/trackbacks
 		if($campaign['campaign_allowpings']) {
@@ -321,23 +323,31 @@ class wpematico_dojob {
 				trigger_error(__('Uploading images.','wpematico'),E_USER_NOTICE);
 
 				foreach($urls as $imagen_src) {
-					$bits = @file_get_contents($imagen_src);
-					$name = substr(strrchr($imagen_src, "/"),1);
-					$afile = wp_upload_bits( $name, NULL, $bits);
-					if(!$afile['error']) 
-						$content = str_replace($imagen_src, $afile['url'], $content);
-					else {  // Si no la pudo subir intento con mi funcion
-						trigger_error('wp_upload_bits error:'.print_r($afile,true).', trying custom function.',E_USER_WARNING);
-						$upload_dir = wp_upload_dir();
-						$imagen_dst = $upload_dir['path'] . str_replace('/','',strrchr($imagen_src, '/'));
-						$imagen_dst_url = $upload_dir['url']. '/' . str_replace('/','',strrchr($imagen_src, '/'));
+					if($this->job['campaign_cancel_imgcache']) {
+						if($this->job['campaign_nolinkimg']) 
+							$content = str_replace($imagen_src, '', $content);  // Si no quiere linkar las img al server borro el link de la imagen
+					}else {
+						$bits = @file_get_contents($imagen_src);
+						$name = substr(strrchr($imagen_src, "/"),1);
+						$afile = wp_upload_bits( $name, NULL, $bits);
+						if(!$afile['error']) 
+							$content = str_replace($imagen_src, $afile['url'], $content);
+						else {  // Si no la pudo subir intento con mi funcion
+							trigger_error('wp_upload_bits error:'.print_r($afile,true).', trying custom function.',E_USER_WARNING);
+							$upload_dir = wp_upload_dir();
+							$imagen_dst = $upload_dir['path'] . str_replace('/','',strrchr($imagen_src, '/'));
+							$imagen_dst_url = $upload_dir['url']. '/' . str_replace('/','',strrchr($imagen_src, '/'));
 
-						if(in_array(str_replace('.','',strrchr($imagen_dst, '.')),explode(',','jpg,gif,png,tif,bmp'))) {   // -------- Controlo extensiones permitidas
-							trigger_error('imagen_src='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'<br>',E_USER_NOTICE);
-							$newfile = $this->guarda_imagen($imagen_src, $imagen_dst);
+							if(in_array(str_replace('.','',strrchr($imagen_dst, '.')),explode(',','jpg,gif,png,tif,bmp'))) {   // -------- Controlo extensiones permitidas
+								trigger_error('imagen_src='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'<br>',E_USER_NOTICE);
+								$newfile = $this->guarda_imagen($imagen_src, $imagen_dst);
+							}
+							if($newfile)	$content = str_replace($imagen_src, $imagen_dst_url, $content);
+							else {
+								if($this->job['campaign_nolinkimg']) $content = str_replace($imagen_src, '', $content);  // Si no quiere linkar las img al server borro el link de la imagen
+								trigger_error('Upload file failed:'.$imagen_dst,E_USER_WARNING);
+							}
 						}
-						if($newfile)	$content = str_replace($imagen_src, $imagen_dst_url, $content);
-						else trigger_error('Upload file failed:'.$imagen_dst,E_USER_WARNING);
 					}
 				} 
 			}
@@ -375,19 +385,19 @@ class wpematico_dojob {
 		for ($i = 0; $i < count($this->job['campaign_rewrites']['origin']); $i++) {
 			$origin = $this->job['campaign_rewrites']['origin'][$i];
 			if(isset($this->job['campaign_rewrites']['rewrite'][$i])) {
-			  $reword = isset($this->job['campaign_rewrites']['relink'][$i]) 
+			  $reword = !empty($this->job['campaign_rewrites']['relink'][$i]) 
 							  ? '<a href="'. $this->job['campaign_rewrites']['relink'][$i] .'">' . $this->job['campaign_rewrites']['rewrite'][$i] . '</a>' 
 							  : $this->job['campaign_rewrites']['rewrite'][$i];
 			  
 			if($this->job['campaign_rewrites']['regex'][$i]) {
-				$content = preg_replace($origin, $reword, $content);
+				$content = preg_replace($origin, stripslashes($reword), $content);
 			}else
-				$content = str_ireplace($origin, $reword, $content);
-			}else if(isset($this->job['campaign_rewrites']['relink'][$i])) 
-						$content = str_ireplace($origin, '<a href="'. $this->job['campaign_rewrites']['relink'][$i] .'">' . $origin . '</a>', $content);
+				$content = str_ireplace($origin, stripslashes($reword), $content);
+			}else if(!empty($this->job['campaign_rewrites']['relink'][$i]))
+				$content = str_ireplace($origin, '<a href="'. stripslashes($this->job['campaign_rewrites']['relink'][$i]) .'">' . $origin . '</a>', $content);
 		}
 		// End rewrite
-		
+
 		return $content;
 	} // End ParseItemContent
 
@@ -415,7 +425,7 @@ class wpematico_dojob {
   		'post_author'             => $authorid,
   		'post_date'               => $date,
   		'comment_status'          => $comment_status,
-  		'ping_status'             => $allowpings
+  		'ping_status'             => ($allowpings) ? "open" : "closed"
     ));
     	
 		foreach($meta as $key => $value) 
@@ -466,6 +476,8 @@ class wpematico_dojob {
 				$mailbody.=__("Warnings:","wpematico")." ".$jobwarnings."\n";
 
 			$mailbody.="\n".$wpematico_dojob_message;
+			add_filter('wp_mail_content_type','change_content_type'); function change_content_type(){ return 'text/html'; } 
+			
 			wp_mail($this->job['mailaddresslog'],__('WPeMatico Log from','wpematico').' '.date_i18n('Y-m-d H:i').': '.$this->job['name'] ,$mailbody,'','');  //array($this->logdir.$this->logfile  
 		}
 		
