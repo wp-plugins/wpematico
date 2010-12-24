@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: http://www.netmdp.com/tag/wpematico/
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.0
-Tested up to: 3.0.2
-Stable tag: 0.4Beta
+Tested up to: 3.0.3
+Stable tag: 0.5Beta
 
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 
@@ -13,7 +13,7 @@ WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom fe
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 For RSS fetching it's using the simplepie library included in Wordpress.
 Also for image processing it's using the core functions of wordpress.
-Translations ready. .pot english file included for localize. 
+Translations ready. .pot english file included for localize.  Translations files are welcome.
 I take code from many many other plugins, but for this plugin I read a lot of code of the old WP-o-Matic and BackWPUp. Thanks to the developers;)
 If you like, please rate 5 stars. thanks :)
 
@@ -30,6 +30,7 @@ Supported features:
 * Words Relinking. Define custom links for words you specify.
 * Detailed Log sending to custom e-mail. Always on every executed cron or only on errors with campaign.
 * Multilanguage.
+* Option to replace title links (Permalink) to source.
 * Tested in Wordpress MULTISITE 
 
 Upcoming features:
@@ -70,6 +71,12 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Changelog ==
 
+= 0.5Beta =
+* Fix Post title links to source option.
+* .pot language file updated.
+* Readme.txt updated.
+* Merry Christmas 2010. Jesus live.
+
 = 0.4Beta =
 * Fix some issues on rewriting words & links.
 * Fix links in Dashboard widget.
@@ -97,5 +104,5 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Upgrade Notice ==
 
-= 0.3Beta =
-Must upgrade.
+= 0.4Beta =
+Fix Post title links to source option.

@@ -223,6 +223,25 @@ if ( !defined('ABSPATH') )
 		return round($bytes, $precision) . ' ' . $units[$pow];
 	}
 	
+	//Permalink to Source
+	 /*** Determines what the title has to link to   * @return string new text   **/
+  function wpematico_permalink($url) {
+    // if from admin panel
+	if(get_the_ID()) {
+		$jobid = (int) get_post_meta(get_the_ID(), 'wpe_campaignid', true);
+
+		$jobs=(array)get_option('wpematico_jobs');
+		$jobs=get_option('wpematico_jobs');
+
+		if($jobid) {
+			$jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
+			if($jobvalue['campaign_linktosource'])
+			 return get_post_meta(get_the_ID(), 'wpe_sourcepermalink', true);
+		}  	  
+	}
+   return $url;      
+  }
+	
 	################### ARRAYS FUNCS
   /* * filtering an array   */
     function filter_by_value ($array, $index, $value){
