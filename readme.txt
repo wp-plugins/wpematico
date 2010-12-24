@@ -75,7 +75,7 @@ You can either install it automatically from the WordPress admin, or do it manua
 * Fix Post title links to source option.
 * .pot language file updated.
 * Readme.txt updated.
-* Merry Christmas 2010. Jesus live.
+* Merry Christmas 2010. Jesus lives.
 
 = 0.4Beta =
 * Fix some issues on rewriting words & links.
