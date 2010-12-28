@@ -198,6 +198,16 @@ function wpematico_save_job() { //Save Campaign settings
 	}
 	$jobs[$jobid]['campaign_nolinkimg']		= $_POST['campaign_nolinkimg']==1 ? true : false;
 	
+// *** Campaign Template
+	$jobs[$jobid]['campaign_enable_template'] = $_POST['campaign_enable_template']==1 ? true : false;
+	if ($jobs[$jobid]['campaign_enable_template'])
+		if(isset($_POST['campaign_template']))
+			$jobs[$jobid]['campaign_template'] = $_POST['campaign_template'];
+		else{
+			$jobs[$jobid]['campaign_enable_template'] = false;
+			$jobs[$jobid]['campaign_template'] = '';
+		}
+
 // *** Campaign Rewrites	
 	// Proceso los rewrites sacando los que estan en blanco
 	if(isset($_POST['campaign_word_origin'])) {

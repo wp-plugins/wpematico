@@ -281,6 +281,48 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 			</div>
 
 			<div class="meta-box-sortables ui-sortable" id="advanced-sortables">
+			<div class="postbox" id="wpe_post_template">
+				<div title="Haz clic para cambiar" class="handlediv"><br></div>
+				<h3 class="hndle"><span><?PHP _e('Post template','wpematico'); ?></span></h3>
+				<div class="inside" <?PHP if (!$jobvalue['campaign_enable_template']) echo 'style="display:none;"';?>>
+					<p><?php _e('Want to manage or add extra content to every post?', 'wpematico') ?>
+					&nbsp;&nbsp;<a href="JavaScript:Void(0);" style="font-weight: bold; text-decoration: none;" onclick="jQuery('#hlptpl').toggle();"><?PHP _e('Help','wpematico'); ?>.</a> </p>
+					<div id="hlptpl" style="padding-left:20px;display:none;"><b>Basics:</b>	The post template takes the full text of each feed item it encounters, and then uses it as the post content.<br />A post template, if used, allows you to alter that content, by adding extra information, such as text, images, campaign data, etc..<br />
+					</div><br />
+					<ul id="rewrites_edit" class="inlinetext">
+						<li class="jobtype-select" style="Background:#EEF1FF;border-color:#CEE1EF; border-style:solid; border-width:2px; width:80%; margin:5px 0px 5px 40px; padding:0.5em 0.5em;">
+							<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?=checked($jobvalue['campaign_enable_template'],true) ?> />
+							<label for="campaign_enable_template"> <?=_e('Enable Post Template','wpematico') ?></label>
+							<textarea class="large-text" id="campaign_template" name="campaign_template" /><?=stripslashes($jobvalue['campaign_template']) ?></textarea>
+							<p id="tags_note" class="note"> Valid tags: &nbsp;&nbsp;<a href="JavaScript:Void(0);" style="font-weight: bold; text-decoration: none;" onclick="jQuery('#tags_list').toggle();jQuery('#tags_list_det').toggle();"><?PHP _e('Help','wpematico'); ?>.</a> </p></p>
+							<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;">
+								<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
+							</p>
+							<div id="tags_list_det" style="display: none;">
+								<h4>Supported tags</h4>
+								<p>A tag is a piece of text that gets replaced dynamically when the post is created. Currently, these tags are supported:</p>
+								<ul style='list-style-type: square;margin:0 0 5px 20px;font:0.92em "Lucida Grande","Verdana";'>
+								  <li><strong class="tag">{content}</strong> The feed item content</li>
+								  <li><strong class="tag">{title}</strong> The feed item title</li>
+								  <li><strong class="tag">{permalink}</strong> The feed item permalink</li>
+								  <li><strong class="tag">{feedurl}</strong> The feed URL</li>
+								  <li><strong class="tag">{feedtitle}</strong> The feed title</li>
+								  <li><strong class="tag">{feedlogo}</strong> The feed logo image</li>
+								  <li><strong class="tag">{campaigntitle}</strong> This campaign title</li>
+								  <li><strong class="tag">{campaignid}</strong> This campaign id</li>
+								</ul>
+								<b>Example:</b> <p>If you want to add a link to the source at the bottom of every post, the post template would look like this:</p>
+								<div class="code"><p>{content}<br>&lt;a href="{feedurl}"&gt;Go to Source&lt;/a&gt;</p></div>
+								<p>The <em>{content}</em> string gets replaced by the feed content, and then {feedurl} by the url, which makes it a working link.</p>
+							</div>
+						</li>
+					</ul>
+  				</div>
+				
+			</div>
+			</div>	
+			
+			<div class="meta-box-sortables ui-sortable" id="advanced-sortables">
 			<div class="postbox" id="rewrite">
 				<div title="Haz clic para cambiar" class="handlediv"><br></div>
 				<h3 class="hndle"><span><?PHP _e('Rewrite option','wpematico'); ?></span></h3>
@@ -340,7 +382,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 
 			</div>
 			</div>
-
+			
 		</div>
 	</div>
 </div>

@@ -3,7 +3,10 @@ jQuery(document).ready( function($) {
 	$('.handlediv').click(function(){
 		$(this).parent().children('.inside').toggle();
 	});
-	 //css('background-color', 'red');
+
+	$('.tag').click(function(){
+		$('#campaign_template').attr('value',$('#campaign_template').attr('value')+$(this).html());
+	});
 
 	$('#__campaign_imgcache').change(function() {
 		if ( true == $('#__campaign_imgcache').attr('checked')) {

@@ -19,6 +19,8 @@ $jobvalue['campaign_allowpings']
 $jobvalue['campaign_imgcache']
 $jobvalue['campaign_cancel_imgcache']
 $jobvalue['campaign_nolinkimg']
+$jobvalue['campaign_enable_template']
+$jobvalue['campaign_template']
 $jobvalue['campaign_rewrites']
 $jobvalue['campaign_rewrites']['origin']['search']
 $jobvalue['campaign_rewrites']['origin']['regex']
@@ -93,6 +95,9 @@ $jobvalue['campaign_rewrites']['relink']
 
 		if (!is_string($jobsettings['mailaddress']) or false === $pos=strpos($jobsettings['mailaddress'],'@') or false === strpos($jobsettings['mailaddress'],'.',$pos))
 			$jobsettings['mailaddress']='';
+
+		if (!isset($jobsettings['campaign_enable_template']) or !is_bool($jobsettings['campaign_enable_template']))
+			$jobsettings['campaign_enable_template']=false;
 
 		return $jobsettings;
 	}	

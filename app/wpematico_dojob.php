@@ -353,34 +353,34 @@ class wpematico_dojob {
 			}
 		}
     
-/*     // Template parse           TODO
-    $vars = array(
-      '{content}',
-      '{title}',
-      '{permalink}',
-      '{feedurl}',
-      '{feedtitle}',
-      '{feedlogo}',
-      '{campaigntitle}',
-      '{campaignid}',
-      '{campaignslug}'
-    );
-    
-    $replace = array(
-      $content,
-      $item->get_title(),
-      $item->get_link(),
-      $feed->url,
-      $feed->title,
-      $feed->logo,
-      $campaign->title,
-      $campaign->id,
-      $campaign->slug
-    );
-    
-    $content = str_ireplace($vars, $replace, ($campaign->template) ? $campaign->template : '{content}');
- */    
-		// Rewrite
+     // Template parse           
+	if ($this->job['campaign_enable_template']){
+		$vars = array(
+			'{content}',
+			'{title}',
+			'{permalink}',
+			'{feedurl}',
+			'{feedtitle}',
+			'{feedlogo}',
+			'{campaigntitle}',
+			'{campaignid}'
+		);
+
+		$replace = array(
+			$content,
+			$item->get_title(),
+			$item->get_link(),
+			$feed->url,
+			$feed->title,
+			$feed->logo,
+			$this->job['name'],
+			$this->jobid
+		);
+
+		$content = str_ireplace($vars, $replace, ($this->job['campaign_template']) ? stripslashes($this->job['campaign_template']) : '{content}');
+	}
+	 
+	 // Rewrite
 		$rewrites = $this->job['campaign_rewrites'];
 		for ($i = 0; $i < count($this->job['campaign_rewrites']['origin']); $i++) {
 			$origin = $this->job['campaign_rewrites']['origin'][$i];
