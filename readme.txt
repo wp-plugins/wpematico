@@ -1,6 +1,6 @@
 === WPeMatico ===
 Contributors: etruel
-Donate link: http://www.netmdp.com/tag/wpematico/
+Donate link: http://www.netmdp.com/wpematico/
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.0
 Tested up to: 3.0.3
@@ -103,7 +103,7 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 = 0.1Beta =
 * initial release
-* [more info in spanish, en español](http://www.netmdp.com/tag/wpematico/)
+* [more info in spanish, en español](http://www.netmdp.com/wpematico/)
 
 == Upgrade Notice ==
 

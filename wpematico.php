@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WPeMatico
-Plugin URI: http://www.netmdp.com/tag/wpematico/
+Plugin URI: http://www.netmdp.com/wpematico/
 Description: Enables administrators to create posts automatically from RSS/Atom feeds.  If you like it, please rate it.
 Author: Esteban Truelsegaard
 Version: 0.6Beta
