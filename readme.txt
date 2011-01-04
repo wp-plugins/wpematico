@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: http://www.netmdp.com/wpematico/
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.0
-Tested up to: 3.0.3
-Stable tag: 0.6Beta
+Tested up to: 3.0.4
+Stable tag: 0.7Beta
 
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 
@@ -71,6 +71,12 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Changelog ==
 
+= 0.7Beta =
+* Wordpress 3.0.4 compatible.
+* Fixed now check for duplicates on draft, private and published post.
+* Added {feeddescription} tag.
+* Fixed some issues in template post tags.
+
 = 0.6Beta =
 * Added Post template feature in every campaign.
 
@@ -107,5 +113,5 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Upgrade Notice ==
 
-= 0.6Beta =
-* Added Post template feature in every campaign.
+= 0.7Beta =
+* WP 3.0.4 Ready.

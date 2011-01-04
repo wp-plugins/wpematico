@@ -159,7 +159,7 @@ class wpematico_dojob {
     
     // Processes post stack
    foreach($items as $item) {					
-      $this->processItem($campaign, $feed, $item);
+      $this->processItem($campaign, $simplepie, $item);
       //$lasthash = $this->getItemHash($item);
    }
     
@@ -178,11 +178,11 @@ class wpematico_dojob {
 		$blog_id 	= $current_blog->blog_id;
 		$title = $item->get_title();// . $item->get_permalink();
 		$query="SELECT post_title,id FROM $table_name
-					WHERE ((`post_status` = 'published') OR (`post_status` = 'publish' ))
-					AND post_title = '".$title."'";
+					WHERE post_title = '".$title."'
+					AND ((`post_status` = 'published') OR (`post_status` = 'publish' ) OR (`post_status` = 'draft' ) OR (`post_status` = 'private' ))";
 					//GROUP BY post_title having count(*) > 1" ;
 		$row = $wpdb->get_row($query);
-		trigger_error(sprintf(__('Checking if duplicated title \'%1s\'','wpematico'),$title).': '.((!! $row) ? __('Yes') : __('No')) ,E_USER_NOTICE);
+		trigger_error(sprintf(__('Checking duplicated title \'%1s\'','wpematico'),$title).': '.((!! $row) ? __('Yes') : __('No')) ,E_USER_NOTICE);
 		return !! $row;
   }
 
@@ -213,7 +213,7 @@ class wpematico_dojob {
 		 // Meta
 		$meta = array(
 			'wpe_campaignid' => $this->jobid, //campaign['jobid'],
-			'wpe_feed' => $feed,
+			'wpe_feed' => $feed->feed_url,
 			'wpe_sourcepermalink' => $item->get_permalink()
 		);  
 		 
@@ -361,18 +361,21 @@ class wpematico_dojob {
 			'{permalink}',
 			'{feedurl}',
 			'{feedtitle}',
+			'{feeddescription}',
 			'{feedlogo}',
 			'{campaigntitle}',
 			'{campaignid}'
 		);
 
+
 		$replace = array(
 			$content,
 			$item->get_title(),
 			$item->get_link(),
-			$feed->url,
-			$feed->title,
-			$feed->logo,
+			$feed->feed_url,
+			$feed->get_title(),
+			$feed->get_description(),
+			$feed->get_image_url(),
 			$this->job['name'],
 			$this->jobid
 		);

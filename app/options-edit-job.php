@@ -296,7 +296,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 							<textarea class="large-text" id="campaign_template" name="campaign_template" /><?=stripslashes($jobvalue['campaign_template']) ?></textarea>
 							<p id="tags_note" class="note"> Valid tags: &nbsp;&nbsp;<a href="JavaScript:Void(0);" style="font-weight: bold; text-decoration: none;" onclick="jQuery('#tags_list').toggle();jQuery('#tags_list_det').toggle();"><?PHP _e('Help','wpematico'); ?>.</a> </p></p>
 							<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;">
-								<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
+								<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
 							</p>
 							<div id="tags_list_det" style="display: none;">
 								<h4>Supported tags</h4>
@@ -307,7 +307,8 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 								  <li><strong class="tag">{permalink}</strong> The feed item permalink</li>
 								  <li><strong class="tag">{feedurl}</strong> The feed URL</li>
 								  <li><strong class="tag">{feedtitle}</strong> The feed title</li>
-								  <li><strong class="tag">{feedlogo}</strong> The feed logo image</li>
+								  <li><strong class="tag">{feeddescription}</strong> The feed description</li>
+								  <li><strong class="tag">{feedlogo}</strong> The url of feed logo image</li>
 								  <li><strong class="tag">{campaigntitle}</strong> This campaign title</li>
 								  <li><strong class="tag">{campaignid}</strong> This campaign id</li>
 								</ul>
