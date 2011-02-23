@@ -6,7 +6,7 @@
  * @package WordPress
  * @since 3.1.0
  */
-class WP_List_Table {
+class WPematico_List_Table {
 
 	/**
 	 * The current list of items
@@ -68,7 +68,7 @@ class WP_List_Table {
 	 * @param array $args An associative array with information about the current table
 	 * @access protected
 	 */
-	function WP_List_Table( $args ) {
+	function WPematico_List_Table( $args ) {
 
 		$args = wp_parse_args( $args, array(
 			'screen' => '',
@@ -101,18 +101,18 @@ class WP_List_Table {
 	 * @access public
 	 */
 	function check_permissions() {
-		die( 'function WP_List_Table::check_permissions() must be over-ridden in a sub-class.' );
+		die( 'function WPematico_List_Table::check_permissions() must be over-ridden in a sub-class.' );
 	}
 
 	/**
 	 * Prepares the list of items for displaying.
-	 * @uses WP_List_Table::set_pagination_args()
+	 * @uses WPematico_List_Table::set_pagination_args()
 	 *
 	 * @since 3.1.0
 	 * @access public
 	 */
 	function prepare_items() {
-		die( 'function WP_List_Table::prepare_items() must be over-ridden in a sub-class.' );
+		die( 'function WPematico_List_Table::prepare_items() must be over-ridden in a sub-class.' );
 	}
 
 	/**
@@ -406,7 +406,7 @@ class WP_List_Table {
 	 * @return array
 	 */
 	function get_columns() {
-		die( 'function WP_List_Table::get_columns() must be over-ridden in a sub-class.' );
+		die( 'function WPematico_List_Table::get_columns() must be over-ridden in a sub-class.' );
 	}
 
 	/**
@@ -624,7 +624,7 @@ class WP_List_Table {
 	 * @access protected
 	 */
 	function display_rows() {
-		die( 'function WP_List_Table::display_rows() must be over-ridden in a sub-class.' );
+		die( 'function WPematico_List_Table::display_rows() must be over-ridden in a sub-class.' );
 	}
 
 	/**

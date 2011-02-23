@@ -1,16 +1,21 @@
 <?PHP
 //backwarts copatibility lower than wp 3.1
-if (!class_exists('WP_List_Table')) {
-	if (is_file(trailingslashit(ABSPATH).'wp-admin/includes/list-table.php'))
-		include_once( trailingslashit(ABSPATH).'wp-admin/includes/list-table.php' );
-	else
+if (!class_exists('WPematico_List_Table')) {
+	//if (is_file(trailingslashit(ABSPATH).'wp-admin/includes/class-wp-list-table.php'))
+	//	include_once( trailingslashit(ABSPATH).'wp-admin/includes/class-wp-list-table.php' );
+
+	//if (!class_exists('WPematico_List_Table')) // after WP 3.1
+	//	if (is_file(trailingslashit(ABSPATH).'wp-admin/includes/list-table.php'))
+	//		include_once( trailingslashit(ABSPATH).'wp-admin/includes/list-table.php' );
+	
+	//if (!class_exists('WPematico_List_Table')) // help!!
 		include_once('compatibility/list-table.php');
 }
 
-class WPeMatico_Campaigns_Table extends WP_List_Table {
+class WPeMatico_Campaigns_Table extends WPematico_List_Table {
 	function WPeMatico_Campaigns_Table() {
 		global $current_screen;
-		parent::WP_List_Table( array(
+		parent::WPematico_List_Table( array(
 			'screen' => $current_screen,
 			'plural' => 'jobs',
 			'singular' => 'job'
