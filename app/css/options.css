@@ -20,6 +20,9 @@
 .tag:hover {
 	color: red;
 }
+select.postform {
+	width:175px;
+}
 .code{
 	background: none repeat scroll 0 0 #FAFAFA;
    border: 1px solid #CCCCCC;

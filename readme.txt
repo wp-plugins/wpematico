@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: http://www.netmdp.com/wpematico/
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.0
-Tested up to: 3.1
-Stable tag: 0.8Beta
+Tested up to: 3.2.1
+Stable tag: 0.82Beta
 
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 
@@ -14,7 +14,7 @@ WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom fe
 For RSS fetching it's using the simplepie library included in Wordpress.
 Also for image processing it's using the core functions of wordpress.
 Translations ready. .pot english file included for localize.  Translations files are welcome.
-I take code from many many other plugins, but for this plugin I read a lot of code of the old WP-o-Matic and BackWPUp. Thanks to the developers;)
+I take code from many many other plugins, but for this plugin I read a lot of code of the old WP-o-Matic and also old versions of BackWPUp. Thanks to the developers;)
 If you like, please rate 5 stars. thanks :)
 
 Supported features:
@@ -28,6 +28,7 @@ Supported features:
 * Images caching are integrated with Wordpress Media Library and posts attach. upload remote images or link to source. Fully configurable.
 * Words Rewriting. Regular expressions supported.
 * Words Relinking. Define custom links for words you specify.
+* Words to Category. Define custom words for assign every post to specified categories. Thanks to Juergen Mueller at [Wirtschaft](http://www.wirtschaft.com)
 * Detailed Log sending to custom e-mail. Always on every executed cron or only on errors with campaign.
 * Option to replace title links (Permalink) to source.
 * Post templating. 
@@ -69,7 +70,20 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 3. Checking feeds on campaign editing.
 
+4. Assigning a category to a post because there is a word in content.
+
 == Changelog ==
+
+= 0.82Beta =
+* New option for enable or not the new feature: Words to Category.
+* Words to Category. Define custom words for assign every post to specified categories.
+* Fixed "No link to source images" Hide/show option on click "Enable cache img" 
+* Added "checking" image near "Check all feeds" button.
+
+= 0.81Beta =
+* Wordpress 3.2.1 compatible.
+* Add ‘Activate/Deactivate’ to options in campaign's table.
+* Fixed when click “Add more” in Rewrite, the form appears in the Post template section.
 
 = 0.8Beta =
 * Upgrade only for Wordpress 3.1 compatibility.
@@ -116,5 +130,5 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Upgrade Notice ==
 
-= 0.8Beta =
-* WP 3.1 Ready.
+= 0.82Beta =
+* WP 3.2.1 Ready.

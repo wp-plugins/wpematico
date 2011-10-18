@@ -215,7 +215,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 				  </ul>
 				  <div>
 						<a href="JavaScript:Void(0);" class="button-primary right" id="addmore" onclick="jQuery('#feeds_edit').append('&lt;li class=&quot;jobtype-select&quot;&gt;&lt;label&gt;Feed URL:&lt;/label&gt;&lt;input  class=&quot;large-text feedinput&quot; type=&quot;text&quot; value=&quot;&quot; id=&quot;feed_new&quot; name=&quot;campaign_feeds[]&quot;&gt;&lt;/li&gt;');" style="font-weight: bold; text-decoration: none;" ><?PHP _e('Add more','wpematico'); ?>.</a>
-						<span class="button-primary right" id="checkfeeds" style="font-weight: bold; text-decoration: none;" ><?PHP _e('Check all feeds','wpematico'); ?>.</span>
+						<span class="button-primary right" id="checkfeeds" style="font-weight: bold; text-decoration: none;" ><?PHP _e('Check all feeds','wpematico'); ?>.</span><img src="/wp-admin/images/wpspin_light.gif" id="ruedita" style="display:none;" Title="<?PHP _e('Checking','wpematico'); ?>">
 						
 				  </div>
   				</div>
@@ -271,7 +271,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 						<p><input name="campaign_cancel_imgcache" id="campaign_cancel_imgcache" class="checkbox" value="1" type="checkbox" <?php checked($jobvalue['campaign_cancel_imgcache'],true); ?> />
 						<b><?PHP echo '<label for="campaign_cancel_imgcache">' . __('Cancel Cache Images for this campaign?','wpematico') . '</label>'; ?></b></p>
 					<?php endif ?>
-					<div id="nolinkimg">
+					<div id="nolinkimg" <?PHP if (!$jobvalue['campaign_imgcache']) echo 'style="display:none;"';?>>
 						<p><input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($jobvalue['campaign_nolinkimg'],true); ?> />
 						<b><?PHP echo '<label for="campaign_nolinkimg">' . __('No link to source images','wpematico') . '</label>'; ?></b><br />
 						<b><?php _e("Note", 'wpematico') ?>:</b> <?php _e('If selected and image upload get error, then delete the "src" attribute of the &lt;img&gt;. <br />If disable cache images, enabling this for delete "src" attribute of all &lt;img&gt; in the post.','wpematico') ?></p>
@@ -289,7 +289,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 					&nbsp;&nbsp;<a href="JavaScript:Void(0);" style="font-weight: bold; text-decoration: none;" onclick="jQuery('#hlptpl').toggle();"><?PHP _e('Help','wpematico'); ?>.</a> </p>
 					<div id="hlptpl" style="padding-left:20px;display:none;"><b>Basics:</b>	The post template takes the full text of each feed item it encounters, and then uses it as the post content.<br />A post template, if used, allows you to alter that content, by adding extra information, such as text, images, campaign data, etc..<br />
 					</div><br />
-					<ul id="rewrites_edit" class="inlinetext">
+					<ul id="wpe_post_template_edit" class="inlinetext">
 						<li class="jobtype-select" style="Background:#EEF1FF;border-color:#CEE1EF; border-style:solid; border-width:2px; width:80%; margin:5px 0px 5px 40px; padding:0.5em 0.5em;">
 							<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?=checked($jobvalue['campaign_enable_template'],true) ?> />
 							<label for="campaign_enable_template"> <?=_e('Enable Post Template','wpematico') ?></label>
@@ -323,6 +323,86 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 			</div>
 			</div>	
 			
+			<?php if ($cfg['enableword2cats']) { // Si está habilitado en settings, lo muestra ?>  
+			<div class="meta-box-sortables ui-sortable" id="advanced-sortables">
+			<div class="postbox" id="wrd2cat">
+				<div title="Haz clic para cambiar" class="handlediv"><br></div>
+				<h3 class="hndle"><span><?PHP _e('Word to Category option','wpematico'); ?></span></h3>
+				<div class="inside" <?PHP if (!isset($jobvalue['campaign_wrd2cat']['word'])) echo 'style="display:none;"';?>>
+					<p><?php _e('Want to assign a category because a word is in content?', 'wpematico') ?>
+					&nbsp;&nbsp;<a href="JavaScript:Void(0);" style="font-weight: bold; text-decoration: none;" onclick="jQuery('#hlpw2c').toggle();"><?PHP _e('Help','wpematico'); ?>.</a> </p>
+					<div id="hlpw2c" style="padding-left:20px;display:none;"><b>Basics:</b>	The Word to Category option allow you to assign singular category to the post.<br />
+						<b>Example:</b><br />
+						If the post content contain the word "motor" and then you want assign the post to category "Engines", simply type "motor" in the "Word" field, and select "Engine" in Categories combo.<br />
+						<b>Regular expressions</b><br />
+						For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many Word2Cat boxes to assign motor and car to Engines, you can use the | operator: (motor|car). If you want Case insensitive on RegEx, add "/i" at the end of RegEx.
+					</div><br />
+				  <ul id="wrd2cat_edit" class="inlinetext">
+					<?php if(isset($jobvalue['campaign_wrd2cat']['word'])): ?>
+						<?php for ($i = 0; $i < count($jobvalue['campaign_wrd2cat']['word']); $i++) : ?>
+							  <li class="jobtype-select" style="Background:#EEF1FF;border-color:#CEE1EF; border-style:solid; border-width:2px; width:80%; height:35px; margin:5px 0px 5px 40px; padding:0.5em 0.5em;">
+								<label for="campaign_wrd2cat_<?=$i ?>" class="delete_label"><?=__('Delete ?','wpematico') ?></label>
+								<div id="w1" style="float:left;">
+									<label for="campaign_wrd2cat_<?=$i ?>"><?=_e('Text:','wpematico') ?></label>		<input type="text" size="25" class="regular-text" id="campaign_wrd2cat_<?=$i ?>" name="campaign_wrd2cat[<?=$i ?>]" value="<?=stripslashes($jobvalue['campaign_wrd2cat']['word'][$i]) ?>" /><br />
+									<input name="campaign_wrd2cat_regex[<?=$i ?>]" id="campaign_wrd2cat_regex_<?=$i ?>" class="checkbox w2cregex" value="1" type="checkbox"<?=checked($jobvalue['campaign_wrd2cat']['regex'][$i],true) ?> /><label for="campaign_wrd2cat_regex_<?=$i ?>"> <?=_e('RegEx','wpematico') ?></label>
+									<input <?php echo ($jobvalue['campaign_wrd2cat']['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat_cases[<?=$i ?>]" id="campaign_wrd2cat_cases_<?=$i ?>" class="checkbox w2ccases" value="1" type="checkbox"<?=checked($jobvalue['campaign_wrd2cat']['cases'][$i],true) ?> /><label for="campaign_wrd2cat_cases_<?=$i ?>"> <?=_e('Case sensitive','wpematico') ?></label>
+								</div>
+								<div id="c1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label for="campaign_wrd2cat_category_<?=$i ?>"> <?=_e('To Category:','wpematico') ?></label>
+								<?php 
+									$catselected='selected='.$jobvalue['campaign_wrd2cat']['w2ccateg'][$i];
+									$catname="name=campaign_wrd2cat_category[".$i."]";
+									$catid="id=campaign_wrd2cat_category_".$i;
+									wp_dropdown_categories('hide_empty=0&hierarchical=1&show_option_none='.__('Select category','wpematico').'&'.$catselected.'&'.$catname.'&'.$catid);
+								?>
+								</div>
+							  </li>
+							<?php endfor ?>
+					<?php else: ?>
+						  <li class="jobtype-select" style="Background:#EEF1FF;border-color:#CEE1EF; border-style:solid; border-width:2px; width:80%; height:35px; margin:5px 0px 5px 40px; padding:0.5em 0.5em;">
+							<div id="w1" style="float:left;"><label for="campaign_wrd2cat_0"><?=_e('Word:','wpematico') ?></label>
+								<input type="text" size="25" class="regular-text" id="campaign_wrd2cat_0" name="campaign_wrd2cat[0]" value="" /><br />
+								<input name="campaign_wrd2cat_regex[0]" id="campaign_wrd2cat_regex_0" class="checkbox w2cregex" value="1" type="checkbox" />	<label for="campaign_wrd2cat_regex_0"> <?=_e('RegEx','wpematico') ?></label>
+								<input name="campaign_wrd2cat_cases[0]" id="campaign_wrd2cat_cases_0" class="checkbox w2ccases" value="1" type="checkbox" />	<label for="campaign_wrd2cat_cases_0"> <?=_e('Case sensitive','wpematico') ?></label>
+							</div>
+							<div id="c1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label for="campaign_wrd2cat_category_<?=$i ?>"> <?=_e('To Category:','wpematico') ?></label>
+							<?php 
+								$catname="name=campaign_wrd2cat_category[0]";
+								$catid="id=campaign_wrd2cat_category_0";
+								wp_dropdown_categories('hide_empty=0&hierarchical=1&show_option_none='.__('Select category','wpematico').'&'.$catselected.'&'.$catname.'&'.$catid);
+							?>
+							</div>
+						</li>
+					<?php endif ?>
+				  </ul>
+				  <div id="w2chidden" style="display:none;">
+					<li class="jobtype-select" style="Background:#EEF1FF;border-color:#CEE1EF; border-style:solid; border-width:2px; width:80%; height:35px; margin:5px 0px 5px 40px; padding:0.5em 0.5em;">
+						<div id="w1" style="float:left;"><label for="campaign_wrd2cat"><?=_e('Word:','wpematico') ?></label>
+							<input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[]" value="" /><br />
+							<input name="campaign_wrd2cat_regex[]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox" />		<label for="campaign_wrd2cat_regex"> <?=_e('RegEx','wpematico') ?></label>
+							<input name="campaign_wrd2cat_cases[]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox" />		<label for="campaign_wrd2cat_cases"> <?=_e('Case Sensitive','wpematico') ?></label>
+						</div>
+						<div id="c1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label for="campaign_wrd2cat_category"> <?=_e('To Category:','wpematico') ?></label>
+						<?php 
+							$catname="name=campaign_wrd2cat_category[]";
+							$catid="id=campaign_wrd2cat_category";
+							wp_dropdown_categories('hide_empty=0&hierarchical=1&show_option_none='.__('Select category','wpematico').'&'.$catname.'&'.$catid);
+						?>
+						</div>
+					</li>
+				  </div>
+				  <div>
+						<a href="JavaScript:Void(0);" class="button-primary right" id="addmorew2c" onclick="jQuery('#wrd2cat_edit').append( jQuery('#w2chidden').html() );" style="font-weight: bold; text-decoration: none;" ><?PHP _e('Add more','wpematico'); ?>.</a>
+				  </div>
+  				</div>
+
+			</div>
+			</div>
+			<?php }  ?>
+			
+			<?php  // Meta box para los rewrites    ?>
 			<div class="meta-box-sortables ui-sortable" id="advanced-sortables">
 			<div class="postbox" id="rewrite">
 				<div title="Haz clic para cambiar" class="handlediv"><br></div>

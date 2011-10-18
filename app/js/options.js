@@ -8,8 +8,8 @@ jQuery(document).ready( function($) {
 		$('#campaign_template').attr('value',$('#campaign_template').attr('value')+$(this).html());
 	});
 
-	$('#__campaign_imgcache').change(function() {
-		if ( true == $('#__campaign_imgcache').attr('checked')) {
+	$('#campaign_imgcache').click(function() {
+		if ( true == $('#campaign_imgcache').is(':checked')) {
 			$('#nolinkimg').show();
 		} else {
 			$('#nolinkimg').hide();
@@ -19,6 +19,7 @@ jQuery(document).ready( function($) {
 
 	$('#checkfeeds').click(function() {
 		$('.feedinput').each(function (el,item) {
+			$('#ruedita').show();
 			feed = $(item).attr('value');
 			$(item).attr('style','Background:#CCC;');
 			var data = {
@@ -33,8 +34,10 @@ jQuery(document).ready( function($) {
 				}else{
 					$(item).attr('style','Background:#75EC77;');
 				}
+				$('#ruedita').hide();
 			});		
 		}); 
+		
 	});
 	$('.feedinput').focus(function() {
 		$(this).attr('style','Background:#FFFFFF;');
@@ -57,13 +60,23 @@ jQuery(document).ready( function($) {
 
 	$('.delete_label').click(function(){
 		finput = $(this).attr('for');
-		if (confirm('Are you sure you want delete this feed from this campaign?')) {
+		if (confirm('Are you sure you want delete this item from this campaign?')) {
 			$('#'+finput).attr('value','');
 			$(this).parent().hide();
 		}
 	});
 	 //css('background-color', 'red');
-	
+	$('.w2cregex').click(function() {
+		var cases = $(this).parent().children('.w2ccases');
+		//if ( true == $(this).attr('checked')) {
+		if ( true == $(this).is(':checked')) {
+			cases.attr('checked','checked');
+			cases.attr('disabled','disabled');
+		}else{
+			cases.removeAttr('checked');
+			cases.removeAttr('disabled');
+		}
+	});
 });
 
 function wpe_addrewrite(text1,text2,text3,text4) {

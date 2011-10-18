@@ -150,6 +150,7 @@ if ( !defined('ABSPATH') )
 	   if (empty($cfg['mailmethod'])) 	$cfg['mailmethod']	= 'mail';
 		if (empty($cfg['mailsendmail'])) $cfg['mailsendmail']	= substr(ini_get('sendmail_path'),0,strpos(ini_get('sendmail_path'),' -'));
 		if (empty($cfg['imgcache'])) 		$cfg['imgcache'] 		= false;
+		if (empty($cfg['enableword2cats'])) 		$cfg['enableword2cats'] 		= false;
 		update_option('wpematico',$cfg);
 	}
 

@@ -4,7 +4,7 @@ Plugin Name: WPeMatico
 Plugin URI: http://www.netmdp.com/wpematico/
 Description: Enables administrators to create posts automatically from RSS/Atom feeds.  If you like it, please rate it.
 Author: Esteban Truelsegaard
-Version: 0.8Beta
+Version: 0.82Beta
 Author URI: http://www.netmdp.com
 Text Domain: wpematico
 Domain Path: /lang/
@@ -34,7 +34,7 @@ if ( !defined('ABSPATH') )
 //Set plugin dirname
 define('WPEMATICO_PLUGIN_BASEDIR', dirname(plugin_basename(__FILE__)));
 //Set Plugin Version
-define('WPEMATICO_VERSION', '0.8Beta');
+define('WPEMATICO_VERSION', '0.82Beta');
 //load Text Domain
 load_plugin_textdomain('wpematico', false, WPEMATICO_PLUGIN_BASEDIR.'/lang');
 //Load functions file

@@ -108,6 +108,7 @@ class WPeMatico_Campaigns_Table extends WPematico_List_Table {
 					$actions = array();
 					if (empty($jobvalue['starttime'])) {
 						$actions['edit'] = "<a href=\"" . wp_nonce_url('admin.php?page=WPeMatico&subpage=edit&jobid='.$jobid, 'edit-job') . "\">" . __('Edit') . "</a>";
+						$actions['toggle'] = "<a href=\"" . wp_nonce_url('admin.php?page=WPeMatico&action=toggle&jobid='.$jobid, 'toggle-job_'.$jobid) . "\">" . (($jobvalue['activated'])? __('Deactivate','wpematico') :  __('Activate','wpematico')) . "</a>";
 						$actions['copy'] = "<a href=\"" . wp_nonce_url('admin.php?page=WPeMatico&action=copy&jobid='.$jobid, 'copy-job_'.$jobid) . "\">" . __('Copy','wpematico') . "</a>";
 						$actions['delete'] = "<a class=\"submitdelete\" href=\"" . wp_nonce_url('admin.php?page=WPeMatico&action=delete&jobs[]='.$jobid, 'bulk-jobs') . "\" onclick=\"if ( confirm('" . esc_js(__("You are about to delete this Campaign. \n  'Cancel' to stop, 'OK' to delete.","wpematico")) . "') ) { return true;}return false;\">" . __('Delete') . "</a>";
 						$actions['reset'] = "<a class=\"submitdelete\" href=\"" . wp_nonce_url('admin.php?page=WPeMatico&action=reset&jobid='.$jobid, 'reset-job_'.$jobid) . "\" onclick=\"if ( confirm('" . esc_js(__("You are about to reset the posts count of this Campaign. \n  'Cancel' to stop, 'OK' to delete.","wpematico")) . "') ) { return true;}return false;\">" . __('Reset') . "</a>";
