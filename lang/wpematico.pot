@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WPeMatico package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico 0.4Beta\n"
+"Project-Id-Version: WPeMatico 0.82Beta\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wpematico\n"
-"POT-Creation-Date: 2010-12-24 12:58:13+00:00\n"
+"POT-Creation-Date: 2011-10-18 12:03:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,7 +16,7 @@ msgstr ""
 msgid "WPeMatico Settings"
 msgstr ""
 
-#: app/options-settings.php:22 app/options-settings.php:81
+#: app/options-settings.php:22 app/options-settings.php:89
 #: app/options-edit-job.php:46
 msgid "Save Changes"
 msgstr ""
@@ -129,18 +129,32 @@ msgid ""
 msgstr ""
 
 #: app/options-settings.php:72
-msgid "Disable WP-Cron"
+msgid "Enable Features"
 msgstr ""
 
 #: app/options-settings.php:74
-msgid "Use Cron job of Hoster and disable WP_Cron"
+msgid "Enable <b><i>Words to Categories</i></b> feature"
 msgstr ""
 
 #: app/options-settings.php:75
+msgid ""
+"If you need this feature in every campaign, you can activate here.  Not "
+"recommended if you will not use this."
+msgstr ""
+
+#: app/options-settings.php:80
+msgid "Disable WP-Cron"
+msgstr ""
+
+#: app/options-settings.php:82
+msgid "Use Cron job of Hoster and disable WP_Cron"
+msgstr ""
+
+#: app/options-settings.php:83
 msgid "You must set up a cron job that calls:"
 msgstr ""
 
-#: app/options-settings.php:77
+#: app/options-settings.php:85
 msgid "or URL:"
 msgstr ""
 
@@ -168,13 +182,13 @@ msgstr ""
 msgid "Draft"
 msgstr ""
 
-#: app/options-edit-job.php:43 app/list-tables.php:107
+#: app/options-edit-job.php:43 app/list-tables.php:113
 msgid ""
 "You are about to delete this Campaign. \n"
 "  'Cancel' to stop, 'OK' to delete."
 msgstr ""
 
-#: app/options-edit-job.php:43 app/list-tables.php:46 app/list-tables.php:107
+#: app/options-edit-job.php:43 app/list-tables.php:51 app/list-tables.php:113
 msgid "Delete"
 msgstr ""
 
@@ -336,16 +350,21 @@ msgstr ""
 msgid "Feed URL:"
 msgstr ""
 
-#: app/options-edit-job.php:206
+#: app/options-edit-job.php:206 app/options-edit-job.php:344
 msgid "Delete ?"
 msgstr ""
 
-#: app/options-edit-job.php:217 app/options-edit-job.php:337
+#: app/options-edit-job.php:217 app/options-edit-job.php:397
+#: app/options-edit-job.php:460
 msgid "Add more"
 msgstr ""
 
 #: app/options-edit-job.php:218
 msgid "Check all feeds"
+msgstr ""
+
+#: app/options-edit-job.php:218
+msgid "Checking"
 msgstr ""
 
 #: app/options-edit-job.php:229
@@ -391,6 +410,8 @@ msgid "Enable Cache Images for this campaign?"
 msgstr ""
 
 #: app/options-edit-job.php:266 app/options-edit-job.php:289
+#: app/options-edit-job.php:297 app/options-edit-job.php:333
+#: app/options-edit-job.php:412
 msgid "Help"
 msgstr ""
 
@@ -428,32 +449,79 @@ msgid ""
 msgstr ""
 
 #: app/options-edit-job.php:286
-msgid "Rewrite option"
+msgid "Post template"
 msgstr ""
 
 #: app/options-edit-job.php:288
+msgid "Want to manage or add extra content to every post?"
+msgstr ""
+
+#: app/options-edit-job.php:295
+msgid "Enable Post Template"
+msgstr ""
+
+#: app/options-edit-job.php:330
+msgid "Word to Category option"
+msgstr ""
+
+#: app/options-edit-job.php:332
+msgid "Want to assign a category because a word is in content?"
+msgstr ""
+
+#: app/options-edit-job.php:346
+msgid "Text:"
+msgstr ""
+
+#: app/options-edit-job.php:347 app/options-edit-job.php:365
+#: app/options-edit-job.php:383 app/options-edit-job.php:428
+#: app/options-edit-job.php:445 app/options-edit-job.php:460
+msgid "RegEx"
+msgstr ""
+
+#: app/options-edit-job.php:348 app/options-edit-job.php:366
+msgid "Case sensitive"
+msgstr ""
+
+#: app/options-edit-job.php:351 app/options-edit-job.php:369
+#: app/options-edit-job.php:387
+msgid "To Category:"
+msgstr ""
+
+#: app/options-edit-job.php:356 app/options-edit-job.php:373
+#: app/options-edit-job.php:391
+msgid "Select category"
+msgstr ""
+
+#: app/options-edit-job.php:363 app/options-edit-job.php:381
+msgid "Word:"
+msgstr ""
+
+#: app/options-edit-job.php:384
+msgid "Case Sensitive"
+msgstr ""
+
+#: app/options-edit-job.php:409
+msgid "Rewrite option"
+msgstr ""
+
+#: app/options-edit-job.php:411
 msgid ""
 "Want to transform a word into another? Or link a specific word to some "
 "website?"
 msgstr ""
 
-#: app/options-edit-job.php:302 app/options-edit-job.php:319
-#: app/options-edit-job.php:337
+#: app/options-edit-job.php:425 app/options-edit-job.php:442
+#: app/options-edit-job.php:460
 msgid "Origin:"
 msgstr ""
 
-#: app/options-edit-job.php:305 app/options-edit-job.php:322
-#: app/options-edit-job.php:337
-msgid "RegEx"
-msgstr ""
-
-#: app/options-edit-job.php:307 app/options-edit-job.php:324
-#: app/options-edit-job.php:337
+#: app/options-edit-job.php:430 app/options-edit-job.php:447
+#: app/options-edit-job.php:460
 msgid "Rewrite to:"
 msgstr ""
 
-#: app/options-edit-job.php:311 app/options-edit-job.php:328
-#: app/options-edit-job.php:337
+#: app/options-edit-job.php:434 app/options-edit-job.php:451
+#: app/options-edit-job.php:460
 msgid "ReLink to:"
 msgstr ""
 
@@ -461,129 +529,141 @@ msgstr ""
 msgid "Copy of"
 msgstr ""
 
-#: app/options-save.php:72
+#: app/options-save.php:81
 msgid "Settings saved"
 msgstr ""
 
-#: app/options-save.php:75
+#: app/options-save.php:84
 msgid "Settings NOT saved:  Something wrong happened."
 msgstr ""
 
-#: app/options-save.php:76 app/options-save.php:170 app/options-save.php:177
-#: app/options-save.php:213
+#: app/options-save.php:85 app/options-save.php:174 app/options-save.php:206
+#: app/options-save.php:213 app/options-save.php:259
 msgid "Go Back"
 msgstr ""
 
-#: app/options-save.php:169
+#: app/options-save.php:173
+msgid "There's an error with the supplied RegEx expression in word: %s"
+msgstr ""
+
+#: app/options-save.php:205
 msgid "Campaign '%1' NOT saved: At least one feed URL must be filled."
 msgstr ""
 
-#: app/options-save.php:176
+#: app/options-save.php:212
 msgid "Feed <strong>%s</strong> could not be parsed.<br />(SimplePie said: %s)"
 msgstr ""
 
-#: app/options-save.php:212
+#: app/options-save.php:258
 msgid "There's an error with the supplied RegEx expression in origin: %s"
 msgstr ""
 
-#: app/options-save.php:240
+#: app/options-save.php:286
 msgid "Campaign '%1' changes saved."
 msgstr ""
 
-#: app/options-save.php:240
+#: app/options-save.php:286
 msgid "Campaigns overview."
 msgstr ""
 
-#: app/list-tables.php:22
+#: app/list-tables.php:27
 msgid "No rights"
 msgstr ""
 
-#: app/list-tables.php:41
+#: app/list-tables.php:46
 msgid "No Campaigns."
 msgstr ""
 
-#: app/list-tables.php:47 app/list-tables.php:108
+#: app/list-tables.php:52 app/list-tables.php:114
 msgid "Reset"
 msgstr ""
 
-#: app/list-tables.php:55
+#: app/list-tables.php:60
 msgid "ID"
 msgstr ""
 
-#: app/list-tables.php:56
+#: app/list-tables.php:61
 msgid "Campaign Name"
 msgstr ""
 
-#: app/list-tables.php:57
+#: app/list-tables.php:62
 msgid "Post type"
 msgstr ""
 
-#: app/list-tables.php:58
+#: app/list-tables.php:63
 msgid "Posts"
 msgstr ""
 
-#: app/list-tables.php:59
+#: app/list-tables.php:64
 msgid "Next Run"
 msgstr ""
 
-#: app/list-tables.php:60
+#: app/list-tables.php:65
 msgid "Last Run"
 msgstr ""
 
-#: app/list-tables.php:102
+#: app/list-tables.php:107
 msgid "Edit:"
 msgstr ""
 
-#: app/list-tables.php:105
+#: app/list-tables.php:110
 msgid "Edit"
 msgstr ""
 
-#: app/list-tables.php:106
+#: app/list-tables.php:111
+msgid "Deactivate"
+msgstr ""
+
+#: app/list-tables.php:111
+msgid "Activate"
+msgstr ""
+
+#: app/list-tables.php:112
 msgid "Copy"
 msgstr ""
 
-#: app/list-tables.php:108
+#: app/list-tables.php:114
 msgid ""
 "You are about to reset the posts count of this Campaign. \n"
 "  'Cancel' to stop, 'OK' to delete."
 msgstr ""
 
-#: app/list-tables.php:109
+#: app/list-tables.php:115
 msgid "Run Now"
 msgstr ""
 
-#: app/list-tables.php:111
+#: app/list-tables.php:117
 msgid "Clear"
 msgstr ""
 
-#: app/list-tables.php:138 app/functions.php:309
+#: app/list-tables.php:144 app/functions.php:329
 msgid "Running since:"
 msgstr ""
 
-#: app/list-tables.php:138 app/list-tables.php:154 app/functions.php:309
+#: app/list-tables.php:144 app/list-tables.php:160 app/functions.php:329
 msgid "sec."
 msgstr ""
 
-#: app/list-tables.php:142
+#: app/list-tables.php:148
 msgid "Inactive"
 msgstr ""
 
-#: app/list-tables.php:145
+#: app/list-tables.php:151
 msgid "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
 msgstr ""
 
-#: app/list-tables.php:154
+#: app/list-tables.php:160
 msgid "Runtime:"
 msgstr ""
 
-#: app/list-tables.php:156 app/functions.php:318
+#: app/list-tables.php:162 app/functions.php:338
 msgid "None"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (WPeMatico 0.4Beta)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (WPeMatico 0.82Beta)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: app/functions.php:9 app/functions.php:34 app/functions.php:48
-#: app/functions.php:188
+#: app/functions.php:189
 msgid "WPeMatico"
 msgstr ""
 
@@ -599,15 +679,15 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: app/functions.php:12 app/functions.php:130 app/functions.php:171
+#: app/functions.php:12 app/functions.php:130 app/functions.php:172
 msgid "Settings"
 msgstr ""
 
-#: app/functions.php:72 app/functions.php:180
+#: app/functions.php:72 app/functions.php:181
 msgid "Support"
 msgstr ""
 
-#: app/functions.php:73 app/functions.php:179
+#: app/functions.php:73 app/functions.php:180
 msgid "FAQ"
 msgstr ""
 
@@ -619,7 +699,7 @@ msgstr ""
 msgid "Plugin Home on WordPress.org"
 msgstr ""
 
-#: app/functions.php:76 app/functions.php:181
+#: app/functions.php:76 app/functions.php:182
 msgid "Donate"
 msgstr ""
 
@@ -627,56 +707,56 @@ msgstr ""
 msgid "Version:"
 msgstr ""
 
-#: app/functions.php:171
+#: app/functions.php:172
 msgid "Go to Settings Page"
 msgstr ""
 
-#: app/functions.php:274
+#: app/functions.php:294
 msgid "Processed Campaigns:"
 msgstr ""
 
-#: app/functions.php:282 app/functions.php:306
+#: app/functions.php:302 app/functions.php:326
 msgid "Edit Campaign"
 msgstr ""
 
-#: app/functions.php:287 app/functions.php:289 app/wpematico_dojob.php:484
+#: app/functions.php:307 app/functions.php:309 app/wpematico_dojob.php:515
 msgid "Processed Posts: %1s"
 msgstr ""
 
-#: app/functions.php:292 app/functions.php:294 app/wpematico_dojob.php:459
-#: app/wpematico_dojob.php:484
+#: app/functions.php:312 app/functions.php:314 app/wpematico_dojob.php:490
+#: app/wpematico_dojob.php:515
 msgid "Job done in %1s sec."
 msgstr ""
 
-#: app/functions.php:303
+#: app/functions.php:323
 msgid "Scheduled Campaigns:"
 msgstr ""
 
-#: app/functions.php:467
+#: app/functions.php:487
 msgid "- WordPress 2.8 or heiger needed!"
 msgstr ""
 
-#: app/functions.php:471
+#: app/functions.php:491
 msgid "- PHP 5.2.0 or higher needed!"
 msgstr ""
 
-#: app/functions.php:478
+#: app/functions.php:498
 msgid "- Please Check Scheduling time for Campaign:"
 msgstr ""
 
-#: app/functions.php:481
+#: app/functions.php:501
 msgid "- WP-Cron don't working please check it!"
 msgstr ""
 
-#: app/functions.php:618
+#: app/functions.php:638
 msgid "The feed %s has been parsed successfully."
 msgstr ""
 
-#: app/functions.php:619
+#: app/functions.php:639
 msgid "The feed %s cannot be parsed. Simplepie said: %s"
 msgstr ""
 
-#: app/functions5.php:36
+#: app/functions5.php:38
 msgid "New"
 msgstr ""
 
@@ -804,7 +884,7 @@ msgid "%s posts added"
 msgstr ""
 
 #: app/wpematico_dojob.php:185
-msgid "Checking if duplicated title '%1s'"
+msgid "Checking duplicated title '%1s'"
 msgstr ""
 
 #: app/wpematico_dojob.php:185
@@ -819,48 +899,60 @@ msgstr ""
 msgid "Processing item %1s"
 msgstr ""
 
-#: app/wpematico_dojob.php:231
+#: app/wpematico_dojob.php:214
+msgid "Processing Words to Category %1s"
+msgstr ""
+
+#: app/wpematico_dojob.php:229
+msgid "Found!: word %1s to Cat_id %2s"
+msgstr ""
+
+#: app/wpematico_dojob.php:232
+msgid "Not found word %1s"
+msgstr ""
+
+#: app/wpematico_dojob.php:257
 msgid "Attaching images."
 msgstr ""
 
-#: app/wpematico_dojob.php:240
+#: app/wpematico_dojob.php:266
 msgid "Processing item pingbacks"
 msgstr ""
 
-#: app/wpematico_dojob.php:260
+#: app/wpematico_dojob.php:286
 msgid "Attaching file:"
 msgstr ""
 
-#: app/wpematico_dojob.php:262
+#: app/wpematico_dojob.php:288
 msgid "Sorry, your attach could not be inserted. Something wrong happened."
 msgstr ""
 
-#: app/wpematico_dojob.php:323
+#: app/wpematico_dojob.php:349
 msgid "Uploading images."
 msgstr ""
 
-#: app/wpematico_dojob.php:472
+#: app/wpematico_dojob.php:503
 msgid "Campaign Name:"
 msgstr ""
 
-#: app/wpematico_dojob.php:474
+#: app/wpematico_dojob.php:505
 msgid "Errors:"
 msgstr ""
 
-#: app/wpematico_dojob.php:476
+#: app/wpematico_dojob.php:507
 msgid "Warnings:"
 msgstr ""
 
-#: app/wpematico_dojob.php:481
+#: app/wpematico_dojob.php:512
 msgid "WPeMatico Log from"
 msgstr ""
 
-#: app/wpematico_dojob.php:485
+#: app/wpematico_dojob.php:516
 msgid "Show detailed Log"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.netmdp.com/tag/wpematico/"
+msgid "http://www.netmdp.com/wpematico/"
 msgstr ""
 
 #. Description of the plugin/theme
