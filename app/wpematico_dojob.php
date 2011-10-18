@@ -211,26 +211,28 @@ class wpematico_dojob {
 		$categories = $campaign['campaign_categories']; //$this->getCampaignData($campaign->id, 'categories');
 		
 		//Proceso Words to Category y si hay las agrego al array
-		trigger_error(sprintf(__('Processing Words to Category %1s','wpematico'),$item->get_title()),E_USER_NOTICE);
-		$wrd2cats = $this->job['campaign_wrd2cat'];
-		for ($i = 0; $i < count($this->job['campaign_wrd2cat']['word']); $i++) {
-			$foundit = false;
-			$word = $this->job['campaign_wrd2cat']['word'][$i];
-			if(isset($this->job['campaign_wrd2cat']['w2ccateg'][$i])) {
-			  $tocat = $this->job['campaign_wrd2cat']['w2ccateg'][$i];
-  			if($this->job['campaign_wrd2cat']['regex'][$i]) {
-						$foundit = (preg_match($word, $content)) ? true : false; 
-			  }else{
-						if($this->job['campaign_wrd2cat']['cases'][$i]) 
-							$foundit = strpos($content, $word);
-						else $foundit = stripos($content, $word); //insensible a May/min
-			  }
-			  if ($foundit !== false ) {
-					trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s','wpematico'),$word,$tocat),E_USER_NOTICE);
-					$categories[] = $tocat;
-				}else{
-					trigger_error(sprintf(__('Not found word %1s','wpematico'),$word),E_USER_NOTICE);
-			  }
+		if ($this->cfg['enableword2cats']) {
+			trigger_error(sprintf(__('Processing Words to Category %1s','wpematico'),$item->get_title()),E_USER_NOTICE);
+			$wrd2cats = $this->job['campaign_wrd2cat'];
+			for ($i = 0; $i < count($this->job['campaign_wrd2cat']['word']); $i++) {
+				$foundit = false;
+				$word = $this->job['campaign_wrd2cat']['word'][$i];
+				if(isset($this->job['campaign_wrd2cat']['w2ccateg'][$i])) {
+				  $tocat = $this->job['campaign_wrd2cat']['w2ccateg'][$i];
+				if($this->job['campaign_wrd2cat']['regex'][$i]) {
+							$foundit = (preg_match($word, $content)) ? true : false; 
+				  }else{
+							if($this->job['campaign_wrd2cat']['cases'][$i]) 
+								$foundit = strpos($content, $word);
+							else $foundit = stripos($content, $word); //insensible a May/min
+				  }
+				  if ($foundit !== false ) {
+						trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s','wpematico'),$word,$tocat),E_USER_NOTICE);
+						$categories[] = $tocat;
+					}else{
+						trigger_error(sprintf(__('Not found word %1s','wpematico'),$word),E_USER_NOTICE);
+				  }
+				}
 			}
 		}
 		// End Words to Category
