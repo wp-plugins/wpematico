@@ -46,8 +46,9 @@ PHP5 is required!
 Copyright 2010.
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version. 
 
-[If you want support or more detail in spanish you can search WPeMatico here:](http://www.netmdp.com). 
-Traducción al español de Argentina de la Licencia GNU: http://www.spanish-translator-services.com/espanol/t/gnu/gpl-ar.html
+If you want support or more detail in spanish you can search WPeMatico here:[NetMdP](http://www.netmdp.com). 
+
+Traducción al español de Argentina de la Licencia GNU: [http://www.spanish-translator-services.com/espanol/t/gnu/gpl-ar.html]
 
 == Installation ==
 
