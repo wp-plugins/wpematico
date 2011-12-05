@@ -81,7 +81,7 @@ function wpematico_save_settings() {
 		$success_message=__('Settings saved', 'wpematico');
 		$wpematico_message.='<div id="message" class="updated fade"><p><strong>'.$success_message.'</strong></p></div>';
 	}else{
-		$err_message = str_replace(__('Settings NOT saved:  Something wrong happened.', 'wpematico')).' ';
+		$err_message = __('Settings NOT saved:  Something wrong happened.', 'wpematico').' ';
 		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 	}
 	return $wpematico_message;
