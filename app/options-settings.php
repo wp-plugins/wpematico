@@ -73,6 +73,14 @@ $cfg=get_option('wpematico');
 				<div class="inside">
 					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'],true); ?> name="enableword2cats" id="enableword2cats" /> <?PHP _e('Enable <b><i>Words to Categories</i></b> feature','wpematico'); ?><br />
 					<div id="hlpw2c" style="padding-left:20px;"><?PHP _e('If you need this feature in every campaign, you can activate here.  Not recommended if you will not use this.','wpematico'); ?></div><br /> 
+					<input class="checkbox" value="1" type="checkbox" disabled /> <?PHP _e('Enable <b><i>Keyword Filtering</i></b> feature','wpematico'); ?><br />
+					<div id="hlpw2c" style="padding-left:20px;"><?PHP _e('If you need this feature in every campaign, you can activate here.  ONLY AVAILABLE AT PRO VERSION.','wpematico'); ?><br /> 
+					<?PHP _e('This is for exclude or include posts according to the keywords <b>founded</b> at content or title.','wpematico'); ?>
+					</div><br /> 
+					<input class="checkbox" value="1" type="checkbox" disabled /> <?PHP _e('Enable <b><i>Word count Filters</i></b> feature','wpematico'); ?><br />
+					<div id="hlpw2c" style="padding-left:20px;"><?PHP _e('If you need this feature in every campaign, you can activate here.  ONLY AVAILABLE AT PRO VERSION.','wpematico'); ?><br /> 
+					<?PHP _e('This is for cut, exclude or include posts according to the letters o words <b>counted</b> at content.','wpematico'); ?>
+					</div><br /> 
 				</div>
 			</div>
 		

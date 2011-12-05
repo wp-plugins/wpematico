@@ -196,7 +196,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 			<div id="feeds" class="postbox">
 				<div title="Haz clic para cambiar" class="handlediv"><br></div>
 				<h3 class="hndle"><span><?PHP _e('Feeds','wpematico'); ?></span></h3>
-				<div class="inside">
+				<div class="inside" style="padding: 0 0 8px 10px;">
 					<p><?php _e('Please fill in at least one feed. If you\'re not sure about the exact feed url, just type in the domain name, and the feed will be autodetected.', 'wpematico') ?></p>
 					<ul id="feeds_edit" class="inlinetext required">
 					<?php if(isset($jobvalue['campaign_feeds'])): ?>
@@ -313,8 +313,8 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 								  <li><strong class="tag">{campaignid}</strong> This campaign id</li>
 								</ul>
 								<b>Example:</b> <p>If you want to add a link to the source at the bottom of every post, the post template would look like this:</p>
-								<div class="code"><p>{content}<br>&lt;a href="{feedurl}"&gt;Go to Source&lt;/a&gt;</p></div>
-								<p>The <em>{content}</em> string gets replaced by the feed content, and then {feedurl} by the url, which makes it a working link.</p>
+								<div class="code"><p>{content}<br>&lt;a href="{permalink}"&gt;Go to Source&lt;/a&gt;</p></div>
+								<p>The <em>{content}</em> string gets replaced by the feed content, and then {permalink} by the url, which makes it a working link.</p>
 							</div>
 						</li>
 					</ul>
@@ -328,7 +328,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 			<div class="postbox" id="wrd2cat">
 				<div title="Haz clic para cambiar" class="handlediv"><br></div>
 				<h3 class="hndle"><span><?PHP _e('Word to Category option','wpematico'); ?></span></h3>
-				<div class="inside" <?PHP if (!isset($jobvalue['campaign_wrd2cat']['word'])) echo 'style="display:none;"';?>>
+				<div class="inside" <?PHP if (!isset($jobvalue['campaign_wrd2cat']['word'])) echo 'style="display:none;padding: 0 0 8px 10px;"';?>>
 					<p><?php _e('Want to assign a category because a word is in content?', 'wpematico') ?>
 					&nbsp;&nbsp;<a href="JavaScript:Void(0);" style="font-weight: bold; text-decoration: none;" onclick="jQuery('#hlpw2c').toggle();"><?PHP _e('Help','wpematico'); ?>.</a> </p>
 					<div id="hlpw2c" style="padding-left:20px;display:none;"><b>Basics:</b>	The Word to Category option allow you to assign singular category to the post.<br />
@@ -407,7 +407,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 			<div class="postbox" id="rewrite">
 				<div title="Haz clic para cambiar" class="handlediv"><br></div>
 				<h3 class="hndle"><span><?PHP _e('Rewrite option','wpematico'); ?></span></h3>
-				<div class="inside" <?PHP if (!isset($jobvalue['campaign_rewrites']['origin'])) echo 'style="display:none;"';?>>
+				<div class="inside" <?PHP if (!isset($jobvalue['campaign_rewrites']['origin'])) echo 'style="display:none;padding: 0 0 8px 10px ;"';?>>
 					<p><?php _e('Want to transform a word into another? Or link a specific word to some website?', 'wpematico') ?>
 					&nbsp;&nbsp;<a href="JavaScript:Void(0);" style="font-weight: bold; text-decoration: none;" onclick="jQuery('#hlprwg').toggle();"><?PHP _e('Help','wpematico'); ?>.</a> </p>
 					<div id="hlprwg" style="padding-left:20px;display:none;"><b>Basics:</b>	The rewriting settings allow you to replace parts of the content with the text you specify.<br />

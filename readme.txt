@@ -4,7 +4,7 @@ Donate link: http://www.netmdp.com/wpematico/
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable tag: 0.82Beta
+Stable tag: 0.83Beta
 
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 
@@ -35,11 +35,16 @@ Supported features:
 * Multilanguage ready.
 * Tested in Wordpress MULTISITE 
 
+* Extra PRO features
+* Delete last HTML tag option.
+* Words count filters. Count how many words are in content for assign a category or skip the post.
+* Also the content can be converted to text and cutted at wanted amount of words or letters.
+* Keywords filtering. You can determine skip the post for certain words in title or content.
+
 Upcoming features:
 
 * Campaigns import/export.
 * Some requested easy cool features...
-* May be a PRO versión.
 
 PHP5 is required!
 
@@ -73,7 +78,24 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 4. Assigning a category to a post because there is a word in content.
 
+5. Filtering with keywords or Regular Expressions at title or content.
+
+6. Cutting last html predefined tag, and counting words or letters to skip, cut or asign to a category.
+
 == Changelog ==
+
+= 0.83Beta =
+* New PRO version available at website.
+* [PRO]
+* 	New features: Delete last HTML tag option, Words count filters, Keywords filtering.
+* 	New options for enable or not new features: Words count filters, Keywords filtering.
+* 	Words count filters. Count how many words are in content for assign a category or skip the post.
+* 	Also the content can be converted to text and cutted at wanted amount of words or letters.
+* 	Keywords filtering. You can determine skip the post for certain words in title or content.
+* [/PRO]
+* Fixed images process after rewrite functions for not upload deleted images at content.
+* Fixed spaces at images names.
+* Fixed little duplicate thing on titles with special chars. 
 
 = 0.82Beta =
 * New option for enable or not the new feature: Words to Category.

@@ -176,7 +176,7 @@ class wpematico_dojob {
 		global $wpdb, $wp_locale, $current_blog;
 		$table_name = $wpdb->prefix . "posts";  
 		$blog_id 	= $current_blog->blog_id;
-		$title = $item->get_title();// . $item->get_permalink();
+		$title = $wpdb->escape($item->get_title()); // $item->get_permalink();
 		$query="SELECT post_title,id FROM $table_name
 					WHERE post_title = '".$title."'
 					AND ((`post_status` = 'published') OR (`post_status` = 'publish' ) OR (`post_status` = 'draft' ) OR (`post_status` = 'private' ))";
@@ -193,6 +193,7 @@ class wpematico_dojob {
    * @param   $campaign   object    Campaign database object   
    * @param   $feed       object    Feed database object
    * @param   $item       object    SimplePie_Item object
+   * @return true si lo procesó
    */
 	function processItem(&$campaign, &$feed, &$item) {
 		global $wpdb;
@@ -200,6 +201,7 @@ class wpematico_dojob {
 		 
 		 // Item content
 		$content = $this->parseItemContent($campaign, $feed, $item);            
+		$title = $item->get_title();
 		
 		// Item date
 	/*     if($campaign->feeddate && ($item->get_date('U') > (current_time('timestamp', 1) - $campaign->frequency) && $item->get_date('U') < current_time('timestamp', 1)))
@@ -342,45 +344,6 @@ class wpematico_dojob {
 	function parseItemContent(&$campaign, &$feed, &$item) {  
 		$content = $item->get_content();
     
-		 // Caching images
-		if($this->cfg['imgcache'] || $this->job['campaign_imgcache']) {
-			$images = $this->parseImages($content);
-			$urls = $images[2];  
-
-			if(sizeof($urls)) { // Si hay alguna imagen en el feed
-				trigger_error(__('Uploading images.','wpematico'),E_USER_NOTICE);
-
-				foreach($urls as $imagen_src) {
-					if($this->job['campaign_cancel_imgcache']) {
-						if($this->job['campaign_nolinkimg']) 
-							$content = str_replace($imagen_src, '', $content);  // Si no quiere linkar las img al server borro el link de la imagen
-					}else {
-						$bits = @file_get_contents($imagen_src);
-						$name = substr(strrchr($imagen_src, "/"),1);
-						$afile = wp_upload_bits( $name, NULL, $bits);
-						if(!$afile['error']) 
-							$content = str_replace($imagen_src, $afile['url'], $content);
-						else {  // Si no la pudo subir intento con mi funcion
-							trigger_error('wp_upload_bits error:'.print_r($afile,true).', trying custom function.',E_USER_WARNING);
-							$upload_dir = wp_upload_dir();
-							$imagen_dst = $upload_dir['path'] . str_replace('/','',strrchr($imagen_src, '/'));
-							$imagen_dst_url = $upload_dir['url']. '/' . str_replace('/','',strrchr($imagen_src, '/'));
-
-							if(in_array(str_replace('.','',strrchr($imagen_dst, '.')),explode(',','jpg,gif,png,tif,bmp'))) {   // -------- Controlo extensiones permitidas
-								trigger_error('imagen_src='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'<br>',E_USER_NOTICE);
-								$newfile = $this->guarda_imagen($imagen_src, $imagen_dst);
-							}
-							if($newfile)	$content = str_replace($imagen_src, $imagen_dst_url, $content);
-							else {
-								if($this->job['campaign_nolinkimg']) $content = str_replace($imagen_src, '', $content);  // Si no quiere linkar las img al server borro el link de la imagen
-								trigger_error('Upload file failed:'.$imagen_dst,E_USER_WARNING);
-							}
-						}
-					}
-				} 
-			}
-		}
-    
      // Template parse           
 	if ($this->job['campaign_enable_template']){
 		$vars = array(
@@ -410,9 +373,7 @@ class wpematico_dojob {
 
 		$content = str_ireplace($vars, $replace, ($this->job['campaign_template']) ? stripslashes($this->job['campaign_template']) : '{content}');
 	}
-	 
-	 //Proceso Words to Category
-	 
+	
 	 // Rewrite
 		$rewrites = $this->job['campaign_rewrites'];
 		for ($i = 0; $i < count($this->job['campaign_rewrites']['origin']); $i++) {
@@ -431,6 +392,45 @@ class wpematico_dojob {
 		}
 		// End rewrite
 
+		 // Caching images
+		if($this->cfg['imgcache'] || $this->job['campaign_imgcache']) {
+			$images = $this->parseImages($content);
+			$urls = $images[2];  
+
+			if(sizeof($urls)) { // Si hay alguna imagen en el feed
+				trigger_error(__('Uploading images.','wpematico'),E_USER_NOTICE);
+
+				foreach($urls as $imagen_src) {
+					if($this->job['campaign_cancel_imgcache']) {
+						if($this->job['campaign_nolinkimg']) 
+							$content = str_replace($imagen_src, '', $content);  // Si no quiere linkar las img al server borro el link de la imagen
+					}else {
+						$bits = @file_get_contents($imagen_src);
+						$name = str_replace(array(' ','%20'),'-',substr(strrchr($imagen_src, "/"),1));
+						$afile = wp_upload_bits( $name, NULL, $bits);
+						if(!$afile['error']) 
+							$content = str_replace($imagen_src, $afile['url'], $content);
+						else {  // Si no la pudo subir intento con mi funcion
+							trigger_error('wp_upload_bits error:'.print_r($afile,true).', trying custom function.',E_USER_WARNING);
+							$upload_dir = wp_upload_dir();
+							$imagen_dst = $upload_dir['path'] . str_replace('/','',strrchr($imagen_src, '/'));
+							$imagen_dst_url = $upload_dir['url']. '/' . str_replace('/','',strrchr($imagen_src, '/'));
+
+							if(in_array(str_replace('.','',strrchr($imagen_dst, '.')),explode(',','jpg,gif,png,tif,bmp'))) {   // -------- Controlo extensiones permitidas
+								trigger_error('imagen_src='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'<br>',E_USER_NOTICE);
+								$newfile = $this->guarda_imagen($imagen_src, $imagen_dst);
+							}
+							if($newfile)	$content = str_replace($imagen_src, $imagen_dst_url, $content);
+							else {
+								if($this->job['campaign_nolinkimg']) $content = str_replace($imagen_src, '', $content);  // Si no quiere linkar las img al server borro el link de la imagen
+								trigger_error('Upload file failed:'.$imagen_dst,E_USER_WARNING);
+							}
+						}
+					}
+				} 
+			}
+		} // Caching images
+		
 		return $content;
 	} // End ParseItemContent
 
