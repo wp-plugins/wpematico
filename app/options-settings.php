@@ -71,7 +71,8 @@ $cfg=get_option('wpematico');
 			<div id="enablefeatures" class="postbox">
 				<h3 class="hndle"><span><?PHP _e('Enable Features','wpematico'); ?></span></h3>
 				<div class="inside">
-					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'],true); ?> name="enableword2cats" id="enableword2cats" /> <?PHP _e('Enable <b><i>Words to Categories</i></b> feature','wpematico'); ?><br />
+					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disabledashboard'],true); ?> name="disabledashboard" id="disabledashboard" /> <?PHP _e('Disable <b><i>Wordpress Dashboard Widget</i></b>','wpematico'); ?><br />
+					<div id="hlpw2c" style="padding-left:20px;"><?PHP _e('Check this if you don\'t want display the widget dashboard.  Anyway, only admins will see it.','wpematico'); ?></div><br /> 	<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'],true); ?> name="enableword2cats" id="enableword2cats" /> <?PHP _e('Enable <b><i>Words to Categories</i></b> feature','wpematico'); ?><br />
 					<div id="hlpw2c" style="padding-left:20px;"><?PHP _e('If you need this feature in every campaign, you can activate here.  Not recommended if you will not use this.','wpematico'); ?></div><br /> 
 					<input class="checkbox" value="1" type="checkbox" disabled /> <?PHP _e('Enable <b><i>Keyword Filtering</i></b> feature','wpematico'); ?><br />
 					<div id="hlpw2c" style="padding-left:20px;"><?PHP _e('If you need this feature in every campaign, you can activate here.  ONLY AVAILABLE AT PRO VERSION.','wpematico'); ?><br /> 
@@ -80,6 +81,8 @@ $cfg=get_option('wpematico');
 					<input class="checkbox" value="1" type="checkbox" disabled /> <?PHP _e('Enable <b><i>Word count Filters</i></b> feature','wpematico'); ?><br />
 					<div id="hlpw2c" style="padding-left:20px;"><?PHP _e('If you need this feature in every campaign, you can activate here.  ONLY AVAILABLE AT PRO VERSION.','wpematico'); ?><br /> 
 					<?PHP _e('This is for cut, exclude or include posts according to the letters o words <b>counted</b> at content.','wpematico'); ?>
+					<input class="checkbox" value="1" type="checkbox" disabled /> <?PHP _e('Enable <b><i>Custom Title</i></b> feature','wpematico'); ?><br />
+					<div id="hlpw2c" style="padding-left:20px;"><?PHP _e('If you want a custom title for posts of a campaign, you can activate here.  ONLY AVAILABLE AT PRO VERSION.','wpematico'); ?><br /> 					
 					</div><br /> 
 				</div>
 			</div>

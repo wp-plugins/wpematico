@@ -538,7 +538,7 @@ if ( !defined('ABSPATH') )
 		if (!(wp_next_scheduled('wpematico_cron')))
 			wp_schedule_event(0, 'wpematico_int', 'wpematico_cron');
 		//add Dashboard widget
-		if (current_user_can(10))
+		if (current_user_can(10) && !$cfg['disabledashboard'])
 			add_action('wp_dashboard_setup', 'wpematico_add_dashboard');
 		// add ajax function
 		add_action('wp_ajax_test_feed', 'wpematico_Testfeed');			
@@ -635,8 +635,8 @@ function adminEditCategories(&$data, $parent = 0, $level = 0, $categories = 0)  
 		echo intval($works);
 		die();
 	}else {
-		if($works) printf(__('The feed %s has been parsed successfully.', 'wpomatic'), $url);
-		else	printf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpomatic'), $url, $works);
+		if($works) printf(__('The feed %s has been parsed successfully.', 'wpematico'), $url);
+		else	printf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico'), $url, $works);
 		return;
 	}   
 

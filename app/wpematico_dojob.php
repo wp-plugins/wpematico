@@ -72,6 +72,7 @@ class wpematico_dojob {
 	private $job=array();
 	private $feeds=array();
 	private $posts=0;
+	private $lasthash=array();
 
 	public function __construct($jobid) {
 		global $wpdb,$wpematico_dojob_message, $jobwarnings, $joberrors;
@@ -136,13 +137,22 @@ class wpematico_dojob {
     // Get posts (last is first)
     $items = array();
     $count = 0;
+    $prime = true;
     
     foreach($simplepie->get_items() as $item) {
-/*       if($feed->hash == $this->getItemHash($item)) {   // a la primer coincidencia ya vuelve  
-        if($count == 0) $this->log('No new posts');
-        break;
-      }
- */      
+		if($prime){
+			$this->lasthash[$feed] = md5($item->get_permalink()); //Siempre guardo el PRIMERO leido por feed  (es el ultimo item)
+			$this->titlecounter = $campaign['campaign_ctnextnumber'];  //tomo el contador en el primero para que no lo reinicie cada item
+			$prime=false;
+		}
+
+		$dupi = ($this->job[$feed]['lasthash'] == $this->lasthash[$feed]); // chequeo a la primer coincidencia ya vuelve  
+		if ($dupi) {
+			trigger_error(sprintf(__('Found duplicated hash \'%1s\'','wpematico'),$item->get_permalink()).': '.$this->lasthash[$feed] ,E_USER_NOTICE);
+			trigger_error(__('Filtering duplicated posts.','wpematico'),E_USER_NOTICE);
+			break;   
+		}		
+
       if($this->isDuplicate($campaign, $feed, $item)) {
 			trigger_error(__('Filtering duplicated posts.','wpematico'),E_USER_NOTICE);
 			break;
@@ -160,10 +170,9 @@ class wpematico_dojob {
     // Processes post stack
    foreach($items as $item) {					
       $this->processItem($campaign, $simplepie, $item);
-      //$lasthash = $this->getItemHash($item);
    }
     
-    // If we have added items, let's update the hash
+	// If we have added items, let's update the hash
     if($count) {
 		trigger_error(sprintf(__('%s posts added','wpematico'),$count),E_USER_NOTICE);
     }
@@ -176,12 +185,14 @@ class wpematico_dojob {
 		global $wpdb, $wp_locale, $current_blog;
 		$table_name = $wpdb->prefix . "posts";  
 		$blog_id 	= $current_blog->blog_id;
+		
 		$title = $wpdb->escape($item->get_title()); // $item->get_permalink();
 		$query="SELECT post_title,id FROM $table_name
 					WHERE post_title = '".$title."'
 					AND ((`post_status` = 'published') OR (`post_status` = 'publish' ) OR (`post_status` = 'draft' ) OR (`post_status` = 'private' ))";
 					//GROUP BY post_title having count(*) > 1" ;
 		$row = $wpdb->get_row($query);
+		
 		trigger_error(sprintf(__('Checking duplicated title \'%1s\'','wpematico'),$title).': '.((!! $row) ? __('Yes') : __('No')) ,E_USER_NOTICE);
 		return !! $row;
   }
@@ -201,7 +212,6 @@ class wpematico_dojob {
 		 
 		 // Item content
 		$content = $this->parseItemContent($campaign, $feed, $item);            
-		$title = $item->get_title();
 		
 		// Item date
 	/*     if($campaign->feeddate && ($item->get_date('U') > (current_time('timestamp', 1) - $campaign->frequency) && $item->get_date('U') < current_time('timestamp', 1)))
@@ -247,8 +257,11 @@ class wpematico_dojob {
 			'wpe_sourcepermalink' => $item->get_permalink()
 		);  
 		 
+ 		 // Item title
+		$title = $wpdb->escape($item->get_title());
+
 		 // Create post
-		$postid = $this->insertPost($wpdb->escape($item->get_title()), $wpdb->escape($content), $date, $categories, $campaign['campaign_posttype'], $campaign['campaign_author'], 
+		$postid = $this->insertPost($title, $wpdb->escape($content), $date, $categories, $campaign['campaign_posttype'], $campaign['campaign_author'], 
 					$campaign['campaign_allowpings'], $campaign['campaign_commentstatus'], $meta);
 		
 		// Attaching images uploaded to created post in media library 
@@ -349,6 +362,8 @@ class wpematico_dojob {
 		$vars = array(
 			'{content}',
 			'{title}',
+			'{author}',
+			'{authorlink}',
 			'{permalink}',
 			'{feedurl}',
 			'{feedtitle}',
@@ -358,10 +373,17 @@ class wpematico_dojob {
 			'{campaignid}'
 		);
 
+		$autor="";
+		if ($author = $item->get_author())	{
+			$autor = $author->get_name();
+			$autorlink = $author->get_link();
+		}		
 
 		$replace = array(
 			$content,
 			$item->get_title(),
+			$autor,
+			$autorlink,
 			$item->get_link(),
 			$feed->feed_url,
 			$feed->get_title(),
@@ -486,6 +508,11 @@ class wpematico_dojob {
 		$jobs[$this->jobid]['starttime']='';
 		$jobs[$this->jobid]['postscount'] += $this->posts; // Suma los posts procesados 
 		$jobs[$this->jobid]['lastpostscount'] = $this->posts; // posts procesados esta vez
+
+		foreach($jobs[$this->jobid]['campaign_feeds'] as $feed) {    // Grabo el ultimo hash de cada feed
+			$jobs[$this->jobid][$feed]['lasthash']=$this->lasthash[$feed]; // Added 02/02/2012 para chequear duplicados por el hash del permalink original
+		}
+
 		update_option('wpematico_jobs',$jobs); //Save Settings
 		$this->job['lastrun']=$jobs[$this->jobid]['lastrun'];
 		$this->job['lastruntime']=$jobs[$this->jobid]['lastruntime'];

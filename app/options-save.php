@@ -72,6 +72,7 @@ function wpematico_save_settings() {
 	$cfg['mailhost']		= $_POST['mailhost'];
 	$cfg['mailuser']		= $_POST['mailuser'];
 	$cfg['mailpass']		= base64_encode($_POST['mailpass']);
+	$cfg['disabledashboard']= $_POST['disabledashboard']==1 ? true : false;
 	$cfg['enableword2cats']	= $_POST['enableword2cats']==1 ? true : false;
 	$cfg['disablewpcron']	= $_POST['disablewpcron']==1 ? true : false;
 	$cfg['imgcache']		= $_POST['imgcache']==1 ? true : false;

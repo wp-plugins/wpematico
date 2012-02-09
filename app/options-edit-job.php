@@ -241,12 +241,12 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 					<input class="checkbox" type="checkbox"<?php checked($jobvalue['campaign_linktosource'],true);?> name="campaign_linktosource" value="1" id="campaign_linktosource"/> <br />
 					<?php _e("", 'wpematico') ?></p>
 
-					<p><b><?PHP echo '<label for="ommentstatus">' . __('Discussion options:','wpematico') . '</label>'; ?></b>
+					<p><b><?PHP echo '<label for="campaign_commentstatus">' . __('Discussion options:','wpematico') . '</label>'; ?></b>
 					<?PHP //echo 'campaign_commentstatus = '.$jobvalue['campaign_commentstatus']; ?>
 					<select id="campaign_commentstatus" name="campaign_commentstatus">
-						<option value="open"<?PHP echo ($jobvalue['campaign_commentstatus']=="open" || $jobvalue['campaign_commentstatus']=="") ? 'SELECTED' : ''; ?> >Open
-						<option value="closed" <?PHP echo ($jobvalue['campaign_commentstatus']=="closed") ? 'SELECTED' : ''; ?> >Closed
-						<option value="registered_only" <?PHP echo ($jobvalue['campaign_commentstatus']=="registered_only") ? 'SELECTED' : ''; ?> >Registered only
+						<option value="open"<?PHP echo ($jobvalue['campaign_commentstatus']=="open" || $jobvalue['campaign_commentstatus']=="") ? 'SELECTED' : ''; ?> >Open</option>
+						<option value="closed" <?PHP echo ($jobvalue['campaign_commentstatus']=="closed") ? 'SELECTED' : ''; ?> >Closed</option>
+						<option value="registered_only" <?PHP echo ($jobvalue['campaign_commentstatus']=="registered_only") ? 'SELECTED' : ''; ?> >Registered only</option>
 					</select>
 					<input class="checkbox" type="checkbox"<?php checked($jobvalue['campaign_allowpings'],true);?> name="campaign_allowpings" value="1" id="campaign_allowpings"/> <?PHP echo '<label for="campaign_allowpings">' . __('Allow pings?','wpematico') . '</label>'; ?><br />
 					</p>
@@ -296,7 +296,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 							<textarea class="large-text" id="campaign_template" name="campaign_template" /><?=stripslashes($jobvalue['campaign_template']) ?></textarea>
 							<p id="tags_note" class="note"> Valid tags: &nbsp;&nbsp;<a href="JavaScript:Void(0);" style="font-weight: bold; text-decoration: none;" onclick="jQuery('#tags_list').toggle();jQuery('#tags_list_det').toggle();"><?PHP _e('Help','wpematico'); ?>.</a> </p></p>
 							<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;">
-								<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
+								<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
 							</p>
 							<div id="tags_list_det" style="display: none;">
 								<h4>Supported tags</h4>
@@ -304,6 +304,8 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 								<ul style='list-style-type: square;margin:0 0 5px 20px;font:0.92em "Lucida Grande","Verdana";'>
 								  <li><strong class="tag">{content}</strong> The feed item content</li>
 								  <li><strong class="tag">{title}</strong> The feed item title</li>
+								  <li><strong class="tag">{author}</strong> The feed item author</li>
+								  <li><strong class="tag">{authorlink}</strong> The feed item author link (If exist)</li>
 								  <li><strong class="tag">{permalink}</strong> The feed item permalink</li>
 								  <li><strong class="tag">{feedurl}</strong> The feed URL</li>
 								  <li><strong class="tag">{feedtitle}</strong> The feed title</li>
@@ -312,9 +314,9 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 								  <li><strong class="tag">{campaigntitle}</strong> This campaign title</li>
 								  <li><strong class="tag">{campaignid}</strong> This campaign id</li>
 								</ul>
-								<b>Example:</b> <p>If you want to add a link to the source at the bottom of every post, the post template would look like this:</p>
-								<div class="code"><p>{content}<br>&lt;a href="{permalink}"&gt;Go to Source&lt;/a&gt;</p></div>
-								<p>The <em>{content}</em> string gets replaced by the feed content, and then {permalink} by the url, which makes it a working link.</p>
+								<b>Example:</b> <p>If you want to add a link to the source at the bottom of every post and the author, the post template would look like this:</p>
+								<div class="code"><p>{content}<br>&lt;a href="{permalink}"&gt;Go to Source&lt;/a&gt;&lt;br /&gt;<br>Author: {author}</p></div>
+								<p>The <em>{content}</em> string gets replaced by the feed content, {permalink} by the url, which makes it a working link and {author} with the author of the feed item.</p>
 							</div>
 						</li>
 					</ul>
