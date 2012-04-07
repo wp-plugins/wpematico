@@ -71,7 +71,7 @@ if ( !defined('ABSPATH') )
 			'<div class="metabox-prefs">'.
 			'<!-- a href="http://wordpress.org/tags/wpematico" target="_blank">'.__('Support').'</a>'.
 			' | <a href="http://wordpress.org/extend/plugins/wpematico/faq/" target="_blank">' . __('FAQ') . '</a>'.
-			' | <a href="http://http://www.netmdp.com/wordpres/wpematico" target="_blank">' . __('Plugin Homepage', 'wpematico') . '</a>'.
+			' | <a href="http://http://www.netmdp.com/tag/wpematico" target="_blank">' . __('Plugin Homepage', 'wpematico') . '</a>'.
 			' | <a href="http://wordpress.org/extend/plugins/wpematico" target="_blank">' . __('Plugin Home on WordPress.org', 'wpematico') . '</a>'.
 			' | <a href="" target="_blank">' . __('Donate') . '</a>'.
 			'</div -->'.
@@ -150,6 +150,7 @@ if ( !defined('ABSPATH') )
 	   if (empty($cfg['mailmethod'])) 	$cfg['mailmethod']	= 'mail';
 		if (empty($cfg['mailsendmail'])) $cfg['mailsendmail']	= substr(ini_get('sendmail_path'),0,strpos(ini_get('sendmail_path'),' -'));
 		if (empty($cfg['imgcache'])) 		$cfg['imgcache'] 		= false;
+		if (empty($cfg['enableword2cats'])) 		$cfg['enableword2cats'] 		= false;
 		update_option('wpematico',$cfg);
 	}
 
@@ -223,6 +224,25 @@ if ( !defined('ABSPATH') )
 		return round($bytes, $precision) . ' ' . $units[$pow];
 	}
 	
+	//Permalink to Source
+	 /*** Determines what the title has to link to   * @return string new text   **/
+  function wpematico_permalink($url) {
+    // if from admin panel
+	if(get_the_ID()) {
+		$jobid = (int) get_post_meta(get_the_ID(), 'wpe_campaignid', true);
+
+		$jobs=(array)get_option('wpematico_jobs');
+		$jobs=get_option('wpematico_jobs');
+
+		if($jobid) {
+			$jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
+			if($jobvalue['campaign_linktosource'])
+			 return get_post_meta(get_the_ID(), 'wpe_sourcepermalink', true);
+		}  	  
+	}
+   return $url;      
+  }
+	
 	################### ARRAYS FUNCS
   /* * filtering an array   */
     function filter_by_value ($array, $index, $value){
@@ -279,7 +299,7 @@ if ( !defined('ABSPATH') )
 		if (is_array($jobs2)) {
 			$count=0;
 			foreach ($jobs2 as $jobid => $jobvalue) {
-				echo '<a href="'.wp_nonce_url('admin.php?page=WPeMatico&action=edit&jobid='.$jobvalue['jobid'], 'edit-job').'" title="'.__('Edit Campaign','wpematico').'">';
+				echo '<a href="'.wp_nonce_url('admin.php?page=WPeMatico&subpage=edit&jobid='.$jobvalue['jobid'], 'edit-job').'" title="'.__('Edit Campaign','wpematico').'">';
 					if ($jobvalue['lastrun']) {
 						echo "ID: " .$jobvalue['jobid']. ", <i>".$jobvalue['name']."</i> :: ";
 						echo  date_i18n(get_option('date_format'),$jobvalue['lastrun']).'-'. date_i18n(get_option('time_format'),$jobvalue['lastrun']).'h, <i>'; 
@@ -303,7 +323,7 @@ if ( !defined('ABSPATH') )
 		echo '<strong>'.__('Scheduled Campaigns:','wpematico').'</strong><br />';
 		foreach ($jobs as $jobid => $jobvalue) {
 			if ($jobvalue['activated']) {
-				echo '<a href="'.wp_nonce_url('admin.php?page=WPeMatico&action=edit&jobid='.$jobid, 'edit-job').'" title="'.__('Edit Campaign','wpematico').'">';
+				echo '<a href="'.wp_nonce_url('admin.php?page=WPeMatico&subpage=edit&jobid='.$jobid, 'edit-job').'" title="'.__('Edit Campaign','wpematico').'">';
 				if ($jobvalue['starttime']>0 and empty($jobvalue['stoptime'])) {
 					$runtime=current_time('timestamp')-$jobvalue['starttime'];
 					echo __('Running since:','wpematico').' '.$runtime.' '.__('sec.','wpematico');
@@ -470,12 +490,6 @@ if ( !defined('ABSPATH') )
 		if (version_compare(phpversion(), '5.2.0', '<')) { // check PHP Version
 			$message.=__('- PHP 5.2.0 or higher needed!','wpematico') . '<br />';
 			$checks=false;
-		}
-		if (!is_dir($cfg['dirimgs'])) { // check logs folder
-			$message.=__('- Images Folder not exists:','wpematico') . ' '.$cfg['dirimgs'].'<br />';
-		}
-		if (!is_writable($cfg['dirimgs'])) { // check logs folder
-			$message.=__('- Images Folder not writeable:','wpematico') . ' '.$cfg['dirimgs'].'<br />';
 		}
 
 		$jobs=(array)get_option('wpematico_jobs'); 

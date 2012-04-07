@@ -38,6 +38,14 @@ function wpematico_job_operations($action) {
 		$jobs[$newjobid]['activated']=false;
 		update_option('wpematico_jobs',$jobs);
 		break;
+	case 'toggle': //toggle Activate/Deactivate Cron Campaign
+		$jobid = (int) $_GET['jobid'];
+		check_admin_referer('toggle-job_'.$jobid);
+		$jobs=get_option('wpematico_jobs');
+		//Change the activate value
+		$jobs[$jobid]['activated'] = (!$jobs[$jobid]['activated']); 
+		update_option('wpematico_jobs',$jobs);
+		break;
 	case 'clear': //Abort Campaign
 		$jobid = (int) $_GET['jobid'];
 		check_admin_referer('clear-job_'.$jobid);
@@ -56,24 +64,25 @@ function wpematico_job_operations($action) {
 function wpematico_save_settings() {
 	check_admin_referer('wpematico-cfg');
 	$cfg=get_option('wpematico'); //Load Settings
-	$cfg['mailsndemail']		= sanitize_email($_POST['mailsndemail']);
+	$cfg['mailsndemail']	= sanitize_email($_POST['mailsndemail']);
 	$cfg['mailsndname']		= $_POST['mailsndname'];
 	$cfg['mailmethod']		= $_POST['mailmethod'];
-	$cfg['mailsendmail']		= untrailingslashit(str_replace('//','/',str_replace('\\','/',stripslashes($_POST['mailsendmail']))));
+	$cfg['mailsendmail']	= untrailingslashit(str_replace('//','/',str_replace('\\','/',stripslashes($_POST['mailsendmail']))));
 	$cfg['mailsecure']		= $_POST['mailsecure'];
-	$cfg['mailhost']			= $_POST['mailhost'];
-	$cfg['mailuser']			= $_POST['mailuser'];
-	$cfg['mailpass']			= base64_encode($_POST['mailpass']);
+	$cfg['mailhost']		= $_POST['mailhost'];
+	$cfg['mailuser']		= $_POST['mailuser'];
+	$cfg['mailpass']		= base64_encode($_POST['mailpass']);
+	$cfg['enableword2cats']	= $_POST['enableword2cats']==1 ? true : false;
 	$cfg['disablewpcron']	= $_POST['disablewpcron']==1 ? true : false;
-	$cfg['imgcache']			= $_POST['imgcache']==1 ? true : false;
-	$cfg['imgattach']			= $_POST['imgattach']==1 ? true : false;
+	$cfg['imgcache']		= $_POST['imgcache']==1 ? true : false;
+	$cfg['imgattach']		= $_POST['imgattach']==1 ? true : false;
 
 	if (update_option('wpematico',$cfg)){
 		$success_message=__('Settings saved', 'wpematico');
 		$wpematico_message.='<div id="message" class="updated fade"><p><strong>'.$success_message.'</strong></p></div>';
 	}else{
 		$err_message = str_replace(__('Settings NOT saved:  Something wrong happened.', 'wpematico')).' ';
-		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'</div>';
+		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 	}
 	return $wpematico_message;
 }
@@ -82,6 +91,7 @@ function wpematico_save_settings() {
 function wpematico_save_job() { //Save Campaign settings
 	$jobid = (int) $_POST['jobid'];
 	check_admin_referer('edit-job');
+	$cfg=get_option('wpematico'); //Load Settings
 	$jobs=get_option('wpematico_jobs'); //Load Settings
 
 	if (empty($jobid)) { //generate a new id for new job
@@ -149,7 +159,34 @@ function wpematico_save_job() { //Save Campaign settings
     if(isset($_POST['campaign_categories'])) {
 	  $jobs[$jobid]['campaign_categories']=(array)$_POST['campaign_categories'];
    }
-
+	#Proceso las Words to Category sacando los que estan en blanco
+    //campaign_wrd2cat, campaign_wrd2cat_regex, campaign_wrd2cat_category
+	if(isset($_POST['campaign_wrd2cat'])) {
+		foreach($_POST['campaign_wrd2cat'] as $id => $w2cword) {       
+			$word = $_POST['campaign_wrd2cat'][$id];
+			$regex = ($_POST['campaign_wrd2cat_regex'][$id]==1) ? true : false ;
+			$cases = ($_POST['campaign_wrd2cat_cases'][$id]==1) ? true : false ;
+			$w2ccateg = $_POST['campaign_wrd2cat_category'][$id];
+			if(!empty($word))  {
+				if($regex) 
+					if(false === @preg_match($word, '')) {
+						$err_message = sprintf(__('There\'s an error with the supplied RegEx expression in word: %s', 'wpematico'),'<br />'.$word).' ';
+						$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
+						return $wpematico_message;				
+					}
+				if(!isset($campaign_wrd2cat)) 
+					$campaign_wrd2cat = Array();
+				
+				$campaign_wrd2cat['word'][]=$word ;
+				$campaign_wrd2cat['regex'][]= $regex;
+				$campaign_wrd2cat['cases'][]= $cases;
+				$campaign_wrd2cat['w2ccateg'][]=$w2ccateg ;
+			}
+		}
+	}
+	$jobs[$jobid]['campaign_wrd2cat']=(array)$campaign_wrd2cat ;
+	
+   
 	// Si no hay ningun feed no graba y devuelve mensaje de error
 	// Proceso los feeds sacando los que estan en blanco
 	if(isset($_POST['campaign_feeds'])) {
@@ -166,14 +203,14 @@ function wpematico_save_job() { //Save Campaign settings
 
 	if(!isset($campaign_feeds)) {
 		$err_message = str_replace('%1',$jobs[$jobid]['name'],__('Campaign \'%1\' NOT saved: At least one feed URL must be filled.', 'wpematico')).' ';
-		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'</div>';
+		$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 		return $wpematico_message;
 	} else {  
       foreach($campaign_feeds as $feed) {
 			$simplepie = fetchFeed($feed, true);
 			if($simplepie->error()) {
 				$err_message = sprintf(__('Feed <strong>%s</strong> could not be parsed.<br />(SimplePie said: %s)', 'wpematico'), $feed, $simplepie->error()).' ';
-				$wpematico_message.='<div id="message" class="error fade">'.$err_message.'</div>';
+				$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 				return $wpematico_message;
 			}          
       }
@@ -189,7 +226,24 @@ function wpematico_save_job() { //Save Campaign settings
 
 // *** Campaign Images
 	$jobs[$jobid]['campaign_imgcache']		= $_POST['campaign_imgcache']==1 ? true : false;
+	$jobs[$jobid]['campaign_cancel_imgcache']		= $_POST['campaign_cancel_imgcache']==1 ? true : false;
+	if ($cfg['imgcache']) {
+		if ($jobs[$jobid]['campaign_cancel_imgcache']) $jobs[$jobid]['campaign_imgcache'] = false;
+	}else{
+		if ($jobs[$jobid]['campaign_imgcache']) $jobs[$jobid]['campaign_cancel_imgcache'] = false;
+	}
+	$jobs[$jobid]['campaign_nolinkimg']		= $_POST['campaign_nolinkimg']==1 ? true : false;
 	
+// *** Campaign Template
+	$jobs[$jobid]['campaign_enable_template'] = $_POST['campaign_enable_template']==1 ? true : false;
+	if ($jobs[$jobid]['campaign_enable_template'])
+		if(isset($_POST['campaign_template']))
+			$jobs[$jobid]['campaign_template'] = $_POST['campaign_template'];
+		else{
+			$jobs[$jobid]['campaign_enable_template'] = false;
+			$jobs[$jobid]['campaign_template'] = '';
+		}
+
 // *** Campaign Rewrites	
 	// Proceso los rewrites sacando los que estan en blanco
 	if(isset($_POST['campaign_word_origin'])) {
@@ -202,7 +256,7 @@ function wpematico_save_job() { //Save Campaign settings
 				if($regex) 
 					if(false === @preg_match($origin, '')) {
 						$err_message = sprintf(__('There\'s an error with the supplied RegEx expression in origin: %s', 'wpematico'),'<br />'.$origin).' ';
-						$wpematico_message.='<div id="message" class="error fade">'.$err_message.'</div>';
+						$wpematico_message.='<div id="message" class="error fade">'.$err_message.'<a href="javascript:history.go(-1);" class="button add-new-h2">'.esc_html__('Go Back').'</a></div>';
 						return $wpematico_message;				
 					}
 				if(!isset($campaign_rewrites)) 
@@ -218,9 +272,6 @@ function wpematico_save_job() { //Save Campaign settings
 
 	$jobs[$jobid]['campaign_rewrites']=(array)$campaign_rewrites ;
 
-//	print_r($jobs[$jobid]);
-//	die("=====================================");
-	
 	//unset old vars
 	unset($jobs[$jobid]['scheduletime']);
 	unset($jobs[$jobid]['scheduleintervaltype']);
