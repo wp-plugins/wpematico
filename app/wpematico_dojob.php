@@ -262,7 +262,7 @@ class wpematico_dojob {
 
 		 // Create post
 		$postid = $this->insertPost($title, $wpdb->escape($content), $date, $categories, $campaign['campaign_posttype'], $campaign['campaign_author'], 
-					$campaign['campaign_allowpings'], $campaign['campaign_commentstatus'], $meta);
+					$campaign['campaign_allowpings'], $campaign['campaign_commentstatus'], $meta, $campaign['campaign_customposttype']);
 		
 		// Attaching images uploaded to created post in media library 
 		
@@ -272,8 +272,14 @@ class wpematico_dojob {
 				$urls = $images[2];  
 				if(sizeof($urls)) { // Si hay alguna imagen en el content
 					trigger_error(__('Attaching images.','wpematico'),E_USER_NOTICE);
+					$custom_imagecount = 0;
 					foreach($urls as $imagen_src) {
-						$this->insertfileasattach($imagen_src,$postid);
+						$attachid = $this->insertfileasattach($imagen_src,$postid);
+						if($custom_imagecount == 0) {
+							trigger_error(__('Featured Image Into Post.','wpematico'),E_USER_NOTICE);
+							$this->insertPostMeta($postid, '_thumbnail_id', $attachid);
+							$custom_imagecount++;
+						}
 					}
 				}
 			}
@@ -307,6 +313,8 @@ class wpematico_dojob {
 		require_once(ABSPATH . "wp-admin" . '/includes/image.php');
 		$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
 		wp_update_attachment_metadata( $attach_id,  $attach_data );
+		
+		return $attach_id;
 	}
   
  /**
@@ -469,14 +477,16 @@ class wpematico_dojob {
    * @param   array     $meta             Meta key / values
    * @return  integer   Created post id
    */
-  function insertPost($title, $content, $timestamp = null, $category = null, $status = 'draft', $authorid = null, $allowpings = true, $comment_status = 'open', $meta = array()) {
-    $date = ($timestamp) ? gmdate('Y-m-d H:i:s', $timestamp + (get_option('gmt_offset') * 3600)) : null;
+  function insertPost($title, $content, $timestamp = null, $category = null, $status = 'draft', $authorid = null, $allowpings = true, $comment_status = 'open', $meta = array(),		 $post_type= 'post')   {
+  
+	$date = ($timestamp) ? gmdate('Y-m-d H:i:s', $timestamp + (get_option('gmt_offset') * 3600)) : null;
     $postid = wp_insert_post(array(
     	'post_title' 	            => $title,
   		'post_content'  	        => $content,
   		'post_content_filtered'  	=> $content,
   		'post_category'           => $category,
   		'post_status' 	          => $status,
+  		'post_type' 	          => $post_type,
   		'post_author'             => $authorid,
   		'post_date'               => $date,
   		'comment_status'          => $comment_status,
