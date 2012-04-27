@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 0.90Beta
+Tested up to: 3.3.2
+Stable tag: 0.91.1Beta
 
 WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 
@@ -89,6 +89,13 @@ You can either install it automatically from the WordPress admin, or do it manua
 6. Cutting last html predefined tag, and counting words or letters to skip, cut or asign to a category.
 
 == Changelog ==
+
+= 0.91.1Beta =
+* [PRO]
+* Added New Feature: Fetch every 1 Minute. Buyed by Juergen Mueller from [Wirtschaft](http://www.wirtschaft.com)
+* [/PRO]
+* Fix minor but important thing about duplicating posts.
+* Fix minnor layout bugs on Settings.
 
 = 0.90Beta =
 * [PRO]
@@ -186,6 +193,6 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Upgrade Notice ==
 
-= 0.90Beta PRO =
-* Changes only at PRO version.
-* WP 3.3.1 Ready.
+= 0.91.1Beta PRO =
+* Fix minor but important thing about duplicates post.
+* WP 3.3.2 Ready.

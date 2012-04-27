@@ -73,6 +73,7 @@ class wpematico_dojob {
 	private $feeds=array();
 	private $posts=0;
 	private $lasthash=array();
+	private $currenthash=array();
 
 	public function __construct($jobid) {
 		global $wpdb,$wpematico_dojob_message, $jobwarnings, $joberrors;
@@ -140,31 +141,33 @@ class wpematico_dojob {
     $prime = true;
     
     foreach($simplepie->get_items() as $item) {
+
 		if($prime){
-			$this->lasthash[$feed] = md5($item->get_permalink()); //Siempre guardo el PRIMERO leido por feed  (es el ultimo item)
-			$this->titlecounter = $campaign['campaign_ctnextnumber'];  //tomo el contador en el primero para que no lo reinicie cada item
+			$this->lasthash[$feed] = md5($item->get_permalink()); //Siempre guardo el PRIMERO leido por feed  (es el ultimo item, mas nuevo)
+
 			$prime=false;
 		}
 
-		$dupi = ($this->job[$feed]['lasthash'] == $this->lasthash[$feed]); // chequeo a la primer coincidencia ya vuelve  
+		$this->currenthash[$feed] = md5($item->get_permalink()); // el hash del item actual del feed feed  
+		$dupi = ($this->job[$feed]['lasthash'] == $this->currenthash[$feed]); // chequeo a la primer coincidencia ya vuelve  
 		if ($dupi) {
-			trigger_error(sprintf(__('Found duplicated hash \'%1s\'','wpematico'),$item->get_permalink()).': '.$this->lasthash[$feed] ,E_USER_NOTICE);
+			trigger_error(sprintf(__('Found duplicated hash \'%1s\'','wpematico'),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
 			trigger_error(__('Filtering duplicated posts.','wpematico'),E_USER_NOTICE);
 			break;   
 		}		
 
-      if($this->isDuplicate($campaign, $feed, $item)) {
+		if($this->isDuplicate($campaign, $feed, $item)) {
 			trigger_error(__('Filtering duplicated posts.','wpematico'),E_USER_NOTICE);
 			break;
-      }
+		}
       
-      $count++;
-      array_unshift($items, $item);
+		$count++;
+		array_unshift($items, $item);
       
-      if($count == $campaign['campaign_max']) {
+		if($count == $campaign['campaign_max']) {
 			trigger_error(sprintf(__('Campaign fetch limit reached at %1s.','wpematico'),$campaign['campaign_max']),E_USER_NOTICE);
-        break;
-      }
+			break;
+		}
     }
     
     // Processes post stack

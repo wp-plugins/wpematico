@@ -196,6 +196,11 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 
 		</div>
 	</div>
+	
+	
+	
+	
+	<?php //+++++++++++++++++++++++Comienzo Centro+++++++++++++++++++++++++// ?>
 	<div class="has-sidebar" >
 		<div id="post-body-content" class="has-sidebar-content">
 
@@ -229,7 +234,7 @@ $jobvalue=wpematico_check_job_vars($jobs[$jobid],$jobid);
 				  </ul>
 				  <div>
 						<a href="JavaScript:Void(0);" class="button-primary right" id="addmore" onclick="jQuery('#feeds_edit').append('&lt;li class=&quot;jobtype-select&quot;&gt;&lt;label&gt;Feed URL:&lt;/label&gt;&lt;input  class=&quot;large-text feedinput&quot; type=&quot;text&quot; value=&quot;&quot; id=&quot;feed_new&quot; name=&quot;campaign_feeds[]&quot;&gt;&lt;/li&gt;');" style="font-weight: bold; text-decoration: none;" ><?php _e('Add more','wpematico'); ?>.</a>
-						<span class="button-primary right" id="checkfeeds" style="font-weight: bold; text-decoration: none;" ><?php _e('Check all feeds','wpematico'); ?>.</span><img src="/wp-admin/images/wpspin_light.gif" id="ruedita" style="display:none;" Title="<?php _e('Checking','wpematico'); ?>">
+						<span class="button-primary right" id="checkfeeds" style="font-weight: bold; text-decoration: none;" ><?php _e('Check all feeds','wpematico'); ?>. <img src="/wp-admin/images/wpspin_light.gif" id="ruedita" style="height:13px; display:none;" Title="<?php _e('Checking','wpematico'); ?>"></span>
 						
 				  </div>
   				</div>
