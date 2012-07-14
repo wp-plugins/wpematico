@@ -103,7 +103,9 @@ or to e-mail etruel@gmail.com
 == Changelog ==
 
 = 1.0 =
+
 This is a really update. Lot of things that you asked for, are ready in 1.0 version.
+
 * Now use Wordpress custom post types for campaigns.
 * Now you can move and close metaboxes.
 * Now you can paginate and filter campaigns list by name.
