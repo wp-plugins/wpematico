@@ -55,7 +55,8 @@ class WPeMatico_functions {
 		$args = array(
 			'orderby'         => 'ID',
 			'order'           => 'ASC',
-			'post_type'       => 'wpematico'
+			'post_type'       => 'wpematico', 
+			'numberposts' => -1
 		);
 		$campaigns = get_posts( $args );
 		foreach( $campaigns as $post ):
@@ -415,7 +416,7 @@ class WPeMatico_functions {
 
 	//cron work  (fuera de la clase hasta que wp lo soporte)
 	function wpematico_cron() {
-		$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC' );
+		$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC', 'numberposts' => -1 );
 		$campaigns = get_posts( $args );
 		foreach( $campaigns as $post ) {
 			$campaign = WPeMatico :: get_campaign( $post->ID );

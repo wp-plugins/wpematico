@@ -1,9 +1,9 @@
 <?php
 /*
  Plugin Name: WPeMatico
- Plugin URI: http://www.netmdp.com/wpematico/
- Description: Enables administrators to create posts automatically from RSS/Atom feeds.  If you like it, please rate it.
- Version: 1.0
+ Plugin URI: http://www.wpematico.com
+ Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it.
+ Version: 1.0.1
  Author: etruel <esteban@netmdp.com>
  Author URI: http://www.netmdp.com
  */
@@ -43,8 +43,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access public
 		 * @const string
 		 */
-		const VERSION = '1.0';
-		const RELEASE = 'RC2';
+		const VERSION = '1.0.1';
+		const RELEASE = '1';
 
 		/**
 		 * Option Key
@@ -329,7 +329,9 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			'menu_name' => 'WpeMatico');
 		  $args = array(
 			'labels' => $labels,
-			'public' => true,
+			//'public' => true,
+			'public' => false,
+			'exclude_from_search' => true,
 			'publicly_queryable' => false,
 			'show_ui' => true, 
 			'show_in_menu' => true, 

@@ -163,9 +163,15 @@ $cfg = $this->options;  ?>
 				<h3 class="hndle"><span><?php _e('Disable WP-Cron', self :: TEXTDOMAIN ); ?></span></h3>
 				<div class="inside">
 					<input class="checkbox" id="disablewpcron" type="checkbox"<?php checked($cfg['disablewpcron'],true);?> name="disablewpcron" value="1"/> <?php _e('Use Cron job of Hoster and disable WP_Cron', self :: TEXTDOMAIN ); ?><br />
-					<div id="hlpcron" style="padding-left:20px;"><?php _e('You must set up a cron job that calls:', self :: TEXTDOMAIN ); ?>
-					<i> php -q <?php echo ABSPATH.'wp-cron.php'; ?></i><br /> 
-					<?php _e('or URL:', self :: TEXTDOMAIN ); ?> &nbsp;&nbsp;&nbsp;<i><?php echo trailingslashit(get_option('siteurl')).'wp-cron.php'; ?></i></div><br /> 
+					<div id="hlpcron" style="padding-left:20px;">
+					<strong><?php _e('NOTE:', self :: TEXTDOMAIN ); ?></strong> <?php _e('Checking this, deactivate all Wordpress cron schedules.', self :: TEXTDOMAIN ); ?><br /><br />
+					<?php _e('You must set up a cron job that calls:', self :: TEXTDOMAIN ); ?><br />
+					<span class="coderr b"><i> php -q <?php echo self :: $dir . "app/wpe-cron.php"; ?></i></span><br />
+					<?php _e('or URL:', self :: TEXTDOMAIN ); ?> &nbsp;&nbsp;&nbsp;<span class="coderr b"><i><?php echo self :: $uri . "app/wpe-cron.php"; ?></i></span>
+					<br /><br />
+					<?php _e('If also want to run the wordpress cron with external cron you can set up a cron job that calls:', self :: TEXTDOMAIN ); ?><br />
+					<span class="coderr b"><i> php -q <?php echo ABSPATH.'wp-cron.php'; ?></i></span><br /> 
+					<?php _e('or URL:', self :: TEXTDOMAIN ); ?> &nbsp;&nbsp;&nbsp;<span class="coderr b"><i><?php echo trailingslashit(get_option('siteurl')).'wp-cron.php'; ?></i></span></div><br /> 
 				</div>
 			</div>				
 

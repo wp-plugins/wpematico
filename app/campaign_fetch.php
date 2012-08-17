@@ -25,9 +25,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		ignore_user_abort(true);			//user can't abort script (close windows or so.)
 		$this->campaign_id=$campaign_id;			   //set campaign id
 		$this->campaign = WPeMatico :: get_campaign($this->campaign_id);
+		
 		//$this->fetched_posts = $this->campaign['postscount'];
 		$this->cfg = get_option(WPeMatico :: OPTION_KEY);
-		
+
 		//set function for PHP user defined error handling
 		if (defined(WP_DEBUG) and WP_DEBUG)
 			set_error_handler('wpematico_joberrorhandler',E_ALL | E_STRICT);
@@ -285,7 +286,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				$mailbody.=__("Warnings:", WPeMatico :: TEXTDOMAIN )." ".$jobwarnings."\n";
 
 			$mailbody.="\n".$campaign_log_message;
-			add_filter('wp_mail_content_type','change_content_type'); function change_content_type(){ return 'text/html'; } 
+			add_filter('wp_mail_content_type','wpe_change_content_type'); //function wpe_change_content_type(){ return 'text/html'; } 
 			
 			wp_mail($this->campaign['mailaddresslog'],__('WPeMatico Log ', WPeMatico :: TEXTDOMAIN ).' '.date_i18n('Y-m-d H:i').': '.$title ,$mailbody,'','');  //array($this->logdir.$this->logfile  
 		}
@@ -303,6 +304,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 }
 
+function wpe_change_content_type(){ return 'text/html'; }
 
 //function for PHP error handling
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {

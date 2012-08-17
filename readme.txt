@@ -102,6 +102,14 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 
+= 1.0.1 =
+Maintenance release.
+* Fixed not run for more than five campaigns.
+* Fixed? problem with filter function wp_mail_content_type
+* Trying to do more compatible with plugins that use public custom posts urls: Added 'public' => false and 'exclude_from_search' => true to custom post type 'campaign'.
+* Added new file for run external cron alone without call wp-cron.
+* New website for plugin [WPeMatico](http://www.wpematico.com)
+
 = 1.0 =
 
 This is a really update. Lot of things that you asked for, are ready in 1.0 version.
@@ -241,5 +249,5 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.0 =
-* 
+= 1.0.1 =
+* Many bugs fixed.
