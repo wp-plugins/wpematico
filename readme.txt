@@ -6,8 +6,7 @@ Requires at least: 3.1
 Tested up to: 3.4.1
 Stable tag: 1.0.1
 
-WPeMatico is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.
-Automatically create posts from the RSS/Atom feeds you choose, which are organized into campaigns.
+WPeMatico is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
 == Description ==
 
@@ -103,7 +102,6 @@ or to e-mail etruel@gmail.com
 == Changelog ==
 
 = 1.0.1 =
-Maintenance release.
 * Fixed not run for more than five campaigns.
 * Fixed? problem with filter function wp_mail_content_type
 * Trying to do more compatible with plugins that use public custom posts urls: Added 'public' => false and 'exclude_from_search' => true to custom post type 'campaign'.
@@ -250,4 +248,4 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 == Upgrade Notice ==
 
 = 1.0.1 =
-* Many bugs fixed.
+* Maintenance release. Many bugs fixed.
