@@ -1,10 +1,10 @@
-=== Plugin Name ===
+=== WPeMatico ===
 Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 WPeMatico is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.
 Automatically create posts from the RSS/Atom feeds you choose, which are organized into campaigns.
