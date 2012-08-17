@@ -6,7 +6,7 @@ Requires at least: 3.1
 Tested up to: 3.4.1
 Stable tag: 1.0.1
 
-WPeMatico is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
+This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
 == Description ==
 
