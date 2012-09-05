@@ -78,7 +78,7 @@ class WPeMatico_functions {
 			$campaign = get_post($post_id);
 		}
 		$campaign_data = get_post_meta( $post_id , 'campaign_data' );
-		$campaign_data = $campaign_data[0];
+		$campaign_data = @$campaign_data[0];
 		$campaign_data['campaign_id'] = $post_id;
 		$campaign_data['campaign_title'] = get_the_title($post_id);
 		return $campaign_data;
@@ -149,14 +149,19 @@ class WPeMatico_functions {
    * @return  SimplePie_Item    Feed object
    **/
   function fetchFeed($url, $stupidly_fast = false, $max = 0) {  # SimplePie
-	if (!class_exists('SimplePie')) {
-		if (is_file( ABSPATH . WPINC . '/class-simplepie.php'))
-			include_once( ABSPATH. WPINC . '/class-simplepie.php' );
-		else if (is_file( ABSPATH.'wp-admin/includes/class-simplepie.php'))
-			include_once( ABSPATH.'wp-admin/includes/class-simplepie.php' );
-		else
-			include_once( dirname( __FILE__) . '/lib/simplepie.inc.php' );
-	}		
+	$cfg = get_option(WPeMatico :: OPTION_KEY);
+	if ( $cfg['force_mysimplepie']){
+		include_once( dirname( __FILE__) . '/lib/simplepie.inc.php' );
+	}else{
+		if (!class_exists('SimplePie')) {
+			if (is_file( ABSPATH . WPINC . '/class-simplepie.php'))
+				include_once( ABSPATH. WPINC . '/class-simplepie.php' );
+			else if (is_file( ABSPATH.'wp-admin/includes/class-simplepie.php'))
+				include_once( ABSPATH.'wp-admin/includes/class-simplepie.php' );
+			else
+				include_once( dirname( __FILE__) . '/lib/simplepie.inc.php' );
+		}		
+	}
     $feed = new SimplePie();
     $feed->enable_order_by_date(false);
     $feed->set_feed_url($url);

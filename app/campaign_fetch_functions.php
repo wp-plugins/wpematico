@@ -11,7 +11,7 @@ class wpematico_campaign_fetch_functions {
 	function isDuplicate(&$campaign, &$feed, &$item) {
 		// Agregar variables para chequear duplicados solo de esta campaña o de cada feed ( grabados en post_meta) o por titulo y permalink
 		global $wpdb, $wp_locale, $current_blog;
-		$table_name = $wpdb->prefix . "posts";  
+		$table_name = $wpdb->prefix . "posts";
 		$blog_id 	= @$current_blog->blog_id;
 		
 		$title = $wpdb->escape($item->get_title()); // $item->get_permalink();
@@ -105,21 +105,22 @@ class wpematico_campaign_fetch_functions {
 		}
 	
 	 // Rewrite
-		$rewrites = $campaign['campaign_rewrites'];
-		for ($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
-			$origin = $campaign['campaign_rewrites']['origin'][$i];
-			if(isset($campaign['campaign_rewrites']['rewrite'][$i])) {
-			  $reword = !empty($campaign['campaign_rewrites']['relink'][$i]) 
-							  ? '<a href="'. $campaign['campaign_rewrites']['relink'][$i] .'">' . $campaign['campaign_rewrites']['rewrite'][$i] . '</a>' 
-							  : $campaign['campaign_rewrites']['rewrite'][$i];
-			  
-			if($campaign['campaign_rewrites']['regex'][$i]) {
-				$current_item['content'] = preg_replace($origin, stripslashes($reword), $current_item['content']);
-			}else
-				$current_item['content'] = str_ireplace($origin, stripslashes($reword), $current_item['content']);
-			}else if(!empty($campaign['campaign_rewrites']['relink'][$i]))
-				$current_item['content'] = str_ireplace($origin, '<a href="'. stripslashes($campaign['campaign_rewrites']['relink'][$i]) .'">' . $origin . '</a>', $current_item['content']);
-		}
+		//$rewrites = $campaign['campaign_rewrites'];
+		if (isset($campaign['campaign_rewrites']['origin']))
+			for ($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
+				$origin = $campaign['campaign_rewrites']['origin'][$i];
+				if(isset($campaign['campaign_rewrites']['rewrite'][$i])) {
+				  $reword = !empty($campaign['campaign_rewrites']['relink'][$i]) 
+								  ? '<a href="'. $campaign['campaign_rewrites']['relink'][$i] .'">' . $campaign['campaign_rewrites']['rewrite'][$i] . '</a>' 
+								  : $campaign['campaign_rewrites']['rewrite'][$i];
+				  
+				if($campaign['campaign_rewrites']['regex'][$i]) {
+					$current_item['content'] = preg_replace($origin, stripslashes($reword), $current_item['content']);
+				}else
+					$current_item['content'] = str_ireplace($origin, stripslashes($reword), $current_item['content']);
+				}else if(!empty($campaign['campaign_rewrites']['relink'][$i]))
+					$current_item['content'] = str_ireplace($origin, '<a href="'. stripslashes($campaign['campaign_rewrites']['relink'][$i]) .'">' . $origin . '</a>', $current_item['content']);
+			}
 		// End rewrite
 
 		if ( !$this->cfg['disable_credits']) {$current_item['content'] .= '<p class="wpematico_credit">Powered by <a href="http://www.netmdp.com/wpematico/" target="_blank">WPeMatico</a></p>'; }
@@ -142,27 +143,28 @@ class wpematico_campaign_fetch_functions {
 		//Proceso Words to Category y si hay las agrego al array
 		if ( $this->cfg['enableword2cats']) {
 			trigger_error(sprintf(__('Processing Words to Category %1s', WPeMatico :: TEXTDOMAIN ), $current_item['title'] ),E_USER_NOTICE);
-			$wrd2cats = $campaign['campaign_wrd2cat'];
-			for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
-				$foundit = false;
-				$word = @$campaign['campaign_wrd2cat']['word'][$i];
-				if(isset($campaign['campaign_wrd2cat']['w2ccateg'][$i])) {
-					$tocat = $campaign['campaign_wrd2cat']['w2ccateg'][$i];
-					if($campaign['campaign_wrd2cat']['regex'][$i]) {
-						$foundit = (preg_match($word, $current_item['content'])) ? true : false; 
-					}else{
-						if($campaign['campaign_wrd2cat']['cases'][$i]) 
-							$foundit = strpos($current_item['content'], $word);
-						else $foundit = stripos($current_item['content'], $word); //insensible a May/min
-					}
-					if ($foundit !== false ) {
-						trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s', WPeMatico :: TEXTDOMAIN ),$word,$tocat),E_USER_NOTICE);
-						$current_item['categories'][] = $tocat;
-					}else{
-						trigger_error(sprintf(__('Not found word %1s', WPeMatico :: TEXTDOMAIN ),$word),E_USER_NOTICE);
+			//$wrd2cats = $campaign['campaign_wrd2cat'];
+			if (isset($campaign['campaign_wrd2cat']['word']))
+				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
+					$foundit = false;
+					$word = @$campaign['campaign_wrd2cat']['word'][$i];
+					if(isset($campaign['campaign_wrd2cat']['w2ccateg'][$i])) {
+						$tocat = $campaign['campaign_wrd2cat']['w2ccateg'][$i];
+						if($campaign['campaign_wrd2cat']['regex'][$i]) {
+							$foundit = (preg_match($word, $current_item['content'])) ? true : false; 
+						}else{
+							if($campaign['campaign_wrd2cat']['cases'][$i]) 
+								$foundit = strpos($current_item['content'], $word);
+							else $foundit = stripos($current_item['content'], $word); //insensible a May/min
+						}
+						if ($foundit !== false ) {
+							trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s', WPeMatico :: TEXTDOMAIN ),$word,$tocat),E_USER_NOTICE);
+							$current_item['categories'][] = $tocat;
+						}else{
+							trigger_error(sprintf(__('Not found word %1s', WPeMatico :: TEXTDOMAIN ),$word),E_USER_NOTICE);
+						}
 					}
 				}
-			}
 		}	// End Words to Category
 		
 		return $current_item;

@@ -228,9 +228,15 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	* @return  integer   Created post id
 	*/
 	function insertPost($title, $content, $timestamp = null, $category = null, $status = 'draft', $authorid = null, $allowpings = true, $comment_status = 'open', $meta = array(), $post_type= 'post', $images = null)   {
-
-		$date = ($timestamp) ? gmdate('Y-m-d H:i:s', $timestamp + (get_option('gmt_offset') * 3600)) : null;
+		global $wpdb, $wp_locale, $current_blog;
+		$table_name = $wpdb->prefix . "posts";  
+		$blog_id 	= @$current_blog->blog_id;
 		
+		$date = ($timestamp) ? gmdate('Y-m-d H:i:s', $timestamp + (get_option('gmt_offset') * 3600)) : null;
+		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
+			$truecontent = $content;
+			$content = '';
+		}
 		$post_id = wp_insert_post(array(
 			'post_title' 	          => $title,
 			'post_content'  	      => $content,
@@ -243,7 +249,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			'comment_status'          => $comment_status,
 			'ping_status'             => ($allowpings) ? "open" : "closed"
 		));
-
+		
+		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
+			$content = $truecontent;
+			trigger_error(__('Adding unfiltered content', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+			$wpdb->update( $table_name, array( 'post_content' => $content, 'post_content_filtered' => $content ), array( 'ID' => $post_id )	);
+		}
 		// insert PostMeta
 		foreach($meta as $key => $value) 
 			add_post_meta($post_id, $key, $value, true);

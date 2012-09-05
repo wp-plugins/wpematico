@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -100,6 +100,12 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed many [DEPRECATED] PHP notices on log and cron interrupted: upgraded Simplepie library to 1.3. 
+* New option on advanced settings to force use of Simplepie library in plugin. Simplepie provided by WP is not compatible with PHP 5.3.
+* Added options for skip Wordpress Post content filters. Beta. (this is for allow embed code like flash or videos on posts)
+* Fixed some other minor details.
 
 = 1.0.1 =
 * Fixed not run for more than five campaigns.
@@ -247,5 +253,6 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.0.1 =
-* Maintenance release. Many bugs fixed.
+= 1.0.2 =
+* Compatibility release. [DEPRECATED] notices on log with PHP 5.3. Upgraded Simplepie library to 1.3. 
+

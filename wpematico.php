@@ -2,8 +2,8 @@
 /*
  Plugin Name: WPeMatico
  Plugin URI: http://www.wpematico.com
- Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it.
- Version: 1.0.1
+ Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
+ Version: 1.0.2
  Author: etruel <esteban@netmdp.com>
  Author URI: http://www.netmdp.com
  */
@@ -43,7 +43,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access public
 		 * @const string
 		 */
-		const VERSION = '1.0.1';
+		const VERSION = '1.0.2';
 		const RELEASE = '1';
 
 		/**
@@ -117,6 +117,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			'enabledelhash' => false,
 			'enableword2cats' => false,
 			'disable_credits' => false,
+			'force_mysimplepie' => false,
+			'woutfilter' => false,
 		);
 
 		/**
@@ -300,7 +302,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				$data,
 				array(
 				'<a href="http://wordpress.org/extend/plugins/wpematico/faq/" target="_blank">' . __('FAQ') . '</a>',
-				'<a href="http://www.netmdp.com/wpematico/" target="_blank">' . __('Support') . '</a>',
+				'<a href="http://www.wpematico.com/" target="_blank">' . __('Support') . '</a>',
 				'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU" target="_blank">' . __('Donate', self :: TEXTDOMAIN ) . '</a>'
 				)
 			);
@@ -430,6 +432,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				@$cfg['disablewpcron']	= $_POST['disablewpcron']==1 ? true : false;
 				@$cfg['imgcache']		= $_POST['imgcache']==1 ? true : false;
 				@$cfg['imgattach']		= $_POST['imgattach']==1 ? true : false;
+				@$cfg['force_mysimplepie']	= $_POST['force_mysimplepie']==1 ? true : false;
+				@$cfg['woutfilter']		= $_POST['woutfilter']==1 ? true : false;
 				// Roles 
 				global $wp_roles, $current_user;    
 				get_currentuserinfo();
@@ -516,6 +520,9 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			if(!isset($cfg['disablecheckfeeds']) || !is_bool($cfg['disablecheckfeeds'])) $cfg['disablecheckfeeds'] = false;
 			if(!isset($cfg['enabledelhash']) || !is_bool($cfg['enabledelhash'])) $cfg['enabledelhash'] = false;
 			if(!isset($cfg['enableword2cats']) || !is_bool($cfg['enableword2cats'])) $cfg['enableword2cats'] = false;
+			if(!isset($cfg['disable_credits']) || !is_bool($cfg['disable_credits'])) $cfg['disable_credits'] = false;
+			if(!isset($cfg['force_mysimplepie']) || !is_bool($cfg['force_mysimplepie'])) $cfg['force_mysimplepie'] = false;
+			if(!isset($cfg['woutfilter']) || !is_bool($cfg['woutfilter'])) $cfg['woutfilter'] = false;
 			return $cfg;
 		}
 		

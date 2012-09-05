@@ -3,7 +3,7 @@
 if ( !defined('ABSPATH') ) 
 	die('-1');
 
-$cfg = $this->options;  ?>
+$cfg = $this->check_options($this->options);  ?>
 <div class="wrap">
 	<h2><?php _e( 'WPeMatico settings', self :: TEXTDOMAIN );?></h2>
 	<div id="poststuff" class="metabox-holder has-right-sidebar">
@@ -14,13 +14,18 @@ $cfg = $this->options;  ?>
 				<div class="postbox inside">
 					<h3 class="handle"><?php _e( 'About', self :: TEXTDOMAIN );?></h3>
 					<div class="inside">
-						<p>WPeMatico Free Version <?php echo self :: VERSION ; ?> R<?php echo self :: RELEASE ; ?></p>
+						<p id="left1" onmouseover="this.style.background =  '#111';" onmouseout="this.style.background =  '#FFF';" style="text-align:center; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial; "><a href="http://www.wpematico.com" title="Go to new WPeMatico WebSite"><img style="background: transparent;border-radius: 15px;width: 258px;" src="http://www.netmdp.com/wpematicofiles/bannerWPematico.png" title=""></a><br />
+						WPeMatico Free Version <?php echo self :: VERSION ; ?> R<?php echo self :: RELEASE ; ?></p>
 						<p><?php _e( 'Thanks for test, use and enjoy this plugin.', self :: TEXTDOMAIN );?></p>
 						<p><?php _e( 'If you like it, I really appreciate a donation.', self :: TEXTDOMAIN );?></p>
 						<p>
 						<input type="button" class="button-primary" name="donate" value="<?php _e( 'Click for Donate', self :: TEXTDOMAIN );?>" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU');return false;"/>
 						</p>
 						<p><?php // _e('Help', self :: TEXTDOMAIN ); ?><a href="#" onclick="javascript:window.open('https://www.paypal.com/ar/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="https://www.paypal.com/es_XC/Marketing/i/logo/bnr_airlines1_205x67.gif" border="0" alt="Paypal Help"></a>
+						</p>
+						<p></p>
+						<p>
+						<input type="button" class="button-primary" name="buypro" value="<?php _e( 'Buy PRO version online', self :: TEXTDOMAIN );?>" onclick="javascript:window.open('http://www.wpematico.com/wpematico/');return false;"/>
 						</p>
 						<p></p>
 					</div>
@@ -132,6 +137,25 @@ $cfg = $this->options;  ?>
 				</div>
 			</div>
 		
+			<div id="advancedfetching" class="postbox">
+				<h3 class="hndle"><span><?php _e('Advanced Fetching', self :: TEXTDOMAIN ); ?></span></h3>
+				<div class="inside">
+					<p></p>
+					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'],true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force <b><i>Custom Simplepie Library</i></b>', self :: TEXTDOMAIN ); ?><br />
+					<div id="hlpspl" style="padding-left:20px;"><?php _e('Check this if you want to ignore Wordpress Simplepie library. ', self :: TEXTDOMAIN ); ?></div>
+					<br /> 
+
+					<p></p>
+					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['woutfilter'],true); ?> name="woutfilter" id="woutfilter" /> <?php _e('<b><i>Allow option on campaign for skip the content filters</i></b>', self :: TEXTDOMAIN ); ?><br />
+					<div id="hlpspl" style="padding-left:20px;"><?php _e('NOTE: It is extremely dangerous to allow unfiltered content because there may be some vulnerability in the source code.', self :: TEXTDOMAIN ); ?>
+					<br /><?php _e('See How WordPress Processes Post Content: ', self :: TEXTDOMAIN ); ?><a href="http://codex.wordpress.org/How_WordPress_Processes_Post_Content" target="_blank">http://codex.wordpress.org/How_WordPress_Processes_Post_Content</a>
+					<br />
+					</div>
+					<br /> 
+
+				</div>
+			</div>
+
 			<div id="enabledashboard" class="postbox">
 				<h3 class="hndle"><span><?php _e('Dashboard widget', self :: TEXTDOMAIN ); ?></span></h3>
 				<div class="inside">

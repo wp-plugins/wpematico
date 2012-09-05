@@ -7,10 +7,11 @@ if ( class_exists( 'WPeMatico_Campaign_edit_functions' ) ) return;
 
 class WPeMatico_Campaign_edit_functions {
 	function create_meta_boxes() {
-		global $post,$campaign_data; 
-		//$campaign_data = WPeMatico_Campaign_edit :: check_campaigndata( WPeMatico :: get_campaign ($post->ID) );
+		global $post,$campaign_data, $cfg; 
 		$campaign_data = WPeMatico :: get_campaign ($post->ID);
+		//$campaign_data = self :: check_campaigndata($campaign_data);
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
+		$cfg = WPeMatico :: check_options($cfg);
 		
 	//	add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 		add_meta_box( 'cron-box', __('Campaign Schedule', WPeMatico :: TEXTDOMAIN ), array( 'WPeMatico_Campaign_edit' ,'cron_box' ),'wpematico','side', 'default' );
@@ -142,10 +143,10 @@ class WPeMatico_Campaign_edit_functions {
 	
 	//*************************************************************************************
 	function template_box( $post ) { 
-		global $post, $campaign_data;
+		global $post, $campaign_data, $cfg;
 		$campaign_enable_template = @$campaign_data['campaign_enable_template'];
 		$campaign_template = @$campaign_data['campaign_template'];
-		$cfg = get_option(WPeMatico :: OPTION_KEY);
+		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		?>
 		<div class="lightblue inmetabox">
 		<p class="he20">
@@ -191,12 +192,12 @@ class WPeMatico_Campaign_edit_functions {
 	}
 	//*************************************************************************************
 	function images_box( $post ) { 
-		global $post, $campaign_data;
+		global $post, $campaign_data, $cfg;
 		
 		$campaign_imgcache = $campaign_data['campaign_imgcache'];
 		$campaign_cancel_imgcache = $campaign_data['campaign_cancel_imgcache'];
 		$campaign_nolinkimg = $campaign_data['campaign_nolinkimg'];
-		$cfg = get_option(WPeMatico :: OPTION_KEY);
+		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		if (!$cfg['imgcache']) : ?>
 			<p><input name="campaign_imgcache" id="campaign_imgcache" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_imgcache,true); ?> style="width: 19px;" />
 			<b class="left he20"><?php echo '<label for="campaign_imgcache">' . __('Enable Cache Images for this campaign?', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
@@ -218,12 +219,14 @@ class WPeMatico_Campaign_edit_functions {
 	}
 	//*************************************************************************************
 	function options_box( $post ) { 
-		global $post, $campaign_data;
+		global $post, $campaign_data, $cfg ;
+		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$campaign_max = $campaign_data['campaign_max'];
 		$campaign_author = $campaign_data['campaign_author'];
 		$campaign_linktosource = $campaign_data['campaign_linktosource'];
 		$campaign_commentstatus = $campaign_data['campaign_commentstatus'];
 		$campaign_allowpings = $campaign_data['campaign_allowpings'];
+		$campaign_woutfilter = $campaign_data['campaign_woutfilter'];
 		?>
 		<p><b><?php echo '<label for="campaign_max">' . __('Max items to create on each fetch:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
 		<input name="campaign_max" type="text" size="3" value="<?php echo $campaign_max;?>" class="small-text" id="campaign_max"/><br />
@@ -246,13 +249,21 @@ class WPeMatico_Campaign_edit_functions {
 		</select>
 		<input class="checkbox" type="checkbox"<?php checked($campaign_allowpings ,true);?> name="campaign_allowpings" value="1" id="campaign_allowpings"/> <?php echo '<label for="campaign_allowpings">' . __('Allow pings?', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?><br />
 		</p>
+		
+		<?php if ($cfg['woutfilter']) : ?>
+		<p><b><?php echo '<label for="campaign_woutfilter">' . __('Post Content Unfiltered:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
+		<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_woutfilter,true); ?> name="campaign_woutfilter" id="campaign_woutfilter" /> <br />
+		<?php _e('<b><i>Skip the Wordpress post content filters</i></b>', WPeMatico :: TEXTDOMAIN ); ?>
+		<i><?php _e('NOTE: It is extremely dangerous to allow unfiltered content because there may be some vulnerability in the source code.', WPeMatico :: TEXTDOMAIN ); ?><?php _e('Not recommended.', WPeMatico :: TEXTDOMAIN ); ?></i><br />
+		</p>
+		<?php endif; ?>
 		<?php
 	}
 
 	//*************************************************************************************
 	function feeds_box( $post ) {  
-		global $post, $campaign_data;
-		$cfg = get_option(WPeMatico :: OPTION_KEY);
+		global $post, $campaign_data, $cfg;
+		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$campaign_feeds = $campaign_data['campaign_feeds'];
 		if(!($campaign_feeds)) $campaign_feeds = array();
 		?>  <div class="submenu_dropdown">
@@ -340,8 +351,8 @@ class WPeMatico_Campaign_edit_functions {
 		
 	//*************************************************************************************	
 	function cron_box( $post ) {  
-		global $post, $campaign_data;
-		$cfg = get_option(WPeMatico :: OPTION_KEY);
+		global $post, $campaign_data, $cfg;
+		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$activated = $campaign_data['activated'];
 		$cron = $campaign_data['cron'];
 		?>
@@ -557,6 +568,85 @@ class WPeMatico_Campaign_edit_functions {
 		?>
 		</div></div>	<?php 
 	}
-	
+
+
+	/************** CHECK DATA *************************************************/
+	function check_campaigndata( $campaigndata=array() ) {
+		if (empty($campaigndata['campaign_posttype']) or !is_string($campaigndata['campaign_posttype']))
+			$campaigndata['campaign_posttype']= 'publish';
+
+		if (empty($campaigndata['campaign_customposttype']) or !is_string($campaigndata['campaign_customposttype']))
+			$campaigndata['campaign_customposttype']= 'post';
+
+		if (!isset($campaigndata['activated']) or !is_bool($campaigndata['activated']))
+			$campaigndata['activated']=false;
+
+		if (!isset($campaigndata['campaign_feeds']) or !is_array($campaigndata['campaign_feeds']))
+			$campaigndata['campaign_feeds']=array();
+
+		if (!isset($campaigndata['campaign_wrd2cat']) or !is_array($campaigndata['campaign_wrd2cat']))
+			$campaigndata['campaign_wrd2cat']=array();
+
+		if (!isset($campaigndata['campaign_rewrites']) or !is_array($campaigndata['campaign_rewrites']))
+			$campaigndata['campaign_rewrites']=array();
+
+			//if (!isset($campaigndata['campaign_categories']))
+		if (!isset($campaigndata['campaign_categories']) or !is_array($campaigndata['campaign_categories']))
+			$campaigndata['campaign_categories']=array();
+
+		if (!isset($campaigndata['campaign_linktosource']) or !is_bool($campaigndata['campaign_linktosource']))
+			$campaigndata['campaign_linktosource']=false;
+
+		if (!isset($campaigndata['campaign_commentstatus']) or !is_string($campaigndata['campaign_commentstatus']))
+			$campaigndata['campaign_commentstatus']='open';
+
+		if (!isset($campaigndata['campaign_allowpings'])) // or !is_bool($campaigndata['campaign_allowpings']))
+			$campaigndata['campaign_allowpings']=true;
+
+		if (!isset($campaigndata['campaign_woutfilter'])) // or !is_bool($campaigndata['campaign_woutfilter']))
+			$campaigndata['campaign_woutfilter']=false;
+
+		if (!isset($campaigndata['campaign_author'])) // or !is_int($campaigndata['campaign_author']))
+			$campaigndata['campaign_author']=0;
+			
+		if (!isset($campaigndata['campaign_max'])) // or !is_int($campaigndata['campaign_max']))
+			$campaigndata['campaign_max']=10;
+	// *** Processed posts count
+		if (!isset($campaigndata['postscount'])) // or !is_int($campaigndata['postscount']))
+			$campaigndata['postscount']= 0;
+		if (!isset($campaigndata['lastpostscount'])) // or !is_int($campaigndata['lastpostscount']))
+			$campaigndata['lastpostscount']= 0;
+	// *** Campaign Images
+		$campaigndata['campaign_imgcache'] = (!isset($campaigndata['campaign_imgcache']) or !is_bool($campaigndata['campaign_imgcache']) or (!$campaigndata['campaign_imgcache'])==1) ? false : true ;
+		$campaigndata['campaign_cancel_imgcache'] = (!isset($campaigndata['campaign_cancel_imgcache']) or !is_bool($campaigndata['campaign_cancel_imgcache']) or (!$campaigndata['campaign_cancel_imgcache'])==1) ? false : true ;
+		$campaigndata['campaign_nolinkimg'] = (!isset($campaigndata['campaign_nolinkimg']) or !is_bool($campaigndata['campaign_nolinkimg']) or (!$campaigndata['campaign_nolinkimg'])==1) ? false : true ;
+		
+
+		if (!isset($campaigndata['cron']) or !is_string($campaigndata['cron']))
+			$campaigndata['cron']='0 3 * * *';
+			
+		if (!isset($campaigndata['cronnextrun']) or !is_numeric($campaigndata['cronnextrun']))
+			$campaigndata['cronnextrun']= WPeMatico :: time_cron_next($campaigndata['cron']);
+
+		if (!isset($campaigndata['mailaddresslog'])) 
+			$campaigndata['mailaddresslog']='';
+
+		if ( is_string($campaigndata['mailaddresslog']) && (false === $pos=strpos($campaigndata['mailaddresslog'],'@') or false === strpos($campaigndata['mailaddresslog'],'.',$pos)))
+			$campaigndata['mailaddresslog']=''; //get_option('admin_email');
+
+		if (!isset($campaigndata['mailerroronly']) or !is_bool($campaigndata['mailerroronly']))
+			$campaigndata['mailerroronly']=true;
+
+		if (!isset($campaigndata['mailefilesize']) or !is_float($campaigndata['mailefilesize']))
+			$campaigndata['mailefilesize']=0;
+
+		//if (!is_string($campaigndata['mailaddress']) or false === $pos=strpos($campaigndata['mailaddress'],'@') or false === strpos($campaigndata['mailaddress'],'.',$pos))
+		//	$campaigndata['mailaddress']='';
+
+		if (!isset($campaigndata['campaign_enable_template']) or !is_bool($campaigndata['campaign_enable_template']))
+			$campaigndata['campaign_enable_template']=false;
+
+		return $campaigndata;
+	}	
 }
 ?>
