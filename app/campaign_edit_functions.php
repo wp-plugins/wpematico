@@ -16,6 +16,7 @@ class WPeMatico_Campaign_edit_functions {
 	//	add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 		add_meta_box( 'cron-box', __('Campaign Schedule', WPeMatico :: TEXTDOMAIN ), array( 'WPeMatico_Campaign_edit' ,'cron_box' ),'wpematico','side', 'default' );
 		add_meta_box( 'cat-box',__('Campaign Categories',WPeMatico::TEXTDOMAIN),array( 'WPeMatico_Campaign_edit' ,'cat_box'),'wpematico','side', 'default' );
+		add_meta_box( 'tags-box', __('Tags generation', WPeMatico :: TEXTDOMAIN ), array(  'WPeMatico_Campaign_edit'  ,'tags_box' ),'wpematico','side', 'default' );
 		add_meta_box( 'log-box', __('Send log', WPeMatico :: TEXTDOMAIN ), array(  'WPeMatico_Campaign_edit'  ,'log_box' ),'wpematico','side', 'default' );
 		add_meta_box( 'feeds-box', __('Feeds for this Campaign', WPeMatico :: TEXTDOMAIN ), array(  'WPeMatico_Campaign_edit'  ,'feeds_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'options-box', __('Options for this campaign', WPeMatico :: TEXTDOMAIN ), array(  'WPeMatico_Campaign_edit'  ,'options_box' ),'wpematico','normal', 'default' );
@@ -161,7 +162,7 @@ class WPeMatico_Campaign_edit_functions {
 			<p class="he20"><span id="tags_note" class="note left"> Valid tags: </span>
 			<label title="<?php _e('A little Help', WPeMatico :: TEXTDOMAIN ); ?>" onclick="jQuery('#tags_list').fadeToggle(); jQuery('#tags_list_det').fadeToggle();" class="m4 ui-icon QIco left"></label></p>
 			<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;">
-				<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
+				<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{image}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
 			</p>
 			<div id="tags_list_det" style="display: none;">
 				<h4><?php _e('Supported tags', WPeMatico :: TEXTDOMAIN ); ?></h4>
@@ -169,6 +170,7 @@ class WPeMatico_Campaign_edit_functions {
 				<ul style='list-style-type: square;margin:0 0 5px 20px;font:0.92em "Lucida Grande","Verdana";'>
 				  <li><strong class="tag">{content}</strong> <?php _e('The feed item content.', WPeMatico :: TEXTDOMAIN ); ?> </li>
 				  <li><strong class="tag">{title}</strong> <?php _e('The feed item title.', WPeMatico :: TEXTDOMAIN ); ?> </li>
+				  <li><strong class="tag">{image}</strong> <?php _e('Put the featured image on content.', WPeMatico :: TEXTDOMAIN ); ?> </li>
 				  <li><strong class="tag">{author}</strong> <?php _e('The feed item author.', WPeMatico :: TEXTDOMAIN ); ?> </li>
 				  <li><strong class="tag">{authorlink}</strong> <?php _e('The feed item author link (If exist).', WPeMatico :: TEXTDOMAIN ); ?> </li>
 				  <li><strong class="tag">{permalink}</strong> <?php _e('The feed item permalink.', WPeMatico :: TEXTDOMAIN ); ?> </li>
@@ -203,18 +205,20 @@ class WPeMatico_Campaign_edit_functions {
 			<b class="left he20"><?php echo '<label for="campaign_imgcache">' . __('Enable Cache Images for this campaign?', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
 			&nbsp;&nbsp; <label title="<?php _e('A little Help', WPeMatico :: TEXTDOMAIN ); ?>" onclick="  jQuery('#hlpimg').fadeToggle();" class="m4 ui-icon QIco left"></label>
 			</p>
-			<p class="mphlp"><span class="srchbdr0 hide" id="hlpimg"><b><?php _e("Image Caching",  WPeMatico :: TEXTDOMAIN ) ?>:</b> <?php _e("When image caching is on, a copy of every image found (only in &lt;img&gt; tags) is downloaded to the specified directory, by default in Wordpress UPLOADS Dir (Highly recommended).",  WPeMatico :: TEXTDOMAIN ) ?><br />
+			<p class="mphlp"><span class="srchbdr0 hide" id="hlpimg"><b><?php _e("Image Caching",  WPeMatico :: TEXTDOMAIN ) ?>:</b> <?php _e("When image caching is on, a copy of every image found (only in &lt;img&gt; tags) is Stored locally to the Wordpress UPLOADS Dir (Recommended).",  WPeMatico :: TEXTDOMAIN ) ?><br />
 			<?php _e("If not enabled all images will linked to the image owner's server, but also make your website faster for your visitors.",  WPeMatico :: TEXTDOMAIN ) ?><br />
 			<b><?php _e("Note",  WPeMatico :: TEXTDOMAIN ) ?>:</b> <?php _e("If this featured is disabled the general Settings options for images caching is taken. Enabling this feature here will be overridden only for this campaign the general Settings options for images caching.",  WPeMatico :: TEXTDOMAIN ) ?></span></p>
+			<div id="nolinkimg" <?php if (!$campaign_imgcache) echo 'style="display:none;"';?>>
+				<p><input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> />
+				<b><?php echo '<label for="campaign_nolinkimg">' . __('No link to source images', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b></p>
+				<p class="mphlp"><b><?php _e("Note",  WPeMatico :: TEXTDOMAIN ) ?>:</b> <?php _e('If selected and image upload get error, then delete the "src" attribute of the &lt;img&gt;. <br />If disable cache images, enabling this for delete "src" attribute of all &lt;img&gt; in the post.', WPeMatico :: TEXTDOMAIN ) ?></p>
+			</div>
 		<?php else : ?>
 			<p><input name="campaign_cancel_imgcache" id="campaign_cancel_imgcache" class="checkbox" value="1" type="checkbox" <?php checked($campaign_cancel_imgcache,true); ?> />
 			<b><?php echo '<label for="campaign_cancel_imgcache">' . __('Cancel Cache Images for this campaign?', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b></p>
 		<?php endif ?>
-		<div id="nolinkimg" <?php if (!$campaign_imgcache) echo 'style="display:none;"';?>>
-			<p><input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> />
-			<b><?php echo '<label for="campaign_nolinkimg">' . __('No link to source images', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b></p>
-			<p class="mphlp"><b><?php _e("Note",  WPeMatico :: TEXTDOMAIN ) ?>:</b> <?php _e('If selected and image upload get error, then delete the "src" attribute of the &lt;img&gt;. <br />If disable cache images, enabling this for delete "src" attribute of all &lt;img&gt; in the post.', WPeMatico :: TEXTDOMAIN ) ?></p>
-		</div>
+		<p><input name="campaign_solo1ra" id="campaign_solo1ra" class="checkbox" value="1" type="checkbox" <?php checked($campaign_solo1ra,true); ?> />
+		<b><?php echo '<label for="campaign_solo1ra">' . __('Left just first image on every post.', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b></p>
 	<?php
 	}
 	//*************************************************************************************
@@ -222,16 +226,31 @@ class WPeMatico_Campaign_edit_functions {
 		global $post, $campaign_data, $cfg ;
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$campaign_max = $campaign_data['campaign_max'];
+		$campaign_feeddate = $campaign_data['campaign_feeddate'];
 		$campaign_author = $campaign_data['campaign_author'];
 		$campaign_linktosource = $campaign_data['campaign_linktosource'];
 		$campaign_commentstatus = $campaign_data['campaign_commentstatus'];
 		$campaign_allowpings = $campaign_data['campaign_allowpings'];
 		$campaign_woutfilter = $campaign_data['campaign_woutfilter'];
+		$campaign_strip_links = $campaign_data['campaign_strip_links'];
 		?>
 		<p><b><?php echo '<label for="campaign_max">' . __('Max items to create on each fetch:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
 		<input name="campaign_max" type="text" size="3" value="<?php echo $campaign_max;?>" class="small-text" id="campaign_max"/><br />
 		<?php _e("Set it to 0 for unlimited. If set to a X value, only the last X items will be selected, ignoring the older ones.",  WPeMatico :: TEXTDOMAIN ) ?></p>
 
+		<div style="width:115px;"><label title="<?php _e('A little Help', WPeMatico :: TEXTDOMAIN ); ?>" onclick="  jQuery('#hlpdate').fadeToggle();" class="m4 ui-icon QIco right"></label><b><?php echo '<label for="campaign_feeddate">' . __('Use feed date', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b> <input class="checkbox" type="checkbox"<?php checked($campaign_feeddate ,true);?> name="campaign_feeddate" value="1" id="campaign_feeddate"/></div>
+		<div class="mphlp" style="margin-top: 2px;">
+		<span class="srchbdr0 hide" id="hlpdate">
+			<b><?php _e('Basics:', WPeMatico :: TEXTDOMAIN ); ?></b> <?php _e('By default, WPeMatico sets the date and time of the posts to that of the moment they\'re created. By using this option, however, you can alter that behavior.', WPeMatico :: TEXTDOMAIN ); ?>
+			<br /><b><?php _e('How it works:', WPeMatico :: TEXTDOMAIN ); ?></b> <?php _e('To avoid incoherent dates due to lousy setup feeds, WPeMatico will use the feed date only if these conditions are met:', WPeMatico :: TEXTDOMAIN ); ?>
+			<ul style='list-style-type: square;margin:0 0 5px 20px;font:0.92em "Lucida Grande","Verdana";'>
+				  <li><?php _e('The feed item date is not too far in the past (specifically, as much time as the campaign frequency).', WPeMatico :: TEXTDOMAIN ); ?> </li>
+				  <li><?php _e('The fetched feed item date is not in the future.', WPeMatico :: TEXTDOMAIN ); ?> </li>
+			</ul>
+		</span>
+		</div>
+		<?php _e("Use the original date from the post instead of the time the post is created by WPeMatico.", WPeMatico :: TEXTDOMAIN ) ?>
+		
 		<p><b><?php echo '<label for="campaign_author">' . __('Author:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
 		<?php wp_dropdown_users(array('name' => 'campaign_author','selected' => $campaign_author )); ?>
 		<span class="note"><?php _e("The created posts will be assigned to this author.",  WPeMatico :: TEXTDOMAIN ) ?></span></p>
@@ -239,6 +258,9 @@ class WPeMatico_Campaign_edit_functions {
 		<p><b><?php echo '<label for="campaign_linktosource">' . __('Post title links to source?', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
 		<input class="checkbox" type="checkbox"<?php checked($campaign_linktosource ,true);?> name="campaign_linktosource" value="1" id="campaign_linktosource"/> <br />
 		<?php _e("This option make the title permalink to original URL.", WPeMatico :: TEXTDOMAIN ) ?></p>
+		<p><b><?php echo '<label for="campaign_strip_links">' . __('Strip links from content', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
+		<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links ,true);?> name="campaign_strip_links" value="1" id="campaign_strip_links"/> <br />
+		<?php _e("This option take out clickable links from content, leaving just the text.", WPeMatico :: TEXTDOMAIN ) ?></p>
 
 		<p><b><?php echo '<label for="campaign_commentstatus">' . __('Discussion options:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
 		<?php //echo 'campaign_commentstatus = '.$campaign_commentstatus;  ?>
@@ -475,7 +497,20 @@ class WPeMatico_Campaign_edit_functions {
 		<input class="checkbox" value="1" type="checkbox" <?php checked($mailerroronly,true); ?> name="mailerroronly" /> <?php _e('Send only E-Mail on errors.', WPeMatico :: TEXTDOMAIN ); ?>
 	<?php
 	}
-	
+
+	//********************************
+	function tags_box( $post ) {
+		global $post, $campaign_data, $cfg;
+		$campaign_tags = @$campaign_data['campaign_tags'];
+		?>			
+		<?php if( $cfg['nonstatic'] ) { NoNStatic :: protags($post); }  ?>
+		<p><b><?php echo '<label for="campaign_tags">' . __('Tags:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
+		<textarea style="" class="large-text" id="campaign_tags" name="campaign_tags"><?php echo stripslashes($campaign_tags); ?></textarea><br />
+		<?php echo __('Enter comma separated list of Tags.', WPeMatico :: TEXTDOMAIN ); ?></p>
+		<?php if( $cfg['nonstatic'] ) { NoNStatic :: protags1($post); }  ?>
+	<?php
+	}
+
 	//********************************
 	function cat_box( $post ) {
 		global $post, $campaign_data;
@@ -581,6 +616,9 @@ class WPeMatico_Campaign_edit_functions {
 		if (!isset($campaigndata['activated']) or !is_bool($campaigndata['activated']))
 			$campaigndata['activated']=false;
 
+		if (!isset($campaigndata['campaign_feeddate']) or !is_bool($campaigndata['campaign_feeddate']))
+			$campaigndata['campaign_feeddate']=false;
+
 		if (!isset($campaigndata['campaign_feeds']) or !is_array($campaigndata['campaign_feeds']))
 			$campaigndata['campaign_feeds']=array();
 
@@ -594,8 +632,14 @@ class WPeMatico_Campaign_edit_functions {
 		if (!isset($campaigndata['campaign_categories']) or !is_array($campaigndata['campaign_categories']))
 			$campaigndata['campaign_categories']=array();
 
+		if (!isset($campaigndata['campaign_tags']) or !is_string($campaigndata['campaign_tags']))
+			$campaigndata['campaign_tags']='';
+
 		if (!isset($campaigndata['campaign_linktosource']) or !is_bool($campaigndata['campaign_linktosource']))
 			$campaigndata['campaign_linktosource']=false;
+
+		if (!isset($campaigndata['campaign_strip_links']) or !is_bool($campaigndata['campaign_strip_links']))
+			$campaigndata['campaign_strip_links']=false;
 
 		if (!isset($campaigndata['campaign_commentstatus']) or !is_string($campaigndata['campaign_commentstatus']))
 			$campaigndata['campaign_commentstatus']='open';
@@ -616,11 +660,24 @@ class WPeMatico_Campaign_edit_functions {
 			$campaigndata['postscount']= 0;
 		if (!isset($campaigndata['lastpostscount'])) // or !is_int($campaigndata['lastpostscount']))
 			$campaigndata['lastpostscount']= 0;
+
+		if (!isset($campaigndata['lastrun'])) // or !is_int($campaigndata['lastrun']))
+			$campaigndata['lastrun']= 0;
+		if (!isset($campaigndata['lastruntime'])) // or !is_int($campaigndata['lastruntime']))
+			$campaigndata['lastruntime']= 0;
 	// *** Campaign Images
 		$campaigndata['campaign_imgcache'] = (!isset($campaigndata['campaign_imgcache']) or !is_bool($campaigndata['campaign_imgcache']) or (!$campaigndata['campaign_imgcache'])==1) ? false : true ;
 		$campaigndata['campaign_cancel_imgcache'] = (!isset($campaigndata['campaign_cancel_imgcache']) or !is_bool($campaigndata['campaign_cancel_imgcache']) or (!$campaigndata['campaign_cancel_imgcache'])==1) ? false : true ;
 		$campaigndata['campaign_nolinkimg'] = (!isset($campaigndata['campaign_nolinkimg']) or !is_bool($campaigndata['campaign_nolinkimg']) or (!$campaigndata['campaign_nolinkimg'])==1) ? false : true ;
+		$campaigndata['campaign_solo1ra'] = (!isset($campaigndata['campaign_solo1ra']) or !is_bool($campaigndata['campaign_solo1ra']) or (!$campaigndata['campaign_solo1ra'])==1) ? false : true ;
+		$campaigndata['default_img'] = (!isset($campaigndata['default_img']) or !is_bool($campaigndata['default_img']) or (!$campaigndata['default_img'])==1) ? false : true ;
 		
+		if (!isset($campaigndata['default_img_url']) or !is_string($campaigndata['default_img_url']))
+			$campaigndata['default_img_url']='';
+		if (!isset($campaigndata['default_img_link']) or !is_string($campaigndata['default_img_link']))
+			$campaigndata['default_img_link']='';
+		if (!isset($campaigndata['default_img_title']) or !is_string($campaigndata['default_img_title']))
+			$campaigndata['default_img_title']='';
 
 		if (!isset($campaigndata['cron']) or !is_string($campaigndata['cron']))
 			$campaigndata['cron']='0 3 * * *';

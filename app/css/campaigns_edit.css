@@ -24,7 +24,9 @@
 .maxhe290 {max-height: 290px; overflow: auto; overflow-x: hidden; overflow-y: scroll;}
 #ruedita1 {margin: 6px -2px 0 0;float:right;}
 .tag{cursor: pointer;}
-.tag:hover {	color: red;}
+.tagcf{cursor: pointer;}
+.tag:hover {color: red;}
+.tagcf:hover {color: red;}
 .codlist{background: #FAFAFA;border: 1px solid #CCCCCC;font-family: verdana,Tahoma,Georgia;font-size: 11px;padding: 0.1em 1em 0;width: 220px;}
 .code{background: none repeat scroll 0 0 #FAFAFA;border: 1px solid #CCCCCC;margin-bottom: 0.9em;padding: 0.4em 1em ;}
 .coderr{background: none repeat scroll 0 0 #FAFAFA;border: 1px solid #CCCCCC;margin-bottom: 0.9em; padding: 0.1em 1em 0 ;}
@@ -32,6 +34,7 @@
 #fieldserror{padding: 10px;}
 
 .bw{background-color: #FFF;}
+.lightBlue{background-color:Lightblue;}
 .lightblue{background-color:LightCyan;}
 .lavender{background-color:lavenderBlush;}
 .yellow{background-color:LemonChiffon;}

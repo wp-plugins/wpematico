@@ -3,7 +3,7 @@
  Plugin Name: WPeMatico
  Plugin URI: http://www.wpematico.com
  Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
- Version: 1.0.2
+ Version: 1.1
  Author: etruel <esteban@netmdp.com>
  Author URI: http://www.netmdp.com
  */
@@ -43,7 +43,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access public
 		 * @const string
 		 */
-		const VERSION = '1.0.2';
+		const VERSION = '1.1';
 		const RELEASE = '1';
 
 		/**
@@ -112,6 +112,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			'disablewpcron' =>false,
 			'imgattach' =>false,
 			'imgcache' => false,
+			'gralnolinkimg' => false,
+			'featuredimg' => true,
 			'nonstatic' => false,
 			'disablecheckfeeds' => false,
 			'enabledelhash' => false,
@@ -431,6 +433,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				@$cfg['enableword2cats']= $_POST['enableword2cats']==1 ? true : false;
 				@$cfg['disablewpcron']	= $_POST['disablewpcron']==1 ? true : false;
 				@$cfg['imgcache']		= $_POST['imgcache']==1 ? true : false;
+				@$cfg['gralnolinkimg']	= $_POST['gralnolinkimg']==1 ? true : false;
+				@$cfg['featuredimg']	= $_POST['featuredimg']==1 ? true : false;
 				@$cfg['imgattach']		= $_POST['imgattach']==1 ? true : false;
 				@$cfg['force_mysimplepie']	= $_POST['force_mysimplepie']==1 ? true : false;
 				@$cfg['woutfilter']		= $_POST['woutfilter']==1 ? true : false;
@@ -451,9 +455,16 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				/*	?><div class="error"><p> <?php _e( 'Settings NOT saved.', self :: TEXTDOMAIN );?></p></div><?php  */
 				}
 			}
-			
+//			add_action('admin_head', array( &$this,'wpesettings_admin_head'));
 			include_once( self :: $dir . "app/settings_page.php");
 		}
+		
+		function wpesettings_admin_head() {
+			?>
+			<?php
+		}
+		
+		
 		/**
 		 * load_textdomain
 		 *
@@ -516,6 +527,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			if(!isset($cfg['disablewpcron']) || !is_bool($cfg['disablewpcron'])) $cfg['disablewpcron'] =false;
 			if(!isset($cfg['imgattach']) || !is_bool($cfg['imgattach'])) $cfg['imgattach'] =false;
 			if(!isset($cfg['imgcache']) || !is_bool($cfg['imgcache'])) $cfg['imgcache'] = false;
+			if(!isset($cfg['gralnolinkimg']) || !is_bool($cfg['gralnolinkimg'])) $cfg['gralnolinkimg'] = false;
+			if(!isset($cfg['featuredimg']) || !is_bool($cfg['featuredimg'])) $cfg['featuredimg'] = true;
 			if(!isset($cfg['nonstatic']) || !is_bool($cfg['nonstatic'])) $cfg['nonstatic'] = false;
 			if(!isset($cfg['disablecheckfeeds']) || !is_bool($cfg['disablecheckfeeds'])) $cfg['disablecheckfeeds'] = false;
 			if(!isset($cfg['enabledelhash']) || !is_bool($cfg['enabledelhash'])) $cfg['enabledelhash'] = false;

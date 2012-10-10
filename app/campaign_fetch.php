@@ -145,8 +145,14 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item = $this->Item_parsers($this->current_item,$this->campaign,$feed,$item,$realcount, $feedurl );
 		if($this->current_item == -1 ) return -1;
 
-		// Item date   @TODO: delay for publish items
-		$this->current_item['date'] = null;
+	    // Item date
+		if($this->campaign['campaign_feeddate'] && (($item->get_date('U') > $this->campaign['lastrun']) && $item->get_date('U') < current_time('timestamp', 1))){
+			$this->current_item['date'] = $item->get_date('U');
+			trigger_error(__('Assigning original date to post.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+		}else{
+			$this->current_item['date'] = null;
+			trigger_error(__('Original date out of range.  Assigning current date to post.', WPeMatico :: TEXTDOMAIN ) ,E_USER_NOTICE);
+		}
 		$this->current_item['categories'] = (array)$this->campaign['campaign_categories']; 
 		$this->current_item['posttype'] = $this->campaign['campaign_posttype'];
 		$this->current_item['allowpings'] = $this->campaign['campaign_allowpings'];
@@ -155,10 +161,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		//********** Do filters
 		$this->current_item = $this->Item_filters($this->current_item,$this->campaign,$feed,$item );
-
 		//ACA ARMO EL ARRAY DE IMAGENES Y MODIFICO EL CONTENT QUE APUNTEN BIEN
 		$this->current_item = $this->Item_images($this->current_item,$this->campaign,$feed,$item);
-		
 		
 		 // Meta
 		$this->current_item['meta'] = array(
@@ -167,6 +171,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			'wpe_sourcepermalink' => $item->get_permalink()
 		);  
 		
+		if( $this->cfg['nonstatic'] ) { $this->current_item['images'] = NoNStatic :: img1s($this->current_item,$this->campaign,$item ); }
+		$this->current_item = $this->Item_parseimg($this->current_item,$this->campaign,$feed,$item);
+		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: metaf($this->current_item, $this->campaign, $feed, $item ); }
 		// escape the content ??
 		//$this->current_item['content'] = $wpdb->escape($this->current_item['content']);
 
@@ -180,21 +187,22 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 						$this->current_item['author'], 
 						$this->current_item['allowpings'], 
 						$this->current_item['commentstatus'], 
-						$this->current_item['meta'], 
+						$this->current_item['meta'],
 						$this->current_item['customposttype'],
-						$this->current_item['images']
+						$this->current_item['images'],
+						$this->current_item['tags']
 		);
 		
 		// Attaching images uploaded to created post in media library 
 		if(!$this->campaign['campaign_cancel_imgcache']) 
 			if(($this->cfg['imgcache'] || $this->campaign['campaign_imgcache']) && ($this->cfg['imgattach'])) {
-				if(sizeof($this->current_item['images'])) { // Si hay alguna imagen 
-					trigger_error(__('Attaching images.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
-					$custom_imagecount = 0;
-					if(is_array($this->current_item['images'])) {
+				if(is_array($this->current_item['images'])) {
+					if(sizeof($this->current_item['images'])) { // Si hay alguna imagen 
+						trigger_error(__('Attaching images', WPeMatico :: TEXTDOMAIN ).": ".sizeof($this->current_item['images']),E_USER_NOTICE);
+						$custom_imagecount = 0;
 						foreach($this->current_item['images'] as $imagen_src) {
 							$attachid = $this->insertfileasattach($imagen_src,$postid);
-							if($custom_imagecount == 0) {
+							if(($custom_imagecount == 0) && ($this->cfg['featuredimg'])) {
 								trigger_error(__('Featured Image Into Post.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
 								add_post_meta($postid, '_thumbnail_id', $attachid);
 								$custom_imagecount++;
@@ -203,7 +211,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					}
 				}
 			}
-				
+			
+
 		 // If pingback/trackbacks
 		if($this->campaign['campaign_allowpings']) {
 			trigger_error(__('Processing item pingbacks', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
@@ -227,7 +236,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	* @param   array     $meta             Meta key / values
 	* @return  integer   Created post id
 	*/
-	function insertPost($title, $content, $timestamp = null, $category = null, $status = 'draft', $authorid = null, $allowpings = true, $comment_status = 'open', $meta = array(), $post_type= 'post', $images = null)   {
+	function insertPost($title, $content, $timestamp = null, $category = null, $status = 'draft', $authorid = null, $allowpings = true, $comment_status = 'open', $meta = array(), $post_type= 'post', $images = null, $tags_input = null )   {
 		global $wpdb, $wp_locale, $current_blog;
 		$table_name = $wpdb->prefix . "posts";  
 		$blog_id 	= @$current_blog->blog_id;
@@ -237,6 +246,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$truecontent = $content;
 			$content = '';
 		}
+		//trigger_error("tags_input:::".print_r($tags_input,true),E_USER_NOTICE);
+
 		$post_id = wp_insert_post(array(
 			'post_title' 	          => $title,
 			'post_content'  	      => $content,
@@ -249,6 +260,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			'comment_status'          => $comment_status,
 			'ping_status'             => ($allowpings) ? "open" : "closed"
 		));
+		$aaa = wp_set_post_terms( $post_id, $tags_input);
+		trigger_error("Tags added:::".print_r($aaa,true) ,E_USER_WARNING);
 		
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
 			$content = $truecontent;

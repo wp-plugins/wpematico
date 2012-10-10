@@ -49,12 +49,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 	function admin_scripts(){
 		global $post;
-		if($post->post_type != 'wpematico') return $post_id;
-		@wp_deregister_script('autosave');
+		if($post->post_type != 'wpematico') return $post->ID;
+		wp_deregister_script('autosave');
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head'));
-//		wp_register_script('jquery-input-mask', 'js/j.js', array( 'jquery' ));
-//		wp_enqueue_script('color-picker', 'js/colorpicker.js', array('jquery'));
-			
 	}
 
 	function RunNowX() {
@@ -422,9 +419,11 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		
 		$campaign = array();
+		$campaign = WPeMatico :: get_campaign ($post_id);
 		$campaign['campaign_posttype']=$_POST['campaign_posttype'];
 		$campaign['campaign_customposttype']=$_POST['campaign_customposttype'];
 		$campaign['activated']= $_POST['activated']==1 ? true : false;
+		$campaign['campaign_feeddate']= $_POST['campaign_feeddate']==1 ? true : false;
 		$campaign['cron'] = WPeMatico :: cron_string($_POST);
 		
 		$campaign['cronnextrun']= WPeMatico :: time_cron_next($campaign['cron']);
@@ -447,12 +446,16 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		if(isset($_POST['campaign_categories'])) {
 		  $campaign['campaign_categories']=(array)$_POST['campaign_categories'];
 		}
+
+		//if(isset($_POST['campaign_tags'])) {
+			$campaign['campaign_tags']	= $_POST['campaign_tags'];
+		//}
 		
 		#Proceso las Words to Category sacando los que estan en blanco
 		//campaign_wrd2cat, campaign_wrd2cat_regex, campaign_wrd2cat_category
 		if(isset($_POST['campaign_wrd2cat'])) {
 			foreach($_POST['campaign_wrd2cat'] as $id => $w2cword) {       
-				$word = $_POST['campaign_wrd2cat'][$id];
+				$word = addslashes($_POST['campaign_wrd2cat'][$id]);
 				$regex = ($_POST['campaign_wrd2cat_regex'][$id]==1) ? true : false ;
 				$cases = ($_POST['campaign_wrd2cat_cases'][$id]==1) ? true : false ;
 				$w2ccateg = $_POST['campaign_wrd2cat_category'][$id];
@@ -487,6 +490,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$campaign['campaign_max']				= (int)$_POST['campaign_max'];
 		$campaign['campaign_author']			= $_POST['campaign_author'];
 		$campaign['campaign_linktosource']	= $_POST['campaign_linktosource']==1 ? true : false;
+		$campaign['campaign_strip_links']	= $_POST['campaign_strip_links']==1 ? true : false;
 		$campaign['campaign_commentstatus']= $_POST['campaign_commentstatus'];
 		$campaign['campaign_allowpings']	= $_POST['campaign_allowpings']==1 ? true : false;
 		$campaign['campaign_woutfilter']	= $_POST['campaign_woutfilter']==1 ? true : false;
@@ -500,7 +504,8 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			if ($campaign['campaign_imgcache']) $campaign['campaign_cancel_imgcache'] = false;
 		}
 		$campaign['campaign_nolinkimg']		= $_POST['campaign_nolinkimg']==1 ? true : false;
-		
+		$campaign['campaign_solo1ra']		= $_POST['campaign_solo1ra']==1 ? true : false;
+
 	// *** Campaign Template
 		$campaign['campaign_enable_template'] = $_POST['campaign_enable_template']==1 ? true : false;
 		if(isset($_POST['campaign_template']))
@@ -514,10 +519,10 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		// Proceso los rewrites sacando los que estan en blanco
 		if(isset($_POST['campaign_word_origin'])) {
 			foreach($_POST['campaign_word_origin'] as $id => $rewrite) {       
-				$origin = $_POST['campaign_word_origin'][$id];
+				$origin = addslashes($_POST['campaign_word_origin'][$id]);
 				$regex = $_POST['campaign_word_option_regex'][$id]==1 ? true : false ;
-				$rewrite = $_POST['campaign_word_rewrite'][$id];
-				$relink = $_POST['campaign_word_relink'][$id];
+				$rewrite = addslashes($_POST['campaign_word_rewrite'][$id]);
+				$relink = addslashes($_POST['campaign_word_relink'][$id]);
 				if(!empty($origin))  {
 					if(!isset($campaign_rewrites)) 
 						$campaign_rewrites = Array();
@@ -543,7 +548,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		add_post_meta( $post_id, 'campaign_data', $campaign, true )  or
           update_post_meta( $post_id, 'campaign_data', $campaign );
 
-		return $post->ID ;
+		return $post_id ;
 	}
 	
 }

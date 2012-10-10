@@ -58,6 +58,14 @@ $cfg = $this->check_options($this->options);  ?>
 
 					</div>
 				</div>
+				
+				<div class="postbox inside">
+					<div class="inside">
+						<p>
+						<input type="submit" class="button-primary" name="submit" value="<?php _e( 'Save settings', self :: TEXTDOMAIN );?>" />
+						</p>
+					</div>
+				</div>
 				<div class="postbox inside">
 					<h3 class="handle"><?php _e( 'Advanced', self :: TEXTDOMAIN );?></h3>
 					<div class="inside">
@@ -80,13 +88,7 @@ $cfg = $this->check_options($this->options);  ?>
 						<p></p>
 					</div>
 				</div>
-				<div class="postbox inside">
-					<div class="inside">
-						<p>
-						<input type="submit" class="button-primary" name="submit" value="<?php _e( 'Save settings', self :: TEXTDOMAIN );?>" />
-						</p>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 		<div id="post-body">
@@ -96,15 +98,24 @@ $cfg = $this->check_options($this->options);  ?>
 			<div id="imgs" class="postbox">
 				<h3 class="hndle"><span><?php _e('Images', self :: TEXTDOMAIN ); ?></span></h3>
 				<div class="inside">
-					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgcache'],true); ?> name="imgcache" id="imgcache" /><b>&nbsp;<?php _e('Cache Images.', self :: TEXTDOMAIN ); ?></b><br />
-					<div id="hlpimg" style="padding-left:20px;"><b><?php _e('Image Caching', self :: TEXTDOMAIN ); ?>:</b> <?php _e('When image caching is on, a copy of every image found in content of every feed (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', self :: TEXTDOMAIN ); ?><br />
+					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgcache'],true); ?> name="imgcache" id="imgcache" /><b>&nbsp;<?php echo '<label for="imgcache">' . __('Cache Images.', self :: TEXTDOMAIN ) . '</label>'; ?></b><br />
+					<div id="hlpimg" style="padding-left:20px;font-size:10px;"><b><?php _e('Image Caching', self :: TEXTDOMAIN ); ?>:</b> <?php _e('When image caching is on, a copy of every image found in content of every feed (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', self :: TEXTDOMAIN ); ?><br />
 					<?php _e('If not enabled all images will linked to the image owner\'s server, but also make your website faster for your visitors.', self :: TEXTDOMAIN ); ?><br />
 					<b><?php _e('Caching all images', self :: TEXTDOMAIN ); ?>:</b> <?php _e('This featured in the general Settings section, will be overridden for the campaign-specific options.', self :: TEXTDOMAIN ); ?></div>
 					<p></p>
-					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgattach'],true); ?> name="imgattach" id="imgattach" /><b>&nbsp;<?php _e('Attach Images to posts.', self :: TEXTDOMAIN ); ?></b><br />
+					<div id="nolinkimg" style="padding-left:20px; <?php if (!$cfg['imgcache']) echo 'display:none;';?>">
+						<input name="gralnolinkimg" id="gralnolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolinkimg'],true); ?> />
+						<b><?php echo '<label for="gralnolinkimg">' . __('No link to source images', self :: TEXTDOMAIN ) . '</label>'; ?></b><br />
+						<b><?php _e("Note",  self :: TEXTDOMAIN ) ?>:</b> <?php _e('If selected and image upload get error, then delete the "src" attribute of the &lt;img&gt;. Check this for don\'t link images from external sites.', self :: TEXTDOMAIN ) ?>
+					</div>
+					<p></p>
+					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgattach'],true); ?> name="imgattach" id="imgattach" /><b>&nbsp;<?php echo '<label for="imgattach">' . __('Attach Images to posts.', self :: TEXTDOMAIN ) . '</label>'; ?></b><br />
 					<div id="hlpatt" style="padding-left:20px;"><b><?php _e('Image Attaching', self :: TEXTDOMAIN ); ?>:</b> <?php _e('By default when image caching is on (and everything is working fine), a copy of every image found is added to Wordpress Media.', self :: TEXTDOMAIN ); ?><br />
 					<?php _e('If enabled Image Attaching all images will be attached to the owner post in WP media library; but if you see that the job process is too slowly you can deactivate this here.', self :: TEXTDOMAIN ); ?></div>
-					
+					<p></p>
+					<div id="featimg" style="padding-left:20px; <?php if (!$cfg['imgattach']) echo 'display:none;';?>">
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'],true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<?php echo '<label for="featuredimg">' . __('Enable first image found on content as Featured Image.', self :: TEXTDOMAIN ) . '</label>'; ?></b> <small> Read about <a href="http://codex.wordpress.org/Post_Thumbnails" target="_Blank">Post_Thumbnails</a></small>
+					</div>
 				</div>
 			</div>
 		
@@ -213,4 +224,21 @@ $cfg = $this->check_options($this->options);  ?>
 		</form>
 	</div>
 </div>
-	
+<script type="text/javascript" language="javascript">
+//jQuery(document).ready(function($){
+	jQuery('#imgcache').click(function() {
+		if ( true == jQuery('#imgcache').is(':checked')) {
+			jQuery('#nolinkimg').fadeIn();
+		} else {
+			jQuery('#nolinkimg').fadeOut();
+		}
+	});
+	jQuery('#imgattach').click(function() {
+		if ( true == jQuery('#imgattach').is(':checked')) {
+			jQuery('#featimg').fadeIn();
+		} else {
+			jQuery('#featimg').fadeOut();
+		}
+	});
+//}
+</script>
