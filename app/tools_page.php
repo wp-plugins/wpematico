@@ -30,7 +30,7 @@ if ( 'POST' === $_SERVER[ 'REQUEST_METHOD' ] ) {
 					'post_status' 	          => 'publish',
 					'post_type' 	          => 'wpematico'
 				));
-				// Grabo la campaña
+				// Grabo la campaÃ±a
 				add_post_meta( $post_id, 'campaign_data', $campaign, true )  or
 				  update_post_meta( $post_id, 'campaign_data', $campaign );
 			}

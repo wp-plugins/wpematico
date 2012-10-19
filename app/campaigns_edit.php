@@ -404,7 +404,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	}
 	
 	
-	//************************* GRABA CAMPAÑA *******************************************************
+	//************************* GRABA CAMPAÃ‘A *******************************************************
 	function save_campaigndata( $post_id ) {
 		global $post;
 		// Stop WP from clearing custom fields on autosave, and also during ajax requests (e.g. quick edit) and bulk edits.
@@ -432,6 +432,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$campaign['mailerroronly']= $_POST['mailerroronly']==1 ? true : false;
 		
 		// Process categories 
+		$campaign['campaign_autocats']= $_POST['campaign_autocats']==1 ? true : false;
 		// Primero proceso las categorias nuevas si las hay y las agrego al final del array
 		   # New categories
 		if(isset($_POST['campaign_newcat'])) {
@@ -544,7 +545,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		
 		error_reporting($nivelerror);
 		
-		// Grabo la campaña
+		// Grabo la campaÃ±a
 		add_post_meta( $post_id, 'campaign_data', $campaign, true )  or
           update_post_meta( $post_id, 'campaign_data', $campaign );
 

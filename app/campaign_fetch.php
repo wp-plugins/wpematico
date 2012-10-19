@@ -52,7 +52,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 		//run job parts
 		$postcount = 0;
-		$this->feeds = $this->campaign['campaign_feeds'] ; // --- Obtengo los feeds de la campaña
+		$this->feeds = $this->campaign['campaign_feeds'] ; // --- Obtengo los feeds de la campaÃ±a
 		
 		foreach($this->feeds as $feed) {
 			$postcount += $this->processFeed($feed);         #- ---- Proceso todos los feeds      
@@ -130,7 +130,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
    * Processes an item: parses and filters
    * @param   $feed       object    Feed database object
    * @param   $item       object    SimplePie_Item object
-   * @return true si lo procesó
+   * @return true si lo procesÃ³
    */
 	function processItem(&$feed, &$item, $feedurl) {
 		global $wpdb, $realcount;
@@ -146,14 +146,29 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if($this->current_item == -1 ) return -1;
 
 	    // Item date
-		if($this->campaign['campaign_feeddate'] && (($item->get_date('U') > $this->campaign['lastrun']) && $item->get_date('U') < current_time('timestamp', 1))){
-			$this->current_item['date'] = $item->get_date('U');
+		$itemdate = $item->get_date('U');
+		if($this->campaign['campaign_feeddate'] && (($itemdate > $this->campaign['lastrun']) && $itemdate < current_time('timestamp', 1))){
+			$this->current_item['date'] = $itemdate;
 			trigger_error(__('Assigning original date to post.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
 		}else{
 			$this->current_item['date'] = null;
 			trigger_error(__('Original date out of range.  Assigning current date to post.', WPeMatico :: TEXTDOMAIN ) ,E_USER_NOTICE);
 		}
+		
+		// Primero proceso las categorias si las hay y las nuevas las agrego al final del array
 		$this->current_item['categories'] = (array)$this->campaign['campaign_categories']; 
+		if ($this->campaign['campaign_autocats']) 
+			if ($autocats = $item->get_categories()) {
+				trigger_error(__('Assigning Auto Categories.', WPeMatico :: TEXTDOMAIN ) ,E_USER_NOTICE);
+				foreach($autocats as $id => $catego) {
+					$catname = $catego->term;
+					if(!empty($catname)) {
+						trigger_error(__('Adding Category: ', WPeMatico :: TEXTDOMAIN ) . $catname ,E_USER_NOTICE);
+						$this->current_item['categories'][] = wp_create_category($catname);  //Si ya existe devuelve el ID existente  // wp_insert_category(array('cat_name' => $catname));  //
+					}					
+				}
+			}	
+
 		$this->current_item['posttype'] = $this->campaign['campaign_posttype'];
 		$this->current_item['allowpings'] = $this->campaign['campaign_allowpings'];
 		$this->current_item['commentstatus'] = $this->campaign['campaign_commentstatus'];
@@ -325,7 +340,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		return;
 	}
-
 }
 
 function wpe_change_content_type(){ return 'text/html'; }

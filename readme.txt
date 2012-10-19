@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
 Tested up to: 3.4.2
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -27,6 +27,7 @@ Some supported features (but not all of them):
 * Feed autodiscovery, which lets you add feeds without even knowing the exact URL. (Thanks Simplepie!)
 * Unix cron and WordPress cron jobs For maximum performance, you can make the RSS fetching process be called by a Unix cron job, or simply let WordPress handle it.
 * Images caching are integrated with Wordpress Media Library and posts attach. upload remote images or link to source. Fully configurable.
+* Auto add categories from source posts.
 * First image attached to a post marked as Featured Image of the post.
 * Words Rewriting. Regular expressions supported.
 * Words Relinking. Define custom links for words you specify.
@@ -45,10 +46,6 @@ Some supported features (but not all of them):
 * Also the content can be converted to text and cutted at wanted amount of words or letters.
 * Keywords filtering. You can determine skip the post for certain words in title or content.
 
-Upcoming features:
-
-* Campaigns import/export.
-* Some requested easy cool features...
 
 PHP5 is required!
 
@@ -100,6 +97,14 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+
+= 1.1.1 =
+* Added New feature: Auto categories from source posts (were available).
+* Improved images size.
+* Updated language files. pot, es_ES. Spanish Language.
+* Small fix with item date.
+* Fix some files coded as ANSI instead UTF-8
+* Fixed (when fetching) The RegEx stripslashes in "Word to Category" and "rewriting options".
 
 = 1.1 =
 * Added tags list to assign to posts in every campaign.
@@ -272,6 +277,5 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.1 =
-* Free & Pro versions upgraded.  If using PRO, MUST update both plugins.
-
+= 1.1.1 =
+* Maintenance Release. Many bugs fixed. Recommended upgrade.

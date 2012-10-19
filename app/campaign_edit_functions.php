@@ -217,8 +217,8 @@ class WPeMatico_Campaign_edit_functions {
 			<p><input name="campaign_cancel_imgcache" id="campaign_cancel_imgcache" class="checkbox" value="1" type="checkbox" <?php checked($campaign_cancel_imgcache,true); ?> />
 			<b><?php echo '<label for="campaign_cancel_imgcache">' . __('Cancel Cache Images for this campaign?', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b></p>
 		<?php endif ?>
-		<p><input name="campaign_solo1ra" id="campaign_solo1ra" class="checkbox" value="1" type="checkbox" <?php checked($campaign_solo1ra,true); ?> />
-		<b><?php echo '<label for="campaign_solo1ra">' . __('Left just first image on every post.', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b></p>
+<?php	/*	<p><input name="campaign_solo1ra" id="campaign_solo1ra" class="checkbox" value="1" type="checkbox" <?php checked($campaign_solo1ra,true); ?> />
+		<b><?php echo '<label for="campaign_solo1ra">' . __('Left just first image on every post.', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b></p>   */  ?>
 	<?php
 	}
 	//*************************************************************************************
@@ -515,10 +515,20 @@ class WPeMatico_Campaign_edit_functions {
 	function cat_box( $post ) {
 		global $post, $campaign_data;
 		
-		$campaign_categories = $campaign_data['campaign_categories'];
+		$campaign_categories = @$campaign_data['campaign_categories'];
+		$campaign_autocats = @$campaign_data['campaign_autocats'];
 		if(!($campaign_categories)) $campaign_categories = array();
+		get_categories()
 		?>
-		<div class="inside" style="overflow-y: scroll; overflow-x: hidden; max-height: 250px;">
+		<div style="width:160px;"><label title="<?php _e('A little Help', WPeMatico :: TEXTDOMAIN ); ?>" onclick="  jQuery('#hlpacat').fadeToggle();" class="m4 ui-icon QIco right"></label><input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> <b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b></div>
+		<div class="mphlp" style="margin-top: 2px;">
+			<span class="srchbdr0 hide" id="hlpacat">
+				<b><?php _e('Basics:', WPeMatico :: TEXTDOMAIN ); ?></b> <?php _e('If categories are found on source item, these categories will be added to the post; If category does not exist, then will be created.', WPeMatico :: TEXTDOMAIN ); ?>
+			</span>
+		</div>
+		<?php _e("Add categories from the source post and/or assign existing categories below.", WPeMatico :: TEXTDOMAIN ) ?>
+
+		<div class="inside" style="overflow-y: scroll; overflow-x: hidden; max-height: 250px;">		
 		<ul id="categories" style="font-size: 11px;">
 		<?php self :: Categories_box($campaign_categories) ?>
 		</ul> 
@@ -635,6 +645,9 @@ class WPeMatico_Campaign_edit_functions {
 		if (!isset($campaigndata['campaign_tags']) or !is_string($campaigndata['campaign_tags']))
 			$campaigndata['campaign_tags']='';
 
+		if (!isset($campaigndata['campaign_autocats']) or !is_bool($campaigndata['campaign_autocats']))
+			$campaigndata['campaign_autocats']=false;
+			
 		if (!isset($campaigndata['campaign_linktosource']) or !is_bool($campaigndata['campaign_linktosource']))
 			$campaigndata['campaign_linktosource']=false;
 

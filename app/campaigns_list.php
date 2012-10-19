@@ -120,6 +120,7 @@ class WPeMatico_Campaigns {
 		}
 		$campaign_data = WPeMatico :: get_campaign( $new_post_id );
 		$campaign_data['activated'] = false;
+
 		WPeMatico :: update_campaign( $new_post_id, $campaign_data );
 
 		// If the copy is not a draft or a pending entry, we have to set a proper slug.

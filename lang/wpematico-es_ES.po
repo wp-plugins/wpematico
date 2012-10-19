@@ -1,191 +1,192 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico 1.0\n"
+"Project-Id-Version: WPeMatico 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-16 21:27-0300\n"
-"PO-Revision-Date: 2012-09-20 12:08-0300\n"
+"POT-Creation-Date: 2012-10-15 11:44-0300\n"
+"PO-Revision-Date: 2012-10-15 12:44-0300\n"
 "Last-Translator: Esteban Truelsegaard <esteban@netmdp.com>\n"
-"Language-Team: NetMdP <info@netmdp.com>\n"
+"Language-Team: NetMdP <esteban@netmdp.com>\n"
+"Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"Language: es_AR\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:214
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:218
 msgid "Last Processed Campaigns:"
 msgstr "Ultimas campañas procesadas:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:222
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:250
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:321
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:226
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:254
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:325
 msgid "Edit Campaign"
 msgstr "Editar campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:227
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:229
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:298
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:231
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:233
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:322
 #, php-format
 msgid "Processed Posts: %1s"
 msgstr "Publicaciones procesadas: %1s"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:232
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:234
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:236
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:238
 #, php-format
 msgid "Fetch done in %1s sec."
 msgstr "Proceso realizado en %1s segundos."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:245
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:249
 msgid "Next Scheduled Campaigns:"
 msgstr "Proximas campañas programadas:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:254
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:258
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_list.php:378
 msgid "Running since:"
 msgstr "Funcionando desde:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:254
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:258
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_list.php:378
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_list.php:391
 msgid "sec."
 msgstr "segs."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:263
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:267
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_list.php:393
 msgid "None"
 msgstr "Ninguno"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:281
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:285
 msgid "Load WPeMatico Settings Page"
 msgstr "Cargar pagina de configuracion de WPeMatico"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:281
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:371
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:372
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:285
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:375
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:376
 msgid "Settings"
 msgstr "Configuracion"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:302
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:306
 msgid "FAQ"
 msgstr "FAQ"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:303
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:307
 msgid "Support"
 msgstr "Soporte"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:304
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:308
 msgid "Donate"
 msgstr "Donar"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:317
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:321
 msgid "Campaigns"
 msgstr "Campañas"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:318
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:322
 msgid "Campaign"
 msgstr "Campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:319
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:323
 msgid "Add New"
 msgstr "Agregar"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:320
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:324
 msgid "Add New Campaign"
 msgstr "Agregar nueva campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:322
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:326
 msgid "New Campaign"
 msgstr "Nueva campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:323
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:327
 msgid "All Campaigns"
 msgstr "Todas las campañas"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:324
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:328
 msgid "View Campaign"
 msgstr "Ver campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:325
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:329
 msgid "Search Campaign"
 msgstr "Buscar campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:326
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:330
 msgid "No campaign found"
 msgstr "Ninguna campaña encontrada"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:327
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:331
 msgid "No Campaign found in Trash"
 msgstr "Ninguna campaña encontrada en la papelera"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:362
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:363
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:366
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:367
 msgid "Import old version"
 msgstr "Importar version antigua"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:384
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:388
 msgid "WPeMatico: Found campaigns from previous versions."
 msgstr "WPeMatico: Se encontraron campañas de versiones anteriores"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:385
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:389
 msgid "If you want import or delete them go to:"
 msgstr "Si desea importar o borrar vaya a:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:445
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/wpematico.php:453
 msgid "Settings saved."
 msgstr "Opciones guardadas."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:72
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:69
 msgid "Public"
 msgstr "Publico"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:73
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:70
 msgid "Campaign Description"
 msgstr "Descripcion de campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:74
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:71
 msgid "Here you can write some observations."
 msgstr "Aqui puedes escribir algunas observaciones"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:75
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:72
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_list.php:305
 msgid "Run Now"
 msgstr "Ejecutar ahora"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:164
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:162
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_list.php:58
 msgid "Running Campaign..."
 msgstr "Ejecutando campañas"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:264
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:262
 msgid "Type some new Feed URL/s."
 msgstr "Escriba algunas URL de fuentes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:305
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:303
 msgid "Type some feed URL."
 msgstr "Escriba alguna URL de fuente"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:343
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:341
 #, php-format
 msgid "There's an error with the supplied RegEx expression in word: %s"
 msgstr "Existe un error con la expresión RegEx provista en la palabra: %s"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:360
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:358
 #, php-format
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
 msgstr "Existe un error con la expresión RegEx provista en la Re-escritura: %s"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:385
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:383
 msgid "At least one feed URL must be filled."
 msgstr "Al menos una URl de fuente debe ser completada"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:393
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:391
 #, php-format
 msgid "Feed %s could not be parsed. (SimplePie said: %s)"
 msgstr "Fuentes %s no pueden ser analizadas. (SimplePie dice: %s)"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:397
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_edit.php:395
 #, php-format
 msgid "Feed %s could not be parsed because has an space in url."
 msgstr "Fuente %s no puede ser analizada porque hay un espacio en la URL."
@@ -322,7 +323,7 @@ msgid "Campaign Name"
 msgstr "Nombre de la campaña"
 
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaigns_list.php:354
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:537
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:583
 msgid "Status"
 msgstr "Estado"
 
@@ -346,65 +347,73 @@ msgstr "Inactiva"
 msgid "Runtime:"
 msgstr "Tiempo de ejecución:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:16
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:17
 msgid "Campaign Schedule"
 msgstr "Cronograma de campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:17
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:18
 msgid "Campaign Categories"
 msgstr "Categorías de campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:18
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:19
+msgid "Tags generation"
+msgstr "Generación de etiquetas"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:20
 msgid "Send log"
 msgstr "Enviar informe"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:19
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:21
 msgid "Feeds for this Campaign"
 msgstr "Fuente para esta campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:20
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:22
 msgid "Options for this campaign"
 msgstr "Opciones para esta campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:21
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:23
 msgid "Options for images"
 msgstr "Opciones para imágenes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:22
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:24
 msgid "Post Template"
 msgstr "Plantilla de publicación"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:24
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:26
 msgid "Word to Category options"
 msgstr "Opciones de Palabra a Categoría"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:26
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:28
 msgid "Rewrite options"
 msgstr "Re-escribir opciones"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:42
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:44
 msgid "Replaces words or phrases by other that you want or turns into link."
 msgstr "Reemplazar palabras o frases de otros o convertirlos en enlaces"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:43
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:99
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:153
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:161
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:203
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:263
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:406
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:477
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:544
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:45
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:101
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:155
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:163
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:206
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:241
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:296
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:508
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:619
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:686
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:780
 msgid "A little Help"
 msgstr "Un poco de ayuda"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:45
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:101
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:546
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:47
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:103
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:244
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:688
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:782
 msgid "Basics:"
 msgstr "Premisas:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:45
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:47
 msgid ""
 "The rewriting settings allow you to replace parts of the content with the "
 "text you specify."
@@ -412,11 +421,11 @@ msgstr ""
 "Las opciones de Re-escritura permiten reemplazar partes del contenido con un "
 "texto que se especifique."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:46
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:48
 msgid "Basic rewriting:"
 msgstr "Re-escritura básica:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:47
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:49
 msgid ""
 "To replace all occurrences the word ass with butt, simply type ass in the "
 "\"origin field\", and butt in \"rewrite to\"."
@@ -425,11 +434,11 @@ msgstr ""
 "\", simplemente escriba \"culo\" en el \"origin field\", y \"trasero\" en el "
 "\"rewrite to\"."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:48
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:50
 msgid "Relinking:"
 msgstr "Re-enlazar:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:49
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:51
 msgid ""
 "If you want to find all occurrences of google and make them link to Google, "
 "just type google in the \"origin field\" and http://google.com in the "
@@ -439,11 +448,11 @@ msgstr ""
 "Google, simplemente escriba Google en el \"origin field\" y http://google."
 "com en el \"relink to\" campo."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:50
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:52
 msgid "Regular expressions"
 msgstr "Expresiones regulares"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:51
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:53
 msgid ""
 "For advanced users, regular expressions are supported. Using this will allow "
 "you to make more powerful replacements. Take multiple word replacements for "
@@ -455,41 +464,43 @@ msgstr ""
 "multiples palabras. En vez de usar muchas re-escrituras de la palabra culo y "
 "trasero, puede usar el operador | como ejemplo: (culo|trasero)."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:58
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:60
 msgid "Origin:"
 msgstr "Origen:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:59
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:113
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:61
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:115
 msgid "RegEx"
 msgstr "RegEx"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:63
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:65
 msgid "Rewrite to:"
 msgstr "Re-escribir a:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:67
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:69
 msgid "ReLink to:"
 msgstr "Re-enlazar a:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:72
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:125
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:285
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:297
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:74
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:127
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:318
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:330
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:801
 msgid "Delete this item"
 msgstr "Borrar este ítem"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:82
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:135
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:308
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:84
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:137
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:341
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:811
 msgid "Add more"
 msgstr "Agregar mas"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:98
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:100
 msgid "Assigning categories based on content words."
 msgstr "Asignar categorías basadas en palabras contenidas."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:101
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:103
 msgid ""
 "The Word to Category option allow you to assign singular category to the "
 "post."
@@ -497,13 +508,13 @@ msgstr ""
 "La opción Palabra a Categoría le permite asignar categorías singulares a la "
 "publicación."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:102
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:181
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:547
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:104
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:184
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:689
 msgid "Example:"
 msgstr "Ejemplo:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:103
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:105
 msgid ""
 "If the post content contain the word \"motor\" and then you want assign the "
 "post to category \"Engines\", simply type \"motor\" in the \"Word\" field, "
@@ -513,12 +524,12 @@ msgstr ""
 "asignar la categoría de publicación \"Engines\", simplemente tipee \"motor\" "
 "en el campo \"Word\", y seleccione \"Engine\" en el combo de Categorías."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:104
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:548
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:106
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:690
 msgid "Regular Expressions"
 msgstr "Expresiones regulares"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:105
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:107
 msgid ""
 "For advanced users, regular expressions are supported. Using this will allow "
 "you to make more powerful replacements. Take multiple word replacements for "
@@ -532,30 +543,30 @@ msgstr ""
 "y 'autos' a 'maquinaria', puedes usar el operador | (motor|auto. Si desea "
 "caso insensible a mayusculas con RegEx, agregue \"/i\" al final de RegEx."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:112
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:114
 msgid "Word:"
 msgstr "Palabra:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:114
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:116
 msgid "Case sensitive"
 msgstr "Sensible a Mayúsculas/Minúsculas"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:117
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:496
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:119
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:638
 msgid "To Category:"
 msgstr "A Categoría:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:122
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:501
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:124
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:643
 msgid "Select category"
 msgstr "Seleccione una categoría"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:152
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:154
 msgid "Modify, manage or add extra content to every post fetched."
 msgstr ""
 "Modifique, manipule o agregue contenido extra a cada publicación analizada."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:154
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:156
 msgid ""
 "The post template takes the full text of each feed item it encounters, and "
 "then uses it as the post content.<br />A post template, if used, allows you "
@@ -567,15 +578,15 @@ msgstr ""
 "template de publicación, si esta en uso, le permite alterar el contenido, "
 "agregando información extra, como texto, imágenes y datos de la campaña, etc."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:158
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:160
 msgid "Enable Post Template"
 msgstr "Activar plantilla de publicación"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:166
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:168
 msgid "Supported tags"
 msgstr "Etiquetas permitidas"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:167
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:169
 msgid ""
 "A tag is a piece of text that gets replaced dynamically when the post is "
 "created. Currently, these tags are supported:"
@@ -584,51 +595,55 @@ msgstr ""
 "cuando la publicación sea creada. Actualmente, estas etiquetas están "
 "permitidas:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:169
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:171
 msgid "The feed item content."
 msgstr "El contenido de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:170
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:172
 msgid "The feed item title."
 msgstr "El título de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:171
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:173
+msgid "Put the featured image on content."
+msgstr "Agregar la imagen destacada al contenido."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:174
 msgid "The feed item author."
 msgstr "El autor de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:172
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:175
 msgid "The feed item author link (If exist)."
 msgstr "El link del autor de la fuente (Si existe)."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:173
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:176
 msgid "The feed item permalink."
 msgstr "El enlace permanente de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:174
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:177
 msgid "The feed URL."
 msgstr "La URL de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:175
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:178
 msgid "The feed title."
 msgstr "Título de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:176
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:179
 msgid "The description of the feed."
 msgstr "La descripción de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:177
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:180
 msgid "The feed's logo image URL."
 msgstr "La URL del logo de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:178
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:181
 msgid "This campaign title"
 msgstr "EL titulo de la campaña"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:179
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:182
 msgid "This campaign ID."
 msgstr "El ID de la campaña."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:181
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:184
 msgid ""
 "If you want to add a link to the source at the bottom of every post and the "
 "author, the post template would look like this:"
@@ -636,44 +651,43 @@ msgstr ""
 "Si desea agregar un enlace a la fuente de cada publicación y al autor, la "
 "plantilla se vería así:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:182
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:185
 msgid "Go to Source"
 msgstr "Ir a la fuente"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:183
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:186
 msgid "will be replaced with the feed item content"
 msgstr "será reemplazado con el contenido de la fuente"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:183
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:186
 msgid "by the source feed item URL, which makes it a working link and"
 msgstr "por la URL de la fuente origen, que hace que el enlace funcione y"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:183
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:186
 msgid "with the original author of the feed item."
 msgstr "con el autor original de la fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:202
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:205
 msgid "Enable Cache Images for this campaign?"
 msgstr "Activar el cacheo de imágenes para esta campaña?"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:205
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:95
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:208
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:102
 msgid "Image Caching"
 msgstr "Cacheo de Imagen"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:205
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:208
 msgid ""
 "When image caching is on, a copy of every image found (only in &lt;img&gt; "
-"tags) is downloaded to the specified directory, by default in Wordpress "
-"UPLOADS Dir (Highly recommended)."
+"tags) is Stored locally to the Wordpress UPLOADS Dir (Recommended)."
 msgstr ""
 "Cuando el cacheo de imagen esta activado, una copia de cada imagen "
 "encontrada (solo en etiquetas &lt;img&gt;) es descargada a la carpeta "
 "especificada, por defecto es en la carpeta de Wordpress \"Uploads"
 "\" (Recomendado)."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:206
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:96
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:209
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:103
 msgid ""
 "If not enabled all images will linked to the image owner's server, but also "
 "make your website faster for your visitors."
@@ -682,12 +696,13 @@ msgstr ""
 "propietario, pero esto favorece a la velocidad de tu sitio para los "
 "visitantes."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:207
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:215
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:210
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:214
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:109
 msgid "Note"
 msgstr "Nota"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:207
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:210
 msgid ""
 "If this featured is disabled the general Settings options for images caching "
 "is taken. Enabling this feature here will be overridden only for this "
@@ -697,15 +712,12 @@ msgstr ""
 "de imágenes serán tomadas. Activando esta característica aquí, "
 "sobreescribirá esta opción solo para esta campaña."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:210
-msgid "Cancel Cache Images for this campaign?"
-msgstr "Cancelar el cacheo de imágenes para esta campaña?"
-
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:214
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:213
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:108
 msgid "No link to source images"
 msgstr "No hay link a las imágenes fuente"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:215
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:214
 msgid ""
 "If selected and image upload get error, then delete the \"src\" attribute of "
 "the &lt;img&gt;. <br />If disable cache images, enabling this for delete "
@@ -716,11 +728,19 @@ msgstr ""
 "activelo para borrar el atributo \"src\" de todas &lt;img&gt; en las "
 "publicaciones."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:228
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:218
+msgid "Cancel Cache Images for this campaign?"
+msgstr "Cancelar el cacheo de imágenes para esta campaña?"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:221
+msgid "Left just first image on every post."
+msgstr "Dejar sólo la primer imágen de cada entrada."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:237
 msgid "Max items to create on each fetch:"
 msgstr "Máximos items a crear en cada análisis:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:230
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:239
 msgid ""
 "Set it to 0 for unlimited. If set to a X value, only the last X items will "
 "be selected, ignoring the older ones."
@@ -728,36 +748,113 @@ msgstr ""
 "Configure a 0 para ilimitado. Si se configura a un valor X, sólo los últimos "
 "X ítems serán seleccionados, ignorando los anteriores."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:232
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:431
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:241
+msgid "Use feed date"
+msgstr "Usar fecha del feed"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:244
+msgid ""
+"By default, WPeMatico sets the date and time of the posts to that of the "
+"moment they're created. By using this option, however, you can alter that "
+"behavior."
+msgstr ""
+"Por defecto, WPeMatico usa la fecha y hora en que la entrada es creada.  "
+"Usando esta opción puede cambiar este comportamiento."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:245
+msgid "How it works:"
+msgstr "Como trabaja:"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:245
+msgid ""
+"To avoid incoherent dates due to lousy setup feeds, WPeMatico will use the "
+"feed date only if these conditions are met:"
+msgstr ""
+"Para evitar fechas incoherentes debido a tantos feeds mal configurados, "
+"WPeMatico usará la fecha del feed unicamente bajo estas condiciones:"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:247
+msgid ""
+"The feed item date is not too far in the past (specifically, as much time as "
+"the campaign frequency)."
+msgstr ""
+"La fecha del original no está demasiado lejos en el pasado.  "
+"(específicamente, más tiempo de la frecuencia de la campaña)"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:248
+msgid "The fetched feed item date is not in the future."
+msgstr "La fecha del original no está en el futuro."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:252
+msgid ""
+"Use the original date from the post instead of the time the post is created "
+"by WPeMatico."
+msgstr ""
+"Usar la fecha original del feed en vez de la hora en que WPeMatico crea la "
+"entrada."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:254
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:533
 msgid "Author:"
 msgstr "Autor:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:234
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:256
 msgid "The created posts will be assigned to this author."
 msgstr "La publicacion creada será asignada a este autor."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:236
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:258
 msgid "Post title links to source?"
 msgstr "Publicar enlaces de titulos a la fuente?"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:238
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:260
 msgid "This option make the title permalink to original URL."
 msgstr "Esta opción hará el enlace permanente del título a la URL original."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:240
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:261
+msgid "Strip links from content"
+msgstr "Eliminar enlaces del contenido"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:263
+msgid ""
+"This option take out clickable links from content, leaving just the text."
+msgstr ""
+"Esta opción elimina los enlaces clickeables del contenido, dejando sólo el "
+"texto."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:265
 msgid "Discussion options:"
 msgstr "Opciones de la discusión:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:247
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:272
 msgid "Allow pings?"
 msgstr "Permitir Pings?"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:262
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:276
+msgid "Post Content Unfiltered:"
+msgstr "Contenido de la entrada sin Filtrar:"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:278
+msgid "<b><i>Skip the Wordpress post content filters</i></b>"
+msgstr " <b><i>Salteando los filtros de contenido de Wordpress</i></b>"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:279
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:161
+msgid ""
+"NOTE: It is extremely dangerous to allow unfiltered content because there "
+"may be some vulnerability in the source code."
+msgstr ""
+"NOTA: Es extremadamente peligroso permitir contenido sin filtrar porque "
+"puede haber varias vulnerabilidades en el código original."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:279
+msgid "Not recommended."
+msgstr "No recomendado."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:295
 msgid "Please fill in at least one feed."
 msgstr "Por favor complete al menos una Fuente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:265
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:298
 msgid ""
 "If you're not sure about the exact feed url, just type in the domain name, "
 "and the feed will be autodetected."
@@ -765,142 +862,142 @@ msgstr ""
 "Si no está seguro de la URL de la fuente, solamente escriba el dominio, y la "
 "fuente será autodetectada."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:281
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:314
 msgid "Feed URL:"
 msgstr "URL de la Fuente:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:286
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:298
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:319
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:331
 msgid "Check if this item work"
 msgstr "Chequear que este item funcione"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:286
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:298
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:309
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:319
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:331
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:342
 msgid "Checking"
 msgstr "Chequeando"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:293
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:326
 msgid "New Feed:"
 msgstr "Nueva Fuente:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:309
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:342
 msgid "Check all feeds"
 msgstr "Chequear todas las Fuentes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:319
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:352
 msgid "Display all feeds"
 msgstr "Mostrar todas las Fuentes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:349
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:382
 msgid "Activate scheduling"
 msgstr "Activar el cronograma"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:354
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:387
 msgid "Minutes: "
 msgstr "Minutos:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:362
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:379
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:396
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:414
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:438
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:395
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:412
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:429
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:447
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:471
 msgid "Any (*)"
 msgstr "Alguno (*)"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:371
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:404
 msgid "Hours:"
 msgstr "Horas:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:388
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:421
 msgid "Days:"
 msgstr "Días:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:406
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:439
 msgid "Months:"
 msgstr "Meses:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:415
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:448
 msgid "January"
 msgstr "Enero"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:416
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:449
 msgid "February"
 msgstr "Febrero"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:417
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:450
 msgid "March"
 msgstr "Marzo"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:418
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:451
 msgid "April"
 msgstr "Abril"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:419
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:452
 msgid "May"
 msgstr "Mayo"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:420
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:453
 msgid "June"
 msgstr "Junio"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:421
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:454
 msgid "July"
 msgstr "Julio"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:422
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:455
 msgid "Augest"
 msgstr "Agosto"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:423
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:456
 msgid "September"
 msgstr "Septiembre"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:424
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:457
 msgid "October"
 msgstr "Octubre"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:425
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:458
 msgid "November"
 msgstr "Noviembre"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:426
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:459
 msgid "December"
 msgstr "Diciembre"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:430
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:463
 msgid "Weekday:"
 msgstr "Día de la Semana:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:439
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:472
 msgid "Sunday"
 msgstr "Domingo"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:440
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:473
 msgid "Monday"
 msgstr "Lunes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:441
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:474
 msgid "Tuesday"
 msgstr "Martes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:442
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:475
 msgid "Wednesday"
 msgstr "Miércoles"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:443
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:476
 msgid "Thursday"
 msgstr "Jueves"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:444
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:477
 msgid "Friday"
 msgstr "Viernes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:445
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:478
 msgid "Saturday"
 msgstr "Sábado"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:451
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:484
 msgid ""
 "Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank"
 "\">Cron</a> job schedule:"
@@ -908,35 +1005,43 @@ msgstr ""
 "Trabajando como <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank"
 "\">Cron</a> job cronograma:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:452
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:485
 msgid "Next runtime:"
 msgstr "Próxima ejecución:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:462
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:495
 msgid "E-Mail-Adress:"
 msgstr "E-mail:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:464
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:497
 msgid "Send only E-Mail on errors."
 msgstr "Enviar sólo E-mails sobre errores."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:481
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:507
+msgid "Tags:"
+msgstr "Etiquetas:"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:509
+msgid "Enter comma separated list of Tags."
+msgstr "Ingrese las etiquetas separadas por comas."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:527
 msgid "Quick add"
 msgstr "Agregar rápidamente"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:539
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:585
 msgid "Published"
 msgstr "Publicado"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:540
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:586
 msgid "Private"
 msgstr "Privado"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:541
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:587
 msgid "Draft"
 msgstr "Borrador"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:545
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_edit_functions.php:591
 msgid "Post type"
 msgstr "Tipo de Publicación"
 
@@ -985,61 +1090,73 @@ msgstr "%s publicaciones agregadas"
 msgid "Processing item %1s"
 msgstr "Processing item %1s"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:192
-msgid "Attaching images."
-msgstr "Adjuntando imágenes."
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:151
+msgid "Assigning original date to post."
+msgstr "Asignando fecha original a la entrada."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:198
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:154
+msgid "Original date out of range.  Assigning current date to post."
+msgstr "Fecha original fuera de rango.  Asignando fecha actual a la entrada."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:201
+msgid "Attaching images"
+msgstr "Adjuntando imágenes"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:206
 msgid "Featured Image Into Post."
 msgstr "Imágen Destacada en publicación."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:209
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:218
 msgid "Processing item pingbacks"
 msgstr "Procesando pingbacks"
 
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:268
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:298
+msgid "Adding unfiltered content"
+msgstr "Agregando contenido sin filtrar"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:292
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:322
 #, php-format
 msgid "Campaign fetched in %1s sec."
 msgstr "Campaña analizada en %1s segs."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:282
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:306
 msgid "Campaign Name:"
 msgstr "Nombre de Campaña:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:284
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:308
 msgid "Errors:"
 msgstr "Errores:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:286
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:310
 msgid "Warnings:"
 msgstr "Avisos:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:291
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:315
 msgid "WPeMatico Log "
 msgstr "Informe WPeMatico"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:299
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:323
 msgid "Show detailed Log"
 msgstr "Mostrar informe detallado"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:328
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:352
 msgid "[WARNING]"
 msgstr "[AVISO]"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:333
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:357
 msgid "[ERROR]"
 msgstr "[ERROR]"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:337
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:361
 msgid "[DEPRECATED]"
 msgstr "[DESAPROBADO]"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:340
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:364
 msgid "[STRICT NOTICE]"
 msgstr "[AVISO ESTRICTO]"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:343
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch.php:367
 msgid "[RECOVERABLE ERROR]"
 msgstr "[ERROR RECUPERABLE]"
 
@@ -1056,30 +1173,42 @@ msgstr "Si"
 msgid "No"
 msgstr "No"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:144
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:71
+msgid "Cleaning Links from content."
+msgstr "Limpiando enlaces del contenido."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:77
+msgid "Parsing Post template."
+msgstr "Procesando Post template."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:155
 #, php-format
 msgid "Processing Words to Category %1s"
 msgstr "Procesando palabras de la categoría %1s"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:159
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:171
 #, php-format
 msgid "Found!: word %1s to Cat_id %2s"
 msgstr "Encontrado!: Palabra %1s para Cat_id %2s"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:162
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:174
 #, php-format
 msgid "Not found word %1s"
 msgstr "No se encuentra la palabra %1s"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:252
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:260
 msgid "Uploading images."
 msgstr "Subiendo imágenes:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:315
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:264
+msgid "Uploading image..."
+msgstr "Subiendo imágen..."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:339
 msgid "Attaching file:"
 msgstr "Adjuntando archivo:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:317
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/campaign_fetch_functions.php:344
 msgid "Sorry, your attach could not be inserted. Something wrong happened."
 msgstr "Lo sentimos, tu adjunto no pude ser insertado. Algo malo ha sucedido."
 
@@ -1095,17 +1224,17 @@ msgstr "- PHP 5.2.0 posterior requerido!"
 msgid "- WP-Cron don't working please check it!"
 msgstr "- WP-Cron no está funcionando, revisalo por favor!"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/functions.php:191
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/functions.php:196
 #, php-format
 msgid "The feed %s has been parsed successfully."
 msgstr "La fuente %s se a analizado correctamente."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/functions.php:192
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/functions.php:197
 #, php-format
 msgid "The feed %s cannot be parsed. Simplepie said: %s"
 msgstr "La fuente %s no puede ser analizada. Simplepie dijo: %s"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/functions.php:412
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/functions.php:417
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
@@ -1118,82 +1247,95 @@ msgstr "Opciones WPeMatico"
 msgid "About"
 msgstr "Acerca"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:18
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:19
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/tools_page.php:66
 msgid "Thanks for test, use and enjoy this plugin."
 msgstr "Gracias por testear, use y disfrute este Plugin."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:19
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:20
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/tools_page.php:67
 msgid "If you like it, I really appreciate a donation."
 msgstr "Si te gusta, apreciamos una donación."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:21
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:22
 #: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/tools_page.php:69
 msgid "Click for Donate"
 msgstr "Click para Donar"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:29
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:28
+msgid "Buy PRO version online"
+msgstr "Comprar versión PRO en línea"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:34
 msgid "Sending e-Mails"
 msgstr "Enviando E-mails"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:31
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:36
 msgid "Sender Email:"
 msgstr "Remite el E-mail:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:32
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:37
 msgid "Sender Name:"
 msgstr "Remitente:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:33
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:38
 msgid "Send mail method:"
 msgstr "Método de envío de E-mails:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:36
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:41
 msgid "PHP: mail()"
 msgstr "PHP: mail()"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:37
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:42
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:38
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:43
 msgid "SMTP"
 msgstr "SMTP"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:41
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:46
 msgid "Sendmail Path:"
 msgstr "Ruta Sendmail:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:43
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:48
 msgid "SMTP Hostname:"
 msgstr "Nombre del Host SMTP:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:44
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:49
 msgid "SMTP Secure Connection:"
 msgstr "Conexiones Seguras SMTP:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:46
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:51
 msgid "none"
 msgstr "ninguno"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:50
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:55
 msgid "SMTP Username:"
 msgstr "Usuario SMTP:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:51
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:56
 msgid "SMTP Password:"
 msgstr "Contraseña SMTP:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:57
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:65
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:217
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:64
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:119
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:9
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:57
+msgid "Save settings"
+msgstr "Guardar Opciones"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:70
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:60
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:73
 msgid "Disable <b><i>Check Feeds before Save</i></b>"
 msgstr "Deshabilitar <b><i>Chequear Fuentes antes de Guardar</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:61
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:74
 msgid ""
 "Check this if you don't want automatic check feed URLs before save every "
 "campaign. "
@@ -1201,11 +1343,11 @@ msgstr ""
 "Tilda esto si no deseas chequeos automáticos de las URLs de las fuentes "
 "antes de guardar cada campaña."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:64
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:77
 msgid "Enable <b><i>Del Hash</i></b>"
 msgstr "Activar <b><i>Borrar Hash</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:65
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:78
 msgid ""
 "Show `Del Hash` link on campaigns list.  This link delete all hash codes for "
 "check duplicates on every feed per campaign."
@@ -1214,11 +1356,11 @@ msgstr ""
 "todos los códigos hash para chequear duplicados en cada fuente de las "
 "campañas."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:68
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:81
 msgid "Enable <b><i>See last log</i></b>"
 msgstr "Activar <b><i>Ver Utltimo Reporte</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:69
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:82
 msgid ""
 "Show `See Log` link on campaigns list.  This link show the last fetch log of "
 "campaign."
@@ -1226,11 +1368,11 @@ msgstr ""
 "Mostrar enlace `See Log` en listado de campañas. Este enlace muestra el "
 "ultimo reporte de análisis de la campaña."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:72
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:85
 msgid "Disable <b><i>WPeMatico Credits</i> on post.</b>"
 msgstr "Deshabilitar <b><i>Créditos WPeMatico</i> en publicación.</b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:73
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:86
 msgid ""
 "I really appreciate if you can left this option blank to show the plugin's "
 "credits."
@@ -1238,24 +1380,15 @@ msgstr ""
 "Realmetne apreciaría si pudieras dejar en blanco esta opción para mostrar "
 "los créditos de este plugin."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:81
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:182
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:64
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:119
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:9
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:45
-msgid "Save settings"
-msgstr "Guardar Opciones"
-
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:92
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:99
 msgid "Images"
 msgstr "Imágenes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:94
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:101
 msgid "Cache Images."
 msgstr "Caché de Imágenes."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:95
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:102
 msgid ""
 "When image caching is on, a copy of every image found in content of every "
 "feed (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir."
@@ -1264,11 +1397,11 @@ msgstr ""
 "encontrada en el contenido de cada fuente (sólo en etiquetas &lt;img&gt;) es "
 "descargada a la carpeta UPLOADS de Wordpress."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:97
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:104
 msgid "Caching all images"
 msgstr "Cacheando todas las imágenes"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:97
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:104
 msgid ""
 "This featured in the general Settings section, will be overridden for the "
 "campaign-specific options."
@@ -1276,15 +1409,24 @@ msgstr ""
 "Esta característica en la sección de Opciones Generales, sobreescribirá las "
 "opciones de campañas específicas."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:99
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:109
+msgid ""
+"If selected and image upload get error, then delete the \"src\" attribute of "
+"the &lt;img&gt;. Check this for don't link images from external sites."
+msgstr ""
+"Si está seleccionado y una imagen subida obtiene un error, eliminará el "
+"atributo \"src\" de &lt;img&gt;. <br />, actívelo para no enlazar imágenes "
+"de sitios externos."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:112
 msgid "Attach Images to posts."
 msgstr "Adjuntar Imágenes a publicaciones"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:100
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:113
 msgid "Image Attaching"
 msgstr "Adjunto de Imagen"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:100
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:113
 msgid ""
 "By default when image caching is on (and everything is working fine), a copy "
 "of every image found is added to Wordpress Media."
@@ -1293,7 +1435,7 @@ msgstr ""
 "bien), una copia de cada imagen encontrada es agregada a los medios de "
 "Wordpress."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:101
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:114
 msgid ""
 "If enabled Image Attaching all images will be attached to the owner post in "
 "WP media library; but if you see that the job process is too slowly you can "
@@ -1303,15 +1445,19 @@ msgstr ""
 "adjuntadas al dueño de la publicaión en la librería de medios de WP; pero si "
 "percibes que el proceso es muy lento, puedes desactivarlo desde aquí."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:107
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:117
+msgid "Enable first image found on content as Featured Image."
+msgstr "Activar primera imagen del contenido como Imagen Destacada."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:123
 msgid "Enable Features"
 msgstr "Activar Características"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:109
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:125
 msgid "Enable <b><i>Rewrite</i></b> feature"
 msgstr "Activar <b><i>Re-Escritura</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:110
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:126
 msgid ""
 "If you need use this feature, you can activate here.  Not recommended if you "
 "will not use this."
@@ -1319,13 +1465,13 @@ msgstr ""
 "Si necesitas usar esta característica, puedes activarla aquí. No es "
 "recomendado que lo hagas si no vas a usarla."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:112
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:128
 msgid "Enable <b><i>Words to Categories</i></b> feature"
 msgstr "Activar <b><i>Palabras a Categorías</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:113
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:22
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:26
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:129
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:22
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:26
 msgid ""
 "If you need this feature in every campaign, you can activate here.  Not "
 "recommended if you will not use this."
@@ -1333,13 +1479,13 @@ msgstr ""
 "Si necesitas esta característica en cada campaña, puedes activarla aquí. No "
 "es recomendado hacerlo si no vas a usarla."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:115
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:21
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:131
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:21
 msgid "Enable <b><i>Keyword Filtering</i></b> feature"
 msgstr "Activar <b><i>Filtrado de Palabras Clave</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:116
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:120
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:132
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:136
 msgid ""
 "If you need this feature in every campaign, you can activate here.  ONLY "
 "AVAILABLE AT PRO VERSION."
@@ -1347,8 +1493,8 @@ msgstr ""
 "Si necesitas esta característica en cada campaña, puedes activarla aquí. "
 "SOLO DISPONIBLE EN LA VERSION PRO."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:117
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:23
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:133
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:23
 msgid ""
 "This is for exclude or include posts according to the keywords <b>founded</"
 "b> at content or title."
@@ -1356,13 +1502,13 @@ msgstr ""
 "Esto es para incluir o excluir publicaciones acordes a las palabras clave "
 "<b>encontradas</b> en contenidos o títulos."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:119
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:25
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:135
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:25
 msgid "Enable <b><i>Word count Filters</i></b> feature"
 msgstr "Activar <b><i>Filtro de Conteo de Palabras</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:121
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:27
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:137
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:27
 msgid ""
 "This is for cut, exclude or include posts according to the letters o words "
 "<b>counted</b> at content."
@@ -1370,12 +1516,12 @@ msgstr ""
 "Esto es para cortar, excluir o oncluir publicaciones acordes a las letras o "
 "palabras <b>contadas</b> en contenidos."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:123
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:29
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:139
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:29
 msgid "Enable <b><i>Custom Title</i></b> feature"
 msgstr "Activar <b><i>Título Personalizado</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:124
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:140
 msgid ""
 "If you want a custom title for posts of a campaign, you can activate here.  "
 "ONLY AVAILABLE AT PRO VERSION."
@@ -1383,12 +1529,12 @@ msgstr ""
 "Si deseas un título personalizado para publicaciones de uan campaña, puedes "
 "activarla aquí. SOLO DISPONIBLE EN LA VERSION PRO."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:126
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:32
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:142
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:32
 msgid "Enable Special <b><i>1 Minute fetch</i></b> feature"
 msgstr "Activar Especial <b><i>Proceso en 1 Minuto</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:127
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:143
 msgid ""
 "If you want to see the option for fetch RSS posts just every 1 minute at "
 "every campaign, you can activate here.    Only recommended for short posts "
@@ -1398,12 +1544,12 @@ msgstr ""
 "cada campaña, activa aquí. Sólo recomendado para publicaciones breves y "
 "servidores rápidos. SOLO DISPONIBLE EN LA VERSION PRO."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:129
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:35
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:145
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:35
 msgid "Enable attempt to <b><i>Get Full Content</i></b> feature"
 msgstr "Activar intentar <b><i>Obtener el Contenido Completo</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:130
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:146
 msgid ""
 "If you want to attempt to obtain full items content of a campaign, you can "
 "activate here.  Not recommended if you will not use this.  ONLY AVAILABLE AT "
@@ -1413,15 +1559,38 @@ msgstr ""
 "activarlo aquí. No es recomendado hacerlo si no usarás esta opción. SOLO "
 "DISPONIBLE EN LA VERSION PRO."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:136
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:152
+msgid "Advanced Fetching"
+msgstr "Avanzado"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:155
+msgid "Force <b><i>Custom Simplepie Library</i></b>"
+msgstr "Forzar uso de <b><i>Librería Simplepie Propia</i></b>"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:156
+msgid "Check this if you want to ignore Wordpress Simplepie library. "
+msgstr ""
+"Active esto si quiere ignorar la librería Simplepie incluida en Wordpress."
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:160
+msgid "<b><i>Allow option on campaign for skip the content filters</i></b>"
+msgstr ""
+"<b><i>Permitir opción en campaña para saltear los filtros de contenido.</i></"
+"b>"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:162
+msgid "See How WordPress Processes Post Content: "
+msgstr "Ver cómo Wordpress procesa el contenido de una entrada:"
+
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:171
 msgid "Dashboard widget"
 msgstr "Widget de Escritorio"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:138
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:173
 msgid "Disable <b><i>Wordpress Dashboard Widget</i></b>"
 msgstr "Deshabilitar <b><i>Widget de Escritorio de Wordpress</i></b>"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:139
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:174
 msgid ""
 "Check this if you don't want display the widget dashboard.  Anyway, only "
 "admins will see it."
@@ -1429,36 +1598,36 @@ msgstr ""
 "Tilda esto si no deseas que se visualice el widget de escritorio. Sino, sólo "
 "los administradores podrán verlo."
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:140
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:175
 msgid "Select user roles that can see dashboard widget:"
 msgstr "Seleccione que roles de usuarios pueden ver el widget de escritorio:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:163
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:198
 msgid "Disable WP-Cron"
 msgstr "Desactivar WP-Cron"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:165
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:200
 msgid "Use Cron job of Hoster and disable WP_Cron"
 msgstr "Usar Tarea Programada de Hoster desactivar WP_Cron"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:167
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:202
 msgid "NOTE:"
 msgstr "NOTA:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:167
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:202
 msgid "Checking this, deactivate all Wordpress cron schedules."
 msgstr "Chequeando esto, desactiva todas los Crons de Wordpress"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:168
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:203
 msgid "You must set up a cron job that calls:"
 msgstr "Debes configurar una tarea programada que llame:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:170
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:174
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:205
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:209
 msgid "or URL:"
 msgstr "o URL:"
 
-#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:172
+#: c:\Mis_cosas_et\Dropbox\Webs\Wordpress\SVN\wpematico\trunk/app/settings_page.php:207
 msgid ""
 "If also want to run the wordpress cron with external cron you can set up a "
 "cron job that calls:"
@@ -1546,20 +1715,20 @@ msgstr "Campañas encontradas y listas para importar o borrar."
 msgid "Submit"
 msgstr "Enviar"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:53
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:6
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:53
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:6
 msgid "Aside"
 msgstr "A un lado"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:73
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:73
 msgid "htmLawed options"
 msgstr "Opciones htmLawed"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:75
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:75
 msgid "Enable <b><i>htmLawed</i></b> feature"
 msgstr "Activar <b><i>htmLawed</i></b>"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:76
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:76
 msgid ""
 "If you want fix the html code saved in your posts, you can activate this "
 "feature here.  Not recommended if you really don't need this."
@@ -1568,26 +1737,11 @@ msgstr ""
 "activar esta característica aquí. No es recomendado hacerlo si no lo "
 "necesitas."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:79
-msgid ""
-"PHP code to purify & filter HTML. You can learn more about htmLawed here:"
-msgstr ""
-"Codigo PHP para purificar y filtrar HTML. Puedes aprender mas acerca de "
-"htmlLawed aquí:"
-
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:80
-msgid ""
-"Really, you don't need to touch this options, but if you want, you can read "
-"about the options in the source Readme file: "
-msgstr ""
-"Realmente no necesitas modificar estas opciones, pero si así lo deseas, "
-"puedes leer sobre estas opciones en el archivo Readme:"
-
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:81
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:77
 msgid "Reset Options to Default Values: "
 msgstr "Restaurar Opciones a los valores iniciales:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prohtmlfix.php:81
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:77
 msgid ""
 "This check overwrite the current options values with default original "
 "htmLawed testings values.  After this you must enable htmLawed again."
@@ -1595,11 +1749,27 @@ msgstr ""
 "Activando esto rescribe las opciones actuales con los valores por defecto de "
 "htmLawed de testeo. Luego debes reactivar nuevamente htmLawed."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:19
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:80
+msgid ""
+"PHP code to purify & filter HTML. You can learn more about htmLawed here:"
+msgstr ""
+"Codigo PHP para purificar y filtrar HTML. Puedes aprender mas acerca de "
+"htmlLawed aquí:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prohtmlfix.php:81
+msgid ""
+"Really, you don't need to touch this options, with default values works "
+"well, but if you want, you can read about the options in the source Readme "
+"file: "
+msgstr ""
+"Realmente no necesitas modificar estas opciones, pero si así lo deseas, "
+"puedes leer sobre estas opciones en el archivo Readme: "
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:19
 msgid "PRO options"
 msgstr "Opciones PRO"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:30
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:30
 msgid ""
 "If you want a custom title for posts of a campaign, you can activate here.  "
 "Not recommended if you will not use this."
@@ -1608,7 +1778,7 @@ msgstr ""
 "activar aquí. No es recomendado si realmente no necesitas esta "
 "característica."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:33
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:33
 msgid ""
 "If you want to see the option for fetch RSS posts just every 1 minute at "
 "every campaign, you can activate here.    Only recommended for short posts "
@@ -1618,7 +1788,7 @@ msgstr ""
 "cada campaña, puedes activar aquí. Sólo es recomendado para publicaciones "
 "breves y servidores muy rápidos."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:36
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:36
 msgid ""
 "If you want to attempt to obtain full items content of a campaign, you can "
 "activate here.  Not recommended if you will not use this."
@@ -1626,11 +1796,11 @@ msgstr ""
 "Si deseas intentar obtener los ítems completos de una campaña, puedes "
 "activar aquí. No es recomendado hacerlo si no usarás esta característica."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:38
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:38
 msgid "Enable <b><i>Author per feed</i></b> feature"
 msgstr "Activar <b><i>Autor por Fuente</i></b>"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:39
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:39
 msgid ""
 "This option allow you assign an author per feed when editing campaign.  If "
 "no choice any author, the campaign author will be taken."
@@ -1638,11 +1808,11 @@ msgstr ""
 "Esta opción te permite asignar un autor por fuente cuando se edita una "
 "campaña. Si no se elije alguno,será tomado el autor de la campaña."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:41
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:41
 msgid "Enable <b><i>Import feed list</i></b> feature"
 msgstr "Activar <b><i>Importar lista de fuentes</i></b>"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/prosettings.php:42
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:42
 msgid ""
 "On campaign edit you can import, copy & paste in a textarea field, a list of "
 "feed addresses with/out author names."
@@ -1650,20 +1820,53 @@ msgstr ""
 "En edición de campaña puedes importar, copiar y pegar en un area de texto, "
 "una lista de fuentes con o sin los nombres de los autores."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:61
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:62
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:44
+msgid "Enable <b><i>Auto Tags</i></b> feature."
+msgstr "Activar característica <b><i>Etiquetas automáticas</i></b>."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:45
+msgid ""
+"This feature generate tags automatically on every post fetched, on campaign "
+"edit you can disable auto feature and manually enter a list of tags or leave "
+"empty."
+msgstr ""
+"Esta característica genera etiquetas automáticamente en cada entrada, en "
+"cada campaña puede desactivar el automático, agregar manualmente o dejar en "
+"blanco."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:48
+msgid "Bad Tags that will be not used on all posts:"
+msgstr "Palabras que no deben ser usadas como etiquetas:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:50
+msgid "Enter comma separated list of excluded Tags in all campaigns."
+msgstr ""
+"Agregue una lista de palabras separadas por coma, no se usarán como "
+"etiquetas en ninguna campaña."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:53
+msgid "Enable <b><i>Custom Fields</i></b> feature."
+msgstr "Activar característica <b><i>Campos Personalizados</i></b>"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/prosettings.php:54
+msgid "Add custom fields with values as templates on every post."
+msgstr ""
+"Agregar campos personalizados con valores como plantillas en cada post."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:69
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:70
 msgid "PRO Settings"
 msgstr "Configuraciones PRO"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:123
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:134
 msgid "Settings saved"
 msgstr "Opciones guardadas"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:197
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:208
 msgid "You can't use WPeMatico PRO without WPeMatico."
 msgstr "No puedes usar WPeMatico PRO sin WPeMatico."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:198
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:209
 msgid ""
 "You need WPeMatico installed and activated for use WPeMatico PRO plugin "
 "features."
@@ -1671,11 +1874,11 @@ msgstr ""
 "Necesitas WPeMatico instalado y activo para usar las características de "
 "WPeMatico PRO."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:262
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:273
 msgid "You are using WPeMatico PRO."
 msgstr "Estás usando WPeMatico PRO."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:263
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:274
 msgid ""
 "This works with basic WPeMatico installed and activated, but WPeMatico "
 "plugin is not activated."
@@ -1683,33 +1886,41 @@ msgstr ""
 "Esto funciona con WPeMatico instalado y activo, pero el plugin WPeMatico no "
 "está activo."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:283
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:294
 msgid "Full Content Options"
 msgstr "Opciones de contenido total"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:285
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:296
 msgid "Custom Title Options"
 msgstr "Opciones de título personalizado"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:287
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:298
 msgid "Keywords Filters"
 msgstr "Filtro de palabra claves"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:289
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:300
 msgid "Word Count Filters"
 msgstr "Filtro de conteo de palabras"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:321
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:324
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:302
+msgid "Custom Fields"
+msgstr "Campos personalizados"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:304
+msgid "PRO Options for Images"
+msgstr "Opciones PRO para imágenes"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:347
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:350
 msgid "Cancel Import"
 msgstr "Cacelar importación"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:322
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:420
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:348
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:522
 msgid "Import feed list"
 msgstr "Importar lista de fuentes"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:405
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:507
 msgid ""
 "Type or paste a list of urls, authors.  When update the campaign, the list "
 "will be imported as campaign feeds"
@@ -1717,7 +1928,7 @@ msgstr ""
 "Tipea o pega una lista de URLs, autores. Cuando actualices la campaña, esa "
 "lista será importada como fuentes de campaña."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:408
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:510
 msgid ""
 "The list must be one feed URL per line.  You can add an author username if "
 "the feature \"Author per Feed\" is enabled on PRO Settings. If not exist, "
@@ -1729,35 +1940,59 @@ msgstr ""
 "las opciones PRO. Si no existe, los usuarios serán agregados a los usuarios "
 "de Wordpress. De otro modo, toma el autor de la campaña."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:409
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:511
 msgid "Ex:"
 msgstr "Ejemplo:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:430
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:532
 msgid "Use campaign Author"
 msgstr "Usar autor de campaña"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:443
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:545
 msgid "Every 1 Minute"
 msgstr "Cada 1 minuto"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:455
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:560
+msgid "Auto generate tags"
+msgstr "Etiquetas Automáticas"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:562
+msgid "This feature try to get tags automatically from post content."
+msgstr "Esta función intenta obtener etiquetas automáticamente del contenido."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:579
+msgid "Limit tags quantity to:"
+msgstr "Limitar cantidad de etiquetas a:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:582
+msgid "Tags with 3 characters or less are ignored."
+msgstr "Etiquetas con 3 o menos caracteres son ignoradas."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:583
+msgid "Bad Tags:"
+msgstr "Etiquetas excluídas:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:585
+msgid "Enter comma separated list of excluded Tags."
+msgstr "Agregue lista separade por coma de etiquetas excluídas."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:597
 msgid "Last HTML tag to remove"
 msgstr "Ultima etiqueta HTML a remover"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:460
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:602
 msgid "HTML tag:"
 msgstr "Etiqueta HTML"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:461
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:603
 msgid "(ex: div, p, span, etc.)"
 msgstr "(ejemplo: div, p, span, etc.)"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:462
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:604
 msgid "Position at content"
 msgstr "Posicionar en contenido"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:476
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:618
 msgid ""
 "This allow you to ignore a post if below X words or letters in content.  "
 "Also allow assign a category to the post if greater than X words."
@@ -1766,12 +2001,12 @@ msgstr ""
 "palabras o letras en el contenido. También permite asigar una categoría a la "
 "publicación si es mayor a X palabras."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:479
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:487
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:621
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:629
 msgid "Greater than:"
 msgstr "Mayor que:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:479
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:621
 msgid ""
 "You must check \"Words\" field if you want to count words, but the letters "
 "in the content are counted; then complete the amount to check to assign a "
@@ -1781,12 +2016,12 @@ msgstr ""
 "letras en el contendio están contadas; luego completa el monto para chequear "
 "para asignar una categoría especial."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:480
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:508
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:622
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:650
 msgid "Cut at:"
 msgstr "Cortar en:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:480
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:622
 msgid ""
 "If the content is bigger than X Words, then the post is converted to text "
 "and cutted at X Words. If letters are selected just cut the content at X "
@@ -1797,51 +2032,51 @@ msgstr ""
 "seleccionadas, sólo corta el contenido en X cantidad de letras (sin importar "
 "si está en medio de una etiqueta html)."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:481
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:623
 msgid "Less than:"
 msgstr "Menos que:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:481
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:623
 msgid "If the content is less than X then the post is skipped."
 msgstr "Si el contendio es menor a X entonces la publicación será salteada."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:482
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:624
 msgid "Leave empty for ignore any field."
 msgstr "Deje en blanco para ignorar algún campo."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:490
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:511
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:524
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:632
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:653
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:666
 msgid "words."
 msgstr "palabras."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:490
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:511
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:524
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:632
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:653
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:666
 msgid "letters."
 msgstr "letras."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:493
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:515
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:527
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:635
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:657
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:669
 msgid "Words"
 msgstr "Palabras"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:513
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:655
 msgid "if greater."
 msgstr "es mayor."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:521
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:663
 msgid "Discard post is less than:"
 msgstr "Publicaciones descartadas es menor que:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:543
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:685
 msgid "Skip posts with words in content or words not in content."
 msgstr ""
 "Salteando publicaciones con palabras en el contenido o palabras fuera del "
 "contenido."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:547
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:689
 msgid ""
 "If the post content contain the word \"motor\" and then you want skip "
 "because you don't want posts about motors, simply type \"motor\" in the "
@@ -1851,7 +2086,7 @@ msgstr ""
 "no quieres publicaciones sobre motores, simplemente tipea \"motor\" in el "
 "campo \"Words\" (1 por línea)."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:549
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:691
 msgid ""
 "For advanced users, regular expressions are supported. Using this will allow "
 "you to make more powerful filters. Take multiple word filtering for example. "
@@ -1865,43 +2100,43 @@ msgstr ""
 "Mecanismos, puedes usar el operador: (motor|auto). Si deseas Caso Sensible a "
 "mayusculas en RegEx, agrega \"/i\" en el final de RegEx."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:553
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:695
 msgid "Must contain"
 msgstr "debe contener"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:554
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:563
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:696
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:705
 msgid "Search Title"
 msgstr "Busqueda de título"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:555
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:564
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:697
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:706
 msgid "Search Content"
 msgstr "Busqueda de contenido"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:556
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:565
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:698
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:707
 msgid "Words:"
 msgstr "Palabras:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:558
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:567
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:700
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:709
 msgid "RegEx:"
 msgstr "RegEx:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:562
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:704
 msgid "Cannot contain:"
 msgstr "No puede contener:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:585
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:727
 msgid "Enable Custom Post title"
 msgstr "Activar título personalizado"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:587
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:729
 msgid "Custom Title for every post:"
 msgstr "Título personalizado para cada publicación:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:589
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:731
 msgid ""
 "You can write here the title for every post. All posts will be named with "
 "this field."
@@ -1909,190 +2144,257 @@ msgstr ""
 "Puedes escribir aquí el título de cada publicación. Todas las publicaciones "
 "serán llamadas con este campo."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:590
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:732
 msgid "Add counter to Post title"
 msgstr "Agregando contador al título de la publicación"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:593
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:735
 msgid "Min. Counter Digits:"
 msgstr "Dígitos mínimos del contador:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:605
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:747
 msgid "Next Number:"
 msgstr "Próximo número:"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:619
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:760
 msgid "Attempt to parse complete item text from the original website"
 msgstr "Intento de analizar el texto completo de un ítem del sitio original"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:621
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:762
 msgid "This feature try to parse the original web link with the full article."
 msgstr ""
 "Esta característica intenta analizar el enlace a la web con el articulo "
 "original completo."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:624
-msgid "Get Images from RSS"
-msgstr "Obtener imágenes desde RSS"
-
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:626
-msgid ""
-"If no images found in full content, try parsing RSS item and add the image "
-"to start of content."
-msgstr ""
-"Si no se encuentran imágenes en el contenido completo, intenta analizar el "
-"ítem RSS y agregar la imagen al inicio del contenido."
-
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:627
-msgid "Help"
-msgstr "Ayuda"
-
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:628
-msgid "Adding Image with style:"
-msgstr "Agregando Imagen con estilo:"
-
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:628
-msgid ""
-"The image added has the class='wpe_imgrss'. You can add at your style.css "
-"file whatever style you want. For instance: "
-msgstr ""
-"La imagen agregada contiene la clase class='wpe_imgrss'. Puedes agregar en "
-"tu archivo style.css el estilo que desees, por ejemplo:"
-
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:630
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:765
 msgid "Strip HTML"
 msgstr "Tira HTML"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:632
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:767
 msgid "Remove all HTML from original website"
 msgstr "Remover todo el HTML del sitio original"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:652
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:779
+msgid "Add custom fields with values as templates."
+msgstr "Agregar campos personalizados con valores como plantillas."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:782
+msgid "You must put the custom field name and its value in every field."
+msgstr ""
+"Debe agregar el nombre y el valor del campo personalizado en cada campo."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:783
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:796
+msgid "Value:"
+msgstr "Valor:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:784
+msgid "You can use the same template fields like in box Post template."
+msgstr ""
+"Puede usar los mismos valores de plantilla que en la caja Plantilla de "
+"Publicación."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:785
+msgid "Valid value tags:"
+msgstr "Tags válidos:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:792
+msgid "Name:"
+msgstr "Nombre:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:833
+msgid "Get Images from RSS"
+msgstr "Obtener imágenes desde RSS"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:835
+msgid "Also enclosure and media RSS tags."
+msgstr "También etiquetas RSS enclosure y media."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:837
+msgid "Only if no images on content."
+msgstr "Sólo si no hay imágenes en el contenido."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:839
+msgid " Add firsts to images on content."
+msgstr "Agregar primero a las imágenes del contenido."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:839
+msgid "(Make featured)"
+msgstr "(Hacer destacada)"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:853
+msgid "Add first image at the beginning of the post content."
+msgstr "Agregar primera imagen al comienzo del contenido de la entrada."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:856
+msgid "Default Featured image if not found image on content."
+msgstr "Imágen por defecto si no hay imagen en el contenido."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:860
+msgid "Image URL:"
+msgstr "URL de la Imagen:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:860
+msgid "Link:"
+msgstr "Link:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:860
+msgid "Title:"
+msgstr "Título:"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:863
+msgid "Upload image"
+msgstr "Subiendo imágen"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:891
 #, php-format
 msgid "Processing Keyword filtering %1s"
 msgstr "Procesando filtro de palabra clave %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:673
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:908
 #, php-format
-msgid "Assigning author to %1s"
-msgstr "Asignando autor a %1s"
+msgid "Assigning author %1s to %2s"
+msgstr "Asignando autor %1s a %2s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:689
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:923
 #, php-format
 msgid "Changing title to %1s"
 msgstr "Cambiando título a %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:699
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:933
 #, php-format
 msgid "Attempting to get full article %1s"
 msgstr "Intentando obtener el artículo completo %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:713
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:947
 #, php-format
 msgid "Processing Words count Filters %1s"
 msgstr "Procesando filtro de conteo  de palabras %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:716
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:950
 #, php-format
 msgid "Found %1s words with %2s letters in content."
 msgstr "Encontrado palabras %1s con letras %2s en el contenido."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:730
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:964
 #, php-format
 msgid "Greater than %1s To Cat_id %2s"
 msgstr "Mayor que %1s a Cat_id %2s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:743
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:977
 #, php-format
 msgid "Cutting at %1s"
 msgstr "Cortando en %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:757
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:991
 #, php-format
 msgid "Skipping: %1s"
 msgstr "Salteando: %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:771
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1005
 #, php-format
 msgid "Running htmLawed to %1s"
 msgstr "Ejecutando htmlLawed a %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:807
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1041
 msgid "Default values for htmLawed must be saved. "
 msgstr "Opciones por defecto de htmlLawed deben ser salvadas."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:865
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1099
 #, php-format
 msgid "Deleting html tags: %1s"
 msgstr "Borrando etiquetas HTML: %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:913
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:921
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1128
+msgid "Adding custom tags to post."
+msgstr "Agregar Etiquetas a publicaciones."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1131
+msgid "Adding tags automatically to post."
+msgstr "Agregando etiquetas automáticamente."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1160
+msgid "Parsing Custom fields values."
+msgstr "Análisis de valores de Campos personalizados."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1227
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1235
 #, php-format
 msgid "Skiping: Not found word %1s in title %2s"
 msgstr "Salteando: No se encontro la palabra %1s en el título %2s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:932
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1246
 #, php-format
 msgid "Found!: word %1s"
 msgstr "Encontrado!: oakabra %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:934
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1248
 #, php-format
 msgid "Skiping: Not found word %1s in content"
 msgstr "Salteando: No encontrada palabra %1s en contenido"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:952
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1266
 #, php-format
 msgid "Found!: regex %1s"
 msgstr "Encontrado!: regex %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:954
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1268
 #, php-format
 msgid "Skiping: Not found regex %1s"
 msgstr "Salteando: No encotnrado regex %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:976
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:984
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1291
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1299
 #, php-format
 msgid "Skiping: Found word %1s in title %2s"
 msgstr "Salteando: Encontrada palabra %1s en título %2s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:995
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1310
 #, php-format
 msgid "Not Found word %1s"
 msgstr "No se encuentra palabra %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:997
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1312
 #, php-format
 msgid "Skiping: Found word %1s in content"
 msgstr "Salteando: encontrada palabra %1s en contenido"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:1015
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1330
 #, php-format
 msgid "Not Found regex %1s"
 msgstr "No se encuentra regex %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:1017
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1332
 #, php-format
 msgid "Skiping: found regex %1s"
 msgstr "Salteando: encontrado regex %1s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:1159
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1395
+#, php-format
+msgid "Getting enclosure link: %s"
+msgstr "Obteniendo enlace enclosure: %s"
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1415
+msgid "Inserting default Image Into Post."
+msgstr "Insertar Imágen Destacada en publicación."
+
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1448
 msgid ""
-"There's an error in Keyword include filter: You must check one search option."
+"There's an error in Keyword include filter: You must check at least one "
+"search option."
 msgstr ""
 "Hay un error en el filtro de inclusión de la clave: Debes chequear alguna "
 "opcion."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:1166
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1454
 msgid ""
-"There's an error in Keyword exclude filter: You must check one search option."
+"There's an error in Keyword exclude filter: You must check at least one "
+"search option."
 msgstr ""
 "Hay un error en el filtro de exclusión de la clave: Debes chequear alguna "
 "opcion de búsqueda."
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:1173
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1460
 #, php-format
 msgid ""
 "There's an error with the supplied RegEx expression in Keyword include "
@@ -2101,7 +2403,7 @@ msgstr ""
 "Hay un error en la expresion RegEx provista en el filtro de inclusion de la "
 "clave: %s"
 
-#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\wpematico_pro_orig\wpematico_pro/wpematicopro.php:1179
+#: c:\Mis_Cosas_et\Dropbox\Webs\Wordpress\SVN\wpematicoPRO1.0\trunk/wpematicopro.php:1466
 #, php-format
 msgid ""
 "There's an error with the supplied RegEx expression in Keyword exclude "
@@ -2109,3 +2411,23 @@ msgid ""
 msgstr ""
 "Hay un error en la expresion RegEx provista en el filtro de exclusion de la "
 "clave: %s"
+
+#~ msgid ""
+#~ "If no images found in full content, try parsing RSS item and add the "
+#~ "image to start of content."
+#~ msgstr ""
+#~ "Si no se encuentran imágenes en el contenido completo, intenta analizar "
+#~ "el ítem RSS y agregar la imagen al inicio del contenido."
+
+#~ msgid "Help"
+#~ msgstr "Ayuda"
+
+#~ msgid "Adding Image with style:"
+#~ msgstr "Agregando Imagen con estilo:"
+
+#~ msgid ""
+#~ "The image added has the class='wpe_imgrss'. You can add at your style.css "
+#~ "file whatever style you want. For instance: "
+#~ msgstr ""
+#~ "La imagen agregada contiene la clase class='wpe_imgrss'. Puedes agregar "
+#~ "en tu archivo style.css el estilo que desees, por ejemplo:"

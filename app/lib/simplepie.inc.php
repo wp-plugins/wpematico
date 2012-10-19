@@ -11028,20 +11028,20 @@ class SimplePie_Parse_Date
 		'sonnabend' => 6,
 		'sonntag' => 7,
 		// Italian
-		'lunedì' => 1,
-		'martedì' => 2,
-		'mercoledì' => 3,
-		'giovedì' => 4,
-		'venerdì' => 5,
+		'lunedÃ¬' => 1,
+		'martedÃ¬' => 2,
+		'mercoledÃ¬' => 3,
+		'giovedÃ¬' => 4,
+		'venerdÃ¬' => 5,
 		'sabato' => 6,
 		'domenica' => 7,
 		// Spanish
 		'lunes' => 1,
 		'martes' => 2,
-		'miércoles' => 3,
+		'miÃ©rcoles' => 3,
 		'jueves' => 4,
 		'viernes' => 5,
-		'sábado' => 6,
+		'sÃ¡bado' => 6,
 		'domingo' => 7,
 		// Finnish
 		'maanantai' => 1,
@@ -11052,21 +11052,21 @@ class SimplePie_Parse_Date
 		'lauantai' => 6,
 		'sunnuntai' => 7,
 		// Hungarian
-		'hétfő' => 1,
+		'hÃ©tfÅ‘' => 1,
 		'kedd' => 2,
 		'szerda' => 3,
-		'csütörtok' => 4,
-		'péntek' => 5,
+		'csÃ¼tÃ¶rtok' => 4,
+		'pÃ©ntek' => 5,
 		'szombat' => 6,
-		'vasárnap' => 7,
+		'vasÃ¡rnap' => 7,
 		// Greek
-		'Δευ' => 1,
-		'Τρι' => 2,
-		'Τετ' => 3,
-		'Πεμ' => 4,
-		'Παρ' => 5,
-		'Σαβ' => 6,
-		'Κυρ' => 7,
+		'Î”ÎµÏ…' => 1,
+		'Î¤ÏÎ¹' => 2,
+		'Î¤ÎµÏ„' => 3,
+		'Î ÎµÎ¼' => 4,
+		'Î Î±Ï' => 5,
+		'Î£Î±Î²' => 6,
+		'ÎšÏ…Ï' => 7,
 	);
 	var $month = array(
 		// English
@@ -11109,21 +11109,21 @@ class SimplePie_Parse_Date
 		'december' => 12,
 		// French
 		'janvier' => 1,
-		'février' => 2,
+		'fÃ©vrier' => 2,
 		'mars' => 3,
 		'avril' => 4,
 		'mai' => 5,
 		'juin' => 6,
 		'juillet' => 7,
-		'août' => 8,
+		'aoÃ»t' => 8,
 		'septembre' => 9,
 		'octobre' => 10,
 		'novembre' => 11,
-		'décembre' => 12,
+		'dÃ©cembre' => 12,
 		// German
 		'januar' => 1,
 		'februar' => 2,
-		'märz' => 3,
+		'mÃ¤rz' => 3,
 		'april' => 4,
 		'mai' => 5,
 		'juni' => 6,
@@ -11166,45 +11166,45 @@ class SimplePie_Parse_Date
 		'maaliskuu' => 3,
 		'huhtikuu' => 4,
 		'toukokuu' => 5,
-		'kesäkuu' => 6,
-		'heinäkuu' => 7,
+		'kesÃ¤kuu' => 6,
+		'heinÃ¤kuu' => 7,
 		'elokuu' => 8,
 		'suuskuu' => 9,
 		'lokakuu' => 10,
 		'marras' => 11,
 		'joulukuu' => 12,
 		// Hungarian
-		'január' => 1,
-		'február' => 2,
-		'március' => 3,
-		'április' => 4,
-		'május' => 5,
-		'június' => 6,
-		'július' => 7,
+		'januÃ¡r' => 1,
+		'februÃ¡r' => 2,
+		'mÃ¡rcius' => 3,
+		'Ã¡prilis' => 4,
+		'mÃ¡jus' => 5,
+		'jÃºnius' => 6,
+		'jÃºlius' => 7,
 		'augusztus' => 8,
 		'szeptember' => 9,
-		'október' => 10,
+		'oktÃ³ber' => 10,
 		'november' => 11,
 		'december' => 12,
 		// Greek
-		'Ιαν' => 1,
-		'Φεβ' => 2,
-		'Μάώ' => 3,
-		'Μαώ' => 3,
-		'Απρ' => 4,
-		'Μάι' => 5,
-		'Μαϊ' => 5,
-		'Μαι' => 5,
-		'Ιούν' => 6,
-		'Ιον' => 6,
-		'Ιούλ' => 7,
-		'Ιολ' => 7,
-		'Αύγ' => 8,
-		'Αυγ' => 8,
-		'Σεπ' => 9,
-		'Οκτ' => 10,
-		'Νοέ' => 11,
-		'Δεκ' => 12,
+		'Î™Î±Î½' => 1,
+		'Î¦ÎµÎ²' => 2,
+		'ÎœÎ¬ÏŽ' => 3,
+		'ÎœÎ±ÏŽ' => 3,
+		'Î‘Ï€Ï' => 4,
+		'ÎœÎ¬Î¹' => 5,
+		'ÎœÎ±ÏŠ' => 5,
+		'ÎœÎ±Î¹' => 5,
+		'Î™Î¿ÏÎ½' => 6,
+		'Î™Î¿Î½' => 6,
+		'Î™Î¿ÏÎ»' => 7,
+		'Î™Î¿Î»' => 7,
+		'Î‘ÏÎ³' => 8,
+		'Î‘Ï…Î³' => 8,
+		'Î£ÎµÏ€' => 9,
+		'ÎŸÎºÏ„' => 10,
+		'ÎÎ¿Î­' => 11,
+		'Î”ÎµÎº' => 12,
 	);
 	var $timezone = array(
 		'ACDT' => 37800,
@@ -11498,7 +11498,7 @@ class SimplePie_Parse_Date
 			6: Second
 			7: Decimal fraction of a second
 			8: Zulu
-			9: Timezone ±
+			9: Timezone Â±
 			10: Timezone hours
 			11: Timezone minutes
 			*/
@@ -11621,7 +11621,7 @@ class SimplePie_Parse_Date
 			5: Hour
 			6: Minute
 			7: Second
-			8: Timezone ±
+			8: Timezone Â±
 			9: Timezone hours
 			10: Timezone minutes
 			11: Alphabetic timezone
