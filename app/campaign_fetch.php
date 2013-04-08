@@ -275,8 +275,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			'comment_status'          => $comment_status,
 			'ping_status'             => ($allowpings) ? "open" : "closed"
 		));
-		$aaa = wp_set_post_terms( $post_id, $tags_input);
-		trigger_error("Tags added:::".print_r($aaa,true) ,E_USER_WARNING);
+		if(!empty($tags_input)){ //solo muestra los tags si los tiene definidos
+			$aaa = wp_set_post_terms( $post_id, $tags_input);
+			if(!empty($sss)) trigger_error("Tags added: ".print_r($aaa,true) ,E_USER_NOTICE);
+		}
 		
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
 			$content = $truecontent;
@@ -335,8 +337,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
           update_post_meta( $this->campaign_id, 'last_campaign_log', $campaign_log_message );
 		  
 		$Suss = sprintf(__('Campaign fetched in %1s sec.', WPeMatico :: TEXTDOMAIN ),$this->campaign['lastruntime']) . '  ' . sprintf(__('Processed Posts: %1s', WPeMatico :: TEXTDOMAIN ), $this->fetched_posts);
-		$message = '<div>'. $Suss.'  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message\').toggle();">' . __('Show detailed Log', WPeMatico :: TEXTDOMAIN ) . '.</a></div>';
-		$campaign_log_message = $message .'<div id="log_message" style="display:none;" class="error fade">'.$campaign_log_message.'</div>';
+		$message = '<div>'. $Suss.'  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_'.$this->campaign_id.'\').fadeToggle();">' . __('Show detailed Log', WPeMatico :: TEXTDOMAIN ) . '.</a></div>';
+		$campaign_log_message = $message .'<div id="log_message_'.$this->campaign_id.'" style="display:none;" class="error fade">'.$campaign_log_message.'</div>';
 
 		return;
 	}

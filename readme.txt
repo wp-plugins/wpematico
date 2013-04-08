@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
-Tested up to: 3.4.2
-Stable tag: 1.1.1
+Tested up to: 3.6
+Stable tag: 1.1.2
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -31,7 +31,7 @@ Some supported features (but not all of them):
 * First image attached to a post marked as Featured Image of the post.
 * Words Rewriting. Regular expressions supported.
 * Words Relinking. Define custom links for words you specify.
-* Words to Category. Define custom words for assign every post to specified categories. Thanks to Juergen Mueller at [Wirtschaft](http://www.wirtschaft.com)
+* Words to Category. Define custom words for assign every post to specified categories. Thanks to Juergen Mueller at Wirtschaft
 * Detailed Log sending to custom e-mail. Always on every executed cron or only on errors with campaign.
 * Option to replace title links (Permalink) to source.
 * Post templating. 
@@ -92,11 +92,24 @@ Needed translation files: if you can translate from english to any language, you
 The .pot file are included on plugin and you must use poedit for tranlate.  
 Your work, name and website will be mentioned here.
 
+Slovak languages files thanks to Branco [WebHostingGeeks.com](http://webhostinggeeks.com/user-reviews/).
+
 Also we need tutorials on text, pdf, videos.  All are welcome.  Isn't it?
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+
+= 1.1.2 =
+* Added New feature: Now you can run all or selected campaigns at once on campaigns list.
+* Improved some ajax notifications.
+* Fixed some styles that changes with WP3.5.
+* Added example of use of images with [gallery] shortcode on post template.
+* Upgraded package SimplePie to version 1.3.1.
+* Added SimplePie: Server Compatibility Test 1.3, for check if the plugin will work on server.
+* Fixed loading localization textdomain.
+* Fixed some issues with I18n.
+* Added Romanian & Slovak languages files.  Thanks [WebHostingGeeks.com](http://webhostinggeeks.com/user-reviews/).
 
 = 1.1.1 =
 * Added New feature: Auto categories from source posts (were available).
@@ -277,5 +290,5 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.1.1 =
+= 1.1.2 =
 * Maintenance Release. Many bugs fixed. Recommended upgrade.

@@ -1,3 +1,4 @@
+p { margin-bottom: 2px; }
 #major-publishing-actions .radio { min-width: 16px; vertical-align: bottom; width: 16px; }
 .updated a { display:none; } 
 #edit-slug-box { display:none; }
@@ -19,7 +20,8 @@
 .p7{padding: 0.7em;}
 .he20{height:20px;}
 .he35{height:35px;}
-.mphlp{font-family: Helvetica;font-size: 11px;margin: -5px 0 10px;padding: 0 0 0 25px; color: #277;}
+.mphlp_old{font-family: Helvetica;font-size: 11px;margin: -5px 0 10px;padding: 0 0 0 25px; color: #277;}
+.mphlp{font-family: Helvetica;font-size: 11px;margin: 0;padding: 0 0 0 25px; color: #277;}
 
 .maxhe290 {max-height: 290px; overflow: auto; overflow-x: hidden; overflow-y: scroll;}
 #ruedita1 {margin: 6px -2px 0 0;float:right;}
@@ -158,8 +160,3 @@
 .select_up{background-position:-202px 0;height:17px;width:17px}
 .checkmark_Italic{background-position:-161px 0;height:18px;width:19px}
 .alert_star{background-position:-175px -42px;height:15px;width:15px}
-
-
-
-
-

@@ -151,11 +151,10 @@ $cfg = $this->check_options($this->options);  ?>
 			<div id="advancedfetching" class="postbox">
 				<h3 class="hndle"><span><?php _e('Advanced Fetching', self :: TEXTDOMAIN ); ?></span></h3>
 				<div class="inside">
-					<p></p>
+					<p><a  onclick="jQuery('#simpie').show();" href="<?php echo self :: $uri; ?>app/lib/sp_compatibility_test.php" target="simpie"><?php _e('Click here for test if SimplePie lib works well on your server.', self :: TEXTDOMAIN ); ?></a></p>
+					<iframe src="" name="simpie" id="simpie" style="width: 620px;max-width: 100%;height: 600px;display:none;"></iframe>
 					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'],true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force <b><i>Custom Simplepie Library</i></b>', self :: TEXTDOMAIN ); ?><br />
 					<div id="hlpspl" style="padding-left:20px;"><?php _e('Check this if you want to ignore Wordpress Simplepie library. ', self :: TEXTDOMAIN ); ?></div>
-					<br /> 
-
 					<p></p>
 					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['woutfilter'],true); ?> name="woutfilter" id="woutfilter" /> <?php _e('<b><i>Allow option on campaign for skip the content filters</i></b>', self :: TEXTDOMAIN ); ?><br />
 					<div id="hlpspl" style="padding-left:20px;"><?php _e('NOTE: It is extremely dangerous to allow unfiltered content because there may be some vulnerability in the source code.', self :: TEXTDOMAIN ); ?>

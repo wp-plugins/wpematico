@@ -69,7 +69,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$visibility_trans = __('Public');
 		$description = __('Campaign Description', WPeMatico :: TEXTDOMAIN );
 		$description_help = __('Here you can write some observations.',  WPeMatico :: TEXTDOMAIN);
-		$runnowbutton = '<div class="right m7 " style="margin-left: 47px;"><div style="background-color: #FFF52F;" id="run_now" class="button-primary">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . ' &nbsp;<span class="ui-icon GoIco right"></span></div></div>';
+		$runnowbutton = '<div class="right m7 " style="margin-left: 47px;"><div style="background-color: #FFF52F;" id="run_now" class="button-primary">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . '</div></div>';
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		
 		?>
@@ -157,10 +157,11 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			
 			$('#run_now').click(function() {
 				$(this).attr('style','Background:#CCC;');
-				$.ajaxSetup({async:false});
-				jQuery('#fieldserror').remove();
+				$('html').css('cursor','wait');
+//				$.ajaxSetup({async:false});
+				$('#fieldserror').remove();
 				msgdev="<img width='12' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif' class='mt2'> <?php _e('Running Campaign...', WPeMatico :: TEXTDOMAIN ); ?>";
-				jQuery("#post").prepend('<div id="fieldserror" class="updated fade he20">'+msgdev+'</div>');
+				$("#poststuff").prepend('<div id="fieldserror" class="updated fade he20">'+msgdev+'</div>');
 				c_ID = $('#post_ID').val();
 				var data = {
 					campaign_ID: c_ID ,
@@ -169,12 +170,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
 					$('#fieldserror').remove();
 					if( msgdev.substring(0, 5) == 'ERROR' ){
-						$("#post").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
+						$("#poststuff").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
 					}else{
-						$("#post").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
+						$("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
 					}
+					$('html').css('cursor','auto');
+					$(this).attr('style','Background:#FFF52F;');
 				});
- 				$(this).attr('style','Background:#FFF52F;');
 			});
 			 
 			$('#post').submit( function() {		//checkfields
@@ -222,7 +224,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				});
 				if( error == true ) {
 					$('#fieldserror').remove();
-					$("#post").prepend('<div id="fieldserror" class="error fade">ERROR: '+msg+'</div>');
+					$("#poststuff").prepend('<div id="fieldserror" class="error fade">ERROR: '+msg+'</div>');
 					$('#wpcontent .ajax-loading').attr('style',' visibility: hidden;');
 
 					return false;

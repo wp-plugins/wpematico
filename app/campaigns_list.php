@@ -9,7 +9,6 @@ if ( !defined('ABSPATH') )
 	else return;
  	
 if ( class_exists( 'WPeMatico_Campaigns' ) ) return;
-
 class WPeMatico_Campaigns {
 
 	public function init() {
@@ -24,6 +23,8 @@ class WPeMatico_Campaigns {
 		add_action('manage_wpematico_posts_custom_column',array(&$this,'custom_wpematico_column'),10,2);
 		add_filter('post_row_actions' , array( &$this, 'wpematico_quick_actions'), 10, 2);
 		add_filter("manage_edit-wpematico_sortable_columns", array( &$this, "sortable_columns") );
+		//BULK ACTIONS
+		add_filter('views_edit-wpematico', array( &$this, 'my_views_filter') );
 		//QUICK ACTIONS
 		add_action('admin_action_wpematico_copy_campaign', array( &$this, 'wpematico_copy_campaign'));
 		add_action('admin_action_wpematico_toggle_campaign', array(&$this, 'wpematico_toggle_campaign'));
@@ -34,6 +35,14 @@ class WPeMatico_Campaigns {
 
 		add_action('admin_print_styles-edit.php', array(&$this,'list_admin_styles'));
 		add_action('admin_print_scripts-edit.php', array(&$this,'list_admin_scripts'));
+	}
+
+	function my_views_filter($links) {
+		global $post;
+		if($post->post_type != 'wpematico') return $links;
+		
+		$links['wpematico'] = __('Visit', WPeMatico :: TEXTDOMAIN).' <a href="http://www.wpematico.com" target="_Blank">www.wpematico.com</a>';
+		return $links;
 	}
 	
   	function list_admin_styles(){
@@ -50,11 +59,16 @@ class WPeMatico_Campaigns {
 	function campaigns_list_admin_head() {
 		global $post;
 		if($post->post_type != 'wpematico') return $post_id;
-		?>
+			$runallbutton = '<div style="margin: 2px 5px 0 0;float:left;background-color: #FFF52F;" id="run_all" onclick="javascript:run_all();" class="button-primary">'. __('Run Selected Campaigns', WPeMatico :: TEXTDOMAIN ) . '</div>';
+		?>		
 		<script type="text/javascript" language="javascript">
+			jQuery(document).ready(function($){
+				$('div.tablenav.top').prepend('<?php echo $runallbutton; ?>');
+			});
+			
 			function run_now(c_ID) {
-				jQuery.ajaxSetup({async:false});
-				jQuery('#fieldserror').remove();
+				jQuery('html').css('cursor','wait');
+				jQuery("div[id=fieldserror]").remove();
 				msgdev="<img width='12' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif' class='mt2'> <?php _e('Running Campaign...', WPeMatico :: TEXTDOMAIN ); ?>";
 				jQuery(".subsubsub").prepend('<div id="fieldserror" class="updated fade he20">'+msgdev+'</div>');
 				var data = {
@@ -68,9 +82,130 @@ class WPeMatico_Campaigns {
 					}else{
 						jQuery(".subsubsub").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
 					}
+					jQuery('html').css('cursor','auto');
 				});
-			};
-		</script>
+			}
+ 			function run_all() {
+				var selectedItems = new Array();
+				jQuery("input[name='post[]']:checked").each(function() {selectedItems.push(jQuery(this).val());});
+				if (selectedItems .length == 0) {alert("<?php _e('Please select campaign(s) to Run.', WPeMatico :: TEXTDOMAIN ); ?>"); return; }
+				
+				jQuery('html').css('cursor','wait');
+				jQuery('#fieldserror').remove();
+				msgdev="<img width='12' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif' class='mt2'> <?php _e('Running Campaign...', WPeMatico :: TEXTDOMAIN ); ?>";
+				jQuery(".subsubsub").prepend('<div id="fieldserror" class="updated fade he20 ajaxstop">'+msgdev+'</div>');
+				jQuery("input[name='post[]']:checked").each(function() {
+					c_id = jQuery(this).val();
+					var data = {
+						campaign_ID: c_id ,
+						action: "runnowx"
+					};
+					jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
+						if( msgdev.substring(0, 5) == 'ERROR' ){
+							jQuery(".subsubsub").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
+						}else{
+							jQuery(".subsubsub").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
+						}
+					});
+				}).ajaxStop(function() {
+					jQuery('html').css('cursor','auto');
+					jQuery('.ajaxstop').remove().ajaxStop();
+				});
+			}
+
+/* repeatString() returns a string which has been repeated a set number of times */ 
+function repeatString(str, num) {
+    out = '';
+    for (var i = 0; i < num; i++) {
+        out += str; 
+    }
+    return out;
+}
+
+/*
+dump() displays the contents of a variable like var_dump() does in PHP. dump() is
+better than typeof, because it can distinguish between array, null and object.  
+Parameters:
+  v:              The variable
+  howDisplay:     "none", "body", "alert" (default)
+  recursionLevel: Number of times the function has recursed when entering nested
+                  objects or arrays. Each level of recursion adds extra space to the 
+                  output to indicate level. Set to 0 by default.
+Return Value:
+  A string of the variable's contents 
+Limitations:
+  Can't pass an undefined variable to dump(). 
+  dump() can't distinguish between int and float.
+  dump() can't tell the original variable type of a member variable of an object.
+  These limitations can't be fixed because these are *features* of JS. However, dump()
+*/
+function dump(v, howDisplay, recursionLevel) {
+    howDisplay = (typeof howDisplay === 'undefined') ? "alert" : howDisplay;
+    recursionLevel = (typeof recursionLevel !== 'number') ? 0 : recursionLevel;
+
+
+    var vType = typeof v;
+    var out = vType;
+
+    switch (vType) {
+        case "number":
+            /* there is absolutely no way in JS to distinguish 2 from 2.0
+            so 'number' is the best that you can do. The following doesn't work:
+            var er = /^[0-9]+$/;
+            if (!isNaN(v) && v % 1 === 0 && er.test(3.0))
+                out = 'int';*/
+        case "boolean":
+            out += ": " + v;
+            break;
+        case "string":
+            out += "(" + v.length + '): "' + v + '"';
+            break;
+        case "object":
+            //check if null
+            if (v === null) {
+                out = "null";
+
+            }
+            //If using jQuery: if ($.isArray(v))
+            //If using IE: if (isArray(v))
+            //this should work for all browsers according to the ECMAScript standard:
+            else if (Object.prototype.toString.call(v) === '[object Array]') {  
+                out = 'array(' + v.length + '): {\n';
+                for (var i = 0; i < v.length; i++) {
+                    out += repeatString('   ', recursionLevel) + "   [" + i + "]:  " + 
+                        dump(v[i], "none", recursionLevel + 1) + "\n";
+                }
+                out += repeatString('   ', recursionLevel) + "}";
+            }
+            else { //if object    
+                sContents = "{\n";
+                cnt = 0;
+                for (var member in v) {
+                    //No way to know the original data type of member, since JS
+                    //always converts it to a string and no other way to parse objects.
+                    sContents += repeatString('   ', recursionLevel) + "   " + member +
+                        ":  " + dump(v[member], "none", recursionLevel + 1) + "\n";
+                    cnt++;
+                }
+                sContents += repeatString('   ', recursionLevel) + "}";
+                out += "(" + cnt + "): " + sContents;
+            }
+            break;
+    }
+
+    if (howDisplay == 'body') {
+        var pre = document.createElement('pre');
+        pre.innerHTML = out;
+        document.body.appendChild(pre)
+    }
+    else if (howDisplay == 'alert') {
+        alert(out);
+    }
+
+    return out;
+}
+
+ 		</script>
 		<?php
 	}
 

@@ -127,16 +127,18 @@ class WPeMatico_functions {
 	}
 
 	// Processes all campaigns
-/* 	function processAll() {
-		@set_time_limit(0);    
+ 	function processAll() {
 		$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC' );
 		$campaignsid = get_posts( $args );
+		$msglogs = "";
 		foreach( $campaignsid as $campaignid ) {
-			wpematico_dojob( $campaignid->ID ); 
+			@set_time_limit(0);    
+			$msglogs .= WPeMatico :: wpematico_dojob( $campaignid->ID ); 
 		}
+		return $msglogs;
 	}
 	
- */
+
 	//Permalink to Source
 	/*** Determines what the title has to link to   * @return string new text   **/
 	function wpematico_permalink($url) {

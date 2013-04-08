@@ -3,7 +3,7 @@
  Plugin Name: WPeMatico
  Plugin URI: http://www.wpematico.com
  Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
- Version: 1.1.1
+ Version: 1.1.2
  Author: etruel <esteban@netmdp.com>
  Author URI: http://www.netmdp.com
  */
@@ -35,7 +35,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access public
 		 * @const string
 		 */
-		const TEXTDOMAIN = 'WPeMatico';
+		const TEXTDOMAIN = 'wpematico';
 
 		/**
 		 * Version
@@ -43,7 +43,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access public
 		 * @const string
 		 */
-		const VERSION = '1.1.1';
+		const VERSION = '1.1.2';
 		const RELEASE = '1';
 
 		/**
@@ -143,6 +143,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			self :: $uri = plugin_dir_url( __FILE__ );
 			self :: $dir = plugin_dir_path( __FILE__ );
 			self :: $basen = plugin_basename(__FILE__);
+			self :: load_wpe_textdomain();
 			
 			new self( TRUE );
 		}
@@ -163,7 +164,6 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			if($this->options['nonstatic'] && !class_exists( 'NoNStatic' )){ 
 				$this->options['nonstatic'] = false; $this->update_options();
 			}
-			$this->load_textdomain();
 			add_action( 'admin_notices', array( &$this, 'old_version_notice' ) );
 			$this->Create_campaigns_page(); 
 			if ( $hook_in ) {
@@ -318,17 +318,17 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 */
 		 public function Create_campaigns_page() {
 		  $labels = array(
-			'name' => __('Campaigns', 'WpeMatico'),
-			'singular_name' => __('Campaign', 'WpeMatico'),
-			'add_new' => __('Add New', 'WpeMatico'),
-			'add_new_item' => __('Add New Campaign'),
-			'edit_item' => __('Edit Campaign'),
-			'new_item' => __('New Campaign'),
-			'all_items' => __('All Campaigns'),
-			'view_item' => __('View Campaign'),
-			'search_items' => __('Search Campaign'),
-			'not_found' =>  __('No campaign found'),
-			'not_found_in_trash' => __('No Campaign found in Trash'), 
+			'name' => __('Campaigns',  self :: TEXTDOMAIN ),
+			'singular_name' => __('Campaign',  self :: TEXTDOMAIN ),
+			'add_new' => __('Add New', self :: TEXTDOMAIN ),
+			'add_new_item' => __('Add New Campaign', self :: TEXTDOMAIN ),
+			'edit_item' => __('Edit Campaign', self :: TEXTDOMAIN ),
+			'new_item' => __('New Campaign', self :: TEXTDOMAIN ),
+			'all_items' => __('All Campaigns', self :: TEXTDOMAIN ),
+			'view_item' => __('View Campaign', self :: TEXTDOMAIN ),
+			'search_items' => __('Search Campaign', self :: TEXTDOMAIN ),
+			'not_found' =>  __('No campaign found', self :: TEXTDOMAIN ),
+			'not_found_in_trash' => __('No Campaign found in Trash', self :: TEXTDOMAIN ), 
 			'parent_item_colon' => '',
 			'menu_name' => 'WpeMatico');
 		  $args = array(
@@ -471,9 +471,9 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access protected
 		 * @return void
 		 */
-		protected function load_textdomain() {
+		protected function load_wpe_textdomain() {
 			# load plugin textdomain
-			load_plugin_textdomain( self :: TEXTDOMAIN, FALSE, basename( plugin_basename( __FILE__ ) ) . '/lang' );
+			load_plugin_textdomain( self :: TEXTDOMAIN, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 			# load tinyMCE localisation file
 			#add_filter( 'mce_external_languages', array( &$this, 'mce_localisation' ) );
 		}

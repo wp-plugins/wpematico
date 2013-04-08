@@ -159,13 +159,13 @@ class WPeMatico_Campaign_edit_functions {
 			<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?php checked($campaign_enable_template,true) ?> />
 			<label for="campaign_enable_template"> <?php _e('Enable Post Template', WPeMatico :: TEXTDOMAIN ) ?></label>
 			<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea>
-			<p class="he20"><span id="tags_note" class="note left"> Valid tags: </span>
+			<p class="he20"><span id="tags_note" class="note left"><?php _e('Allowed tags', WPeMatico :: TEXTDOMAIN ); ?>: </span>
 			<label title="<?php _e('A little Help', WPeMatico :: TEXTDOMAIN ); ?>" onclick="jQuery('#tags_list').fadeToggle(); jQuery('#tags_list_det').fadeToggle();" class="m4 ui-icon QIco left"></label></p>
-			<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;">
+			<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
 				<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{image}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
 			</p>
 			<div id="tags_list_det" style="display: none;">
-				<h4><?php _e('Supported tags', WPeMatico :: TEXTDOMAIN ); ?></h4>
+				<b><?php _e('Supported tags', WPeMatico :: TEXTDOMAIN ); ?></b>
 				<p><?php _e('A tag is a piece of text that gets replaced dynamically when the post is created. Currently, these tags are supported:', WPeMatico :: TEXTDOMAIN ); ?></p>
 				<ul style='list-style-type: square;margin:0 0 5px 20px;font:0.92em "Lucida Grande","Verdana";'>
 				  <li><strong class="tag">{content}</strong> <?php _e('The feed item content.', WPeMatico :: TEXTDOMAIN ); ?> </li>
@@ -181,9 +181,15 @@ class WPeMatico_Campaign_edit_functions {
 				  <li><strong class="tag">{campaigntitle}</strong> <?php _e('This campaign title', WPeMatico :: TEXTDOMAIN ); ?> </li>
 				  <li><strong class="tag">{campaignid}</strong> <?php _e('This campaign ID.', WPeMatico :: TEXTDOMAIN ); ?> </li>
 				</ul>
-				<b><?php _e('Example:', WPeMatico :: TEXTDOMAIN ); ?></b> <p><?php _e('If you want to add a link to the source at the bottom of every post and the author, the post template would look like this:', WPeMatico :: TEXTDOMAIN ); ?></p>
-				<div class="code">{content}<br>&lt;a href="{permalink}"&gt;<?php _e('Go to Source', WPeMatico :: TEXTDOMAIN ); ?>&lt;/a&gt;&lt;br /&gt;<br>Author: {author}</div>
-				<p><em>{content}</em> <?php _e('will be replaced with the feed item content', WPeMatico :: TEXTDOMAIN ); ?>, <em>{permalink}</em> <?php _e('by the source feed item URL, which makes it a working link and', WPeMatico :: TEXTDOMAIN ); ?> <em>{author}</em> <?php _e('with the original author of the feed item.', WPeMatico :: TEXTDOMAIN ); ?></p>
+				<p><a name="examples" style="cursor: hand;cursor: pointer;" title="<?php _e('Some examples to help you to create custom post template.', WPeMatico :: TEXTDOMAIN ); ?>" onclick="jQuery('#tags_list_examples').fadeToggle();"><b><?php _e('Examples:', WPeMatico :: TEXTDOMAIN ); ?></b></a></p>
+				<div id="tags_list_examples" style="display: none;">
+					<span><?php _e('If you want to add a link to the source at the bottom of every post and the author, the post template would look like this:', WPeMatico :: TEXTDOMAIN ); ?></span>
+					<div class="code">{content}<br>&lt;a href="{permalink}"&gt;<?php _e('Go to Source', WPeMatico :: TEXTDOMAIN ); ?>&lt;/a&gt;&lt;br /&gt;<br>Author: {author}</div>
+					<p><em>{content}</em> <?php _e('will be replaced with the feed item content', WPeMatico :: TEXTDOMAIN ); ?>, <em>{permalink}</em> <?php _e('by the source feed item URL, which makes it a working link and', WPeMatico :: TEXTDOMAIN ); ?> <em>{author}</em> <?php _e('with the original author of the feed item.', WPeMatico :: TEXTDOMAIN ); ?></p>
+					<span><?php _e('Also you can add a gallery with three columns with all thumbnails images clickables at the bottom of every content, but before source link and author name, the post template would look like this:', WPeMatico :: TEXTDOMAIN ); ?></span>
+					<div class="code">{content}<br>[gallery link="file" columns="3"]<br>&lt;a href="{permalink}"&gt;<?php _e('Go to Source', WPeMatico :: TEXTDOMAIN ); ?>&lt;/a&gt;&lt;br /&gt;<br>Author: {author}</div>
+					<p><em>[gallery link="file" columns="3"]</em> <?php _e('it\'s a WP shortcode for insert a gallery into the post.  You can use any shortcode here; will be processed by Wordpress.', WPeMatico :: TEXTDOMAIN ); ?></p>
+				</div>
 			</div>
 
 		</div>
@@ -237,8 +243,10 @@ class WPeMatico_Campaign_edit_functions {
 		<p><b><?php echo '<label for="campaign_max">' . __('Max items to create on each fetch:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
 		<input name="campaign_max" type="text" size="3" value="<?php echo $campaign_max;?>" class="small-text" id="campaign_max"/><br />
 		<?php _e("Set it to 0 for unlimited. If set to a X value, only the last X items will be selected, ignoring the older ones.",  WPeMatico :: TEXTDOMAIN ) ?></p>
-
-		<div style="width:115px;"><label title="<?php _e('A little Help', WPeMatico :: TEXTDOMAIN ); ?>" onclick="  jQuery('#hlpdate').fadeToggle();" class="m4 ui-icon QIco right"></label><b><?php echo '<label for="campaign_feeddate">' . __('Use feed date', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b> <input class="checkbox" type="checkbox"<?php checked($campaign_feeddate ,true);?> name="campaign_feeddate" value="1" id="campaign_feeddate"/></div>
+		<div>
+			<b class="left"style="margin-right:5px;"><?php echo '<label for="campaign_feeddate">' . __('Use feed date', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b> 
+			<input class="checkbox left" type="checkbox"<?php checked($campaign_feeddate ,true);?> name="campaign_feeddate" value="1" id="campaign_feeddate"/> 
+			<label title="<?php _e('A little Help', WPeMatico :: TEXTDOMAIN ); ?>" onclick="  jQuery('#hlpdate').fadeToggle();" class="m4 ui-icon QIco" style="padding: 0 5px;background-position-y: -34px;"></label></div>
 		<div class="mphlp" style="margin-top: 2px;">
 		<span class="srchbdr0 hide" id="hlpdate">
 			<b><?php _e('Basics:', WPeMatico :: TEXTDOMAIN ); ?></b> <?php _e('By default, WPeMatico sets the date and time of the posts to that of the moment they\'re created. By using this option, however, you can alter that behavior.', WPeMatico :: TEXTDOMAIN ); ?>
