@@ -164,7 +164,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					$catname = $catego->term;
 					if(!empty($catname)) {
 						trigger_error(__('Adding Category: ', WPeMatico :: TEXTDOMAIN ) . $catname ,E_USER_NOTICE);
-						$this->current_item['categories'][] = wp_create_category($catname);  //Si ya existe devuelve el ID existente  // wp_insert_category(array('cat_name' => $catname));  //
+						//$this->current_item['categories'][] = wp_create_category($catname);  //Si ya existe devuelve el ID existente  // wp_insert_category(array('cat_name' => $catname));  //
+						$arg = array('description' => "Auto Added by WPeMatico", 'parent' => "0");
+						$this->current_item['categories'][] = wp_insert_term($catname, "category", $arg);
 					}					
 				}
 			}	

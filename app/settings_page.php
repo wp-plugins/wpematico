@@ -161,6 +161,10 @@ $cfg = $this->check_options($this->options);  ?>
 					<br /><?php _e('See How WordPress Processes Post Content: ', self :: TEXTDOMAIN ); ?><a href="http://codex.wordpress.org/How_WordPress_Processes_Post_Content" target="_blank">http://codex.wordpress.org/How_WordPress_Processes_Post_Content</a>
 					<br />
 					</div>
+					<p></p>
+					<p><b><?php _e('Timeout running campaign:', self :: TEXTDOMAIN ); ?></b> <input name="campaign_timeout" type="text" value="<?php echo $cfg['campaign_timeout'];?>" class="small-text" /> Seconds.
+					<span id="hlpspl" style="padding-left:20px;display: inline-block;"><?php _e('When a campaign running is interrupted, cannot be executed again until click "Clear Campaign".  This option clear campaign after this timeout then can run again on next scheduled cron. A value of "0" ignore this, means that remain until user make click.  Recommended 300 Seconds.', self :: TEXTDOMAIN ); ?>
+					</span></p>
 					<br /> 
 
 				</div>

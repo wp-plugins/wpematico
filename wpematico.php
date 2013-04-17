@@ -3,7 +3,7 @@
  Plugin Name: WPeMatico
  Plugin URI: http://www.wpematico.com
  Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
- Version: 1.1.2
+ Version: 1.1.3
  Author: etruel <esteban@netmdp.com>
  Author URI: http://www.netmdp.com
  */
@@ -43,8 +43,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access public
 		 * @const string
 		 */
-		const VERSION = '1.1.2';
-		const RELEASE = '1';
+		const VERSION = '1.1.3';
+		const RELEASE = '2';
 
 		/**
 		 * Option Key
@@ -121,6 +121,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			'disable_credits' => false,
 			'force_mysimplepie' => false,
 			'woutfilter' => false,
+			'campaign_timeout' => 0,  // infinito
 		);
 
 		/**
@@ -192,6 +193,26 @@ if ( !class_exists( 'WPeMatico' ) ) {
 					}
 				}
 			}
+			//Check timeout of running campaigns
+			if ($this->options['campaign_timeout'] > 0 ) {
+				$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC', 'numberposts' => -1 );
+				$campaigns = get_posts( $args );
+				foreach( $campaigns as $post ) {
+					$campaign = $this->get_campaign( $post->ID );
+					$starttime = @$campaign['starttime']; 
+					if ($starttime>0) {
+						$runtime=current_time('timestamp')-$starttime;
+						if(($this->options['campaign_timeout'] <= $runtime)) {
+							$campaign['lastrun'] = $starttime;
+							$campaign['lastruntime'] = ' <span style="color:red;">Timeout: '.$this->options['campaign_timeout'].'</span>';
+							$campaign['starttime']   = '';
+							$campaign['lastpostscount'] = 0; 
+							$this->update_campaign($post->ID, $campaign);  //Save Campaign new data
+						}
+
+					}
+				}
+			}
 			//Disable WP_Cron
 			if ($this->options['disablewpcron']) {
 				define('DISABLE_WP_CRON',true);
@@ -214,7 +235,11 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 //Dashboard widget
 		function wpematico_dashboard_widget() {
 			$campaigns= $this->get_campaigns();
-			echo '<div style="background: -moz-linear-gradient(center bottom , #FCF6BC 0px, #E1DC9C 98%, #FFFEA8 0px); border: 1px solid #DDDDDD; height: 20px; margin: -10px -10px 2px; padding: 5px 10px 0px;">';
+			echo '<div style="background-color: #E1DC9C;border: 1px solid #DDDDDD; height: 20px; margin: -10px -10px 2px; padding: 5px 10px 0px;';
+			echo "background: -moz-linear-gradient(center bottom,#FCF6BC 0,#E1DC9C 98%,#FFFEA8 0);
+				background: -webkit-gradient(linear,left top,left bottom,from(#FCF6BC),to(#E1DC9C));
+				-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');\">";
 			echo '<strong>'.__('Last Processed Campaigns:', self :: TEXTDOMAIN ).'</strong></div>';
 			@$campaigns2 = $this->filter_by_value($campaigns, 'lastrun', '');  
 			$this->array_sort($campaigns2,'lastrun');
@@ -245,7 +270,11 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			}
 			unset($campaigns2);
 			echo '<br />';
-			echo '<div style="background: -moz-linear-gradient(center bottom , #FCF6BC 0px, #E1DC9C 98%, #FFFEA8 0px); border: 1px solid #DDDDDD; height: 20px; margin: -10px -10px 2px; padding:5px 10px 0px;">';
+			echo '<div style="background-color: #E1DC9C;border: 1px solid #DDDDDD; height: 20px; margin: -10px -10px 2px; padding: 5px 10px 0px;';
+			echo "background: -moz-linear-gradient(center bottom,#FCF6BC 0,#E1DC9C 98%,#FFFEA8 0);
+				background: -webkit-gradient(linear,left top,left bottom,from(#FCF6BC),to(#E1DC9C));
+				-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');\">";
 			echo '<strong>'.__('Next Scheduled Campaigns:', self :: TEXTDOMAIN ).'</strong>';
 			echo '</div>';
 			echo '<ul style="list-style: circle inside none; margin-top: 2px; margin-left: 9px;">';
@@ -438,6 +467,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				@$cfg['imgattach']		= $_POST['imgattach']==1 ? true : false;
 				@$cfg['force_mysimplepie']	= $_POST['force_mysimplepie']==1 ? true : false;
 				@$cfg['woutfilter']		= $_POST['woutfilter']==1 ? true : false;
+				@$cfg['campaign_timeout'] = $_POST['campaign_timeout'];
 				// Roles 
 				global $wp_roles, $current_user;    
 				get_currentuserinfo();
@@ -536,6 +566,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			if(!isset($cfg['disable_credits']) || !is_bool($cfg['disable_credits'])) $cfg['disable_credits'] = false;
 			if(!isset($cfg['force_mysimplepie']) || !is_bool($cfg['force_mysimplepie'])) $cfg['force_mysimplepie'] = false;
 			if(!isset($cfg['woutfilter']) || !is_bool($cfg['woutfilter'])) $cfg['woutfilter'] = false;
+			if(!isset($cfg['campaign_timeout'])) $cfg['campaign_timeout'] = 0;
 			return $cfg;
 		}
 		

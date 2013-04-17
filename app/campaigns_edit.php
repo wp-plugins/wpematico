@@ -441,7 +441,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		  foreach($_POST['campaign_newcat'] as $k => $on) {       
 			$catname = $_POST['campaign_newcatname'][$k];
 			if(!empty($catname))  {
-			  $_POST['campaign_categories'][] = wp_insert_category(array('cat_name' => $catname));
+			  //$_POST['campaign_categories'][] = wp_insert_category(array('cat_name' => $catname));
+			  $arg = array('description' => "Auto Added by WPeMatico", 'parent' => "0");
+			  $_POST['campaign_categories'][] = wp_insert_term($catname, "category", $arg);
 			}
 		  }
 		}

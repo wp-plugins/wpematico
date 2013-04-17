@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico v1.1.2\n"
+"Project-Id-Version: WPeMatico v1.1.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-04-08 19:17:43+0000\n"
+"PO-Revision-Date: 2013-04-13 17:41:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: Web Geeks\n"
 "MIME-Version: 1.0\n"
@@ -147,23 +147,23 @@ msgstr "Activarea caracteristicii de <b><i>cuvinte categorii</i></b>"
 msgid "If you need this feature in every campaign, you can activate here.  Not recommended if you will not use this."
 msgstr "Dacă aveţi nevoie de această facilitate, în fiecare campanie, puteţi activa aici Nu se recomandă în cazul în care nu veţi utiliza acest.."
 
-#: app/settings_page.php:197
+#: app/settings_page.php:201
 #@ wpematico
 msgid "Disable WP-Cron"
 msgstr "Dezactivaţi WP-Cron"
 
-#: app/settings_page.php:199
+#: app/settings_page.php:203
 #@ wpematico
 msgid "Use Cron job of Hoster and disable WP_Cron"
 msgstr "Utilizaţi Cron de locuri de muncă de Hoster şi nu fi de acord WP_Cron"
 
-#: app/settings_page.php:202
+#: app/settings_page.php:206
 #@ wpematico
 msgid "You must set up a cron job that calls:"
 msgstr "Trebuie să parametrizaţi un cron de locuri de muncă care solicită:"
 
-#: app/settings_page.php:204
 #: app/settings_page.php:208
+#: app/settings_page.php:212
 #@ wpematico
 msgid "or URL:"
 msgstr "sau URL-ul:"
@@ -556,37 +556,37 @@ msgstr "Copie"
 msgid "Run Now"
 msgstr "A alerga acum"
 
-#: app/campaigns_list.php:514
+#: app/campaigns_list.php:522
 #: app/campaigns_list_OK.php:472
-#: wpematico.php:258
+#: wpematico.php:259
 #@ wpematico
 msgid "Running since:"
 msgstr "Execută din:"
 
-#: app/campaigns_list.php:514
-#: app/campaigns_list.php:527
+#: app/campaigns_list.php:522
+#: app/campaigns_list.php:535
 #: app/campaigns_list_OK.php:472
 #: app/campaigns_list_OK.php:485
-#: wpematico.php:258
+#: wpematico.php:259
 #@ wpematico
 msgid "sec."
 msgstr "SEC."
 
-#: app/campaigns_list.php:518
+#: app/campaigns_list.php:526
 #: app/campaigns_list_OK.php:476
 #@ wpematico
 msgid "Inactive"
 msgstr "Inactiv"
 
-#: app/campaigns_list.php:527
+#: app/campaigns_list.php:535
 #: app/campaigns_list_OK.php:485
 #@ wpematico
 msgid "Runtime:"
 msgstr "Runtime:"
 
-#: app/campaigns_list.php:529
+#: app/campaigns_list.php:537
 #: app/campaigns_list_OK.php:487
-#: wpematico.php:267
+#: wpematico.php:268
 #@ wpematico
 msgid "None"
 msgstr "Nici unul"
@@ -596,53 +596,53 @@ msgstr "Nici unul"
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
-#: wpematico.php:321
+#: wpematico.php:322
 #@ wpematico
 msgid "Campaigns"
 msgstr "Campanii"
 
-#: wpematico.php:324
+#: wpematico.php:325
 #@ wpematico
 msgid "Add New Campaign"
 msgstr "Adăugaţi noua campanie"
 
-#: wpematico.php:323
+#: wpematico.php:324
 #@ wpematico
 msgid "Add New"
 msgstr "Adăugare nou"
 
-#: wpematico.php:285
-#: wpematico.php:375
+#: wpematico.php:286
 #: wpematico.php:376
+#: wpematico.php:377
 #@ wpematico
 msgid "Settings"
 msgstr "Setări"
 
-#: wpematico.php:307
+#: wpematico.php:308
 #@ default
 msgid "Support"
 msgstr "Suport"
 
-#: wpematico.php:306
+#: wpematico.php:307
 #@ default
 msgid "FAQ"
 msgstr "FAQ"
 
-#: wpematico.php:308
+#: wpematico.php:309
 #@ wpematico
 msgid "Donate"
 msgstr "Dona"
 
-#: wpematico.php:226
-#: wpematico.php:254
-#: wpematico.php:325
+#: wpematico.php:227
+#: wpematico.php:255
+#: wpematico.php:326
 #@ wpematico
 msgid "Edit Campaign"
 msgstr "Editare campanie"
 
 #: app/campaign_fetch.php:339
-#: wpematico.php:231
-#: wpematico.php:233
+#: wpematico.php:232
+#: wpematico.php:234
 #, php-format
 #@ wpematico
 msgid "Processed Posts: %1s"
@@ -1517,7 +1517,7 @@ msgid "Sending e-Mails"
 msgstr ""
 
 #: app/settings_page.php:65
-#: app/settings_page.php:216
+#: app/settings_page.php:220
 #@ wpematico
 msgid "Save settings"
 msgstr ""
@@ -1673,37 +1673,37 @@ msgstr ""
 msgid "See How WordPress Processes Post Content: "
 msgstr ""
 
-#: app/settings_page.php:170
+#: app/settings_page.php:174
 #@ wpematico
 msgid "Dashboard widget"
 msgstr ""
 
-#: app/settings_page.php:172
+#: app/settings_page.php:176
 #@ wpematico
 msgid "Disable <b><i>Wordpress Dashboard Widget</i></b>"
 msgstr ""
 
-#: app/settings_page.php:173
+#: app/settings_page.php:177
 #@ wpematico
 msgid "Check this if you don't want display the widget dashboard.  Anyway, only admins will see it."
 msgstr ""
 
-#: app/settings_page.php:174
+#: app/settings_page.php:178
 #@ wpematico
 msgid "Select user roles that can see dashboard widget:"
 msgstr ""
 
-#: app/settings_page.php:201
+#: app/settings_page.php:205
 #@ wpematico
 msgid "NOTE:"
 msgstr ""
 
-#: app/settings_page.php:201
+#: app/settings_page.php:205
 #@ wpematico
 msgid "Checking this, deactivate all Wordpress cron schedules."
 msgstr ""
 
-#: app/settings_page.php:206
+#: app/settings_page.php:210
 #@ wpematico
 msgid "If also want to run the wordpress cron with external cron you can set up a cron job that calls:"
 msgstr ""
@@ -1781,80 +1781,80 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: wpematico.php:218
+#: wpematico.php:219
 #@ wpematico
 msgid "Last Processed Campaigns:"
 msgstr ""
 
-#: wpematico.php:236
-#: wpematico.php:238
+#: wpematico.php:237
+#: wpematico.php:239
 #, php-format
 #@ wpematico
 msgid "Fetch done in %1s sec."
 msgstr ""
 
-#: wpematico.php:249
+#: wpematico.php:250
 #@ wpematico
 msgid "Next Scheduled Campaigns:"
 msgstr ""
 
-#: wpematico.php:285
+#: wpematico.php:286
 #@ wpematico
 msgid "Load WPeMatico Settings Page"
 msgstr ""
 
-#: wpematico.php:322
+#: wpematico.php:323
 #@ wpematico
 msgid "Campaign"
 msgstr ""
 
-#: wpematico.php:326
+#: wpematico.php:327
 #@ wpematico
 msgid "New Campaign"
 msgstr ""
 
-#: wpematico.php:327
+#: wpematico.php:328
 #@ wpematico
 msgid "All Campaigns"
 msgstr ""
 
-#: wpematico.php:328
+#: wpematico.php:329
 #@ wpematico
 msgid "View Campaign"
 msgstr ""
 
-#: wpematico.php:329
+#: wpematico.php:330
 #@ wpematico
 msgid "Search Campaign"
 msgstr ""
 
-#: wpematico.php:330
+#: wpematico.php:331
 #@ wpematico
 msgid "No campaign found"
 msgstr ""
 
-#: wpematico.php:331
+#: wpematico.php:332
 #@ wpematico
 msgid "No Campaign found in Trash"
 msgstr ""
 
-#: wpematico.php:366
 #: wpematico.php:367
+#: wpematico.php:368
 #@ wpematico
 msgid "Import old version"
 msgstr ""
 
-#: wpematico.php:388
+#: wpematico.php:389
 #@ wpematico
 msgid "WPeMatico: Found campaigns from previous versions."
 msgstr ""
 
-#: wpematico.php:389
+#: wpematico.php:390
 #@ wpematico
 msgid "If you want import or delete them go to:"
 msgstr ""
 
-#: wpematico.php:453
+#: wpematico.php:455
 #@ wpematico
 msgid "Settings saved."
 msgstr ""
@@ -1921,5 +1921,15 @@ msgstr[1] ""
 #: app/settings_page.php:154
 #@ wpematico
 msgid "Click here for test if SimplePie lib works well on your server."
+msgstr ""
+
+#: app/settings_page.php:165
+#@ wpematico
+msgid "Timeout running campaign:"
+msgstr ""
+
+#: app/settings_page.php:166
+#@ wpematico
+msgid "When a campaign running is interrupted, cannot be executed again until click \"Clear Campaign\".  This option clear campaign after this timeout then can run again on next scheduled cron. A value of \"0\" ignore this, means that remain until user make click.  Recommended 300 Seconds."
 msgstr ""
 

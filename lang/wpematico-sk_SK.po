@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico v1.1.2\n"
+"Project-Id-Version: WPeMatico v1.1.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-15 11:44-0300\n"
-"PO-Revision-Date: 2013-04-08 19:17:59+0000\n"
+"PO-Revision-Date: 2013-04-13 17:41:37+0000\n"
 "Last-Translator: Serg\n"
 "Language-Team: NetMdP <esteban@netmdp.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,155 +20,155 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: wpematico.php:218
+#: wpematico.php:219
 #@ wpematico
 msgid "Last Processed Campaigns:"
 msgstr "Posledné spracované kampane:"
 
-#: wpematico.php:226
-#: wpematico.php:254
-#: wpematico.php:325
+#: wpematico.php:227
+#: wpematico.php:255
+#: wpematico.php:326
 #@ wpematico
 msgid "Edit Campaign"
 msgstr "Upraviť kampaň"
 
 #: app/campaign_fetch.php:339
-#: wpematico.php:231
-#: wpematico.php:233
+#: wpematico.php:232
+#: wpematico.php:234
 #, php-format
 #@ wpematico
 msgid "Processed Posts: %1s"
 msgstr "Spracované príspevky: %1"
 
-#: wpematico.php:236
-#: wpematico.php:238
+#: wpematico.php:237
+#: wpematico.php:239
 #, php-format
 #@ wpematico
 msgid "Fetch done in %1s sec."
 msgstr "Fetch urobil v %1 sek."
 
-#: wpematico.php:249
+#: wpematico.php:250
 #@ wpematico
 msgid "Next Scheduled Campaigns:"
 msgstr "Ďalšej plánovanej kampane:"
 
-#: app/campaigns_list.php:514
+#: app/campaigns_list.php:522
 #: app/campaigns_list_OK.php:472
-#: wpematico.php:258
+#: wpematico.php:259
 #@ wpematico
 msgid "Running since:"
 msgstr "Beží od:"
 
-#: app/campaigns_list.php:514
-#: app/campaigns_list.php:527
+#: app/campaigns_list.php:522
+#: app/campaigns_list.php:535
 #: app/campaigns_list_OK.php:472
 #: app/campaigns_list_OK.php:485
-#: wpematico.php:258
+#: wpematico.php:259
 #@ wpematico
 msgid "sec."
 msgstr "SEC."
 
-#: app/campaigns_list.php:529
+#: app/campaigns_list.php:537
 #: app/campaigns_list_OK.php:487
-#: wpematico.php:267
+#: wpematico.php:268
 #@ wpematico
 msgid "None"
 msgstr "Žiadny"
 
-#: wpematico.php:285
+#: wpematico.php:286
 #@ wpematico
 msgid "Load WPeMatico Settings Page"
 msgstr "Načítať stránku nastavenia WPeMatico"
 
-#: wpematico.php:285
-#: wpematico.php:375
+#: wpematico.php:286
 #: wpematico.php:376
+#: wpematico.php:377
 #@ wpematico
 msgid "Settings"
 msgstr "Nastavenia"
 
-#: wpematico.php:306
+#: wpematico.php:307
 #@ default
 msgid "FAQ"
 msgstr "FAQ"
 
-#: wpematico.php:307
+#: wpematico.php:308
 #@ default
 msgid "Support"
 msgstr "Podpora"
 
-#: wpematico.php:308
+#: wpematico.php:309
 #@ wpematico
 msgid "Donate"
 msgstr "Darovať"
 
-#: wpematico.php:321
+#: wpematico.php:322
 #@ wpematico
 msgid "Campaigns"
 msgstr "Kampane"
 
-#: wpematico.php:322
+#: wpematico.php:323
 #@ wpematico
 msgid "Campaign"
 msgstr "Kampaň"
 
-#: wpematico.php:323
+#: wpematico.php:324
 #@ wpematico
 msgid "Add New"
 msgstr "Pridať nové"
 
-#: wpematico.php:324
+#: wpematico.php:325
 #@ wpematico
 msgid "Add New Campaign"
 msgstr "Pridať novú kampaň"
 
-#: wpematico.php:326
+#: wpematico.php:327
 #@ wpematico
 msgid "New Campaign"
 msgstr "Nová kampaň"
 
-#: wpematico.php:327
+#: wpematico.php:328
 #@ wpematico
 msgid "All Campaigns"
 msgstr "Všetky kampane"
 
-#: wpematico.php:328
+#: wpematico.php:329
 #@ wpematico
 msgid "View Campaign"
 msgstr "Zobrazenie kampaň"
 
-#: wpematico.php:329
+#: wpematico.php:330
 #@ wpematico
 msgid "Search Campaign"
 msgstr "Hľadať kampaň"
 
-#: wpematico.php:330
+#: wpematico.php:331
 #@ wpematico
 msgid "No campaign found"
 msgstr "No kampaň našiel"
 
-#: wpematico.php:331
+#: wpematico.php:332
 #@ wpematico
 msgid "No Campaign found in Trash"
 msgstr "Žiadne kampane, nachádza v koši"
 
-#: wpematico.php:366
 #: wpematico.php:367
+#: wpematico.php:368
 #@ wpematico
 msgid "Import old version"
 msgstr "Import starú verziu"
 
-#: wpematico.php:388
+#: wpematico.php:389
 #@ wpematico
 msgid "WPeMatico: Found campaigns from previous versions."
 msgstr "WPeMatico: Našiel kampane z predchádzajúcich verzií."
 
-#: wpematico.php:389
+#: wpematico.php:390
 #@ wpematico
 msgid "If you want import or delete them go to:"
 msgstr "Ak chcete importovať alebo mazať prejsť na:"
 
-#: wpematico.php:453
+#: wpematico.php:455
 #@ wpematico
 msgid "Settings saved."
 msgstr "Nastavenia uložené."
@@ -456,13 +456,13 @@ msgstr "Ďalšom spustení"
 msgid "Last Run"
 msgstr "Posledný beh"
 
-#: app/campaigns_list.php:518
+#: app/campaigns_list.php:526
 #: app/campaigns_list_OK.php:476
 #@ wpematico
 msgid "Inactive"
 msgstr "Neaktívne"
 
-#: app/campaigns_list.php:527
+#: app/campaigns_list.php:535
 #: app/campaigns_list_OK.php:485
 #@ wpematico
 msgid "Runtime:"
@@ -1494,7 +1494,7 @@ msgid "SMTP Password:"
 msgstr "Heslo SMTP:"
 
 #: app/settings_page.php:65
-#: app/settings_page.php:216
+#: app/settings_page.php:220
 #@ wpematico
 msgid "Save settings"
 msgstr "Uložiť nastavenia"
@@ -1705,58 +1705,58 @@ msgstr "<b><i>Povoliť možnosť na kampaň pre preskočiť obsah filtre</i></b>
 msgid "See How WordPress Processes Post Content: "
 msgstr "Vidieť, ako WordPress procesy Post obsah: "
 
-#: app/settings_page.php:170
+#: app/settings_page.php:174
 #@ wpematico
 msgid "Dashboard widget"
 msgstr "Dashboard widget"
 
-#: app/settings_page.php:172
+#: app/settings_page.php:176
 #@ wpematico
 msgid "Disable <b><i>Wordpress Dashboard Widget</i></b>"
 msgstr "Zakázať <b> <i>Wordpress Dashboard Widget</i></b>"
 
-#: app/settings_page.php:173
+#: app/settings_page.php:177
 #@ wpematico
 msgid "Check this if you don't want display the widget dashboard.  Anyway, only admins will see it."
 msgstr "Pozrite sa ak nechcete zobraziť panel widget.  Mimochodom, len admini uvidia.Tilda esto si no deseas que se visualice el widget de escritorio. Sino, sólo los administradores podrán verlo."
 
-#: app/settings_page.php:174
+#: app/settings_page.php:178
 #@ wpematico
 msgid "Select user roles that can see dashboard widget:"
 msgstr "Vyberte roly používateľov, ktoré môžete vidieť dashboard widget:"
 
-#: app/settings_page.php:197
+#: app/settings_page.php:201
 #@ wpematico
 msgid "Disable WP-Cron"
 msgstr "Vypnúť WP-Cron"
 
-#: app/settings_page.php:199
+#: app/settings_page.php:203
 #@ wpematico
 msgid "Use Cron job of Hoster and disable WP_Cron"
 msgstr "Pomocou cronu krčma a zakázať WP_Cron"
 
-#: app/settings_page.php:201
+#: app/settings_page.php:205
 #@ wpematico
 msgid "NOTE:"
 msgstr "POZNÁMKA:"
 
-#: app/settings_page.php:201
+#: app/settings_page.php:205
 #@ wpematico
 msgid "Checking this, deactivate all Wordpress cron schedules."
 msgstr "Túto kontrolu, deaktivovať všetky Wordpress cron plány."
 
-#: app/settings_page.php:202
+#: app/settings_page.php:206
 #@ wpematico
 msgid "You must set up a cron job that calls:"
 msgstr "Musíte nastaviť cron zamestnanie, ktoré vyžaduje:"
 
-#: app/settings_page.php:204
 #: app/settings_page.php:208
+#: app/settings_page.php:212
 #@ wpematico
 msgid "or URL:"
 msgstr "alebo URL:"
 
-#: app/settings_page.php:206
+#: app/settings_page.php:210
 #@ wpematico
 msgid "If also want to run the wordpress cron with external cron you can set up a cron job that calls:"
 msgstr "Ak aj chcete spustiť wordpress cron s vonkajšie cron môžete nastaviť cronu, ktorý volá:Si deseas ejecutar el cronograma con cronogramas externos a Wordpress, puedes configurarlos un cronograma que llame:"
@@ -1922,5 +1922,15 @@ msgstr[2] ""
 #: app/settings_page.php:154
 #@ wpematico
 msgid "Click here for test if SimplePie lib works well on your server."
+msgstr ""
+
+#: app/settings_page.php:165
+#@ wpematico
+msgid "Timeout running campaign:"
+msgstr ""
+
+#: app/settings_page.php:166
+#@ wpematico
+msgid "When a campaign running is interrupted, cannot be executed again until click \"Clear Campaign\".  This option clear campaign after this timeout then can run again on next scheduled cron. A value of \"0\" ignore this, means that remain until user make click.  Recommended 300 Seconds."
 msgstr ""
 
