@@ -350,13 +350,6 @@ class wpematico_campaign_fetch_functions {
 		return $attach_id;
 	}
 
-	
- 
- 	/* Guardo imagen en mi servidor
-	EJEMPLO 
-	guarda_imagen("http://ablecd.wz.cz/vendeta/fuhrer/hitler-pretorians.jpg","/usr/home/miweb.com/web/iimagen.jpg");
-	Si el archivo destino ya existe guarda una copia de la forma "filename[n].ext"
-	***************************************************************************************/
 	function guarda_imagen ($url_origen,$archivo_destino){ 
 		$mi_curl = curl_init ($url_origen); 
 		if(!$mi_curl) {
