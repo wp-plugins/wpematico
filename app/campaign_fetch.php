@@ -87,19 +87,24 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				$prime=false;
 			}
 
-			$this->currenthash[$feed] = md5($item->get_permalink()); // el hash del item actual del feed feed  
-			// chequeo a la primer coincidencia sale del foreach
-			$dupi = ( @$this->campaign[$feed]['lasthash'] == $this->currenthash[$feed] ); 
-			if ($dupi) {
-				trigger_error(sprintf(__('Found duplicated hash \'%1s\'', WPeMatico :: TEXTDOMAIN ),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
-				trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
-				break;   
+			$this->currenthash[$feed] = md5($item->get_permalink()); // el hash del item actual del feed feed 
+			if( !$this->cfg['allowduplicates'] || !$this->cfg['allowduptitle'] || !$this->cfg['allowduphash'] ){
+				if( !$this->cfg['allowduphash'] ){
+					// chequeo a la primer coincidencia sale del foreach
+					$dupi = ( @$this->campaign[$feed]['lasthash'] == $this->currenthash[$feed] ); 
+					if ($dupi) {
+						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', WPeMatico :: TEXTDOMAIN ),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
+						trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+						break;   
+					}
+				}
+				if( !$this->cfg['allowduptitle'] ){
+					if($this->isDuplicate($this->campaign, $feed, $item)) {
+						trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+						break;
+					}
+				}
 			}
-			if($this->isDuplicate($this->campaign, $feed, $item)) {
-				trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
-				break;
-			}
-
 			$count++;
 			array_unshift($items, $item); // add at Post stack in correct order by date 		  
 			if($count == $this->campaign['campaign_max']) {
@@ -163,10 +168,16 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				foreach($autocats as $id => $catego) {
 					$catname = $catego->term;
 					if(!empty($catname)) {
-						trigger_error(__('Adding Category: ', WPeMatico :: TEXTDOMAIN ) . $catname ,E_USER_NOTICE);
 						//$this->current_item['categories'][] = wp_create_category($catname);  //Si ya existe devuelve el ID existente  // wp_insert_category(array('cat_name' => $catname));  //
-						$arg = array('description' => "Auto Added by WPeMatico", 'parent' => "0");
-						$this->current_item['categories'][] = wp_insert_term($catname, "category", $arg);
+						$term = term_exists($catname, 'category');
+						if ($term !== 0 && $term !== null) {  // ya existe
+							trigger_error(__('Category exist: ', WPeMatico :: TEXTDOMAIN ) . $catname ,E_USER_NOTICE);
+						}else{	//si no existe la creo
+							trigger_error(__('Adding Category: ', WPeMatico :: TEXTDOMAIN ) . $catname ,E_USER_NOTICE);
+							$arg = array('description' => __("Auto Added by WPeMatico", WPeMatico :: TEXTDOMAIN ), 'parent' => "0");
+							$term = wp_insert_term($catname, "category", $arg);
+						}
+						$this->current_item['categories'][] = $term['term_id'];
 					}					
 				}
 			}	
@@ -207,7 +218,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 						$this->current_item['meta'],
 						$this->current_item['customposttype'],
 						$this->current_item['images'],
-						$this->current_item['tags']
+						$this->current_item['campaign_tags']
 		);
 		
 		// Attaching images uploaded to created post in media library 
@@ -253,7 +264,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	* @param   array     $meta             Meta key / values
 	* @return  integer   Created post id
 	*/
-	function insertPost($title, $content, $timestamp = null, $category = null, $status = 'draft', $authorid = null, $allowpings = true, $comment_status = 'open', $meta = array(), $post_type= 'post', $images = null, $tags_input = null )   {
+	function insertPost($title, $content, $timestamp = null, $category = null, $status = 'draft', $authorid = null, $allowpings = true, $comment_status = 'open', $meta = array(), $post_type= 'post', $images = null, $campaign_tags = null )   {
 		global $wpdb, $wp_locale, $current_blog;
 		$table_name = $wpdb->prefix . "posts";  
 		$blog_id 	= @$current_blog->blog_id;
@@ -263,13 +274,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$truecontent = $content;
 			$content = '';
 		}
-		//trigger_error("tags_input:::".print_r($tags_input,true),E_USER_NOTICE);
+		//trigger_error("campaign_tags:::".print_r($campaign_tags,true),E_USER_NOTICE);
 
 		$post_id = wp_insert_post(array(
 			'post_title' 	          => $title,
 			'post_content'  	      => $content,
 			'post_content_filtered'   => $content,
-			'post_category'           => $category,
 			'post_status' 	          => $status,
 			'post_type' 	          => $post_type,
 			'post_author'             => $authorid,
@@ -277,9 +287,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			'comment_status'          => $comment_status,
 			'ping_status'             => ($allowpings) ? "open" : "closed"
 		));
-		if(!empty($tags_input)){ //solo muestra los tags si los tiene definidos
-			$aaa = wp_set_post_terms( $post_id, $tags_input);
-			if(!empty($sss)) trigger_error("Tags added: ".print_r($aaa,true) ,E_USER_NOTICE);
+		if(!empty($category)){ //solo muestra los tags si los tiene definidos
+			$aaa = wp_set_post_terms( $post_id, $category, 'category');
+			if(!empty($aaa)) trigger_error("Categories added: ".print_r($aaa,true) ,E_USER_NOTICE);
+		}
+		if(!empty($campaign_tags)){ //solo muestra los tags si los tiene definidos
+			$aaa = wp_set_post_terms( $post_id, $campaign_tags);
+			if(!empty($aaa)) trigger_error("Tags added: ".print_r($aaa,true) ,E_USER_NOTICE);
 		}
 		
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
@@ -339,8 +353,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
           update_post_meta( $this->campaign_id, 'last_campaign_log', $campaign_log_message );
 		  
 		$Suss = sprintf(__('Campaign fetched in %1s sec.', WPeMatico :: TEXTDOMAIN ),$this->campaign['lastruntime']) . '  ' . sprintf(__('Processed Posts: %1s', WPeMatico :: TEXTDOMAIN ), $this->fetched_posts);
-		$message = '<div>'. $Suss.'  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_'.$this->campaign_id.'\').fadeToggle();">' . __('Show detailed Log', WPeMatico :: TEXTDOMAIN ) . '.</a></div>';
-		$campaign_log_message = $message .'<div id="log_message_'.$this->campaign_id.'" style="display:none;" class="error fade">'.$campaign_log_message.'</div>';
+		$message = '<p>'. $Suss.'  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_'.$this->campaign_id.'\').fadeToggle();">' . __('Show detailed Log', WPeMatico :: TEXTDOMAIN ) . '.</a></p>';
+		$campaign_log_message = $message .'<div id="log_message_'.$this->campaign_id.'" style="display:none;" class="error fade">'.$campaign_log_message.'</div><span id="ret_lastruntime" style="display:none;">'.$this->campaign["lastruntime"].'</span><span id="ret_lastposts" style="display:none;">'.$this->fetched_posts.'</span>';
 
 		return;
 	}

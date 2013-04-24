@@ -69,8 +69,8 @@ class WPeMatico_Campaigns {
 			function run_now(c_ID) {
 				jQuery('html').css('cursor','wait');
 				jQuery("div[id=fieldserror]").remove();
-				msgdev="<img width='12' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif' class='mt2'> <?php _e('Running Campaign...', WPeMatico :: TEXTDOMAIN ); ?>";
-				jQuery(".subsubsub").prepend('<div id="fieldserror" class="updated fade he20">'+msgdev+'</div>');
+				msgdev="<p><img width='16' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif'> <span style='vertical-align: top;margin: 10px;'><?php _e('Running Campaign...', WPeMatico :: TEXTDOMAIN ); ?></span></p>";
+				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
 				var data = {
 					campaign_ID: c_ID ,
 					action: "runnowx"
@@ -78,9 +78,13 @@ class WPeMatico_Campaigns {
 				jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
 					jQuery('#fieldserror').remove();
 					if( msgdev.substring(0, 5) == 'ERROR' ){
-						jQuery(".subsubsub").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
+						jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
 					}else{
-						jQuery(".subsubsub").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
+						jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
+						var floor = Math.floor;
+						var ret_posts = floor(jQuery("tr#post-"+c_ID+" > .count").html()) + floor(jQuery("#ret_lastposts").html());
+						jQuery("tr#post-"+c_ID+" > .count").html( '<b style="background-color: #FBB;padding: 3px 5px;">'+ret_posts.toString()+'</b>' );
+						jQuery("#lastruntime").html( "<b>"+jQuery("#ret_lastruntime").html()+"</b>");
 					}
 					jQuery('html').css('cursor','auto');
 				});
@@ -92,8 +96,8 @@ class WPeMatico_Campaigns {
 				
 				jQuery('html').css('cursor','wait');
 				jQuery('#fieldserror').remove();
-				msgdev="<img width='12' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif' class='mt2'> <?php _e('Running Campaign...', WPeMatico :: TEXTDOMAIN ); ?>";
-				jQuery(".subsubsub").prepend('<div id="fieldserror" class="updated fade he20 ajaxstop">'+msgdev+'</div>');
+				msgdev="<p><img width='16' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif'> <span style='vertical-align: top;margin: 10px;'><?php _e('Running Campaign...', WPeMatico :: TEXTDOMAIN ); ?></span></p>";
+				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade ajaxstop">'+msgdev+'</div>');
 				jQuery("input[name='post[]']:checked").each(function() {
 					c_id = jQuery(this).val();
 					var data = {
@@ -102,9 +106,9 @@ class WPeMatico_Campaigns {
 					};
 					jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
 						if( msgdev.substring(0, 5) == 'ERROR' ){
-							jQuery(".subsubsub").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
+							jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
 						}else{
-							jQuery(".subsubsub").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
+							jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
 						}
 					});
 				}).ajaxStop(function() {
@@ -413,7 +417,6 @@ class WPeMatico_Campaigns {
 			break;
 		  case 'next':
 			$starttime = @$campaign_data['starttime']; 
-			$cronnextrun = $campaign_data['cronnextrun']; 
 			//print_r($campaign_data);
 			$activated = $campaign_data['activated']; 
 			if ($starttime>0) {
@@ -428,6 +431,8 @@ class WPeMatico_Campaigns {
 				}
 				echo __('Running since:', WPeMatico :: TEXTDOMAIN ).' '.$runtime.' '.__('sec.', WPeMatico :: TEXTDOMAIN );
 			} elseif ($activated) {
+				//$campaign_data['cronnextrun']= WPeMatico :: time_cron_next($campaign_data['cron']); //set next run, ver por que no actualizae el cron
+				$cronnextrun = $campaign_data['cronnextrun']; 
 				echo date_i18n(get_option('date_format'),$cronnextrun).'-'. date_i18n(get_option('time_format'),$cronnextrun);
 			} else {
 				echo __('Inactive', WPeMatico :: TEXTDOMAIN );
@@ -439,7 +444,7 @@ class WPeMatico_Campaigns {
 			if ($lastrun) {
 				echo date_i18n(get_option('date_format'),$lastrun).'-'. date_i18n(get_option('time_format'),$lastrun); 
 				if (isset($lastruntime))
-					echo '<br />'.__('Runtime:', WPeMatico :: TEXTDOMAIN ).' '.$lastruntime.' '.__('sec.', WPeMatico :: TEXTDOMAIN );
+					echo '<br />'.__('Runtime:', WPeMatico :: TEXTDOMAIN ).' <span id="lastruntime">'.$lastruntime.'</span> '.__('sec.', WPeMatico :: TEXTDOMAIN );
 			} else {
 				echo __('None', WPeMatico :: TEXTDOMAIN );
 			}

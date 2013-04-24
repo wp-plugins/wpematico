@@ -3,7 +3,7 @@
  Plugin Name: WPeMatico
  Plugin URI: http://www.wpematico.com
  Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
- Version: 1.1.4
+ Version: 1.1.5
  Author: etruel <esteban@netmdp.com>
  Author URI: http://www.netmdp.com
  */
@@ -43,7 +43,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access public
 		 * @const string
 		 */
-		const VERSION = '1.1.4';
+		const VERSION = '1.1.5';
 		const RELEASE = '1';
 
 		/**
@@ -121,7 +121,10 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			'disable_credits' => false,
 			'force_mysimplepie' => false,
 			'woutfilter' => false,
-			'campaign_timeout' => 0,  // infinito
+			'campaign_timeout' => 300,  // infinito
+			'allowduplicates' => false,  // infinito
+			'allowduptitle' => false,  // infinito
+			'allowduphash' => false,  // infinito
 		);
 
 		/**
@@ -468,6 +471,10 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				@$cfg['force_mysimplepie']	= $_POST['force_mysimplepie']==1 ? true : false;
 				@$cfg['woutfilter']		= $_POST['woutfilter']==1 ? true : false;
 				@$cfg['campaign_timeout'] = $_POST['campaign_timeout'];
+				@$cfg['allowduplicates'] = $_POST['allowduplicates'];
+				@$cfg['allowduptitle'] = $_POST['allowduptitle'];
+				@$cfg['allowduphash'] = $_POST['allowduphash'];
+
 				// Roles 
 				global $wp_roles, $current_user;    
 				get_currentuserinfo();
@@ -566,7 +573,11 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			if(!isset($cfg['disable_credits']) || !is_bool($cfg['disable_credits'])) $cfg['disable_credits'] = false;
 			if(!isset($cfg['force_mysimplepie']) || !is_bool($cfg['force_mysimplepie'])) $cfg['force_mysimplepie'] = false;
 			if(!isset($cfg['woutfilter']) || !is_bool($cfg['woutfilter'])) $cfg['woutfilter'] = false;
-			if(!isset($cfg['campaign_timeout'])) $cfg['campaign_timeout'] = 0;
+			if(!isset($cfg['campaign_timeout'])) $cfg['campaign_timeout'] = 300;
+			if(!isset($cfg['allowduplicates'])) $cfg['allowduplicates'] = false;
+			if(!isset($cfg['allowduptitle'])) $cfg['allowduptitle'] = false;
+			if(!isset($cfg['allowduphash'])) $cfg['allowduphash'] = false;
+
 			return $cfg;
 		}
 		

@@ -177,7 +177,7 @@ class wpematico_campaign_fetch_functions {
 				}
 		}	// End Words to Category
 		//Tags
-		if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: postags($current_item,$campaign, $item ); }else $current_item['tags'] = explode(',', $campaign['tags']);
+		if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: postags($current_item,$campaign, $item ); }else $current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
 
 		return $current_item;
 	} // End item filters

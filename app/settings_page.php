@@ -14,7 +14,7 @@ $cfg = $this->check_options($this->options);  ?>
 				<div class="postbox inside">
 					<h3 class="handle"><?php _e( 'About', self :: TEXTDOMAIN );?></h3>
 					<div class="inside">
-						<p id="left1" onmouseover="this.style.background =  '#111';" onmouseout="this.style.background =  '#FFF';" style="text-align:center; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial; "><a href="http://www.wpematico.com" title="Go to new WPeMatico WebSite"><img style="background: transparent;border-radius: 15px;width: 258px;" src="http://www.netmdp.com/wpematicofiles/bannerWPematico.png" title=""></a><br />
+						<p id="left1" onmouseover="this.style.background =  '#111';" onmouseout="this.style.background =  '#FFF';" style="text-align:center; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial; "><a href="http://www.wpematico.com" target="_Blank" title="Go to new WPeMatico WebSite"><img style="background: transparent;border-radius: 15px;width: 258px;" src="http://www.netmdp.com/wpematicofiles/bannerWPematico.png" title=""></a><br />
 						WPeMatico Free Version <?php echo self :: VERSION ; ?> R<?php echo self :: RELEASE ; ?></p>
 						<p><?php _e( 'Thanks for test, use and enjoy this plugin.', self :: TEXTDOMAIN );?></p>
 						<p><?php _e( 'If you like it, I really appreciate a donation.', self :: TEXTDOMAIN );?></p>
@@ -128,6 +128,7 @@ $cfg = $this->check_options($this->options);  ?>
 					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'],true); ?> name="enableword2cats" id="enableword2cats" /> <?php _e('Enable <b><i>Words to Categories</i></b> feature', self :: TEXTDOMAIN ); ?><br />
 					<div id="hlpw2c" style="padding-left:20px;"><?php _e('If you need this feature in every campaign, you can activate here.  Not recommended if you will not use this.', self :: TEXTDOMAIN ); ?></div><br /> 
 					<?php if( ! $this->options['nonstatic'] ) : ?>
+						<a href="http://www.wpematico.com/pricing/" target="_Blank" title="Go to WPeMatico WebSite"><img style="background: transparent;height: 86%;position: absolute;margin-left: -10px;overflow: hidden;width: 100%;border: 1px solid #CCC;" src="<?php echo self :: $uri; ?>images/onlypro.png" title=""></a>
 						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Keyword Filtering</i></b> feature', self :: TEXTDOMAIN ); ?><br />
 						<div id="hlpw2c" style="padding-left:20px;"><?php _e('If you need this feature in every campaign, you can activate here.  ONLY AVAILABLE AT PRO VERSION.', self :: TEXTDOMAIN ); ?><br /> 
 						<?php _e('This is for exclude or include posts according to the keywords <b>founded</b> at content or title.', self :: TEXTDOMAIN ); ?>
@@ -142,8 +143,26 @@ $cfg = $this->check_options($this->options);  ?>
 						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable Special <b><i>1 Minute fetch</i></b> feature', self :: TEXTDOMAIN ); ?><br />
 						<div id="hlpw2c" style="padding-left:20px;"><?php _e('If you want to see the option for fetch RSS posts just every 1 minute at every campaign, you can activate here.    Only recommended for short posts and really fast servers.  ONLY AVAILABLE AT PRO VERSION.', self :: TEXTDOMAIN ); ?><br /> 					
 						</div><br /> 
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable attempt to <b><i>Get Full Content</i></b> feature', self :: TEXTDOMAIN ); ?><br />
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable attempt to <b><i>Get Full Content</i></b> feature', self :: TEXTDOMAIN ); ?> <?php _e('ONLY AVAILABLE AT PRO VERSION.', self :: TEXTDOMAIN ); ?><br />
 						<div id="hlpw2c" style="padding-left:20px;"><?php _e('If you want to attempt to obtain full items content of a campaign, you can activate here.  Not recommended if you will not use this.  ONLY AVAILABLE AT PRO VERSION.', self :: TEXTDOMAIN ); ?><br /></div>
+						<br />
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Author per feed</i></b> feature', self :: TEXTDOMAIN ); ?> <?php _e('ONLY AVAILABLE AT PRO VERSION.', self :: TEXTDOMAIN ); ?><br />
+						<div id="hlpw2c" style="padding-left:20px;"><?php _e('This option allow you assign an author per feed when editing campaign.  If no choice any author, the campaign author will be taken.', self :: TEXTDOMAIN ); ?><br />
+						</div><br />
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Import feed list</i></b> feature', self :: TEXTDOMAIN ); ?> <?php _e('ONLY AVAILABLE AT PRO VERSION.', self :: TEXTDOMAIN ); ?><br />
+						<div id="hlpw2c" style="padding-left:20px;"><?php _e('On campaign edit you can import, copy & paste in a textarea field, a list of feed addresses with/out author names.', self :: TEXTDOMAIN ); ?><br />
+						</div><br />
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Auto Tags</i></b> feature.', self :: TEXTDOMAIN ); ?> <?php _e('ONLY AVAILABLE AT PRO VERSION.', self :: TEXTDOMAIN ); ?><br />
+						<div id="hlpw2c" style="padding-left:20px;"><?php _e('This feature generate tags automatically on every post fetched, on campaign edit you can disable auto feature and manually enter a list of tags or leave empty.', self :: TEXTDOMAIN ); ?><br />
+						</div>
+						<div id="badtags" style="margin-left:20px;">
+						<b><?php echo '<label for="all_badtags">' . __('Bad Tags that will be not used on all posts:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b><br />
+						<textarea style="width:500px;" disabled >some, tags, not, allowed</textarea><br />
+						<?php echo __('Enter comma separated list of excluded Tags in all campaigns.', WPeMatico :: TEXTDOMAIN ); ?>
+						</div><br />
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Custom Fields</i></b> feature.', self :: TEXTDOMAIN ); ?> <?php _e('ONLY AVAILABLE AT PRO VERSION.', self :: TEXTDOMAIN ); ?><br />
+						<div id="hlpw2c" style="padding-left:20px;"><?php _e('Add custom fields with values as templates on every post.', self :: TEXTDOMAIN ); ?><br />
+						</div>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -157,7 +176,7 @@ $cfg = $this->check_options($this->options);  ?>
 					<div id="hlpspl" style="padding-left:20px;"><?php _e('Check this if you want to ignore Wordpress Simplepie library. ', self :: TEXTDOMAIN ); ?></div>
 					<p></p>
 					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['woutfilter'],true); ?> name="woutfilter" id="woutfilter" /> <?php _e('<b><i>Allow option on campaign for skip the content filters</i></b>', self :: TEXTDOMAIN ); ?><br />
-					<div id="hlpspl" style="padding-left:20px;"><?php _e('NOTE: It is extremely dangerous to allow unfiltered content because there may be some vulnerability in the source code.', self :: TEXTDOMAIN ); ?>
+					<div id="hlpspl" style="padding-left:20px;"><?php _e('NOTE: It is extremely dangerous to allow unfiltered content because there may be some vulnerability in the source code.', self :: TEXTDOMAIN ); ?> <?php _e('Use only with reliable sources.', self :: TEXTDOMAIN ); ?>
 					<br /><?php _e('See How WordPress Processes Post Content: ', self :: TEXTDOMAIN ); ?><a href="http://codex.wordpress.org/How_WordPress_Processes_Post_Content" target="_blank">http://codex.wordpress.org/How_WordPress_Processes_Post_Content</a>
 					<br />
 					</div> 
@@ -165,6 +184,15 @@ $cfg = $this->check_options($this->options);  ?>
 					<p><b><?php _e('Timeout running campaign:', self :: TEXTDOMAIN ); ?></b> <input name="campaign_timeout" type="text" value="<?php echo $cfg['campaign_timeout'];?>" class="small-text" /> Seconds.
 					<span id="hlpspl" style="padding-left:20px;display: inline-block;"><?php _e('When a campaign running is interrupted, cannot be executed again until click "Clear Campaign".  This option clear campaign after this timeout then can run again on next scheduled cron. A value of "0" ignore this, means that remain until user make click.  Recommended 300 Seconds.', self :: TEXTDOMAIN ); ?>
 					</span></p>
+					<p></p>
+					<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['allowduplicates'],true); ?> name="allowduplicates" id="allowduplicates" /><b>&nbsp;<?php echo '<label for="allowduplicates">' . __('Deactivate duplicate controls.', self :: TEXTDOMAIN ) . '</label>'; ?></b><br />
+					<div id="hlpatt" style="padding-left:20px;"><b><?php _e('Allowing duplicated posts', self :: TEXTDOMAIN ); ?>:</b> <small><?php _e("There are two controls for duplicates, title of the post and a hash generated by last item's url obtained on campaign process.  When the running campaign found a duplicated post the process is interrupted because assume that all followed posts, are also duplicates.  You can disable these controls here.", self :: TEXTDOMAIN ); ?><br />
+					<?php _e('NOTE: If disable both controls, all items will be fetched again and again... and again, ad infinitum.  If you want allow duplicated titles, just activate "Allow duplicated titles".', self :: TEXTDOMAIN ); ?></small></div>
+					<p></p>
+					<div id="enadup" style="padding-left:20px; <?php if (!$cfg['allowduplicates']) echo 'display:none;';?>">
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['allowduptitle'],true); ?> name="allowduptitle" id="allowduptitle" /><b>&nbsp;<?php echo '<label for="allowduptitle">' . __('Allow duplicates titles.', self :: TEXTDOMAIN ) . '</label>'; ?></b><br />
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['allowduphash'],true); ?> name="allowduphash" id="allowduphash" /><b>&nbsp;<?php echo '<label for="allowduphash">' . __('Allow duplicates hashes. (Not Recommended)', self :: TEXTDOMAIN ) . '</label>'; ?></b>
+					</div>
 					<br /> 
 
 				</div>
@@ -241,6 +269,15 @@ $cfg = $this->check_options($this->options);  ?>
 			jQuery('#featimg').fadeIn();
 		} else {
 			jQuery('#featimg').fadeOut();
+		}
+	});
+	jQuery('#allowduplicates').click(function() {
+		if ( true == jQuery('#allowduplicates').is(':checked')) {
+			jQuery('#enadup').fadeIn();
+		} else {
+			jQuery('#allowduptitle').removeAttr("checked");
+			jQuery('#allowduphash').removeAttr("checked");
+			jQuery('#enadup').fadeOut();
 		}
 	});
 //}
