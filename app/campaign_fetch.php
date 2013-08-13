@@ -204,7 +204,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: metaf($this->current_item, $this->campaign, $feed, $item ); }
 		// escape the content ??
 		//$this->current_item['content'] = $wpdb->escape($this->current_item['content']);
-
+		if( $this->cfg['nonstatic'] ) $this->current_item['campaign_tags']=$this->current_item['tags'];
+		
 		 // Create post
 		$postid = $this->insertPost(
 						$this->current_item['title'],
@@ -274,8 +275,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$truecontent = $content;
 			$content = '';
 		}
-		//trigger_error("campaign_tags:::".print_r($campaign_tags,true),E_USER_NOTICE);
-
+		
 		$post_id = wp_insert_post(array(
 			'post_title' 	          => $title,
 			'post_content'  	      => $content,
@@ -293,7 +293,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 		if(!empty($campaign_tags)){ //solo muestra los tags si los tiene definidos
 			$aaa = wp_set_post_terms( $post_id, $campaign_tags);
-			if(!empty($aaa)) trigger_error("Tags added: ".print_r($aaa,true) ,E_USER_NOTICE);
+			if(!empty($aaa)) trigger_error("Tags added: ".print_r($campaign_tags,true),E_USER_NOTICE);
 		}
 		
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {

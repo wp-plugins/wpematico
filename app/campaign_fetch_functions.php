@@ -14,7 +14,7 @@ class wpematico_campaign_fetch_functions {
 		$table_name = $wpdb->prefix . "posts";
 		$blog_id 	= @$current_blog->blog_id;
 		
-		$title = $wpdb->escape($item->get_title()); // $item->get_permalink();
+		$title = sanitize_text_field($item->get_title()); // $item->get_permalink();
 		$query="SELECT post_title,id FROM $table_name
 					WHERE post_title = '".$title."'
 					AND ((`post_status` = 'published') OR (`post_status` = 'publish' ) OR (`post_status` = 'draft' ) OR (`post_status` = 'private' ))";
@@ -177,7 +177,8 @@ class wpematico_campaign_fetch_functions {
 				}
 		}	// End Words to Category
 		//Tags
-		if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: postags($current_item,$campaign, $item ); }else $current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
+		if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: postags($current_item,$campaign, $item ); $current_item['campaign_tags'] = $current_item['tags'] ; 
+		}else $current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
 
 		return $current_item;
 	} // End item filters

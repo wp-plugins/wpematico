@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
 Tested up to: 3.6
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -99,6 +99,13 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+
+= 1.1.6 =
+* Replaced DEPRECATED functions for be more compatible with WP3.6.
+* Some minor changes.
+[PRO]
+* Fixed autotags feature that not work on some cases.
+[/PRO]
 
 = 1.1.5 =
 * New feature for allow or not duplicates posts.
@@ -305,6 +312,5 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.1.5 =
-* New feature allow duplicates posts.
-* Categories and tags fixes. Highly recommended upgrade.
+= 1.1.6 =
+* Autotags fix on PRO Version. Low recommended upgrade, unless you use this feature or getting deprecated notice on previous version.
