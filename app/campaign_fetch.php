@@ -71,6 +71,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	* @return  The number of posts added
 	*/
 	private function processFeed(&$feed)  {
+		global $realcount;
 		@set_time_limit(0);
 		trigger_error('<span class="coderr b">'.sprintf(__('Processing feed %1s.', WPeMatico :: TEXTDOMAIN ),$feed).'</span>' , E_USER_NOTICE);   // Log
 		

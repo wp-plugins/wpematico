@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
-Tested up to: 3.6
-Stable tag: 1.1.6
+Tested up to: 3.6.1
+Stable tag: 1.1.7
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -63,13 +63,21 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. Unzip "wpematico" archive and put the folder into your plugins folder (/wp-content/plugins/).
 2. Activate the plugin from the Plugins menu.
 
+= Upgrading =
+
+* Remember deactivate PRO version before upgrade, then activate again.
+
 == Frequently Asked Questions ==
 
 = I have this plugin installed and activated.  What must I do now ? =
 
 * OK, now you have in woprdpress admin a new area below posts called WPeMatico.  At settings, setup configuration items. At Campaigns you must add one, in there add one or few feeds with options you choose.  You can use a campaign for grouping feeds for a category or another custom topic that you want.
 
-= Where can I ask a question? =
+= Upgrading FREE or PRO versions =
+
+* Remember deactivate PRO version before upgrade, then activate again.
+
+= Where can I ask another question? =
 
 * [Search the page WPeMatico here](http://www.netmdp.com).
 
@@ -100,12 +108,23 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 
+= 1.1.7 =
+* Fixed duplicate image uploads that was in some cases with PRO Version installed.
+* Fixed that don't generate all images sizes when attach files to posts.
+* Some minor changes.
+* [PRO] must download version 1.1.7 [PRO](http://www.wpematico.com/wpematico/)
+* Fixed and removed the "rare" code displayed on log when fetch rss images.
+* Fixed KeywordFilter when select both title and content for search on "any" field.
+* Added file getcontent.php for custom edit and use with CURL if you need it.
+* Added tags for custom title feature: {title} and {counter} and will be replaced on custom title field.
+* [/PRO]
+
 = 1.1.6 =
 * Replaced DEPRECATED functions for be more compatible with WP3.6.
 * Some minor changes.
-[PRO]
+* [PRO]
 * Fixed autotags feature that not work on some cases.
-[/PRO]
+* [/PRO]
 
 = 1.1.5 =
 * New feature for allow or not duplicates posts.
@@ -312,5 +331,5 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.1.6 =
-* Autotags fix on PRO Version. Low recommended upgrade, unless you use this feature or getting deprecated notice on previous version.
+= 1.1.7 =
+* Some fixes on images upload and images thumbnails. Normal recommended upgrade. Remember deactivate PRO version before upgrade.

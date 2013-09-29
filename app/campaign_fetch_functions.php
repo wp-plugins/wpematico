@@ -256,7 +256,8 @@ class wpematico_campaign_fetch_functions {
             $itemUrl = $this->getReadUrl($item->get_permalink());
 			
 			if( $this->cfg['nonstatic'] ) { $current_item['images'] = NoNStatic :: imgfind($current_item,$campaign,$item ); }
-			
+			$current_item['images'] = array_values(array_unique($current_item['images']));
+ 
 			if( sizeof($current_item['images']) ) { // Si hay alguna imagen en el contenido
 				trigger_error(__('Uploading images.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
 				//trigger_error(print_r($current_item['images'],true),E_USER_NOTICE);
@@ -325,27 +326,26 @@ class wpematico_campaign_fetch_functions {
 		return $out;
 	}
  
-	
 	/*** Adjunta un archivo ya subido al postid dado  */
  	function insertfileasattach($filename,$postid) {
   		$wp_filetype = wp_check_filetype(basename($filename), null );
 		$wp_upload_dir = wp_upload_dir();
+		$relfilename = $wp_upload_dir['path'] . '/' . basename( $filename );
+		$guid = $wp_upload_dir['url'] . '/' . basename( $filename );
 		$attachment = array(
-		  'guid' => $filename, 
+		  'guid' => $guid,
 		  'post_mime_type' => $wp_filetype['type'],
 		  'post_title' => preg_replace('/\.[^.]+$/', '', basename($filename)),
 		  'post_content' => '',
 		  'post_status' => 'inherit'
 		);
 		trigger_error(__('Attaching file:').$filename,E_USER_NOTICE);
-		$relfilename=str_replace($wp_upload_dir['baseurl'], '', $filename);
-//		trigger_error(__('Attaching file relfilename:').$relfilename,E_USER_NOTICE);
 		$attach_id = wp_insert_attachment( $attachment,  $relfilename, $postid );
 		if (!$attach_id)
 			trigger_error(__('Sorry, your attach could not be inserted. Something wrong happened.').print_r($filename,true),E_USER_WARNING);
 		// must include the image.php file for the function wp_generate_attachment_metadata() to work
 		require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-		$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+		$attach_data = wp_generate_attachment_metadata( $attach_id, $relfilename );
 		wp_update_attachment_metadata( $attach_id,  $attach_data );
 		
 		return $attach_id;
