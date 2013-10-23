@@ -47,6 +47,8 @@ class WPeMatico_Campaign_edit_functions {
 			<b><?php _e('Basics:', WPeMatico :: TEXTDOMAIN ); ?></b> <?php _e('The rewriting settings allow you to replace parts of the content with the text you specify.', WPeMatico :: TEXTDOMAIN ); ?><br />
 			<b><?php _e('Basic rewriting:', WPeMatico :: TEXTDOMAIN ); ?></b><br />
 			<?php _e('To replace all occurrences the word ass with butt, simply type ass in the "origin field", and butt in "rewrite to".', WPeMatico :: TEXTDOMAIN ); ?><br />
+			<b><?php _e('Title:', WPeMatico :: TEXTDOMAIN ); ?></b><br />
+			<?php _e('If you check "Title" checkbox only replace on title. If you un-check "Title" only replace on content. you must insert twice if you want to replace on both fields.', WPeMatico :: TEXTDOMAIN ); ?><br />
 			<b><?php _e('Relinking:', WPeMatico :: TEXTDOMAIN ); ?></b><br />
 			<?php _e('If you want to find all occurrences of google and make them link to Google, just type google in the "origin field" and http://google.com in the "relink to" field.', WPeMatico :: TEXTDOMAIN ); ?><br />
 			<b><?php _e('Regular expressions', WPeMatico :: TEXTDOMAIN ); ?></b><br />
@@ -58,6 +60,7 @@ class WPeMatico_Campaign_edit_functions {
 				<div class="pDiv jobtype-select p7" id="nuevorew">
 					<div id="rw1" class="wi30 left p4">
 						<?php _e('Origin:','wpematico') ?>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input name="campaign_word_option_title[<?php echo $i; ?>]" id="campaign_word_option_title" class="checkbox" value="1" type="checkbox"<?php checked(@$campaign_rewrites['title'][$i],true) ?> onclick="relink=jQuery(this).parent().parent().children('#rw3');if(true==jQuery(this).is(':checked')) relink.fadeOut(); else relink.fadeIn();"/> <?php _e('Title','wpematico') ?>
 						<input name="campaign_word_option_regex[<?php echo $i; ?>]" id="campaign_word_option_regex" class="checkbox" value="1" type="checkbox"<?php checked(@$campaign_rewrites['regex'][$i],true) ?> /> <?php _e('RegEx','wpematico') ?>
 						<textarea class="large-text he35" id="campaign_word_origin" name="campaign_word_origin[<?php echo $i; ?>]" /><?php echo stripslashes(@$campaign_rewrites['origin'][$i]) ?></textarea>
 					</div>
@@ -65,7 +68,7 @@ class WPeMatico_Campaign_edit_functions {
 						 <?php _e('Rewrite to:','wpematico') ?>
 						<textarea class="large-text he35" id="campaign_word_rewrite" name="campaign_word_rewrite[<?php echo $i; ?>]" /><?php echo stripslashes(@$campaign_rewrites['rewrite'][$i]) ?></textarea>
 					</div>
-					<div class="wi30 left p4">
+					<div id="rw3" class="wi30 left p4" <?php if(checked(@$campaign_rewrites['title'][$i],true,false)) echo 'style="display:none"'; ?>>
 						 <?php _e('ReLink to:','wpematico') ?>
 						<textarea class="large-text he35" id="campaign_word_relink" name="campaign_word_relink[<?php echo $i; ?>]" /><?php echo stripslashes(@$campaign_rewrites['relink'][$i]) ?></textarea>
 					</div>

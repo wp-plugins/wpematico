@@ -118,6 +118,7 @@ class wpematico_campaign_fetch_functions {
 		//$rewrites = $campaign['campaign_rewrites'];
 		if (isset($campaign['campaign_rewrites']['origin']))
 			for ($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
+				$on_title = ($campaign['campaign_rewrites']['title'][$i]) ? true: false ;
 				$origin = stripslashes($campaign['campaign_rewrites']['origin'][$i]);
 				if(isset($campaign['campaign_rewrites']['rewrite'][$i])) {
 					$reword = !empty($campaign['campaign_rewrites']['relink'][$i]) 
@@ -125,9 +126,15 @@ class wpematico_campaign_fetch_functions {
 								  : stripslashes($campaign['campaign_rewrites']['rewrite'][$i]);
 				  
 					if($campaign['campaign_rewrites']['regex'][$i]) {
-						$current_item['content'] = preg_replace($origin, $reword, $current_item['content']);
+						if($on_title) 
+							$current_item['title'] = preg_replace($origin, $reword, $current_item['title']);
+						else
+							$current_item['content'] = preg_replace($origin, $reword, $current_item['content']);
 					}else
-						$current_item['content'] = str_ireplace($origin, $reword, $current_item['content']);
+						if($on_title) 
+							$current_item['title'] = str_ireplace($origin, $reword, $current_item['title']);
+						else
+							$current_item['content'] = str_ireplace($origin, $reword, $current_item['content']);
 				}else if(!empty($campaign['campaign_rewrites']['relink'][$i]))
 					$current_item['content'] = str_ireplace($origin, '<a href="'. stripslashes($campaign['campaign_rewrites']['relink'][$i]) .'">' . $origin . '</a>', $current_item['content']);
 			}

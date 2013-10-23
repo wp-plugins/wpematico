@@ -128,11 +128,14 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$('#rew_max').val( parseInt($('#rew_max').val(),10) + 1 );
 				newval = $('#rew_max').val();					
 				nuevo= $('#nuevorew').clone();
-				$('input', nuevo).eq(0).attr('name','campaign_word_option_regex['+ newval +']');
+				$('input', nuevo).eq(0).attr('name','campaign_word_option_title['+ newval +']');
+				$('input', nuevo).eq(1).attr('name','campaign_word_option_regex['+ newval +']');
 				$('textarea', nuevo).eq(0).attr('name','campaign_word_origin['+ newval +']');
 				$('textarea', nuevo).eq(1).attr('name','campaign_word_rewrite['+ newval +']');
 				$('textarea', nuevo).eq(2).attr('name','campaign_word_relink['+ newval +']');
 				$('input', nuevo).eq(0).removeAttr('checked');
+				$('input', nuevo).eq(1).removeAttr('checked');
+				$('#rw3', nuevo).show();
 				$('textarea', nuevo).eq(0).text('');
 				$('textarea', nuevo).eq(1).text('');
 				$('textarea', nuevo).eq(2).text('');
@@ -203,6 +206,14 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 						reword_regex.push('0');
 					}
 				});
+				var reword_title  = new Array();
+				$("input[name='campaign_word_option_title[]']").each(function() {
+					if ( true == $(this).is(':checked')) {
+						reword_title.push('1');
+					}else{
+						reword_title.push('0');
+					}
+				});
 
 				feeds= $("input[name='campaign_feeds[]']").serialize();
 				
@@ -210,6 +221,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					campaign_feeds: feeds,
 					campaign_word_origin: reword,
 					campaign_word_option_regex: reword_regex,
+					campaign_word_option_title: reword_title,
 					campaign_wrd2cat: wrd2cat,
 					campaign_wrd2cat_regex: wrd2cat_regex,
 					action: "checkfields"
@@ -526,6 +538,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			foreach($_POST['campaign_word_origin'] as $id => $rewrite) {       
 				$origin = addslashes($_POST['campaign_word_origin'][$id]);
 				$regex = $_POST['campaign_word_option_regex'][$id]==1 ? true : false ;
+				$title = $_POST['campaign_word_option_title'][$id]==1 ? true : false ;
 				$rewrite = addslashes($_POST['campaign_word_rewrite'][$id]);
 				$relink = addslashes($_POST['campaign_word_relink'][$id]);
 				if(!empty($origin))  {
@@ -533,6 +546,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 						$campaign_rewrites = Array();
 					$campaign_rewrites['origin'][]=$origin ;
 					$campaign_rewrites['regex'][]= $regex;
+					$campaign_rewrites['title'][]= $title;
 					$campaign_rewrites['rewrite'][]=$rewrite ;
 					$campaign_rewrites['relink'][]=$relink ;
 				}

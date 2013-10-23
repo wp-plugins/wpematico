@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
-Tested up to: 3.6.1
-Stable tag: 1.1.7
+Tested up to: 3.7
+Stable tag: 1.1.8
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -107,6 +107,10 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+
+= 1.1.8 =
+* New feature: Now you can rewrite part of Post titles too.
+* Wordpress 3.7 compatibility.
 
 = 1.1.7 =
 * Fixed duplicate image uploads that was in some cases with PRO Version installed.
@@ -331,5 +335,5 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.1.7 =
-* Some fixes on images upload and images thumbnails. Normal recommended upgrade. Remember deactivate PRO version before upgrade.
+= 1.1.8 =
+* minnor recommended upgrade. Remember deactivate PRO version before upgrade.
