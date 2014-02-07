@@ -336,4 +336,4 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 == Upgrade Notice ==
 
 = 1.1.8 =
-* Normal recommended upgrade. Remember deactivate PRO version before upgrade.
+* minnor recommended upgrade. Remember deactivate PRO version before upgrade.
