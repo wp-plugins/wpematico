@@ -25,7 +25,7 @@ include_once("campaign_edit_functions.php");
 
 class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	
-	public function init() {
+	public static function init() {
 		new self();
 	}
 	
@@ -38,19 +38,24 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		add_action('admin_print_styles-post-new.php', array( __CLASS__ ,'admin_styles'));
 		add_action('admin_print_scripts-post.php', array( __CLASS__ ,'admin_scripts'));
 		add_action('admin_print_scripts-post-new.php', array( __CLASS__ ,'admin_scripts'));  
+		add_action('admin_init', array( __CLASS__ ,'disable_autosave' ));
+	}
+	public static function disable_autosave() {
+		global $post_type;
+		if($post_type != 'wpematico') return ;
+		wp_deregister_script( 'autosave' );
 	}
 
-  	function admin_styles(){
+  	public static function admin_styles(){
 		global $post;
 		if($post->post_type != 'wpematico') return $post->ID;
 		wp_enqueue_style('campaigns-edit',WPeMatico :: $uri .'app/css/campaigns_edit.css');	
 //		add_action('admin_head', array( &$this ,'campaigns_admin_head_style'));
 	}
 
-	function admin_scripts(){
+	public static function admin_scripts(){
 		global $post;
 		if($post->post_type != 'wpematico') return $post->ID;
-		wp_deregister_script('autosave');
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head'));
 	}
 
@@ -61,7 +66,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		return ''; 
 	}
 	
-	function campaigns_admin_head() {
+	public static function campaigns_admin_head() {
 		global $post;
 		if($post->post_type != 'wpematico') return $post_id;
 		$post->post_password = '';
@@ -69,7 +74,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$visibility_trans = __('Public');
 		$description = __('Campaign Description', WPeMatico :: TEXTDOMAIN );
 		$description_help = __('Here you can write some observations.',  WPeMatico :: TEXTDOMAIN);
-		$runnowbutton = '<div class="right m7 " style="margin-left: 47px;"><div style="background-color: #FFF52F;" id="run_now" class="button-primary">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . '</div></div>';
+		$runnowbutton = '<div class="right m7 " style="margin-left: 47px;"><div style="background-color: #EB9600;" id="run_now" class="button-primary">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . '</div></div>';
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		
 		?>
@@ -338,7 +343,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		<?php
 	}
 	/********** CHEQUEO CAMPOS ANTES DE GRABAR ****************************************************/
-	function CheckFields() {  // check required fields values before save post
+	public static function CheckFields() {  // check required fields values before save post
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$err_message = "";
 		if(isset($_POST['campaign_wrd2cat'])) {
@@ -419,7 +424,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	
 	
 	//************************* GRABA CAMPAÑA *******************************************************
-	function save_campaigndata( $post_id ) {
+	public static function save_campaigndata( $post_id ) {
 		global $post;
 		// Stop WP from clearing custom fields on autosave, and also during ajax requests (e.g. quick edit) and bulk edits.
 		if ((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || (defined('DOING_AJAX') && DOING_AJAX) || isset($_REQUEST['bulk_edit']))

@@ -11,7 +11,7 @@ if ( !defined('ABSPATH') )
 if ( class_exists( 'WPeMatico_Campaigns' ) ) return;
 class WPeMatico_Campaigns {
 
-	public function init() {
+	public static function init() {
 		new self();
 	}
 	
@@ -37,29 +37,28 @@ class WPeMatico_Campaigns {
 		add_action('admin_print_scripts-edit.php', array(&$this,'list_admin_scripts'));
 	}
 
-	function my_views_filter($links) {
-		global $post;
-		if($post->post_type != 'wpematico') return $links;
-		
+	public static function my_views_filter($links) {
+		global $post_type;
+		if($post_type != 'wpematico') return $links;		
 		$links['wpematico'] = __('Visit', WPeMatico :: TEXTDOMAIN).' <a href="http://www.wpematico.com" target="_Blank">www.wpematico.com</a>';
 		return $links;
 	}
 	
-  	function list_admin_styles(){
+  	public static function list_admin_styles(){
 		wp_enqueue_style('campaigns-list',WPeMatico :: $uri .'app/css/campaigns_list.css');
 //		add_action('admin_head', array( &$this ,'campaigns_admin_head_style'));
 	}
-	function list_admin_scripts(){
+	public static function list_admin_scripts(){
 		add_action('admin_head', array( __CLASS__ ,'campaigns_list_admin_head'));
 //		wp_register_script('jquery-input-mask', 'js/jquery.maskedinput-1.2.2.js', array( 'jquery' ));
 //		wp_enqueue_script('color-picker', 'js/colorpicker.js', array('jquery'));
 			
 	}
 
-	function campaigns_list_admin_head() {
-		global $post;
-		if($post->post_type != 'wpematico') return $post_id;
-			$runallbutton = '<div style="margin: 2px 5px 0 0;float:left;background-color: #FFF52F;" id="run_all" onclick="javascript:run_all();" class="button-primary">'. __('Run Selected Campaigns', WPeMatico :: TEXTDOMAIN ) . '</div>';
+	public static function campaigns_list_admin_head() {
+		global $post, $post_type;
+		if($post_type != 'wpematico') return $post->ID;
+			$runallbutton = '<div style="margin: 2px 5px 0 0;float:left;background-color: #EB9600;" id="run_all" onclick="javascript:run_all();" class="button-primary">'. __('Run Selected Campaigns', WPeMatico :: TEXTDOMAIN ) . '</div>';
 		?>		
 		<script type="text/javascript" language="javascript">
 			jQuery(document).ready(function($){
@@ -296,7 +295,8 @@ class WPeMatico_Campaigns {
 	/**************FIN ACCION DELHASH	*/
 	
 	public function wpematico_action_link( $id = 0, $context = 'display', $actionslug ) {
-		if ( !$post = &get_post( $id ) ) return;
+		global $post;
+		if ( !$post == get_post( $id ) ) return;
 		switch ($actionslug){ 
 		case 'copy':
 			$action_name = "wpematico_copy_campaign";

@@ -100,7 +100,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					}
 				}
 				if( !$this->cfg['allowduptitle'] ){
-					if($this->isDuplicate($this->campaign, $feed, $item)) {
+					if($this->WPeisDuplicated($this->campaign, $feed, $item)) {
 						trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
 						break;
 					}
@@ -197,7 +197,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['meta'] = array(
 			'wpe_campaignid' => $this->campaign_id, 
 			'wpe_feed' => $feed->feed_url,
-			'wpe_sourcepermalink' => $item->get_permalink()
+			//'wpe_sourcepermalink' => $item->get_permalink()
+			'wpe_sourcepermalink' => $this->getReadUrl($item->get_permalink())
 		);  
 		
 		if( $this->cfg['nonstatic'] ) { $this->current_item['images'] = NoNStatic :: img1s($this->current_item,$this->campaign,$item ); }
@@ -234,7 +235,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 							$attachid = $this->insertfileasattach($imagen_src,$postid);
 							if(($custom_imagecount == 0) && ($this->cfg['featuredimg'])) {
 								trigger_error(__('Featured Image Into Post.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
-								add_post_meta($postid, '_thumbnail_id', $attachid);
+								set_post_thumbnail( $postid, $attachid );
+								//add_post_meta($postid, '_thumbnail_id', $attachid);
 								$custom_imagecount++;
 							}
 						}

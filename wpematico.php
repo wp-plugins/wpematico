@@ -3,7 +3,7 @@
  Plugin Name: WPeMatico
  Plugin URI: http://www.wpematico.com
  Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
- Version: 1.1.8
+ Version: 1.1.9
  Author: etruel <esteban@netmdp.com>
  Author URI: http://www.netmdp.com
  */
@@ -28,74 +28,13 @@ if ( !class_exists( 'WPeMatico' ) ) {
 	register_uninstall_hook( plugin_basename( __FILE__ ), array( 'WPeMatico', 'uninstall' ) );
 
 	class WPeMatico extends WPeMatico_functions {
-
-		/**
-		 * Textdomain
-		 *
-		 * @access public
-		 * @const string
-		 */
 		const TEXTDOMAIN = 'wpematico';
-
-		/**
-		 * Version
-		 *
-		 * @access public
-		 * @const string
-		 */
-		const VERSION = '1.1.8';
+		const VERSION = '1.1.9';
 		const RELEASE = '1';
-
-		/**
-		 * Option Key
-		 *
-		 * @access public
-		 * @const string
-		 */
 		const OPTION_KEY = 'WPeMatico_Options';
-
-		/**
-		 * $basen
-		 *
-		 * Plugin basename
-		 *
-		 * @access public
-		 * @static
-		 * @var string
-		 */
-		public static $basen;
-
-		/**
-		 * $uri
-		 *
-		 * absolute uri to the plugin with trailing slash
-		 *
-		 * @access public
-		 * @static
-		 * @var string
-		 */
+		public static $basen;		/** Plugin basename * @var string	 */
 		public static $uri = '';
-
-		/**
-		 * $dir
-		 *
-		 * filesystem path to the plugin with trailing slash
-		 *
-		 * @access public
-		 * @static
-		 * @var string
-		 */
-		public static $dir = '';
-
-		/**
-		 * $default_options
-		 *
-		 * Some settings to use by default
-		 *
-		 * @access protected
-		 * @static
-		 * @var array
-		 */
+		public static $dir = '';		/** filesystem path to the plugin with trailing slash */
 		protected static $default_options = array(
 			'mailmethod' => 'mail',
 			'mailsndemail' => '',
@@ -127,23 +66,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			'allowduphash' => false,  // infinito
 		);
 
-		/**
-		 *
-		 * $options
-		 *
-		 * @access protected
-		 * @var array
-		 */
-		public static $options = array();
-
-		/**
-		 * init
-		 *
-		 * @access public
-		 * @static
-		 * @return void
-		 */
-		public function init() {
+		public $options = array();
+		public static function init() {
 			self :: $uri = plugin_dir_url( __FILE__ );
 			self :: $dir = plugin_dir_path( __FILE__ );
 			self :: $basen = plugin_basename(__FILE__);
@@ -348,7 +272,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access public
 		 * @return void
 		 */
-		 public function Create_campaigns_page() {
+		 public static function Create_campaigns_page() {
 		  $labels = array(
 			'name' => __('Campaigns',  self :: TEXTDOMAIN ),
 			'singular_name' => __('Campaign',  self :: TEXTDOMAIN ),
@@ -508,7 +432,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @access protected
 		 * @return void
 		 */
-		protected function load_wpe_textdomain() {
+		protected static function load_wpe_textdomain() {
 			# load plugin textdomain
 			load_plugin_textdomain( self :: TEXTDOMAIN, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 			# load tinyMCE localisation file
@@ -548,7 +472,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			//$this->options = $this->check_options($this->options);
 		}
 
-		public function check_options($cfg) {
+		public static function check_options($cfg) {
 			if(!isset($cfg['mailmethod'])) $cfg['mailmethod'] = 'mail';
 			if(!isset($cfg['mailsndemail'])) $cfg['mailsndemail'] = '';
 			if(!isset($cfg['mailsndname'])) $cfg['mailsndname'] ='';

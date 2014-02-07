@@ -6,7 +6,7 @@ if ( !defined('ABSPATH') )
 if ( class_exists( 'WPeMatico_functions' ) ) return;
 
 class WPeMatico_functions {
-	function wpematico_env_checks() {
+	public static function wpematico_env_checks() {
 		global $wp_version,$wpematico_admin_message;
 		$message='';
 		$checks=true;
@@ -35,7 +35,7 @@ class WPeMatico_functions {
 	}
  */	
 	//file size
-	function formatBytes($bytes, $precision = 2) {
+	public static function formatBytes($bytes, $precision = 2) {
 		$units = array('B', 'KB', 'MB', 'GB', 'TB');
 		$bytes = max($bytes, 0);
 		$pow = floor(($bytes ? log($bytes) : 0) / log(1024));
@@ -50,7 +50,7 @@ class WPeMatico_functions {
    * 
    * @return an array with all campaigns data 
    **/	
-	function get_campaigns() {
+	public static function get_campaigns() {
 		$campaigns_data = array();
 		$args = array(
 			'orderby'         => 'ID',
@@ -73,7 +73,7 @@ class WPeMatico_functions {
    * 
    * @return an array with campaign data 
    **/	
-	public function get_campaign( $post_id , $getfromdb = false ) {
+	public static function get_campaign( $post_id , $getfromdb = false ) {
 		if ( $getfromdb ){
 			$campaign = get_post($post_id);
 		}
@@ -92,7 +92,7 @@ class WPeMatico_functions {
    * 
    * @return an array with campaign data 
    **/	
-	public function update_campaign( $post_id , $campaign = array() ) {
+	public static function update_campaign( $post_id , $campaign = array() ) {
 		$campaign['cronnextrun']= WPeMatico :: time_cron_next($campaign['cron']);
 		
 			// *** Campaign Rewrites	
@@ -115,7 +115,7 @@ class WPeMatico_functions {
 	
 	/*********** 	 Funciones para procesar campañas ******************/
 	//DoJob
-	function wpematico_dojob($jobid) {
+	public static function wpematico_dojob($jobid) {
 		global $campaign_log_message;
 		$campaign_log_message = "";
 		if (empty($jobid))
@@ -127,7 +127,7 @@ class WPeMatico_functions {
 	}
 
 	// Processes all campaigns
- 	function processAll() {
+ 	public static function processAll() {
 		$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC' );
 		$campaignsid = get_posts( $args );
 		$msglogs = "";
@@ -141,16 +141,16 @@ class WPeMatico_functions {
 
 	//Permalink to Source
 	/*** Determines what the title has to link to   * @return string new text   **/
-	function wpematico_permalink($url) {
+	public static function wpematico_permalink($url) {
 		// if from admin panel
 		if(get_the_ID()) {
 			$campaign_id = (int) get_post_meta(get_the_ID(), 'wpe_campaignid', true);
 			if($campaign_id) {
-				$campaign = $this->get_campaign( $campaign_id );
+				$campaign = self::get_campaign( $campaign_id );
 				//$campaign = :: check_campaigndata($campaign);
 				if($campaign['campaign_linktosource'])
 					return get_post_meta(get_the_ID(), 'wpe_sourcepermalink', true);
-			}  	  
+			}
 		}
 		return $url;      
 	}
@@ -164,7 +164,7 @@ class WPeMatico_functions {
    * @param   integer     $max              Limit of items to fetch
    * @return  SimplePie_Item    Feed object
    **/
-  function fetchFeed($url, $stupidly_fast = false, $max = 0) {  # SimplePie
+  public static function fetchFeed($url, $stupidly_fast = false, $max = 0) {  # SimplePie
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
 	if ( $cfg['force_mysimplepie']){
 		include_once( dirname( __FILE__) . '/lib/simplepie.inc.php' );
@@ -194,7 +194,7 @@ class WPeMatico_functions {
 	* Tests a feed
 	*
 	*/
-	public function Test_feed($args='') {
+	public static function Test_feed($args='') {
 		if (is_array($args)) {
 			extract($args);
 			$ajax=false;
@@ -217,22 +217,21 @@ class WPeMatico_functions {
   
 	################### ARRAYS FUNCS
 	/* * filtering an array   */
-    function filter_by_value ($array, $index, $value){
-        if(is_array($array) && count($array)>0) 
-        {
-            foreach(array_keys($array) as $key){
-                $temp[$key] = $array[$key][$index];
-                
+    public static function filter_by_value ($array, $index, $value){
+		$newarray=array();
+        if(is_array($array) && count($array)>0){
+            foreach(array_keys($array) as $key) {
+                $temp[$key] = $array[$key][$index];                
                 if ($temp[$key] != $value){
                     $newarray[$key] = $array[$key];
                 }
             }
-          }
+        }
       return $newarray;
     } 
 	 //Example: array_sort($my_array,'!group','surname');
 	//Output: sort the array DESCENDING by group and then ASCENDING by surname. Notice the use of ! to reverse the sort order. 
-	function array_sort_func($a,$b=NULL) {
+	public static function array_sort_func($a,$b=NULL) {
 		static $keys;
 		if($b===NULL) return $keys=$a;
 		foreach($keys as $k) {
@@ -249,17 +248,17 @@ class WPeMatico_functions {
 		return 0;
 	}
 
-	function array_sort(&$array) {
+	public static function array_sort(&$array) {
 		if(!$array) return $keys;
 		$keys=func_get_args();
 		array_shift($keys);
-		$this->array_sort_func($keys);
-		usort($array, array($this,"array_sort_func"));
+		self::array_sort_func($keys);
+		usort($array, array(__CLASS__,"array_sort_func"));
 	} 
 	################### END ARRAYS FUNCS
 
 // ********************************** CRON FUNCTIONS
-	public function cron_string($array_post){
+	public static function cron_string($array_post){
 		if ($array_post['cronminutes'][0]=='*' or empty($array_post['cronminutes'])) {
 			if (!empty($array_post['cronminutes'][1]))
 				$array_post['cronminutes']=array('*/'.$array_post['cronminutes'][1]);
@@ -295,7 +294,7 @@ class WPeMatico_functions {
 	
 	//******************************************************************************
 	//Calcs next run for a cron string as timestamp
-	public function time_cron_next($cronstring) {
+	public static function time_cron_next($cronstring) {
 		//Cronstring zerlegen
 		list($cronstr['minutes'],$cronstr['hours'],$cronstr['mday'],$cronstr['mon'],$cronstr['wday'])=explode(' ',$cronstring,5);
 

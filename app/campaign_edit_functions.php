@@ -6,7 +6,7 @@ if ( !defined('ABSPATH') )
 if ( class_exists( 'WPeMatico_Campaign_edit_functions' ) ) return;
 
 class WPeMatico_Campaign_edit_functions {
-	function create_meta_boxes() {
+	public static function create_meta_boxes() {
 		global $post,$campaign_data, $cfg; 
 		$campaign_data = WPeMatico :: get_campaign ($post->ID);
 		//$campaign_data = self :: check_campaigndata($campaign_data);
@@ -34,7 +34,7 @@ class WPeMatico_Campaign_edit_functions {
 	
 	
 		//*************************************************************************************
-	function rewrite_box( $post ) { 
+	public static function rewrite_box( $post ) { 
 		global $post, $campaign_data;
 		$campaign_rewrites = $campaign_data['campaign_rewrites'];
 		if(!($campaign_rewrites)) $campaign_rewrites = array();
@@ -92,7 +92,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 	
 	//*************************************************************************************
-	function word2cats_box( $post ) { 
+	public static function word2cats_box( $post ) { 
 		global $post, $campaign_data;
 		
 		$campaign_wrd2cat = $campaign_data['campaign_wrd2cat'];
@@ -146,7 +146,7 @@ class WPeMatico_Campaign_edit_functions {
 	
 	
 	//*************************************************************************************
-	function template_box( $post ) { 
+	public static function template_box( $post ) { 
 		global $post, $campaign_data, $cfg;
 		$campaign_enable_template = @$campaign_data['campaign_enable_template'];
 		$campaign_template = @$campaign_data['campaign_template'];
@@ -202,7 +202,7 @@ class WPeMatico_Campaign_edit_functions {
 		<?php
 	}
 	//*************************************************************************************
-	function images_box( $post ) { 
+	public static function images_box( $post ) { 
 		global $post, $campaign_data, $cfg;
 		
 		$campaign_imgcache = $campaign_data['campaign_imgcache'];
@@ -231,7 +231,7 @@ class WPeMatico_Campaign_edit_functions {
 	<?php
 	}
 	//*************************************************************************************
-	function options_box( $post ) { 
+	public static function options_box( $post ) { 
 		global $post, $campaign_data, $cfg ;
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$campaign_max = $campaign_data['campaign_max'];
@@ -294,7 +294,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 
 	//*************************************************************************************
-	function feeds_box( $post ) {  
+	public static function feeds_box( $post ) {  
 		global $post, $campaign_data, $cfg;
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$campaign_feeds = $campaign_data['campaign_feeds'];
@@ -383,7 +383,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 		
 	//*************************************************************************************	
-	function cron_box( $post ) {  
+	public static function cron_box( $post ) {  
 		global $post, $campaign_data, $cfg;
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$activated = $campaign_data['activated'];
@@ -428,7 +428,7 @@ class WPeMatico_Campaign_edit_functions {
 				?>
 				</select>
 			</div>
-			<div style="width:85px; float: right;">
+			<div style="width:80px; float: right;">
 				<b><?php _e('Days:','wpematico'); ?></b><br />
 				<?php 
 				if (strstr($cronstr['mday'],'*/'))
@@ -497,7 +497,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 	
 	//********************************
-	function log_box( $post ) {
+	public static function log_box( $post ) {
 		global $post, $campaign_data;
 		
 		$mailaddresslog = $campaign_data['mailaddresslog'];
@@ -510,7 +510,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 
 	//********************************
-	function tags_box( $post ) {
+	public static function tags_box( $post ) {
 		global $post, $campaign_data, $cfg;
 		$campaign_tags = @$campaign_data['campaign_tags'];
 		?>			
@@ -523,7 +523,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 
 	//********************************
-	function cat_box( $post ) {
+	public static function cat_box( $post ) {
 		global $post, $campaign_data;
 		
 		$campaign_categories = @$campaign_data['campaign_categories'];
@@ -551,7 +551,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 
 	// ** Muestro Categorías seleccionables 
-	private function _wpe_edit_cat_row($category, $level, &$data) {  
+	private static function _wpe_edit_cat_row($category, $level, &$data) {  
 		$category = get_category( $category );
 		$name = $category->cat_name;
 		echo '
@@ -562,7 +562,7 @@ class WPeMatico_Campaign_edit_functions {
 		<label for="category_' . $category->cat_ID . '">' . $name . '</label></li>';
 	}
 
-	private function Categories_box(&$data, $parent = 0, $level = 0, $categories = 0)  {    
+	private static function Categories_box(&$data, $parent = 0, $level = 0, $categories = 0)  {    
 		if ( !$categories )
 			$categories = get_categories(array('hide_empty' => 0));
 
@@ -592,7 +592,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 
 	// Action handler - The 'Save' button is about to be drawn on the advanced edit screen.
-	function post_submitbox_start()	{
+	public static function post_submitbox_start()	{
 		global $post, $campaign_data;
 		if($post->post_type != 'wpematico') return $post->ID;
 		
@@ -627,7 +627,7 @@ class WPeMatico_Campaign_edit_functions {
 
 
 	/************** CHECK DATA *************************************************/
-	function check_campaigndata( $campaigndata=array() ) {
+	public static function check_campaigndata( $campaigndata=array() ) {
 		if (empty($campaigndata['campaign_posttype']) or !is_string($campaigndata['campaign_posttype']))
 			$campaigndata['campaign_posttype']= 'publish';
 

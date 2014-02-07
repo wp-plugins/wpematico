@@ -8,21 +8,25 @@ if ( class_exists( 'wpematico_campaign_fetch_functions' ) ) return;
 
 class wpematico_campaign_fetch_functions {
 
-	function isDuplicate(&$campaign, &$feed, &$item) {
-		// Agregar variables para chequear duplicados solo de esta campaña o de cada feed ( grabados en post_meta) o por titulo y permalink
-		global $wpdb, $wp_locale, $current_blog;
-		$table_name = $wpdb->prefix . "posts";
-		$blog_id 	= @$current_blog->blog_id;
-		
-		$title = sanitize_text_field($item->get_title()); // $item->get_permalink();
-		$query="SELECT post_title,id FROM $table_name
-					WHERE post_title = '".$title."'
-					AND ((`post_status` = 'published') OR (`post_status` = 'publish' ) OR (`post_status` = 'draft' ) OR (`post_status` = 'private' ))";
-					//GROUP BY post_title having count(*) > 1" ;
-		$row = $wpdb->get_row($query);
-		
-		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '.((!! $row) ? __('Yes') : __('No')) ,E_USER_NOTICE);
-		return !! $row;
+	function WPeisDuplicated(&$campaign, &$feed, &$item) {
+		// Post slugs must be unique across all posts.
+		global $wpdb, $wp_rewrite;
+		$post_ID = 0;
+		$cpost_type = $campaign['campaign_customposttype'];
+		$wfeeds = $wp_rewrite->feeds;
+		if ( ! is_array( $wfeeds ) )
+			$wfeeds = array();
+		$title = $item->get_title();
+		$slug = sanitize_title( $title );
+		$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
+		$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
+
+		if ( $post_name_check || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
+			trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. __('Yes') ,E_USER_NOTICE);
+			return true;
+		}
+		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. __('No') ,E_USER_NOTICE);
+		return false;
 	}
 
 		
@@ -266,7 +270,7 @@ class wpematico_campaign_fetch_functions {
 			$current_item['images'] = array_values(array_unique($current_item['images']));
  
 			if( sizeof($current_item['images']) ) { // Si hay alguna imagen en el contenido
-				trigger_error(__('Uploading images.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+				trigger_error('<b>'.__('Uploading images.', WPeMatico :: TEXTDOMAIN ).'</b>',E_USER_NOTICE);
 				//trigger_error(print_r($current_item['images'],true),E_USER_NOTICE);
 				$img_new_url = array();
 				foreach($current_item['images'] as $imagen_src) {
@@ -276,16 +280,20 @@ class wpematico_campaign_fetch_functions {
 							$current_item['content'] = str_replace($imagen_src, '', $current_item['content']);  // Si no quiere linkar las img al server borro el link de la imagen						
 					}else {
 						//$imagen_src = str_replace('_s.','_n.', $imagen_src);  //Trae la imagen grande en vez del thumb
-                        $imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
-						$bits = @file_get_contents($imagen_src_real);
+                        $imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);						
+						//Fetch and Store the Image	
+						$get = wp_remote_get( $imagen_src_real );
+						$type = wp_remote_retrieve_header( $get, 'content-type' );
+						$mirror = wp_upload_bits(rawurldecode(basename( $imagen_src_real )), '', wp_remote_retrieve_body( $get ) );						
+/* 						$bits = @file_get_contents($imagen_src_real);
 						$name = str_replace(array(' ','%20'),'_',substr(strrchr($imagen_src, "/"),1));
-						$afile = wp_upload_bits( $name, NULL, $bits);
-						if(!$afile['error']) {
-							trigger_error($afile['url'],E_USER_NOTICE);
-							$current_item['content'] = str_replace($imagen_src, $afile['url'], $current_item['content']);
-							$img_new_url[] = $afile['url'];
+						$mirror = wp_upload_bits( $name, NULL, $bits);
+ */						if(!$mirror['error']) {
+							trigger_error($mirror['url'],E_USER_NOTICE);
+							$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
+							$img_new_url[] = $mirror['url'];
 						} else {  // Si no la pudo subir intento con mi funcion
-							trigger_error('wp_upload_bits error:'.print_r($afile,true).', trying custom function.',E_USER_WARNING);
+							trigger_error('wp_upload_bits error:'.print_r($mirror,true).', trying custom function.',E_USER_WARNING);
 							$upload_dir = wp_upload_dir();
 							$imagen_dst = $upload_dir['path'] . str_replace('/','',strrchr($imagen_src, '/'));
 							$imagen_dst_url = $upload_dir['url']. '/' . str_replace('/','',strrchr($imagen_src, '/'));
