@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
-Tested up to: 3.8.1
-Stable tag: 1.1.9
+Tested up to: 4.0
+Stable tag: 1.9.9
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -107,6 +107,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+
+= 1.1.91 =
+* Fix and new improved methods to download remote images on RSS feeds.
 
 = 1.1.9 =
 * Compatible with php 5.4. A really lot of Strict Standars PHP Warning and notices fixed.
@@ -346,4 +349,4 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 == Upgrade Notice ==
 
 = 1.1.9 =
-* Highly recommended upgrade. Remember deactivate PRO version before upgrade.
+* recommended upgrade if you have problem with images. Remember deactivate PRO version before upgrade.
