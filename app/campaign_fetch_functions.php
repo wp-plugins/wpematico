@@ -282,13 +282,13 @@ class wpematico_campaign_fetch_functions {
 						//$imagen_src = str_replace('_s.','_n.', $imagen_src);  //Trae la imagen grande en vez del thumb
                         $imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);						
 						//Fetch and Store the Image	
-						$get = wp_remote_get( $imagen_src_real );
+/*						$get = wp_remote_get( $imagen_src_real );
 						$type = wp_remote_retrieve_header( $get, 'content-type' );
 						$mirror = wp_upload_bits(rawurldecode(basename( $imagen_src_real )), '', wp_remote_retrieve_body( $get ) );						
-/* 						$bits = @file_get_contents($imagen_src_real);
+*/ 						$bits = @file_get_contents($imagen_src_real);
 						$name = str_replace(array(' ','%20'),'_',substr(strrchr($imagen_src, "/"),1));
 						$mirror = wp_upload_bits( $name, NULL, $bits);
- */						if(!$mirror['error']) {
+						if(!$mirror['error']) {
 							trigger_error($mirror['url'],E_USER_NOTICE);
 							$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
 							$img_new_url[] = $mirror['url'];
@@ -321,7 +321,7 @@ class wpematico_campaign_fetch_functions {
 	}  // item images
 
 
-	function Item_parseimg(&$current_item, &$campaign, &$feed, &$item) {
+	static function Item_parseimg(&$current_item, &$campaign, &$feed, &$item) {
 		if ( preg_match("[[[wpe1stimg]]]", $current_item['content']) ) {  // en el content
 			$imgenc = $current_item['images'][0];
 			$imgstr = "<img class=\"wpe_imgrss\" src=\"" . $imgenc . "\">";  //Solo la imagen
@@ -334,7 +334,7 @@ class wpematico_campaign_fetch_functions {
 
 
 	/*** Devuelve todas las imagenes del contenido	*/
-	function parseImages($text){    
+	static function parseImages($text){    
 		preg_match_all('/<img(.+?)src=\"(.+?)\"(.*?)>/', $text, $out);  //for tag img
 		preg_match_all('/<link rel=\"(.+?)\" type=\"image\/jpg\" href=\"(.+?)\"(.+?)\/>/', $text, $out2); // for rel=enclosure
 		array_push($out,$out2);  // sum all items to array 
