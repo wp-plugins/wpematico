@@ -95,6 +95,7 @@ class wpematico_campaign_fetch_functions {
 			);
 
 			$autor="";
+			$autorlink = "";
 			if ($author = $item->get_author())	{
 				$autor = $author->get_name();
 				$autorlink = $author->get_link();
