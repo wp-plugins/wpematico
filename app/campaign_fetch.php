@@ -197,7 +197,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['meta'] = array(
 			'wpe_campaignid' => $this->campaign_id, 
 			'wpe_feed' => $feed->feed_url,
-			//'wpe_sourcepermalink' => $item->get_permalink()
 			'wpe_sourcepermalink' => $this->getReadUrl($item->get_permalink())
 		);  
 		
@@ -231,6 +230,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					if(sizeof($this->current_item['images'])) { // Si hay alguna imagen 
 						trigger_error(__('Attaching images', WPeMatico :: TEXTDOMAIN ).": ".sizeof($this->current_item['images']),E_USER_NOTICE);
 						$custom_imagecount = 0;
+						if(!empty($this->current_item['nofeatimg'])) {
+							$custom_imagecount = 1;
+							trigger_error('<strong>'.__('Skip Featured Image.', WPeMatico :: TEXTDOMAIN ).'</strong>',E_USER_NOTICE);
+						}
 						foreach($this->current_item['images'] as $imagen_src) {
 							$attachid = $this->insertfileasattach($imagen_src,$postid);
 							if(($custom_imagecount == 0) && ($this->cfg['featuredimg'])) {

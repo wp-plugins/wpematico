@@ -36,8 +36,7 @@ class WPeMatico_Campaign_edit_functions {
 		//*************************************************************************************
 	public static function rewrite_box( $post ) { 
 		global $post, $campaign_data;
-		$campaign_rewrites = $campaign_data['campaign_rewrites'];
-		if(!($campaign_rewrites)) $campaign_rewrites = array();
+		$campaign_rewrites = isset($campaign_data['campaign_rewrites']) ? $campaign_data['campaign_rewrites'] : array('origin'=>array(''),'title'=>array(false),'regex'=>array(false),'rewrite'=>array(''),'relink'=>array(''));
 		?>
 		<div class="LightPink inmetabox">
 		<p class="he20">
@@ -55,22 +54,22 @@ class WPeMatico_Campaign_edit_functions {
 			<?php _e('For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many rewriting boxes to replace ass and arse with butt, you can use the | operator: (ass|arse).', WPeMatico :: TEXTDOMAIN ); ?>
 		</span></p>
 		<div id="rewrites_edit" class="inlinetext">		
-			<?php for ($i = 0; $i <= count(@$campaign_rewrites['origin']); $i++) : ?>			
+			<?php for ($i = 0; $i <= count($campaign_rewrites['origin']); $i++) : ?>			
 			<div class="<?php if(($i % 2) == 0) echo 'bw'; else echo 'lightblue'; ?> <?php if($i==count($campaign_rewrites['origin'])) echo 'hide'; ?>">
 				<div class="pDiv jobtype-select p7" id="nuevorew">
 					<div id="rw1" class="wi30 left p4">
 						<?php _e('Origin:','wpematico') ?>&nbsp;&nbsp;&nbsp;&nbsp;
-						<input name="campaign_word_option_title[<?php echo $i; ?>]" id="campaign_word_option_title" class="checkbox" value="1" type="checkbox"<?php checked(@$campaign_rewrites['title'][$i],true) ?> onclick="relink=jQuery(this).parent().parent().children('#rw3');if(true==jQuery(this).is(':checked')) relink.fadeOut(); else relink.fadeIn();"/> <?php _e('Title','wpematico') ?>
-						<input name="campaign_word_option_regex[<?php echo $i; ?>]" id="campaign_word_option_regex" class="checkbox" value="1" type="checkbox"<?php checked(@$campaign_rewrites['regex'][$i],true) ?> /> <?php _e('RegEx','wpematico') ?>
-						<textarea class="large-text he35" id="campaign_word_origin" name="campaign_word_origin[<?php echo $i; ?>]" /><?php echo stripslashes(@$campaign_rewrites['origin'][$i]) ?></textarea>
+						<input name="campaign_word_option_title[<?php echo $i; ?>]" id="campaign_word_option_title" class="checkbox" value="1" type="checkbox"<?php checked($campaign_rewrites['title'][$i],true) ?> onclick="relink=jQuery(this).parent().parent().children('#rw3');if(true==jQuery(this).is(':checked')) relink.fadeOut(); else relink.fadeIn();"/> <?php _e('Title','wpematico') ?>
+						<input name="campaign_word_option_regex[<?php echo $i; ?>]" id="campaign_word_option_regex" class="checkbox" value="1" type="checkbox"<?php checked($campaign_rewrites['regex'][$i],true) ?> /> <?php _e('RegEx','wpematico') ?>
+						<textarea class="large-text he35" id="campaign_word_origin" name="campaign_word_origin[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['origin'][$i]) ?></textarea>
 					</div>
 					<div class="wi30 left p4">
 						 <?php _e('Rewrite to:','wpematico') ?>
-						<textarea class="large-text he35" id="campaign_word_rewrite" name="campaign_word_rewrite[<?php echo $i; ?>]" /><?php echo stripslashes(@$campaign_rewrites['rewrite'][$i]) ?></textarea>
+						<textarea class="large-text he35" id="campaign_word_rewrite" name="campaign_word_rewrite[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['rewrite'][$i]) ?></textarea>
 					</div>
-					<div id="rw3" class="wi30 left p4" <?php if(checked(@$campaign_rewrites['title'][$i],true,false)) echo 'style="display:none"'; ?>>
+					<div id="rw3" class="wi30 left p4" <?php if(checked($campaign_rewrites['title'][$i],true,false)) echo 'style="display:none"'; ?>>
 						 <?php _e('ReLink to:','wpematico') ?>
-						<textarea class="large-text he35" id="campaign_word_relink" name="campaign_word_relink[<?php echo $i; ?>]" /><?php echo stripslashes(@$campaign_rewrites['relink'][$i]) ?></textarea>
+						<textarea class="large-text he35" id="campaign_word_relink" name="campaign_word_relink[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['relink'][$i]) ?></textarea>
 					</div>
 					<div class="m7">
 						<span class="" id="w2cactions">
@@ -95,8 +94,7 @@ class WPeMatico_Campaign_edit_functions {
 	public static function word2cats_box( $post ) { 
 		global $post, $campaign_data;
 		
-		$campaign_wrd2cat = $campaign_data['campaign_wrd2cat'];
-		if(!($campaign_wrd2cat)) $campaign_wrd2cat = array();
+		$campaign_wrd2cat = isset($campaign_data['campaign_wrd2cat']) ? $campaign_data['campaign_wrd2cat'] : array('word'=>array(''),'regex'=>array(false),'w2ccateg'=>array(''),'cases'=>array(false));
 		?>
 		<div class="Papaya inmetabox">
 		<p class="he20">
@@ -204,10 +202,9 @@ class WPeMatico_Campaign_edit_functions {
 	//*************************************************************************************
 	public static function images_box( $post ) { 
 		global $post, $campaign_data, $cfg;
-		
-		$campaign_imgcache = $campaign_data['campaign_imgcache'];
-		$campaign_cancel_imgcache = $campaign_data['campaign_cancel_imgcache'];
-		$campaign_nolinkimg = $campaign_data['campaign_nolinkimg'];
+		$campaign_imgcache = isset($campaign_data['campaign_imgcache']) ? $campaign_data['campaign_imgcache'] : false;
+		$campaign_cancel_imgcache = isset($campaign_data['campaign_cancel_imgcache']) ? $campaign_data['campaign_cancel_imgcache'] : false;
+		$campaign_nolinkimg = isset($campaign_data['campaign_nolinkimg']) ? $campaign_data['campaign_nolinkimg'] : false;
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		if (!$cfg['imgcache']) : ?>
 			<p><input name="campaign_imgcache" id="campaign_imgcache" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_imgcache,true); ?> style="width: 19px;" />
@@ -234,14 +231,14 @@ class WPeMatico_Campaign_edit_functions {
 	public static function options_box( $post ) { 
 		global $post, $campaign_data, $cfg ;
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
-		$campaign_max = $campaign_data['campaign_max'];
-		$campaign_feeddate = $campaign_data['campaign_feeddate'];
-		$campaign_author = $campaign_data['campaign_author'];
-		$campaign_linktosource = $campaign_data['campaign_linktosource'];
-		$campaign_commentstatus = $campaign_data['campaign_commentstatus'];
-		$campaign_allowpings = $campaign_data['campaign_allowpings'];
-		$campaign_woutfilter = $campaign_data['campaign_woutfilter'];
-		$campaign_strip_links = $campaign_data['campaign_strip_links'];
+		$campaign_max = isset($campaign_data['campaign_max']) ? $campaign_data['campaign_max'] : 5 ;
+		$campaign_feeddate = isset($campaign_data['campaign_feeddate']) ? $campaign_data['campaign_feeddate'] : false;
+		$campaign_author = isset($campaign_data['campaign_author']) ? $campaign_data['campaign_feeddate'] : 1;
+		$campaign_linktosource = isset($campaign_data['campaign_linktosource']) ? $campaign_data['campaign_linktosource'] : false;
+		$campaign_commentstatus = isset($campaign_data['campaign_commentstatus']) ? $campaign_data['campaign_commentstatus'] : 'closed';
+		$campaign_allowpings = isset($campaign_data['campaign_allowpings']) ? $campaign_data['campaign_allowpings'] : false;
+		$campaign_woutfilter = isset($campaign_data['campaign_woutfilter']) ? $campaign_data['campaign_woutfilter'] : false;
+		$campaign_strip_links = isset($campaign_data['campaign_strip_links']) ? $campaign_data['campaign_strip_links'] : false;
 		?>
 		<p><b><?php echo '<label for="campaign_max">' . __('Max items to create on each fetch:', WPeMatico :: TEXTDOMAIN ) . '</label>'; ?></b>
 		<input name="campaign_max" type="text" size="3" value="<?php echo $campaign_max;?>" class="small-text" id="campaign_max"/><br />
@@ -297,7 +294,7 @@ class WPeMatico_Campaign_edit_functions {
 	public static function feeds_box( $post ) {  
 		global $post, $campaign_data, $cfg;
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
-		$campaign_feeds = $campaign_data['campaign_feeds'];
+		$campaign_feeds = @$campaign_data['campaign_feeds'];
 		if(!($campaign_feeds)) $campaign_feeds = array();
 		?>  <div class="submenu_dropdown">
  		<div id="domainsPlaceHolder">
@@ -318,7 +315,7 @@ class WPeMatico_Campaign_edit_functions {
 		  <div id="domainsBlock">
 			<div id="feeds_edit" class="maxhe290">      
 			
-			  <?php 
+			  <?php $id=0;
 				foreach($campaign_feeds as $id => $feed): ?>
 				<div class="<?php if(($id % 2) == 0) echo 'bw'; else echo 'lightblue'; ?>">
 					<div class="pDiv jobtype-select">
@@ -386,14 +383,14 @@ class WPeMatico_Campaign_edit_functions {
 	public static function cron_box( $post ) {  
 		global $post, $campaign_data, $cfg;
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
-		$activated = $campaign_data['activated'];
-		$cron = $campaign_data['cron'];
+		$activated = isset($campaign_data['activated']) ? $campaign_data['activated']: FALSE;
+		$cron = isset($campaign_data['cron']) ? $campaign_data['cron'] : '0 3 * * *';
 		?>
 
 		<input class="checkbox" value="1" type="checkbox" <?php checked($activated,true); ?> name="activated" /> <?php _e('Activate scheduling', 'wpematico'); ?><br />
 		<?php if( $cfg['nonstatic'] ) { NoNStatic :: min1e($post, $cfg); }  ?>
 		<div id="cronboxes">
-			<?php list($cronstr['minutes'],$cronstr['hours'],$cronstr['mday'],$cronstr['mon'],$cronstr['wday'])=explode(' ',$cron,5);    ?>
+			<?php @list($cronstr['minutes'],$cronstr['hours'],$cronstr['mday'],$cronstr['mon'],$cronstr['wday']) = explode(' ',$cron,5);    ?>
 			<div style="width:85px; float: left;">
 				<b><?php _e('Minutes: ','wpematico'); ?></b><br />
 				<?php 
@@ -500,8 +497,8 @@ class WPeMatico_Campaign_edit_functions {
 	public static function log_box( $post ) {
 		global $post, $campaign_data;
 		
-		$mailaddresslog = $campaign_data['mailaddresslog'];
-		$mailerroronly = $campaign_data['mailerroronly'];
+		$mailaddresslog = isset($campaign_data['mailaddresslog']) ? $campaign_data['mailaddresslog'] : '';
+		$mailerroronly = isset($campaign_data['$mailerroronly']) ? $campaign_data['$mailerroronly'] : false;
 	?>
 		<?php _e('E-Mail-Adress:', WPeMatico :: TEXTDOMAIN ); ?>
 		<input name="mailaddresslog" id="mailaddresslog" type="text" value="<?php echo $mailaddresslog; ?>" class="large-text" /><br />
@@ -596,8 +593,8 @@ class WPeMatico_Campaign_edit_functions {
 		global $post, $campaign_data;
 		if($post->post_type != 'wpematico') return $post->ID;
 		
-		$campaign_posttype = $campaign_data['campaign_posttype'];
-		$campaign_customposttype = $campaign_data['campaign_customposttype'];
+		$campaign_posttype = isset($campaign_data['campaign_posttype']) ? $campaign_data['campaign_posttype'] : 'draft';
+		$campaign_customposttype = isset($campaign_data['campaign_customposttype']) ? $campaign_data['campaign_customposttype'] : 'post';
 		wp_nonce_field( 'edit-campaign', 'wpematico_nonce' ); 
 		?><div class="clear" style="margin: 0 0 15px 0;">
 		<div class="postbox inside" style="min-width:30%;float:left; padding: 0pt 5px 16px 10px;">
@@ -644,7 +641,8 @@ class WPeMatico_Campaign_edit_functions {
 			$campaigndata['campaign_feeds']=array();
 
 		if (!isset($campaigndata['campaign_wrd2cat']) or !is_array($campaigndata['campaign_wrd2cat']))
-			$campaigndata['campaign_wrd2cat']=array();
+			$campaigndata['campaign_wrd2cat'] = array('word'=>array(''),'regex'=>array(false),'w2ccateg'=>array(''),'cases'=>array(false));
+
 
 		if (!isset($campaigndata['campaign_rewrites']) or !is_array($campaigndata['campaign_rewrites']))
 			$campaigndata['campaign_rewrites']=array();
