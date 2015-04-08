@@ -19,7 +19,7 @@ Translations ready. .pot english file included for localize.  Translations files
 I take code from many many other plugins, but for the first beta versions of this plugin I read a lot of code of the old WP-o-Matic and also old versions of BackWPUp. Thanks to the developers ;)
 
 If you like, please rate 5 stars and/or donate something. thanks :) 
-[Rate plugin](https://wordpress.org/support/view/plugin-reviews/wpematico#postform) - [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU)
+[Rate plugin](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#postform) - [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU)
 
 Some supported features (but not all of them):
 
