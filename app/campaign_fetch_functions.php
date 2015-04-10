@@ -287,8 +287,8 @@ class wpematico_campaign_fetch_functions {
 						$type = wp_remote_retrieve_header( $get, 'content-type' );
 						$mirror = wp_upload_bits(rawurldecode(basename( $imagen_src_real )), '', wp_remote_retrieve_body( $get ) );						
 */ 						$bits = @file_get_contents($imagen_src_real);
-						$name = str_replace(array(' ','%20'),'_',substr(strrchr($imagen_src, "/"),1));
-						$mirror = wp_upload_bits( $name, NULL, $bits);
+						$new_name = str_replace( array(' ','%20','+'), '_', urldecode( substr(strrchr($imagen_src, "/"),1) ) );
+						$mirror = wp_upload_bits( $new_name, NULL, $bits);
 						if(!$mirror['error']) {
 							trigger_error($mirror['url'],E_USER_NOTICE);
 							$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
@@ -296,8 +296,8 @@ class wpematico_campaign_fetch_functions {
 						} else {  // Si no la pudo subir intento con mi funcion
 							trigger_error('wp_upload_bits error:'.print_r($mirror,true).', trying custom function.',E_USER_WARNING);
 							$upload_dir = wp_upload_dir();
-							$imagen_dst = $upload_dir['path'] . str_replace('/','',strrchr($imagen_src, '/'));
-							$imagen_dst_url = $upload_dir['url']. '/' . str_replace('/','',strrchr($imagen_src, '/'));
+							$imagen_dst = $upload_dir['path'] . $new_name ;
+							$imagen_dst_url = $upload_dir['url']. '/' . $new_name;
 
 							if(in_array(str_replace('.','',strrchr($imagen_dst, '.')),explode(',','jpg,gif,png,tif,bmp'))) {   // -------- Controlo extensiones permitidas
 								trigger_error('imagen_src='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'<br>',E_USER_NOTICE);

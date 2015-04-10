@@ -4,11 +4,16 @@
 //	die('-1');
 
 $nonce=$_REQUEST['_wpnonce'];
-if ( !isset( $nonce ) ) {
+if ( isset( $nonce ) ) {
+	if( !(include $_SERVER['DOCUMENT_ROOT'].'../wp-config.php') )
+		if( !(include 'wp-config.php') )
+		if( !(include '../../../wp-config.php') )
+		if( !(include '../../../../wp-config.php') )
+		if( !(include '../../../../../wp-config.php') )
+			die('<H1>Can\'t include config. Report to etruel@gmail.com</H1>');
 	include('wp-includes/pluggable.php');
 	if(!wp_verify_nonce($nonce, 'clog-nonce') ) wp_die('Are you sure?'); 
 }
-include('../../../../wp-config.php');
 if ( isset( $_GET['p'] ) )
  	$post_id = $post_ID = (int) $_GET['p'];
 elseif ( isset( $_POST['post_ID'] ) )
