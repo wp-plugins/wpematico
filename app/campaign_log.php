@@ -5,11 +5,12 @@
 
 $nonce=$_REQUEST['_wpnonce'];
 if ( isset( $nonce ) ) {
-	if( !(include $_SERVER['DOCUMENT_ROOT'].'../wp-config.php') )
-		if( !(include 'wp-config.php') )
-		if( !(include '../../../wp-config.php') )
-		if( !(include '../../../../wp-config.php') )
-		if( !(include '../../../../../wp-config.php') )
+	if( !(include $_SERVER['DOCUMENT_ROOT'].'/wp-load.php') )
+		if( !(include $_SERVER['DOCUMENT_ROOT'].'../wp-load.php') )
+		if( !(include 'wp-load.php') )
+		if( !(include '../../../wp-load.php') )
+		if( !(include '../../../../wp-load.php') )
+		if( !(include '../../../../../wp-load.php') )
 			die('<H1>Can\'t include config. Report to etruel@gmail.com</H1>');
 	include('wp-includes/pluggable.php');
 	if(!wp_verify_nonce($nonce, 'clog-nonce') ) wp_die('Are you sure?'); 

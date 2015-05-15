@@ -20,7 +20,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		global $wpdb,$campaign_log_message, $jobwarnings, $joberrors;
 		$jobwarnings=0;
 		$joberrors=0;
-		@ini_get('safe_mode','Off'); //disable safe mode
+		@ini_set('safe_mode','Off'); //disable safe mode
 		@ini_set('ignore_user_abort','Off'); //Set PHP ini setting
 		ignore_user_abort(true);			//user can't abort script (close windows or so.)
 		$this->campaign_id=$campaign_id;			   //set campaign id
@@ -205,7 +205,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: metaf($this->current_item, $this->campaign, $feed, $item ); }
 		// escape the content ??
 		//$this->current_item['content'] = $wpdb->escape($this->current_item['content']);
-		if( $this->cfg['nonstatic'] ) $this->current_item['campaign_tags']=$this->current_item['tags'];
+		if( $this->cfg['nonstatic'] && !empty($this->current_item['tags']) ) $this->current_item['campaign_tags']=$this->current_item['tags'];
 		
 		 // Create post
 		$postid = $this->insertPost(
@@ -300,7 +300,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if(!empty($campaign_tags)){ //solo muestra los tags si los tiene definidos
 			$aaa = wp_set_post_terms( $post_id, $campaign_tags);
 			if(!empty($aaa)) trigger_error("Tags added: ".print_r($campaign_tags,true),E_USER_NOTICE);
-		}
+		}else do_action('wpematico_chinese_tags', $post_id, $content, $this->campaign );
 		
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
 			$content = $truecontent;

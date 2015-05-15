@@ -3,8 +3,8 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
-Tested up to: 4.2
-Stable tag: 1.1.94
+Tested up to: 4.3alpha
+Stable tag: 1.1.95
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -55,17 +55,19 @@ Some supported features (but not all of them):
 * Default Featured image if not found image on content.
 * Custom title with counter.
 * Automatic generate tags taken from content words. With filters.
+* From Version 1.1.95 I added support for autotags in chinese language. You must ask to author email or in plugin website for the add-on "WPeMatico chinese tags" . Take in mind that there is not perfect, but better than nothing ;)
 * Filter and delete images in posts content just by width or height of every image.
 
+= New Add-ons =
+cats2tags: Takes the categories of the item while fetching feed and convert them to tags before insert the post.
+chinese tags: Automatic generate tags taken from content phrases. For chinese language.
 
 PHP5 is required!
 
-Copyright 2012.
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version. 
 
-If you want support or more detail in spanish you can search WPeMatico here:[NetMdP](http://www.netmdp.com). 
-
-Traducción al español de Argentina de la Licencia GNU: [http://www.spanish-translator-services.com/espanol/t/gnu/gpl-ar.html]
+Author page in spanish:[NetMdP](http://www.netmdp.com). 
+Add-ons page:[etruel.com](http://etruel.com).
 
 == Installation ==
 
@@ -131,8 +133,14 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 
+= 1.1.95 =
+* Added some filters to make plugin upgradable by modules or add-ons. This is just the beginning.
+* Added support for autotags in chinese language. Take in mind that there is not perfect, but better than nothing ;)
+* Some minor fixes on PHP Warning when running a campaign in manual mode.
+* Fixed campaign log page to works also on WordPress Multitenancy environments. (Thanks Relevad)
+
 = 1.1.94 =
-* Some minor fixes  to show uploaded images with urldecode in its filename.
+* Some minor fixes to show uploaded images with urldecode in its filename.
 * Fixed a bug seeing log of campaign.
 
 = 1.1.93 =
@@ -389,5 +397,6 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.1.94 =
+= 1.1.95 =
+* Added some filters to make plugin upgradable by modules or add-ons. This is just the beginning.
 * Remember deactivate PRO version before upgrade.
