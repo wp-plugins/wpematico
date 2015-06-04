@@ -300,7 +300,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if(!empty($campaign_tags)){ //solo muestra los tags si los tiene definidos
 			$aaa = wp_set_post_terms( $post_id, $campaign_tags);
 			if(!empty($aaa)) trigger_error("Tags added: ".print_r($campaign_tags,true),E_USER_NOTICE);
-		}else do_action('wpematico_chinese_tags', $post_id, $content, $this->campaign );
+		}else if(has_action('wpematico_chinese_tags')) do_action('wpematico_chinese_tags', $post_id, $content, $this->campaign );
 		
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
 			$content = $truecontent;

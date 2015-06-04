@@ -190,10 +190,10 @@ class wpematico_campaign_fetch_functions {
 		}	// End Words to Category
 		
 		//Tags
-		$current_item['campaign_tags'] =  apply_filters('wpematico_pretags', $current_item, $item, $this->cfg);
+		if(has_filter('wpematico_pretags')) $current_item['campaign_tags'] =  apply_filters('wpematico_pretags', $current_item, $item, $this->cfg);
 		if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: postags($current_item,$campaign, $item ); $current_item['campaign_tags'] = $current_item['tags'] ; 
 		}else $current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
-		$current_item['campaign_tags'] =  apply_filters('wpematico_postags', $current_item, $item, $this->cfg);
+		if(has_filter('wpematico_postags')) $current_item['campaign_tags'] =  apply_filters('wpematico_postags', $current_item, $item, $this->cfg);
 
 		return $current_item;
 	} // End item filters

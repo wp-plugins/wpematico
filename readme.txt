@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
 Requires at least: 3.1
 Tested up to: 4.3alpha
-Stable tag: 1.1.95
+Stable tag: 1.1.96
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
@@ -132,6 +132,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+
+= 1.1.96 =
+* Fixed tags issue reported on forums after last upgrade.
 
 = 1.1.95 =
 * Added some filters to make plugin upgradable by modules or add-ons. This is just the beginning.
@@ -397,6 +400,6 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.1.95 =
-* Added some filters to make plugin upgradable by modules or add-ons. This is just the beginning.
+= 1.1.96 =
+* Fixed tags issue reported on forums after last upgrade.
 * Remember deactivate PRO version before upgrade.
