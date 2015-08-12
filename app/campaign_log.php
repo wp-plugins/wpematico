@@ -1,7 +1,5 @@
 <?php
 // don't load directly 
-//if ( !defined('ABSPATH') ) 
-//	die('-1');
 
 $nonce=$_REQUEST['_wpnonce'];
 if ( isset( $nonce ) ) {
@@ -12,7 +10,7 @@ if ( isset( $nonce ) ) {
 		if( !(include '../../../../wp-load.php') )
 		if( !(include '../../../../../wp-load.php') )
 			die('<H1>Can\'t include config. Report to etruel@gmail.com</H1>');
-	include('wp-includes/pluggable.php');
+	include(ABSPATH.'wp-includes/pluggable.php');
 	if(!wp_verify_nonce($nonce, 'clog-nonce') ) wp_die('Are you sure?'); 
 }
 if ( isset( $_GET['p'] ) )

@@ -1,27 +1,14 @@
 <?php 
 // don't load directly 
-if ( !defined('ABSPATH') ) 
-	die('-1');
-/*$entre = false;
-if(strstr($_SERVER['REQUEST_URI'], '/wp-admin/post-new.php?post_type=wpematico'))
-	$entre = true;
-elseif (strstr($_SERVER['REQUEST_URI'], 'wp-admin/post.php')) {
-	if( isset($_GET['post']) || isset($_POST['post']) || (isset($_REQUEST['action']) && 'edit'==$_REQUEST['action'])) {
-		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
-		$post = get_post($id);
-		if($post->post_type == 'wpematico') $entre = true;
-	}
-}else return;
-
-if ($entre)  */ 
+if ( !defined('ABSPATH') ) {
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
+}
 
 add_action( 'init', array( 'WPeMatico_Campaign_edit', 'init' ) );
 
 if ( class_exists( 'WPeMatico_Campaign_edit' ) ) return;
-
-
-
-include_once("campaign_edit_functions.php");
 
 class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	
@@ -31,18 +18,17 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	
 	public function __construct( $hook_in = FALSE ) {
 		add_action('save_post', array( __CLASS__ , 'save_campaigndata'));
-		add_action('wp_ajax_runnowx', array( &$this, 'RunNowX'));
-		add_action('wp_ajax_checkfields', array( __CLASS__, 'CheckFields'));
-		add_action('wp_ajax_test_feed', array( 'WPeMatico', 'Test_feed'));
+		add_action('wp_ajax_wpematico_run', array( &$this, 'RunNowX'));
+		add_action('wp_ajax_wpematico_checkfields', array( __CLASS__, 'CheckFields'));
+		add_action('wp_ajax_wpematico_test_feed', array( 'WPeMatico', 'Test_feed'));
 		add_action('admin_print_styles-post.php', array( __CLASS__ ,'admin_styles'));
 		add_action('admin_print_styles-post-new.php', array( __CLASS__ ,'admin_styles'));
 		add_action('admin_print_scripts-post.php', array( __CLASS__ ,'admin_scripts'));
 		add_action('admin_print_scripts-post-new.php', array( __CLASS__ ,'admin_scripts'));  
-		add_action('admin_init', array( __CLASS__ ,'disable_autosave' ));
 	}
 	public static function disable_autosave() {
-		global $post_type;
-		if($post_type != 'wpematico') return ;
+	//	global $post_type, $post, $typenow;
+		if(get_post_type() != 'wpematico') return ;
 		wp_deregister_script( 'autosave' );
 	}
 
@@ -50,12 +36,15 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		global $post;
 		if($post->post_type != 'wpematico') return $post->ID;
 		wp_enqueue_style('campaigns-edit',WPeMatico :: $uri .'app/css/campaigns_edit.css');	
+		wp_enqueue_style( 'WPematStylesheet' );
 //		add_action('admin_head', array( &$this ,'campaigns_admin_head_style'));
 	}
 
 	public static function admin_scripts(){
 		global $post;
 		if($post->post_type != 'wpematico') return $post->ID;
+		wp_enqueue_script( 'WPemattiptip' );
+		wp_dequeue_script( 'autosave' );
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head'));
 	}
 
@@ -74,20 +63,22 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$visibility_trans = __('Public');
 		$description = __('Campaign Description', WPeMatico :: TEXTDOMAIN );
 		$description_help = __('Here you can write some observations.',  WPeMatico :: TEXTDOMAIN);
-		$runnowbutton = '<div class="right m7 " style="margin-left: 47px;"><div style="background-color: #EB9600;" id="run_now" class="button-primary">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . '</div></div>';
+		//$runnowbutton_OLD = '<div class="right m7 " style="margin-left: 47px;"><div style="background-color: #EB9600;" id="run_now" class="button-primary">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . '</div></div>';
+		$runnowbutton = '<button style="background-color: #EB9600;" id="run_now" class="button button-large" type="button">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . '';
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		
 		?>
 		<script type="text/javascript" language="javascript">
 		jQuery(document).ready(function($){
 			//try {
-			jQuery('#post-visibility-display').text('<?php echo $visibility_trans; ?>');
-			jQuery('#hidden-post-visibility').val('<?php echo $visibility; ?>');
-			jQuery('#visibility-radio-<?php echo $visibility; ?>').attr('checked', true);
-			jQuery('#postexcerpt .hndle span').text('<?php echo $description; ?>');
-			jQuery('#postexcerpt .inside .screen-reader-text').text('<?php echo $description; ?>');
-			jQuery('#postexcerpt .inside p').text('<?php echo $description_help; ?>');
-			jQuery('#delete-action').append('<?php echo $runnowbutton; ?>');
+			$('#post-visibility-display').text('<?php echo $visibility_trans; ?>');
+			$('#hidden-post-visibility').val('<?php echo $visibility; ?>');
+			$('#visibility-radio-<?php echo $visibility; ?>').attr('checked', true);
+			$('#postexcerpt .hndle span').text('<?php echo $description; ?>');
+			$('#postexcerpt .inside .screen-reader-text').text('<?php echo $description; ?>');
+			$('#postexcerpt .inside p').text('<?php echo $description_help; ?>');
+			//jQuery('#delete-action').append('<?php echo $runnowbutton; ?>');
+			$('#publishing-action').prepend('<?php echo $runnowbutton; ?>');
 
 			$('#psearchtext').keyup(function(tecla){
 				if(tecla.keyCode==27) {
@@ -152,10 +143,10 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$('#wrd2cat_max').val( parseInt($('#wrd2cat_max').val(),10) + 1 );
 				newval = $('#wrd2cat_max').val();					
 				nuevo= $('#nuevow2c').clone();
-				$('input', nuevo).eq(0).attr('name','campaign_wrd2cat['+ newval +']');
-				$('input', nuevo).eq(1).attr('name','campaign_wrd2cat_regex['+ newval +']');
-				$('input', nuevo).eq(2).attr('name','campaign_wrd2cat_cases['+ newval +']');
-				$('select', nuevo).eq(0).attr('name','campaign_wrd2cat_category['+ newval +']');
+				$('input', nuevo).eq(0).attr('name','campaign_wrd2cat[word]['+ newval +']');
+				$('input', nuevo).eq(1).attr('name','campaign_wrd2cat[regex]['+ newval +']');
+				$('input', nuevo).eq(2).attr('name','campaign_wrd2cat[cases]['+ newval +']');
+				$('select', nuevo).eq(0).attr('name','campaign_wrd2cat[w2ccateg]['+ newval +']');
 				$('input', nuevo).eq(0).attr('value','');
 				$('input', nuevo).eq(1).removeAttr('checked');
 				$('input', nuevo).eq(2).attr('value','');
@@ -173,7 +164,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				c_ID = $('#post_ID').val();
 				var data = {
 					campaign_ID: c_ID ,
-					action: "runnowx"
+					action: "wpematico_run"
 				};
 				$.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
 					$('#fieldserror').remove();
@@ -186,13 +177,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					$(this).attr('style','Background:#FFF52F;');
 				});
 			});
-			 
+			
 			$('#post').submit( function() {		//checkfields
 				$('#wpcontent .ajax-loading').attr('style',' visibility: visible;');
 				$.ajaxSetup({async:false});
 				error=false;
-				msg="Guardando...";
-				wrd2cat= $("input[name='campaign_wrd2cat[]']").serialize();
+				var msg="Guardando...";
+				var wrd2cat= $("input[name='campaign_wrd2cat[]']").serialize();
 				var wrd2cat_regex  = new Array();
 				$("input[name='campaign_wrd2cat_regex[]']").each(function() {
 					if ( true == $(this).is(':checked')) {
@@ -229,7 +220,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					campaign_word_option_title: reword_title,
 					campaign_wrd2cat: wrd2cat,
 					campaign_wrd2cat_regex: wrd2cat_regex,
-					action: "checkfields"
+					action: "wpematico_checkfields"
 				};
 				$.post(ajaxurl, data, function(todok){  //si todo ok devuelve 1 sino el error
 					if( todok != 1 ){
@@ -251,31 +242,46 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				}
 			});
 			
-			$('#checkfeeds').click(function() {
-				$.ajaxSetup({async:false});
+
+			//$('#checkfeeds').click(function() {
+			$(document).on("click", '.notice-dismiss', function(event) {
+				$(this).parent().remove();
+			});
+			//$('#checkfeeds').click(function() {
+			$(document).on("click", '#checkfeeds', function(event) {
+				//$.ajaxSetup({async:false});
 				var feederr = 0;
 				var feedcnt = 0;
 				errmsg ="Feed ERROR";
+				$('.feederror').remove();
 				$('.feedinput').each(function (el,item) {
 					feederr += 1;
 					feed = $(item).attr('value');
+					working = $(item).parent().find('#ruedita');
+					$(working).removeClass("ui-icon yellowalert_small");
+					$(working).removeClass("ui-icon redalert_small");
+					$(working).removeClass("ui-icon checkmark_small");
 					if (feed !== "") {
-						$('#ruedita').show();
+						$(working).addClass("spinner");  
 						$(item).attr('style','Background:#CCC;');
 						var data = {
-							action: "test_feed",
+							action: "wpematico_test_feed",
 							url: feed, 
 							'cookie': encodeURIComponent(document.cookie)
 						};
-						$.post(ajaxurl, data, function(str){
-							if(str==0){
-								$(item).attr('style','Background:Red;');
-								errmsg += "\n"+feed ;
-								feederr = 1;
-							}else{
+						$.post(ajaxurl, data, function(response){
+							var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php _e( 'Dismiss this notice.', WPeMatico :: TEXTDOMAIN ); ?></span></button>';
+							working = $(item).parent().find('#ruedita');
+							if( response.success ){
 								$(item).attr('style','Background:#75EC77;');
+								$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
+								$(working).addClass("ui-icon checkmark_small");
+							}else{
+								$(item).attr('style','Background:Red;');
+								$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
+								$(working).addClass("ui-icon redalert_small");
 							}
-							$('#ruedita').hide();
+							$(working).removeClass("spinner");
 						});
 					}else{
 						if(feedcnt>1) alert("<?php _e('Type some new Feed URL/s.', WPeMatico :: TEXTDOMAIN ); ?>");
@@ -286,49 +292,40 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				}else{ }
 			});
 			
-			$('.check1feed').click(function() {
-				$.ajaxSetup({async:false});
-				var feederr = 0;
-				errmsg ="Feed ERROR";
+			//$('.check1feed').click(function() {
+			$(document).on("click", '.check1feed', function(event) {
 				item = $(this).parents('div').children('input');
-				feed = item.val();					
-				$(this).removeClass("yellowalert_small");
-				$(this).removeClass("redalert_small");
-				$(this).removeClass("checkmark_small");
-				$(this).parent().children('#ruedita1').removeClass("hide");  
+				feed = item.val();
+				working = $(this).find('#ruedita');
+				$(working).removeClass("ui-icon yellowalert_small");
+				$(working).removeClass("ui-icon redalert_small");
+				$(working).removeClass("ui-icon checkmark_small");
+				//$.ajaxSetup({async:false});
 				if (feed !== "") {
+					$(working).addClass("spinner");  
 					$(item).attr('style','Background:#CCC;');
 					var data = {
-						action: "test_feed",
+						action: "wpematico_test_feed",
 						url: feed, 
 						'cookie': encodeURIComponent(document.cookie)
 					};
-					$.post(ajaxurl, data, function(str){
-						if(str==0){
-							$(item).attr('style','Background:Red;');
-							errmsg += "\n"+feed ;
-							feederr = 1;
-						}else{
+					$.post(ajaxurl, data, function(response){
+						working = $(item).parent().find('#ruedita');
+						$('.feederror').remove();
+						if( response.success ){
 							$(item).attr('style','Background:#75EC77;');
-							feederr = 2;
+							$("#poststuff").prepend('<div id="message" class="feederror notice notice-success">'+response.message +'</div>');
+							$(working).addClass("ui-icon checkmark_small");
+						}else{
+							$(item).attr('style','Background:Red;');
+							$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible">ERROR: '+response.message +'</div>');
+							$(working).addClass("ui-icon redalert_small");
 						}
+						$(working).removeClass("spinner");
 					});
-				}
-				$(this).parent().children('#ruedita1').addClass("hide");  
-
-				switch (feederr){
-				case 0: {
-					$(this).addClass("yellowalert_small");
+ 				}else{			
 					alert("<?php _e('Type some feed URL.', WPeMatico :: TEXTDOMAIN ); ?>");
-					break;
-					}
-				case 1: {
-					$(this).addClass("redalert_small");
-					alert(errmsg);
-					break;
-					}
-				default:
-					$(this).addClass("checkmark_small");
+					$(working).addClass("ui-icon yellowalert_small");
 				}
 			});
 			
@@ -336,6 +333,17 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			$('.feedinput').focus(function() {
 				$(this).attr('style','Background:#FFFFFF;');
 			});
+
+			$(document).on("change", '#post', function(event) {
+				disable_run_now();
+			});
+			
+			disable_run_now = function() {
+				$('#run_now').attr('disabled','disabled');
+				$('#run_now').attr('title','<?php _e('Save before Run Campaign', WPeMatico :: TEXTDOMAIN ); ?>');
+			}
+
+			jQuery(".help_tip").tipTip({maxWidth: "400px", edgeOffset: 5,fadeIn:50,fadeOut:50, keepAlive:true, defaultPosition: "right"});
 
 			//} catch(err)}
 		});
@@ -416,7 +424,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				}
 			}
 		}
-		if($cfg['nonstatic']) {$err_message .= NoNStatic::Checkp($_POST, $err_message);}
+		if($cfg['nonstatic']) {$err_message = NoNStatic::Checkp($_POST, $err_message);}
 		
 		if($err_message =="" ) $err_message="1";  //NO ERROR
 		die($err_message);  // Return 1 si OK, else -> error string
@@ -425,8 +433,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	
 	//************************* GRABA CAMPAÑA *******************************************************
 	public static function save_campaigndata( $post_id ) {
-		global $post;
-		// Stop WP from clearing custom fields on autosave, and also during ajax requests (e.g. quick edit) and bulk edits.
+		global $post,$cfg;
+		//wp_die('save_campaigndata<br>DOING_AUTOSAVE:'.DOING_AUTOSAVE.'<br>DOING_AJAX:'.DOING_AJAX.'<br>$_REQUEST[bulk_edit]:'.$_REQUEST['bulk_edit']);
+		if((defined('DOING_AJAX') && DOING_AJAX) || isset($_REQUEST['bulk_edit']) || (isset($_REQUEST['action']) && $_REQUEST['action']=='inline-save') ) {
+			WPeMatico_Campaigns::save_quick_edit_post($post_id);
+			//wp_die('save_campaigndata<br>DOING_AUTOSAVE:'.DOING_AUTOSAVE.'<br>DOING_AJAX:'.DOING_AJAX.'<br>$_REQUEST[bulk_edit]:'.$_REQUEST['bulk_edit']);
+			return $post_id;
+		}//http://news.google.com.pe/news?pz=1&cf=all&ned=es_pe&hl=es&output=rss
 		if ((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || (defined('DOING_AJAX') && DOING_AJAX) || isset($_REQUEST['bulk_edit']))
 			return $post_id;
 		if ( !wp_verify_nonce( @$_POST['wpematico_nonce'], 'edit-campaign' ) )
@@ -435,142 +448,22 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		if($post->post_type != 'wpematico') return $post_id;
 
 		$nivelerror = error_reporting(E_ERROR | E_WARNING | E_PARSE);
-		$cfg = get_option(WPeMatico :: OPTION_KEY);
+		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		
 		$campaign = array();
-		$campaign = WPeMatico :: get_campaign ($post_id);
-		$campaign['campaign_posttype']=$_POST['campaign_posttype'];
-		$campaign['campaign_customposttype']=$_POST['campaign_customposttype'];
-		$campaign['activated']= $_POST['activated']==1 ? true : false;
-		$campaign['campaign_feeddate']= $_POST['campaign_feeddate']==1 ? true : false;
-		$campaign['cron'] = WPeMatico :: cron_string($_POST);
-		
-		$campaign['cronnextrun']= WPeMatico :: time_cron_next($campaign['cron']);
-		// Direccion de e-mail donde enviar los logs
-		$campaign['mailaddresslog']=sanitize_email($_POST['mailaddresslog']);
-		$campaign['mailerroronly']= $_POST['mailerroronly']==1 ? true : false;
-		
-		// Process categories 
-		$campaign['campaign_autocats']= $_POST['campaign_autocats']==1 ? true : false;
-		// Primero proceso las categorias nuevas si las hay y las agrego al final del array
-		   # New categories
-		if(isset($_POST['campaign_newcat'])) {
-		  foreach($_POST['campaign_newcat'] as $k => $on) {       
-			$catname = $_POST['campaign_newcatname'][$k];
-			if(!empty($catname))  {
-			  //$_POST['campaign_categories'][] = wp_insert_category(array('cat_name' => $catname));
-			  $arg = array('description' => "Auto Added by WPeMatico", 'parent' => "0");
-			  $_POST['campaign_categories'][] = wp_insert_term($catname, "category", $arg);
-			}
-		  }
-		}
-		# All: Las elegidas + las nuevas ya agregadas
-		if(isset($_POST['campaign_categories'])) {
-		  $campaign['campaign_categories']=(array)$_POST['campaign_categories'];
-		}
-
-		//if(isset($_POST['campaign_tags'])) {
-			$campaign['campaign_tags']	= $_POST['campaign_tags'];
-		//}
-		
-		#Proceso las Words to Category sacando los que estan en blanco
-		//campaign_wrd2cat, campaign_wrd2cat_regex, campaign_wrd2cat_category
-		if(isset($_POST['campaign_wrd2cat'])) {
-			foreach($_POST['campaign_wrd2cat'] as $id => $w2cword) {       
-				$word = addslashes($_POST['campaign_wrd2cat'][$id]);
-				$regex = ($_POST['campaign_wrd2cat_regex'][$id]==1) ? true : false ;
-				$cases = ($_POST['campaign_wrd2cat_cases'][$id]==1) ? true : false ;
-				$w2ccateg = $_POST['campaign_wrd2cat_category'][$id];
-				if(!empty($word))  {
-					if(!isset($campaign_wrd2cat)) 
-						$campaign_wrd2cat = Array();
-					$campaign_wrd2cat['word'][]=$word ;
-					$campaign_wrd2cat['regex'][]= $regex;
-					$campaign_wrd2cat['cases'][]= $cases;
-					$campaign_wrd2cat['w2ccateg'][]=$w2ccateg ;
-				}
-			}
-		}
-		$campaign['campaign_wrd2cat']=(array)$campaign_wrd2cat ;
-		
-
-		// Proceso los feeds sacando los que estan en blanco
-		if(isset($_POST['campaign_feeds'])) {
-			foreach($_POST['campaign_feeds'] as $k => $on) {       
-				$feedname = $_POST['campaign_feeds'][$k];
-				if(!empty($feedname))  {
-					if(!isset($campaign_feeds)) 
-						$campaign_feeds = Array();					
-					$campaign_feeds[]=$feedname ;
-				}
-			}
-		}
-		// Jamas llegaria aca si no hay feeds por el check ajax
-		$campaign['campaign_feeds'] = (array)$campaign_feeds ;
-		
-	// *** Campaign Options
-		$campaign['campaign_max']				= (int)$_POST['campaign_max'];
-		$campaign['campaign_author']			= $_POST['campaign_author'];
-		$campaign['campaign_linktosource']	= $_POST['campaign_linktosource']==1 ? true : false;
-		$campaign['campaign_strip_links']	= $_POST['campaign_strip_links']==1 ? true : false;
-		$campaign['campaign_commentstatus']= $_POST['campaign_commentstatus'];
-		$campaign['campaign_allowpings']	= $_POST['campaign_allowpings']==1 ? true : false;
-		$campaign['campaign_woutfilter']	= $_POST['campaign_woutfilter']==1 ? true : false;
-
-	// *** Campaign Images
-		$campaign['campaign_imgcache']		= $_POST['campaign_imgcache']==1 ? true : false;
-		$campaign['campaign_cancel_imgcache']		= $_POST['campaign_cancel_imgcache']==1 ? true : false;
-		if ($cfg['imgcache']) {
-			if ($campaign['campaign_cancel_imgcache']) $campaign['campaign_imgcache'] = false;
-		}else{
-			if ($campaign['campaign_imgcache']) $campaign['campaign_cancel_imgcache'] = false;
-		}
-		$campaign['campaign_nolinkimg']		= $_POST['campaign_nolinkimg']==1 ? true : false;
-		$campaign['campaign_solo1ra']		= $_POST['campaign_solo1ra']==1 ? true : false;
-
-	// *** Campaign Template
-		$campaign['campaign_enable_template'] = $_POST['campaign_enable_template']==1 ? true : false;
-		if(isset($_POST['campaign_template']))
-			$campaign['campaign_template'] = $_POST['campaign_template'];
-		else{
-			$campaign['campaign_enable_template'] = false;
-			$campaign['campaign_template'] = '';
-		}
-
-	// *** Campaign Rewrites	
-		// Proceso los rewrites sacando los que estan en blanco
-		if(isset($_POST['campaign_word_origin'])) {
-			foreach($_POST['campaign_word_origin'] as $id => $rewrite) {       
-				$origin = addslashes($_POST['campaign_word_origin'][$id]);
-				$regex = $_POST['campaign_word_option_regex'][$id]==1 ? true : false ;
-				$title = $_POST['campaign_word_option_title'][$id]==1 ? true : false ;
-				$rewrite = addslashes($_POST['campaign_word_rewrite'][$id]);
-				$relink = addslashes($_POST['campaign_word_relink'][$id]);
-				if(!empty($origin))  {
-					if(!isset($campaign_rewrites)) 
-						$campaign_rewrites = Array();
-					$campaign_rewrites['origin'][]=$origin ;
-					$campaign_rewrites['regex'][]= $regex;
-					$campaign_rewrites['title'][]= $title;
-					$campaign_rewrites['rewrite'][]=$rewrite ;
-					$campaign_rewrites['relink'][]=$relink ;
-				}
-			}
-		}
-
-		$campaign['campaign_rewrites']=(array)$campaign_rewrites ;
+//		$campaign['cron'] = WPeMatico :: cron_string($_POST);
+//		$campaign = WPeMatico :: get_campaign ($post_id);
+		$campaign = apply_filters('wpematico_check_campaigndata', $_POST);
 
 		//***** Call nonstatic
-		if( $cfg['nonstatic'] ) { $campaign = NoNStatic :: save_data($campaign, $_POST); }
+//		if( $cfg['nonstatic'] ) { $campaign = NoNStatic :: save_data($campaign, $_POST); }
 		 
-		// check and correct all fields
-		$campaign = self :: check_campaigndata($campaign);
-		
 		error_reporting($nivelerror);
+
+		if(has_filter('wpematico_presave_campaign')) $campaign = apply_filters('wpematico_presave_campaign', $campaign);
 		
 		// Grabo la campaña
-		add_post_meta( $post_id, 'campaign_data', $campaign, true )  or
-          update_post_meta( $post_id, 'campaign_data', $campaign );
+		WPeMatico :: update_campaign($post_id, $campaign);
 
 		return $post_id ;
 	}

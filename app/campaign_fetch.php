@@ -1,7 +1,10 @@
 <?php
 // don't load directly
-if ( !defined('ABSPATH') )
-	die('-1');
+if ( !defined('ABSPATH') ){
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
+}
 
 if ( class_exists( 'wpematico_campaign_fetch' ) ) return;
 include_once("campaign_fetch_functions.php");
@@ -42,6 +45,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		WPeMatico :: update_campaign($this->campaign_id, $this->campaign); //Save start time data
 
+		if(has_action('Wpematico_init_fetching')) do_action('Wpematico_init_fetching', $this->campaign);
+		
 		//check max script execution tme
 		if (ini_get('safe_mode') or strtolower(ini_get('safe_mode'))=='on' or ini_get('safe_mode')=='1')
 			trigger_error(sprintf(__('PHP Safe Mode is on!!! Max exec time is %1$d sec.', WPeMatico :: TEXTDOMAIN ),ini_get('max_execution_time')),E_USER_WARNING);
@@ -65,22 +70,22 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	
 	
 	/**
-	* Processes a feed 
+	* Processes every feed of a campaign
 	*
 	* @param   $feed       URL string    Feed 
 	* @return  The number of posts added
 	*/
-	private function processFeed(&$feed)  {
+	private function processFeed($feed)  {
 		global $realcount;
 		@set_time_limit(0);
-		trigger_error('<span class="coderr b">'.sprintf(__('Processing feed %1s.', WPeMatico :: TEXTDOMAIN ),$feed).'</span>' , E_USER_NOTICE);   // Log
+		trigger_error('<span class="coderr b"><b>'.sprintf(__('Processing feed %1s.', WPeMatico :: TEXTDOMAIN ),$feed).'</b></span>' , E_USER_NOTICE);   // Log
 		
 		$items = array();
 		$count = 0;
 		$prime = true;
 
 		// Access the feed
-		$simplepie =  WPeMatico :: fetchFeed($feed, false, $this->campaign['campaign_max']);
+		$simplepie =  WPeMatico :: fetchFeed($feed, $this->cfg['set_stupidly_fast'], $this->campaign['campaign_max']);
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
 				//Siempre guardo el PRIMERO leido por feed  (es el ultimo item, mas nuevo)
@@ -95,14 +100,25 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					$dupi = ( @$this->campaign[$feed]['lasthash'] == $this->currenthash[$feed] ); 
 					if ($dupi) {
 						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', WPeMatico :: TEXTDOMAIN ),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
-						trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
-						break;   
+						if( !$this->cfg['jumpduplicates'] ) {
+							trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+							break;
+						}else {
+							trigger_error(__('Jumping duplicated post. Continuing.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+							continue;
+						}
 					}
 				}
 				if( !$this->cfg['allowduptitle'] ){
 					if($this->WPeisDuplicated($this->campaign, $feed, $item)) {
-						trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
-						break;
+						trigger_error(sprintf(__('Found duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$item->get_title()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
+						if( !$this->cfg['jumpduplicates'] ) {
+							trigger_error(__('Filtering duplicated posts.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+							break;
+						}else {
+							trigger_error(__('Jumping duplicated post. Continuing.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+							continue;
+						}
 					}
 				}
 			}
@@ -138,13 +154,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
    * @param   $item       object    SimplePie_Item object
    * @return true si lo procesó
    */
-	function processItem(&$feed, &$item, $feedurl) {
+	function processItem($feed, $item, $feedurl) {
 		global $wpdb, $realcount;
-		trigger_error(sprintf(__('Processing item %1s', WPeMatico :: TEXTDOMAIN ),$item->get_title()),E_USER_NOTICE);
+		trigger_error(sprintf('<b>' . __('Processing item %1s', WPeMatico :: TEXTDOMAIN ),$item->get_title().'</b>' ),E_USER_NOTICE);
 		
 		// First exclude filters
 		if ( $this->exclude_filters($this->current_item,$this->campaign,$feed,$item )) {
-			return -1 ;
+			return -1 ;  // resta este item del total 
 		}
 		
 		//********** Do parses contents and titles
@@ -153,12 +169,14 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 	    // Item date
 		$itemdate = $item->get_date('U');
-		if($this->campaign['campaign_feeddate'] && (($itemdate > $this->campaign['lastrun']) && $itemdate < current_time('timestamp', 1))){
-			$this->current_item['date'] = $itemdate;
-			trigger_error(__('Assigning original date to post.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
-		}else{
-			$this->current_item['date'] = null;
-			trigger_error(__('Original date out of range.  Assigning current date to post.', WPeMatico :: TEXTDOMAIN ) ,E_USER_NOTICE);
+		$this->current_item['date'] = null;
+		if($this->campaign['campaign_feeddate']) {
+			if (($itemdate > $this->campaign['lastrun']) && $itemdate < current_time('timestamp', 1)) {  
+				$this->current_item['date'] = $itemdate;
+				trigger_error(__('Assigning original date to post.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+			}else{
+				trigger_error(__('Original date out of range.  Assigning current date to post.', WPeMatico :: TEXTDOMAIN ) ,E_USER_NOTICE);
+			}
 		}
 		
 		// Primero proceso las categorias si las hay y las nuevas las agrego al final del array
@@ -187,40 +205,45 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['allowpings'] = $this->campaign['campaign_allowpings'];
 		$this->current_item['commentstatus'] = $this->campaign['campaign_commentstatus'];
 		$this->current_item['customposttype'] = $this->campaign['campaign_customposttype'];
+		$this->current_item['campaign_post_format'] = $this->campaign['campaign_post_format'];
 
 		//********** Do filters
 		$this->current_item = $this->Item_filters($this->current_item,$this->campaign,$feed,$item );
 		//ACA ARMO EL ARRAY DE IMAGENES Y MODIFICO EL CONTENT QUE APUNTEN BIEN
 		$this->current_item = $this->Item_images($this->current_item,$this->campaign,$feed,$item);
 		
-		 // Meta
-		$this->current_item['meta'] = array(
-			'wpe_campaignid' => $this->campaign_id, 
-			'wpe_feed' => $feed->feed_url,
-			'wpe_sourcepermalink' => $this->getReadUrl($item->get_permalink())
-		);  
-		
 		if( $this->cfg['nonstatic'] ) { $this->current_item['images'] = NoNStatic :: img1s($this->current_item,$this->campaign,$item ); }
 		$this->current_item = $this->Item_parseimg($this->current_item,$this->campaign,$feed,$item);
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: metaf($this->current_item, $this->campaign, $feed, $item ); }
-		// escape the content ??
-		//$this->current_item['content'] = $wpdb->escape($this->current_item['content']);
+
 		if( $this->cfg['nonstatic'] && !empty($this->current_item['tags']) ) $this->current_item['campaign_tags']=$this->current_item['tags'];
+		
+		// Meta
+		if( isset($this->cfg['disableccf']) && $this->cfg['disableccf'] ) {
+			 $this->current_item['meta'] = array();
+		}else{
+		   $this->current_item['meta'] = array(
+			   'wpe_campaignid' => $this->campaign_id, 
+			   'wpe_feed' => $feed->feed_url,
+			   'wpe_sourcepermalink' => $this->getReadUrl($item->get_permalink())
+		   ); 
+		}
 		
 		 // Create post
 		$postid = $this->insertPost(
-						$this->current_item['title'],
-						$this->current_item['content'], 
-						$this->current_item['date'], 
-						$this->current_item['categories'],
-						$this->current_item['posttype'], 
-						$this->current_item['author'], 
-						$this->current_item['allowpings'], 
-						$this->current_item['commentstatus'], 
-						$this->current_item['meta'],
-						$this->current_item['customposttype'],
-						$this->current_item['images'],
-						$this->current_item['campaign_tags']
+			$this->current_item['title'],
+			$this->current_item['content'], 
+			$this->current_item['date'], 
+			$this->current_item['categories'],
+			$this->current_item['posttype'], 
+			$this->current_item['author'], 
+			$this->current_item['allowpings'], 
+			$this->current_item['commentstatus'], 
+			$this->current_item['meta'],
+			$this->current_item['customposttype'],
+			$this->current_item['images'],
+			$this->current_item['campaign_tags'],
+			$this->current_item['campaign_post_format']
 		);
 		
 		// Attaching images uploaded to created post in media library 
@@ -271,18 +294,29 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	* @param   array     $meta             Meta key / values
 	* @return  integer   Created post id
 	*/
-	function insertPost($title, $content, $timestamp = null, $category = null, $status = 'draft', $authorid = null, $allowpings = true, $comment_status = 'open', $meta = array(), $post_type= 'post', $images = null, $campaign_tags = null )   {
-		global $wpdb, $wp_locale, $current_blog;
-		$table_name = $wpdb->prefix . "posts";  
-		$blog_id 	= @$current_blog->blog_id;
+	function insertPost(	
+			$title, 
+			$content, 
+			$timestamp = null, 
+			$category = null, 
+			$status = 'draft', 
+			$authorid = null, 
+			$allowpings = true, 
+			$comment_status = 'open', 
+			$meta = array(), 
+			$post_type= 'post', 
+			$images = null, 
+			$campaign_tags = null,
+			$post_format = null )  
+		{
 		
 		$date = ($timestamp) ? gmdate('Y-m-d H:i:s', $timestamp + (get_option('gmt_offset') * 3600)) : null;
+		
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
 			$truecontent = $content;
 			$content = '';
 		}
-		
-		$post_id = wp_insert_post(array(
+		$args = array(
 			'post_title' 	          => $title,
 			'post_content'  	      => $content,
 			'post_content_filtered'   => $content,
@@ -292,28 +326,71 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			'post_date'               => $date,
 			'comment_status'          => $comment_status,
 			'ping_status'             => ($allowpings) ? "open" : "closed"
-		));
+		);
+		
+		if(has_filter('wpematico_pre_insert_post')) $args =  apply_filters('wpematico_pre_insert_post', $args, $this->campaign);
+		
+		$post_id = wp_insert_post( $args );
+		
 		if(!empty($category)){ //solo muestra los tags si los tiene definidos
 			$aaa = wp_set_post_terms( $post_id, $category, 'category');
-			if(!empty($aaa)) trigger_error("Categories added: ".print_r($aaa,true) ,E_USER_NOTICE);
+			if(!empty($aaa)) trigger_error(__("Categories added: ", WPeMatico :: TEXTDOMAIN ).print_r($aaa,true) ,E_USER_NOTICE);
 		}
 		if(!empty($campaign_tags)){ //solo muestra los tags si los tiene definidos
 			$aaa = wp_set_post_terms( $post_id, $campaign_tags);
-			if(!empty($aaa)) trigger_error("Tags added: ".print_r($campaign_tags,true),E_USER_NOTICE);
+			if(!empty($aaa)) trigger_error(__("Tags added: ", WPeMatico :: TEXTDOMAIN ).print_r($campaign_tags,true),E_USER_NOTICE);
 		}else if(has_action('wpematico_chinese_tags')) do_action('wpematico_chinese_tags', $post_id, $content, $this->campaign );
 		
+		if(!empty($post_format)){ //inserto post format
+			//$aaa = wp_set_post_terms( $post_id, $category, 'post_format');
+			$aaa = set_post_format( $post_id , $post_format); 
+			if(!empty($aaa)) trigger_error(__("Post format added: ", WPeMatico :: TEXTDOMAIN ).$post_format,E_USER_NOTICE);
+		}
+		
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
+			global $wpdb, $wp_locale, $current_blog;
+			$table_name = $wpdb->prefix . "posts";  
+			$blog_id 	= @$current_blog->blog_id;
 			$content = $truecontent;
-			trigger_error(__('Adding unfiltered content', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+			trigger_error(__('** Adding unfiltered content **', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
 			$wpdb->update( $table_name, array( 'post_content' => $content, 'post_content_filtered' => $content ), array( 'ID' => $post_id )	);
 		}
 		// insert PostMeta
 		foreach($meta as $key => $value) 
 			add_post_meta($post_id, $key, $value, true);
+		
+		if(has_action('wpematico_inserted_post')) do_action('wpematico_inserted_post', $post_id, $this->campaign );
 
 		return $post_id;
 	}
 	
+	
+	/**
+	* This function will connect wp_mail to your authenticated
+	* SMTP server. This improves reliability of wp_mail, and 
+	* avoids many potential problems.
+	*
+	*/
+	function prepare_email( $phpmailer ) {
+		// Define that we are sending with SMTP
+		$phpmailer->isSMTP();
+		// The hostname of the mail server
+		$phpmailer->Host = $this->cfg['mailhost'];
+		// Use SMTP authentication (true|false)
+		// Force it to use Username and Password to authenticate
+		$phpmailer->SMTPAuth = true;
+		// SMTP port number - likely to be 25, 465 or 587
+		$phpmailer->Port = $this->cfg['mailport'];
+		// Username to use for SMTP authentication
+		$phpmailer->Username = $this->cfg['mailuser'];
+		// Password to use for SMTP authentication
+		$phpmailer->Password = base64_decode($this->cfg['mailpass']);
+		// Encryption system to use - ssl or tls
+		$phpmailer->SMTPSecure = $this->cfg['mailsecure'];
+		$phpmailer->From = $this->cfg['mailsndemail'];
+		$phpmailer->FromName = $this->cfg['mailsndname'];
+	}
+
 	private function fetch_end() {
 		$this->campaign['lastrun'] 		  = $this->campaign['starttime'];
 		$this->campaign['lastruntime'] 	  = current_time('timestamp') - $this->campaign['starttime'];
@@ -339,8 +416,25 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$sendmail=true;
 		if (!$this->campaign['mailerroronly'] and !empty($this->campaign['mailaddresslog']))
 			$sendmail=true;
-		if ($sendmail) {
+		if ($sendmail) {	
+			switch($this->cfg['mailmethod']) {
+			case 'SMTP':
+				add_action( 'phpmailer_init', array(__CLASS__,'prepare_email' ) );
+				break;
+			default:
+				$headers[] = 'From: '.$this->cfg['mailsndname'].' <'.$this->cfg['mailsndemail'].'>';
+				//$headers[] = 'Cc: John Q Codex <jqc@wordpress.org>';
+				//$headers[] = 'Cc: iluvwp@wordpress.org'; // note you can just use a simple email address
+				break;
+			}
+			$headers[] = 'Content-Type: text/html; charset=UTF-8';
+			//add_filter('wp_mail_content_type','wpe_change_content_type'); //function wpe_change_content_type(){ return 'text/html'; } 
+			
+			$to_mail = $this->campaign['mailaddresslog'];
+					
 			$title = get_the_title($this->campaign_id);
+			$subject = __('WPeMatico Log ', WPeMatico :: TEXTDOMAIN ).' '.current_time('Y-m-d H:i').': '.$title;
+			
 			$mailbody = "WPeMatico Log"."\n";
 			$mailbody .= __("Campaign Name:", WPeMatico :: TEXTDOMAIN )." ".$title."\n";
 			if (!empty($joberrors))
@@ -349,9 +443,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				$mailbody.=__("Warnings:", WPeMatico :: TEXTDOMAIN )." ".$jobwarnings."\n";
 
 			$mailbody.="\n".$campaign_log_message;
-			add_filter('wp_mail_content_type','wpe_change_content_type'); //function wpe_change_content_type(){ return 'text/html'; } 
+			$mailbody.= "\n\n\n<hr>";
+			$mailbody.= __("WPeMatico by <a href='http://www.etruel.com'>etruel</a>", WPSellerEvents :: TEXTDOMAIN ). "\n";;
 			
-			wp_mail($this->campaign['mailaddresslog'],__('WPeMatico Log ', WPeMatico :: TEXTDOMAIN ).' '.date_i18n('Y-m-d H:i').': '.$title ,$mailbody,'','');  //array($this->logdir.$this->logfile  
+			wp_mail($to_mail, $subject, $mailbody,$headers,'');
+			
 		}
 		
 		// Save last log as meta field in campaign, replace if exist
@@ -366,7 +462,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	}
 }
 
-function wpe_change_content_type(){ return 'text/html'; }
+//function wpe_change_content_type(){ return 'text/html'; }
 
 //function for PHP error handling
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {

@@ -1,18 +1,22 @@
 <?php
 // don't load directly
-if ( !defined('ABSPATH') )
-	die('-1');
-
+if ( !defined('ABSPATH') ) {
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
+}
 
 if ( class_exists( 'wpematico_campaign_fetch_functions' ) ) return;
 
 class wpematico_campaign_fetch_functions {
 
-	function WPeisDuplicated(&$campaign, &$feed, &$item) {
+	function WPeisDuplicated($campaign, $feed, $item) {
 		// Post slugs must be unique across all posts.
 		global $wpdb, $wp_rewrite;
 		$post_ID = 0;
 		$cpost_type = $campaign['campaign_customposttype'];
+		$dev = false;
+
 		$wfeeds = $wp_rewrite->feeds;
 		if ( ! is_array( $wfeeds ) )
 			$wfeeds = array();
@@ -20,13 +24,15 @@ class wpematico_campaign_fetch_functions {
 		$slug = sanitize_title( $title );
 		$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
 		$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
-
 		if ( $post_name_check || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
-			trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. __('Yes') ,E_USER_NOTICE);
-			return true;
+			$dev = true;
 		}
-		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. __('No') ,E_USER_NOTICE);
-		return false;
+		if(has_filter('wpematico_duplicates')) $dev =  apply_filters('wpematico_duplicates', $dev, $campaign, $item);
+	
+		$dupmsg = ($dev) ? __('Yes') : __('No');
+		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. $dupmsg ,E_USER_NOTICE);
+
+		return $dev;
 	}
 
 		
@@ -45,7 +51,9 @@ class wpematico_campaign_fetch_functions {
 		$post_id = $this->campaign_id;
 		$skip = false;
 
-		if( $this->cfg['nonstatic'] ) { $skip = NoNStatic :: exclfilters($current_item,$campaign,$item ); }else $skip = false;
+		/* deprecated */ if( $this->cfg['nonstatic'] ) { $skip = NoNStatic :: exclfilters($current_item,$campaign,$item ); }else $skip = false;
+		
+		if(has_filter('wpematico_excludes')) $skip =  apply_filters('wpematico_excludes', $skip, $current_item, $campaign, $item);
 		
 		return $skip;
 	} // End exclude filters
@@ -68,7 +76,6 @@ class wpematico_campaign_fetch_functions {
 		// Item content
 		if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }else $current_item['content'] = $item->get_content();
 		if($this->current_item == -1 ) return -1;
-		if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content2($current_item,$campaign,$item); }else $current_item['content'] = $item->get_content();
 		
 		 // take out links before apply template
 		if ($campaign['campaign_strip_links']){
@@ -164,9 +171,11 @@ class wpematico_campaign_fetch_functions {
 		
 		//Proceso Words to Category y si hay las agrego al array
 		if ( $this->cfg['enableword2cats']) {
-			trigger_error(sprintf(__('Processing Words to Category %1s', WPeMatico :: TEXTDOMAIN ), $current_item['title'] ),E_USER_NOTICE);
-			//$wrd2cats = $campaign['campaign_wrd2cat'];
-			if (isset($campaign['campaign_wrd2cat']['word']))
+			if( isset($campaign['campaign_wrd2cat']['word']) 
+					&& (!empty($campaign['campaign_wrd2cat']['word'][0]) )
+					&& (!empty($campaign['campaign_wrd2cat']['w2ccateg'][0]) )
+				)
+			{	trigger_error(sprintf(__('Processing Words to Category %1s', WPeMatico :: TEXTDOMAIN ), $current_item['title'] ),E_USER_NOTICE);
 				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$foundit = false;
 					$word = stripslashes(@$campaign['campaign_wrd2cat']['word'][$i]);
@@ -187,8 +196,9 @@ class wpematico_campaign_fetch_functions {
 						}
 					}
 				}
+			}
 		}	// End Words to Category
-		
+
 		//Tags
 		if(has_filter('wpematico_pretags')) $current_item['campaign_tags'] =  apply_filters('wpematico_pretags', $current_item, $item, $this->cfg);
 		if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: postags($current_item,$campaign, $item ); $current_item['campaign_tags'] = $current_item['tags'] ; 
@@ -281,26 +291,37 @@ class wpematico_campaign_fetch_functions {
 				    trigger_error(__('Uploading image...', WPeMatico :: TEXTDOMAIN ).$imagen_src,E_USER_NOTICE);
 					if($this->campaign['campaign_cancel_imgcache']) {
 						if($this->cfg['gralnolinkimg'] || $this->campaign['campaign_nolinkimg']) 
-							$current_item['content'] = str_replace($imagen_src, '', $current_item['content']);  // Si no quiere linkar las img al server borro el link de la imagen						
+							$current_item['content'] = str_replace($imagen_src, '', $current_item['content']);  // Si no quiere linkar las img al server borro el link de la imagen
 					}else {
 						//$imagen_src = str_replace('_s.','_n.', $imagen_src);  //Trae la imagen grande en vez del thumb
                         $imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);						
 						//Fetch and Store the Image	
-/*						$get = wp_remote_get( $imagen_src_real );
-						$type = wp_remote_retrieve_header( $get, 'content-type' );
-						$mirror = wp_upload_bits(rawurldecode(basename( $imagen_src_real )), '', wp_remote_retrieve_body( $get ) );						
-*/ 						$bits = @file_get_contents($imagen_src_real);
+						///////////////***************************************************************************************////////////////////////
+/*						$bits = @file_get_contents($imagen_src_real);
 						$new_name = str_replace( array(' ','%20','+'), '_', urldecode( substr(strrchr($imagen_src, "/"),1) ) );
 						$mirror = wp_upload_bits( $new_name, NULL, $bits);
-						if(!$mirror['error']) {
+*/
+						$newimgname = sanitize_file_name(basename( $imagen_src_real ));
+						$response = wp_remote_get( $imagen_src_real ,  array( 'timeout' => 15 ));
+						if( !is_wp_error( $response ) && isset( $response['response']['code'] ) && 200 === $response['response']['code'] ) {
+							$body = wp_remote_retrieve_body( $response );
+							//$type = wp_remote_retrieve_header( $response, 'content-type' );
+							$mirror = wp_upload_bits($newimgname, '', $body );
+						}else{
+							trigger_error(__('error with wp_remote_get:', WPeMatico :: TEXTDOMAIN ) . $response->get_error_message(),E_USER_NOTICE);
+	 						$bits = @file_get_contents($imagen_src_real);
+							//$name = rawurldecode(basename( $imagen_src_real )); //str_replace(array(' ','%20'),'_',substr(strrchr($imagen_src, "/"),1));
+							$mirror = wp_upload_bits( $newimgname, NULL, $bits);
+						}
+ 						if(!$mirror['error']) {
 							trigger_error($mirror['url'],E_USER_NOTICE);
 							$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
 							$img_new_url[] = $mirror['url'];
 						} else {  // Si no la pudo subir intento con mi funcion
 							trigger_error('wp_upload_bits error:'.print_r($mirror,true).', trying custom function.',E_USER_WARNING);
 							$upload_dir = wp_upload_dir();
-							$imagen_dst = $upload_dir['path'] . $new_name ;
-							$imagen_dst_url = $upload_dir['url']. '/' . $new_name;
+							$imagen_dst = trailingslashit($upload_dir['path']). $newimgname; //str_replace('/','',strrchr($imagen_src, '/'));   //  . $new_name ;
+							$imagen_dst_url = trailingslashit($upload_dir['url']). $newimgname; // . str_replace('/','',strrchr($imagen_src, '/'));   //  . $new_name ;
 
 							if(in_array(str_replace('.','',strrchr($imagen_dst, '.')),explode(',','jpg,gif,png,tif,bmp'))) {   // -------- Controlo extensiones permitidas
 								trigger_error('imagen_src='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'<br>',E_USER_NOTICE);

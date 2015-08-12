@@ -2,21 +2,21 @@
 Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, Post, Posts, Feed, Feeds, RSS to Post, Feed to Post, admin, aggregation, atom, autoblogging, bot, content, syndication, writing
-Requires at least: 3.1
-Tested up to: 4.3alpha
-Stable tag: 1.1.96
+Requires at least: 3.9
+Tested up to: 4.3
+Stable tag: 1.2
 
 This is for autoblogging. Drink a coffee meanwhile WPeMatico publish your posts.  Post automatically from the RSS/Atom feeds organized into campaigns.
 
 == Description ==
 
-WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns.
+WPeMatico is for autoblogging, automatically creating posts from the RSS/Atom feeds you choose, which are organized into campaigns. 
 [youtube http://www.youtube.com/watch?v=N9wuKSbp1AE]
- 
+
 For RSS fetching it's using the Simplepie library included in Wordpress or force use of external.
 Also for image processing it's using the core functions of wordpress.
 Translations ready. .pot english file included for localize.  Translations files are welcome.
-I take code from many many other plugins, but for the first beta versions of this plugin I read a lot of code of the old WP-o-Matic and also old versions of BackWPUp. Thanks to the developers ;)
+I take code from many many other plugins, but for the first beta versions of this plugin I read a lot of code of the old WP-o-Matic and also old versions of BackWPUp. I'm talking about 2009 or 2010.  Thanks to the developers ;)
 
 If you like, please rate 5 stars and/or donate something. thanks :) 
 [Rate plugin](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#postform) - [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU)
@@ -64,21 +64,51 @@ chinese tags: Automatic generate tags taken from content phrases. For chinese la
 
 PHP5 is required!
 
+
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version. 
 
 Author page in spanish:[NetMdP](http://www.netmdp.com). 
-Add-ons page:[etruel.com](http://etruel.com).
+Plugin and Add-ons page:[etruel.com](http://etruel.com).
+
 
 == Installation ==
 
 You can either install it automatically from the WordPress admin, or do it manually:
 
-1. Unzip "wpematico" archive and put the folder into your plugins folder (/wp-content/plugins/).
-2. Activate the plugin from the Plugins menu.
+= Using the Plugin Manager =
 
-= Upgrading =
+1. Click Plugins
+2. Click Add New
+3. Search for `wpematico`
+4. Click Install
+5. Click Install Now
+6. Click Activate Plugin
+7. Now you must see WPeMatico Item on Wordpress menu
 
-* Remember deactivate PRO version before upgrade, then activate again.
+= Manually =
+
+1. Upload `wpematico` folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+
+
+== Screenshots ==
+
+1. Dashboard Widget and menu.
+
+2. The table list of campaigns and some info of everyone.
+
+3. Quick edit campaigns inline.
+
+4. Simplepie feed reader Settings.
+
+5. Duplicates, Cron and other tools in Settings page.
+
+6. Editing campaign.  Feeds list and Scheduler.
+
+7. Editing campaign.  Other Settings.
+
+8. Enabling PRO features and License key for automatic upgrades.
+
 
 == Frequently Asked Questions ==
 
@@ -90,23 +120,15 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 * Remember deactivate PRO version before upgrade, then activate again.
 
+= Where can I get PROfessional version? =
+
+* [etruel.com store](http://etruel.com/downloads/wpematico-pro/).
+
 = Where can I ask/see more questions? =
 
 * [Search tips on this page](http://www.wpematico.com/faq/).
 
-== Screenshots ==
-
-1. Dashboard Widget and menu.
-
-2. The table list of campaigns and some info of everyone.
-
-3. Editing campaign.  Feeds list.
-
-4. Enabling PRO features.
-
-5. Settings page.
-
-== Contributions ==
+= Contributions =
 
 You can contribute with WPeMatico
 Needed translation files: if you can translate from english to any language, you are welcome.
@@ -133,6 +155,54 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 
+= 1.2 =
+* Mayor upgrade. Backup your database and deactivate PRO version (for last time) before upgrade!
+* Fixed: Quick edit lost some fields values and bad columns after save.
+* Fixed: Rewrite input fields not saved in campaign.
+* Fixed: Almost all PHP notices were taken off.
+* Fixed: external cron broken call wpe-cron.php.
+* Fixed: columns data and order on campaign list.
+* New: Option to disable saving campaign custom fields on every post.
+* New: Option to allow external cron for WPeMatico without deactivate all WP Crons.
+* New: Option to write a log file for external cron.
+* New: Log file for external cron try to be saved in uploads folder, if can't try on same dir (app).
+* Improved fetching Videos from FEED content.
+* New: Added Option to shows a button to empty trash on all (custom) post types you want.
+* Fixed correct encode decode SMTP email password.
+* New: Default values on Settings to Sender email and name for logs.
+* Fixed: better sanitize image names before save using WP filters.
+* Fixed: dequeue script Autosave.
+* [PRO] must download version 1.2 [PRO](http://etruel.com/downloads/wpematico-pro/)
+* New feature: License key to launch automatic upgrades.
+* Automatic Upgrades from wordpress plugins page.
+* Removed the hated requirement to upgrade: Remember deactivate PRO version before upgrade. That there is not necessary now.
+* Fixed: don't crash website when upgrade WPeMatico free or is not activated. 
+* Fixed: get automatically Image URL when select image in gallery for Default Featured image. 
+* New: Checked required versions to run with free version.
+* Removed 1 min. cron feature and HTML lawed for better performance.
+* [/PRO]
+
+= 1.2 Beta =
+* New Feature: Post Formats to posts of a campaign.
+* New Feature: Quick Edit in campaigns list.
+* New options for SimplePie Filters on Settings. Strip attributtes and other interesting things.
+* New tips help to better layout on Settings and campaign edit pages.
+* New system messages to allow some new notices through plugin actions.
+* Added checked categories in campaign to top of list.
+* Added option to jump and continue fetching a feed when found a duplicate.
+* Added option Pending as status to posts of a campaign.
+* Added control to save data before allow run the Campaign.
+* Added log file to external cron.
+* Improvements to use Wordpress core Categories function for metabox instead of custom function.
+* Improvements to check url feeds when sometimes got Error on true feeds.
+* Improvements in ajax funtions checking url feeds.
+* Removed deprecated tools page to import old campaigns of plugin 0.xx versions.
+* Fixed page name for Settings Page to avoid overwrite other setting pages.
+* Fixed saving author selected in campaign.
+* Fixed Quick add campaign in category checked after save.
+* Fixed Reset Campaign also clear last Log.
+* Changed file_get_contents to wp_remote_get that uses multiples methods to get remote images in best way.
+
 = 1.1.96 =
 * Fixed tags issue reported on forums after last upgrade.
 
@@ -148,7 +218,7 @@ or to e-mail etruel@gmail.com
 
 = 1.1.93 =
 * Some minor fixes. Droped many PHP notices.
-* [PRO] must download version 1.1.93 [PRO](http://www.wpematico.com/wpematico/)
+* [PRO] must download version 1.1.93 [PRO](http://etruel.com/downloads/wpematico-pro/)
 * New feature: Filter Featured image by width or height on every post.
 * [/PRO]
 
@@ -156,7 +226,7 @@ or to e-mail etruel@gmail.com
 * Tested with Wordpress 4.2alpha
 * Some minor fixes.
 * Some fixes and descriptions on Readme file :)
-* [PRO] must download version 1.1.92 [PRO](http://www.wpematico.com/wpematico/)
+* [PRO] must download version 1.1.92 [PRO](http://etruel.com/downloads/wpematico-pro/)
 * New feature: Now you can filter images by width or height in new posts.
 * [/PRO]
 
@@ -181,7 +251,7 @@ or to e-mail etruel@gmail.com
 * Fixed duplicate image uploads that was in some cases with PRO Version installed.
 * Fixed that don't generate all images sizes when attach files to posts.
 * Some minor changes.
-* [PRO] must download version 1.1.7 [PRO](http://www.wpematico.com/wpematico/)
+* [PRO] must download version 1.1.7 [PRO](http://etruel.com/downloads/wpematico-pro/)
 * Fixed and removed the "rare" code displayed on log when fetch rss images.
 * Fixed KeywordFilter when select both title and content for search on "any" field.
 * Added file getcontent.php for custom edit and use with CURL if you need it.
@@ -219,7 +289,7 @@ or to e-mail etruel@gmail.com
 * Added SimplePie: Server Compatibility Test 1.3, for check if the plugin will work on server.
 * Fixed loading localization textdomain.
 * Fixed some issues with I18n.
-* Added Romanian & Slovak languages files.
+* Added Romanian & Slovak languages files. 
 
 = 1.1.1 =
 * Added New feature: Auto categories from source posts (were available).
@@ -400,6 +470,6 @@ This is a really update. Lot of things that you asked for, are ready in 1.0 vers
 
 == Upgrade Notice ==
 
-= 1.1.96 =
-* Fixed tags issue reported on forums after last upgrade.
-* Remember deactivate PRO version before upgrade.
+= 1.2 =
+* Added cool new features and lot of fixes.
+* Mayor upgrade. Backup your database and deactivate PRO version (for last time) before upgrade!
